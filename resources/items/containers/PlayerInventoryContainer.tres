@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ItemContainerData" format=3 uid="uid://cl4oowcusfhhb"]
+
+[ext_resource type="Script" uid="uid://dh8fh4eqo8r5o" path="res://scripts/items/ItemContainerData.gd" id="1_pukn2"]
+[ext_resource type="Script" uid="uid://caddfd8wsvlsh" path="res://scripts/items/ItemInstanceData.gd" id="2_31uvw"]
+
+[resource]
+script = ExtResource("1_pukn2")
+height = 3
+metadata/_custom_type_script = "uid://dh8fh4eqo8r5o"

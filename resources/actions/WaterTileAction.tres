@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="WaterTileAction" format=3 uid="uid://cm1rpho230uhi"]
+
+[ext_resource type="Script" uid="uid://b0i0djpnqj8mt" path="res://scripts/items/actions/item_actions/WaterTileAction.gd" id="1_8rg45"]
+
+[resource]
+script = ExtResource("1_8rg45")
+action_id = &"WaterTile"
+metadata/_custom_type_script = "uid://b0i0djpnqj8mt"

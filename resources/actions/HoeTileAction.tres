@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="HoeTileAction" format=3 uid="uid://dbsk6wkmsqpvb"]
+
+[ext_resource type="Script" uid="uid://csx2gitqy228q" path="res://scripts/items/actions/item_actions/HoeTileAction.gd" id="1_32rcp"]
+
+[resource]
+script = ExtResource("1_32rcp")
+action_id = &"HoeTile"
+metadata/_custom_type_script = "uid://csx2gitqy228q"

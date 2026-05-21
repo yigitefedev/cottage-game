@@ -1,0 +1,92 @@
+[gd_scene format=3 uid="uid://cjbb5bxvu0a23"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q3agu"]
+albedo_color = Color(1, 0.52216667, 0.39, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_ycriq"]
+material = SubResource("StandardMaterial3D_q3agu")
+radius = 0.05
+height = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_in8aw"]
+albedo_color = Color(0.68583333, 1, 0.35000002, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_yu67w"]
+material = SubResource("StandardMaterial3D_in8aw")
+radius = 0.02
+height = 0.15
+
+[sub_resource type="SphereMesh" id="SphereMesh_uswu1"]
+material = SubResource("StandardMaterial3D_in8aw")
+radius = 0.02
+height = 0.15
+
+[sub_resource type="SphereMesh" id="SphereMesh_43t46"]
+material = SubResource("StandardMaterial3D_in8aw")
+radius = 0.02
+height = 0.15
+
+[sub_resource type="SphereMesh" id="SphereMesh_nx3k8"]
+material = SubResource("StandardMaterial3D_in8aw")
+radius = 0.02
+height = 0.15
+
+[sub_resource type="SphereMesh" id="SphereMesh_xsx2a"]
+material = SubResource("StandardMaterial3D_in8aw")
+radius = 0.02
+height = 0.15
+
+[sub_resource type="SphereMesh" id="SphereMesh_1pb0h"]
+material = SubResource("StandardMaterial3D_in8aw")
+radius = 0.02
+height = 0.15
+
+[node name="CarrotStage3" type="Node3D" unique_id=356584406]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=610690094]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25601876, 0.18387139, -0.25053966)
+mesh = SubResource("SphereMesh_ycriq")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D" unique_id=1109293366]
+transform = Transform3D(1, 0, 0, 0, 2.655405, 0, 0, 0, 1, 0, 0.31108508, 0)
+mesh = SubResource("SphereMesh_yu67w")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=215281906]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.26720554, 0.18387139, 0.2740293)
+mesh = SubResource("SphereMesh_ycriq")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D2" unique_id=1529696474]
+transform = Transform3D(1, 0, 0, 0, 2.4243908, 0, 0, 0, 1, 0, 0.3118106, 0)
+mesh = SubResource("SphereMesh_uswu1")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="." unique_id=742545382]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25473285, 0.18387139, 0.10741794)
+mesh = SubResource("SphereMesh_ycriq")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D3" unique_id=1871004192]
+transform = Transform3D(1, 0, 0, 0, 2.4243908, 0, 0, 0, 1, 0, 0.3118106, 0)
+mesh = SubResource("SphereMesh_43t46")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="." unique_id=1501746287]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.18800884, 0.18387139, -0.22655025)
+mesh = SubResource("SphereMesh_ycriq")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D4" unique_id=1072517181]
+transform = Transform3D(1, 0, 0, 0, 2.4243908, 0, 0, 0, 1, 0, 0.3118106, 1.4901161e-08)
+mesh = SubResource("SphereMesh_nx3k8")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="." unique_id=1941962947]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.16469401, 0.18387139, 0.3542637)
+mesh = SubResource("SphereMesh_ycriq")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D5" unique_id=1727811985]
+transform = Transform3D(1, 0, 0, 0, 2.4243908, 0, 0, 0, 1, 0, 0.3118106, 0)
+mesh = SubResource("SphereMesh_xsx2a")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="." unique_id=29930409]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.120321155, 0.18387139, 0.04265639)
+mesh = SubResource("SphereMesh_ycriq")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D6" unique_id=1090310195]
+transform = Transform3D(1, 0, 0, 0, 2.4243908, 0, 0, 0, 1, 7.450581e-09, 0.3118106, 0)
+mesh = SubResource("SphereMesh_1pb0h")

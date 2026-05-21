@@ -1,0 +1,69 @@
+[gd_scene format=3 uid="uid://bbo0ih22dkv77"]
+
+[ext_resource type="Script" uid="uid://ddpke71ruamfh" path="res://scripts/UI/InventoryUI.gd" id="1_5entl"]
+[ext_resource type="PackedScene" uid="uid://0yi14361xc03" path="res://scenes/UI/InventorySlotUI.tscn" id="2_31fix"]
+
+[node name="InventoryUI" type="Control" unique_id=86191429]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_5entl")
+slot_scene = ExtResource("2_31fix")
+
+[node name="HotbarPanel" type="PanelContainer" parent="." unique_id=367333938]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -260.0
+offset_top = -93.48999
+offset_right = 260.0
+offset_bottom = -13.48999
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="HotbarPanel" unique_id=253970415]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="HotbarGrid" type="GridContainer" parent="HotbarPanel/MarginContainer" unique_id=671146544]
+layout_mode = 2
+theme_override_constants/h_separation = 6
+theme_override_constants/v_separation = 6
+columns = 7
+
+[node name="InventoryPanel" type="PanelContainer" parent="." unique_id=1028859456]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -260.0
+offset_top = -120.0
+offset_right = 260.0
+offset_bottom = 120.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="InventoryPanel" unique_id=56896923]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="InventoryGrid" type="GridContainer" parent="InventoryPanel/MarginContainer" unique_id=1290677120]
+layout_mode = 2
+theme_override_constants/h_separation = 6
+theme_override_constants/v_separation = 6
+columns = 7

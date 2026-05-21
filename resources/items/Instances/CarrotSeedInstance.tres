@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ItemInstanceData" format=3 uid="uid://mitahegfm6sn"]
+
+[ext_resource type="Resource" uid="uid://dkkro8kb64ptw" path="res://resources/items/definitions/CarrotSeedDefinition.tres" id="1_8ovl8"]
+[ext_resource type="Script" uid="uid://caddfd8wsvlsh" path="res://scripts/items/ItemInstanceData.gd" id="1_ihkis"]
+
+[resource]
+script = ExtResource("1_ihkis")
+definition = ExtResource("1_8ovl8")
+amount = 20
+metadata/_custom_type_script = "uid://caddfd8wsvlsh"

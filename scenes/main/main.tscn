@@ -1,0 +1,143 @@
+[gd_scene format=3 uid="uid://74dmywrwcyug"]
+
+[ext_resource type="PackedScene" uid="uid://npbqcyja1nl1" path="res://scenes/player/player.tscn" id="1_hyk8p"]
+[ext_resource type="Script" uid="uid://c5q0wi8lyo8tv" path="res://scripts/managers/GridManager.gd" id="2_iuonh"]
+[ext_resource type="Script" uid="uid://bhsgdpgsj3ryi" path="res://scripts/grid/TileSelector.gd" id="3_k2fmo"]
+[ext_resource type="Resource" uid="uid://oxra6ror7fy4" path="res://resources/grid/GameGridDefinition.tres" id="3_l3cfh"]
+[ext_resource type="Script" uid="uid://duya06q6bg4x5" path="res://scripts/grid/TileVisualManager.gd" id="5_6q06x"]
+[ext_resource type="Resource" uid="uid://ce18jgnbrf4l3" path="res://resources/grid/MainTileVisualDatabase.tres" id="6_ow5a4"]
+[ext_resource type="Script" uid="uid://cnb76lnyqkvh4" path="res://scripts/managers/CropGrowthManager.gd" id="7_b1x3f"]
+[ext_resource type="PackedScene" uid="uid://bbo0ih22dkv77" path="res://scenes/UI/InventoryUI.tscn" id="7_hujxm"]
+[ext_resource type="Script" uid="uid://0wsht7q1r577" path="res://scripts/UI/ClockLabel.gd" id="8_yyfjg"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_iuonh"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_k2fmo"]
+sky_material = SubResource("ProceduralSkyMaterial_iuonh")
+
+[sub_resource type="Environment" id="Environment_l3cfh"]
+background_mode = 2
+sky = SubResource("Sky_k2fmo")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_iuonh"]
+noise_type = 3
+frequency = 0.002
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_k2fmo"]
+noise = SubResource("FastNoiseLite_iuonh")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vom5j"]
+albedo_color = Color(0.21599999, 0.5, 0.14500001, 1)
+albedo_texture = SubResource("NoiseTexture2D_k2fmo")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_hyk8p"]
+material = SubResource("StandardMaterial3D_vom5j")
+size = Vector2(100, 100)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_iuonh"]
+size = Vector3(100, 1, 100)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_k2fmo"]
+size = Vector2(1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l3cfh"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(1, 1, 1, 0.10980392)
+
+[node name="Main" type="Node3D" unique_id=1441963032]
+
+[node name="World" type="Node3D" parent="." unique_id=1539479685]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="World" unique_id=534761816]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+light_color = Color(1, 1, 0.77254903, 1)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="World" unique_id=941265333]
+environment = SubResource("Environment_l3cfh")
+
+[node name="Ground" type="StaticBody3D" parent="World" unique_id=2146532682]
+
+[node name="Ground_mesh" type="MeshInstance3D" parent="World/Ground" unique_id=736615475]
+mesh = SubResource("PlaneMesh_hyk8p")
+
+[node name="Ground_collison" type="CollisionShape3D" parent="World/Ground" unique_id=896662111]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_iuonh")
+
+[node name="Player" parent="." unique_id=1422361473 instance=ExtResource("1_hyk8p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5506983, 0)
+
+[node name="Managers" type="Node3D" parent="." unique_id=1740106769]
+
+[node name="GridManager" type="Node3D" parent="Managers" unique_id=47125669]
+script = ExtResource("2_iuonh")
+grid_definition = ExtResource("3_l3cfh")
+
+[node name="TileSelector" type="Node3D" parent="Managers" unique_id=1697809969 node_paths=PackedStringArray("grid_manager", "debug_label")]
+script = ExtResource("3_k2fmo")
+grid_manager = NodePath("../GridManager")
+debug_label = NodePath("../../UI/DebugLabel")
+
+[node name="HoverHighlight" type="MeshInstance3D" parent="Managers/TileSelector" unique_id=687035509]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
+visible = false
+mesh = SubResource("PlaneMesh_k2fmo")
+surface_material_override/0 = SubResource("StandardMaterial3D_l3cfh")
+
+[node name="TargetHighlight" type="MeshInstance3D" parent="Managers/TileSelector" unique_id=2048169253]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
+mesh = SubResource("PlaneMesh_k2fmo")
+surface_material_override/0 = SubResource("StandardMaterial3D_l3cfh")
+
+[node name="UsableTileBorders" type="MeshInstance3D" parent="Managers/TileSelector" unique_id=1593310863]
+
+[node name="UnusableTileBorders" type="MeshInstance3D" parent="Managers/TileSelector" unique_id=2080573134]
+
+[node name="TileVisualManager" type="Node3D" parent="Managers" unique_id=458659001 node_paths=PackedStringArray("grid_manager")]
+script = ExtResource("5_6q06x")
+grid_manager = NodePath("../GridManager")
+visual_database = ExtResource("6_ow5a4")
+
+[node name="CropGrowthManager" type="Node3D" parent="Managers" unique_id=967012601]
+script = ExtResource("7_b1x3f")
+
+[node name="UI" type="Control" parent="." unique_id=2032844883]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="DebugLabel" type="Label" parent="UI" unique_id=2050414616]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 60.0
+offset_bottom = 43.0
+text = "Debug"
+
+[node name="InventoryUI" parent="UI" unique_id=86191429 instance=ExtResource("7_hujxm")]
+layout_mode = 1
+offset_right = 1240.0
+offset_bottom = 680.0
+
+[node name="ClockLabel" type="Label" parent="UI" unique_id=1552289050]
+layout_mode = 0
+offset_left = 1102.0
+offset_top = 58.0
+offset_right = 1158.0
+offset_bottom = 89.0
+theme_override_font_sizes/font_size = 22
+text = "00:00"
+script = ExtResource("8_yyfjg")
+
+[node name="hithubtest" type="Control" parent="." unique_id=1898106157]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0

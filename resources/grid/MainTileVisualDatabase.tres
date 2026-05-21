@@ -1,0 +1,51 @@
+[gd_resource type="Resource" script_class="TileVisualDatabase" format=3 uid="uid://ce18jgnbrf4l3"]
+
+[ext_resource type="Script" uid="uid://id3822kkb4kt" path="res://scripts/grid/TileVisualDefinition.gd" id="1_ytpcr"]
+[ext_resource type="Script" uid="uid://qkxfl6cnlm5g" path="res://scripts/grid/TileVisualDatabase.gd" id="2_gbvab"]
+[ext_resource type="PackedScene" uid="uid://duo4fitsvlgat" path="res://scenes/Tiles/tilled_soil.tscn" id="2_wyve8"]
+[ext_resource type="PackedScene" uid="uid://dyjkiqo6kr0ql" path="res://scenes/Tiles/tiled_soil_watered.tscn" id="3_wyve8"]
+[ext_resource type="PackedScene" uid="uid://bqtca4xse65x6" path="res://scenes/Tiles/crops/carrot_stage_0.tscn" id="4_o20sn"]
+[ext_resource type="PackedScene" uid="uid://cbym258k6ct1j" path="res://scenes/Tiles/crops/carrot_stage_1.tscn" id="5_h8ws0"]
+[ext_resource type="PackedScene" uid="uid://b77p6xia1eutj" path="res://scenes/Tiles/crops/carrot_stage_2.tscn" id="6_3c05e"]
+[ext_resource type="PackedScene" uid="uid://cjbb5bxvu0a23" path="res://scenes/Tiles/crops/carrot_stage_3.tscn" id="7_01v4t"]
+
+[sub_resource type="Resource" id="Resource_enaxe"]
+script = ExtResource("1_ytpcr")
+id = &"tilled_soil"
+scene = ExtResource("2_wyve8")
+metadata/_custom_type_script = "uid://id3822kkb4kt"
+
+[sub_resource type="Resource" id="Resource_mopa2"]
+script = ExtResource("1_ytpcr")
+id = &"tilled_soil_watered"
+scene = ExtResource("3_wyve8")
+metadata/_custom_type_script = "uid://id3822kkb4kt"
+
+[sub_resource type="Resource" id="Resource_xo00v"]
+script = ExtResource("1_ytpcr")
+id = &"carrot_stage_0"
+scene = ExtResource("4_o20sn")
+metadata/_custom_type_script = "uid://id3822kkb4kt"
+
+[sub_resource type="Resource" id="Resource_nb242"]
+script = ExtResource("1_ytpcr")
+id = &"carrot_stage_1"
+scene = ExtResource("5_h8ws0")
+metadata/_custom_type_script = "uid://id3822kkb4kt"
+
+[sub_resource type="Resource" id="Resource_eodge"]
+script = ExtResource("1_ytpcr")
+id = &"carrot_stage_2"
+scene = ExtResource("6_3c05e")
+metadata/_custom_type_script = "uid://id3822kkb4kt"
+
+[sub_resource type="Resource" id="Resource_ndjhc"]
+script = ExtResource("1_ytpcr")
+id = &"carrot_stage_3"
+scene = ExtResource("7_01v4t")
+metadata/_custom_type_script = "uid://id3822kkb4kt"
+
+[resource]
+script = ExtResource("2_gbvab")
+definitions = Array[ExtResource("1_ytpcr")]([SubResource("Resource_enaxe"), SubResource("Resource_mopa2"), SubResource("Resource_xo00v"), SubResource("Resource_nb242"), SubResource("Resource_eodge"), SubResource("Resource_ndjhc")])
+metadata/_custom_type_script = "uid://qkxfl6cnlm5g"

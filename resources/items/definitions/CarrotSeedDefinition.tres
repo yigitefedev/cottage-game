@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://dkkro8kb64ptw"]
+
+[ext_resource type="Texture2D" uid="uid://b8sq2c584rpce" path="res://art/gecici/simpleninjin.png" id="1_2fwji"]
+[ext_resource type="Script" uid="uid://kia7nkogevgg" path="res://scripts/items/ItemDefinition.gd" id="1_53gym"]
+[ext_resource type="Resource" uid="uid://bajkmoy6k2odm" path="res://resources/actions/PlantSeedAction.tres" id="2_4qc6v"]
+
+[resource]
+script = ExtResource("1_53gym")
+id = &"carror_seed"
+display_name = "Carrot Seed"
+icon = ExtResource("1_2fwji")
+max_stack = 30
+tags = Array[StringName]([&"seed"])
+primary_action = ExtResource("2_4qc6v")
+properties = {
+"crop_id": "carrot"
+}
+metadata/_custom_type_script = "uid://kia7nkogevgg"

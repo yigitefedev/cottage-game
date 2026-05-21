@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ItemInstanceData" format=3 uid="uid://duii35a1lpgad"]
+
+[ext_resource type="Resource" uid="uid://cjge2yn1p7yr0" path="res://resources/items/definitions/HoeDefinition.tres" id="1_nha4a"]
+[ext_resource type="Script" uid="uid://caddfd8wsvlsh" path="res://scripts/items/ItemInstanceData.gd" id="1_p5l2u"]
+
+[resource]
+script = ExtResource("1_p5l2u")
+definition = ExtResource("1_nha4a")
+metadata/_custom_type_script = "uid://caddfd8wsvlsh"

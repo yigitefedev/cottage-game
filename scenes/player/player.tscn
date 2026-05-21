@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://npbqcyja1nl1"]
+
+[ext_resource type="Script" uid="uid://b6v5nxmg5hfbh" path="res://scripts/player/player.gd" id="1_dovo2"]
+[ext_resource type="Script" uid="uid://bi44w26gcgaei" path="res://scripts/camera_rig.gd" id="2_gmlin"]
+[ext_resource type="Script" uid="uid://bj5e4kn76tmbq" path="res://scripts/player/PlayerInventory.gd" id="3_gmlin"]
+[ext_resource type="Resource" uid="uid://cl4oowcusfhhb" path="res://resources/items/containers/PlayerInventoryContainer.tres" id="4_0owmy"]
+[ext_resource type="Script" uid="uid://caddfd8wsvlsh" path="res://scripts/items/ItemInstanceData.gd" id="5_qek5x"]
+[ext_resource type="Resource" uid="uid://duii35a1lpgad" path="res://resources/items/Instances/HoeInstance.tres" id="6_5gtgg"]
+[ext_resource type="Resource" uid="uid://cpqui8ww5fnx5" path="res://resources/items/Instances/WateringCanInstance.tres" id="7_h17s1"]
+[ext_resource type="Resource" uid="uid://mitahegfm6sn" path="res://resources/items/Instances/CarrotSeedInstance.tres" id="8_qek5x"]
+[ext_resource type="Script" uid="uid://3a5hhiyj8g4l" path="res://scripts/player/PlayerTileTargeter.gd" id="9_5gtgg"]
+[ext_resource type="Script" uid="uid://cwe3et2glprvk" path="res://scripts/player/ToolController.gd" id="10_h17s1"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_k2fmo"]
+radius = 0.4
+height = 1.3
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_l3cfh"]
+radius = 0.35
+height = 1.2
+
+[node name="Player" type="Node3D" unique_id=1422361473]
+
+[node name="Player" type="CharacterBody3D" parent="." unique_id=157014225]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.655, 0)
+script = ExtResource("1_dovo2")
+move_speed = 3.0
+
+[node name="PlayerTileTargeter" type="Node3D" parent="Player" unique_id=2027365979]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.655, 0)
+script = ExtResource("9_5gtgg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player" unique_id=775364088]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+shape = SubResource("CapsuleShape3D_k2fmo")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player" unique_id=1700088938]
+mesh = SubResource("CapsuleMesh_l3cfh")
+
+[node name="CameraRig" type="Node3D" parent="." unique_id=1164539971 node_paths=PackedStringArray("target")]
+script = ExtResource("2_gmlin")
+target = NodePath("../Player")
+
+[node name="Camera3D" type="Camera3D" parent="CameraRig" unique_id=1465148557]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, 0, 8, 8)
+current = true
+fov = 40.0
+
+[node name="PlayerInventory" type="Node3D" parent="." unique_id=1437805635]
+script = ExtResource("3_gmlin")
+inventory = ExtResource("4_0owmy")
+starting_items = Array[ExtResource("5_qek5x")]([ExtResource("6_5gtgg"), ExtResource("7_h17s1"), ExtResource("8_qek5x")])
+
+[node name="ToolController" type="Node3D" parent="." unique_id=611790258]
+script = ExtResource("10_h17s1")

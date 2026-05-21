@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://0yi14361xc03"]
+
+[ext_resource type="Script" uid="uid://mfjchjfl84wt" path="res://scripts/UI/InventorySlotUI.gd" id="1_4r25q"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4r25q"]
+
+[node name="InventorySlotUI" type="PanelContainer" unique_id=1971431526]
+custom_minimum_size = Vector2(64, 64)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1216.0
+offset_bottom = -656.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_4r25q")
+script = ExtResource("1_4r25q")
+
+[node name="Icon" type="TextureRect" parent="." unique_id=179942678]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="AmountLabel" type="Label" parent="." unique_id=175024158]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+text = "32"
+horizontal_alignment = 2

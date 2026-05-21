@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="PlantSeedAction" format=3 uid="uid://bajkmoy6k2odm"]
+
+[ext_resource type="Script" uid="uid://bffsnflieaw0j" path="res://scripts/items/actions/item_actions/PlantSeedAction.gd" id="1_u18ms"]
+
+[resource]
+script = ExtResource("1_u18ms")
+action_id = &"plant_seed"
+metadata/_custom_type_script = "uid://bffsnflieaw0j"

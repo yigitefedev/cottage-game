@@ -1,0 +1,18 @@
+class_name ItemUseContext
+extends RefCounted
+
+var player: CharacterBody3D
+
+var player_inventory: PlayerInventory
+var tool_controller: ToolController
+
+var selected_slot_index: int
+var selected_item: ItemInstanceData
+
+var crop_database: CropDatabase
+var grid_manager: GridManager
+var tile_visual_manager: TileVisualManager
+var tile_targeter: PlayerTileTargeter
+
+var target_tile_coord: Vector2i
+var target_tile: GameTileData
