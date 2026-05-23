@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://cu81xokn20shg"]
+
+[ext_resource type="Script" uid="uid://kia7nkogevgg" path="res://scripts/items/ItemDefinition.gd" id="1_5c5ux"]
+[ext_resource type="Resource" uid="uid://djblpb4vyrst3" path="res://resources/actions/PlaceCornerObjectAction.tres" id="1_wwt3i"]
+
+[resource]
+script = ExtResource("1_5c5ux")
+id = &"sprinkler"
+display_name = "Sprinkler"
+max_stack = 20
+tags = Array[StringName]([&"placeable", &"corner_object"])
+primary_action = ExtResource("1_wwt3i")
+properties = {
+"object_id ": "sprinkler",
+"visual_id": "sprinkler",
+"visual_layer": "object"
+}
+metadata/_custom_type_script = "uid://kia7nkogevgg"

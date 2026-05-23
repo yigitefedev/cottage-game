@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://b6v5nxmg5hfbh" path="res://scripts/player/player.gd" id="1_dovo2"]
 [ext_resource type="Script" uid="uid://bi44w26gcgaei" path="res://scripts/camera_rig.gd" id="2_gmlin"]
 [ext_resource type="Script" uid="uid://bj5e4kn76tmbq" path="res://scripts/player/PlayerInventory.gd" id="3_gmlin"]
+[ext_resource type="Script" uid="uid://oes81damg3xe" path="res://scripts/player/PlayerCornerTargeter.gd" id="3_ugbui"]
 [ext_resource type="Resource" uid="uid://cl4oowcusfhhb" path="res://resources/items/containers/PlayerInventoryContainer.tres" id="4_0owmy"]
 [ext_resource type="Script" uid="uid://caddfd8wsvlsh" path="res://scripts/items/ItemInstanceData.gd" id="5_qek5x"]
 [ext_resource type="Resource" uid="uid://duii35a1lpgad" path="res://resources/items/Instances/HoeInstance.tres" id="6_5gtgg"]
@@ -10,6 +11,7 @@
 [ext_resource type="Resource" uid="uid://mitahegfm6sn" path="res://resources/items/Instances/CarrotSeedInstance.tres" id="8_qek5x"]
 [ext_resource type="Script" uid="uid://3a5hhiyj8g4l" path="res://scripts/player/PlayerTileTargeter.gd" id="9_5gtgg"]
 [ext_resource type="Script" uid="uid://cwe3et2glprvk" path="res://scripts/player/ToolController.gd" id="10_h17s1"]
+[ext_resource type="Resource" uid="uid://bnust1wonsqvb" path="res://resources/items/Instances/SprinkleInstance.tres" id="11_fcs02"]
 [ext_resource type="Script" uid="uid://y5u3rcw5oqrn" path="res://scripts/player/InteractionController.gd" id="11_je7p5"]
 [ext_resource type="Script" uid="uid://b8rvg2cqb7cxw" path="res://scripts/items/actions/InteractionAction.gd" id="12_gx1jg"]
 [ext_resource type="Resource" uid="uid://b5itln7kxm6y3" path="res://resources/actions/HarvestCropInteractionAction.tres" id="13_ugbui"]
@@ -33,6 +35,9 @@ move_speed = 3.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.655, 0)
 script = ExtResource("9_5gtgg")
 
+[node name="PlayerCornerTargeter" type="Node3D" parent="Player" unique_id=1674722873]
+script = ExtResource("3_ugbui")
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player" unique_id=775364088]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
 shape = SubResource("CapsuleShape3D_k2fmo")
@@ -52,7 +57,7 @@ fov = 40.0
 [node name="PlayerInventory" type="Node3D" parent="." unique_id=1437805635]
 script = ExtResource("3_gmlin")
 inventory = ExtResource("4_0owmy")
-starting_items = Array[ExtResource("5_qek5x")]([ExtResource("6_5gtgg"), ExtResource("7_h17s1"), ExtResource("8_qek5x")])
+starting_items = Array[ExtResource("5_qek5x")]([ExtResource("6_5gtgg"), ExtResource("7_h17s1"), ExtResource("8_qek5x"), ExtResource("11_fcs02")])
 
 [node name="ToolController" type="Node3D" parent="." unique_id=611790258]
 script = ExtResource("10_h17s1")

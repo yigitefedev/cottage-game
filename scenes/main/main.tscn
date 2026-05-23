@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://pmihujj6ji8c" path="res://scripts/items/WorldItemSpawner.gd" id="8_a8run"]
 [ext_resource type="Script" uid="uid://0wsht7q1r577" path="res://scripts/UI/ClockLabel.gd" id="8_yyfjg"]
 [ext_resource type="PackedScene" uid="uid://5ci0a8jskrlw" path="res://scenes/items/DroppedItem.tscn" id="9_ouso4"]
+[ext_resource type="Script" uid="uid://cyvp2is3h7hey" path="res://scripts/grid/CornerVisualManager.gd" id="10_blune"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_iuonh"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -103,6 +104,11 @@ surface_material_override/0 = SubResource("StandardMaterial3D_l3cfh")
 
 [node name="TileVisualManager" type="Node3D" parent="Managers" unique_id=458659001 node_paths=PackedStringArray("grid_manager")]
 script = ExtResource("5_6q06x")
+grid_manager = NodePath("../GridManager")
+visual_database = ExtResource("6_ow5a4")
+
+[node name="CornerVisualManager" type="Node3D" parent="Managers" unique_id=207701386 node_paths=PackedStringArray("grid_manager")]
+script = ExtResource("10_blune")
 grid_manager = NodePath("../GridManager")
 visual_database = ExtResource("6_ow5a4")
 

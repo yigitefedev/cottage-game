@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://bw07kufhqr7w8"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fq2bf"]
+albedo_color = Color(0.14984, 0.24, 0.12239999, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_q8fkr"]
+material = SubResource("StandardMaterial3D_fq2bf")
+radius = 0.1
+height = 0.8
+
+[node name="Sprinkler" type="Node3D" unique_id=566501150]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2080017071]
+mesh = SubResource("CapsuleMesh_q8fkr")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1709970602]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0.31091493, 0)
+mesh = SubResource("CapsuleMesh_q8fkr")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="." unique_id=536710937]
+transform = Transform3D(-4.371139e-08, 1, -4.371139e-08, 0, -4.371139e-08, -1, -1, -4.371139e-08, 1.9106855e-15, 0, 0.31091493, 0)
+mesh = SubResource("CapsuleMesh_q8fkr")

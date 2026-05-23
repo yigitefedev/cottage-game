@@ -2,7 +2,6 @@ class_name ItemUseContext
 extends RefCounted
 
 var player: CharacterBody3D
-
 var player_inventory: PlayerInventory
 var tool_controller: ToolController
 
@@ -12,7 +11,12 @@ var selected_item: ItemInstanceData
 var crop_database: CropDatabase
 var grid_manager: GridManager
 var tile_visual_manager: TileVisualManager
-var tile_targeter: PlayerTileTargeter
+var corner_visual_manager: CornerVisualManager
 
+var tile_targeter: PlayerTileTargeter
 var target_tile_coord: Vector2i
 var target_tile: GameTileData
+
+var corner_targeter: PlayerCornerTargeter
+var target_corner_coord: Vector2i
+var target_corner: GameCornerData

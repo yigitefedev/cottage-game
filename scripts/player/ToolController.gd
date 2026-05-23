@@ -6,13 +6,16 @@ var tile_targeter: PlayerTileTargeter
 const crop_database: CropDatabase = preload("res://resources/crops/MainCropDatabase.tres")
 var grid_manager: GridManager
 var tile_visual_manager: TileVisualManager
+var corner_targeter: PlayerCornerTargeter
+var corner_visual_manager: CornerVisualManager
 
 func _ready() -> void:
 	await get_tree().process_frame
 	crop_database.build_lookup()
 	player_inventory = get_tree().get_first_node_in_group("player_inventory")
 	tile_targeter = get_tree().get_first_node_in_group("player_tile_targeter")
-
+	corner_targeter = get_tree().get_first_node_in_group("player_corner_targeter")
+	corner_visual_manager = get_tree().get_first_node_in_group("corner_visual_manager")
 
 	grid_manager = get_tree().get_first_node_in_group("grid_manager")
 	tile_visual_manager = get_tree().get_first_node_in_group("tile_visual_manager")
@@ -68,5 +71,10 @@ func build_context(item: ItemInstanceData) -> ItemUseContext:
 
 	context.target_tile_coord = tile_targeter.get_target_tile()
 	context.target_tile = tile_targeter.get_target_tile_data()
+	context.corner_targeter = corner_targeter
+	context.corner_visual_manager = corner_visual_manager
 
+	if corner_targeter != null:
+		context.target_corner_coord = corner_targeter.get_target_corner()
+		context.target_corner = grid_manager.get_corner(context.target_corner_coord)
 	return context

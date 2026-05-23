@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="ItemAction" format=3 uid="uid://djblpb4vyrst3"]
+
+[ext_resource type="Script" uid="uid://dtoher1if8xcv" path="res://scripts/items/actions/ItemAction.gd" id="1_2rop0"]
+
+[resource]
+script = ExtResource("1_2rop0")
+action_id = &"place_corner_object"
+metadata/_custom_type_script = "uid://dtoher1if8xcv"

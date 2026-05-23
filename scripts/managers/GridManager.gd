@@ -73,3 +73,22 @@ func save_grid_definition(path: String = "res://resources/grid/GameGridDefinitio
 		push_error("Grid definition save failed: %s" % error)
 	else:
 		print("Grid definition saved: ", path)
+func world_to_corner(world_position: Vector3) -> Vector2i:
+	var local_position := to_local(world_position)
+	return Vector2i(
+		roundi(local_position.x / tile_size),
+		roundi(local_position.z / tile_size)
+	)
+
+func corner_to_world(coord: Vector2i) -> Vector3:
+	return global_position + Vector3(
+		coord.x * tile_size,
+		0.0,
+		coord.y * tile_size
+	)
+
+func get_corner(coord: Vector2i) -> GameCornerData:
+	return grid_data.get_corner(coord)
+
+func get_or_create_corner(coord: Vector2i) -> GameCornerData:
+	return grid_data.get_or_create_corner(coord)

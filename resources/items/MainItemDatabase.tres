@@ -6,8 +6,9 @@
 [ext_resource type="Resource" uid="uid://b7nbte1dwlddf" path="res://resources/items/definitions/WateringCanDefinition.tres" id="3_o4wrg"]
 [ext_resource type="Resource" uid="uid://dkkro8kb64ptw" path="res://resources/items/definitions/CarrotSeedDefinition.tres" id="4_o4wrg"]
 [ext_resource type="Resource" uid="uid://1oq57ydeqcvb" path="res://resources/items/definitions/CarrotDefinition.tres" id="5_yhaa3"]
+[ext_resource type="Resource" uid="uid://cu81xokn20shg" path="res://resources/items/definitions/SprinklerDefinition.tres" id="6_x7q8d"]
 
 [resource]
 script = ExtResource("2_wnd64")
-items = Array[ExtResource("1_p6ucb")]([ExtResource("2_pf8bb"), ExtResource("3_o4wrg"), ExtResource("4_o4wrg"), ExtResource("5_yhaa3")])
+items = Array[ExtResource("1_p6ucb")]([ExtResource("2_pf8bb"), ExtResource("3_o4wrg"), ExtResource("4_o4wrg"), ExtResource("5_yhaa3"), ExtResource("6_x7q8d")])
 metadata/_custom_type_script = "uid://l6ftqlnw0abi"
