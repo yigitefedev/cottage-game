@@ -12,7 +12,13 @@ func is_stackable_with(other: ItemInstanceData) -> bool:
 	if other == null:
 		return false
 
-	if definition != other.definition:
+	if definition == null or other.definition == null:
+		return false
+
+	if definition.id != other.definition.id:
+		return false
+
+	if amount >= definition.max_stack:
 		return false
 
 	return state == other.state

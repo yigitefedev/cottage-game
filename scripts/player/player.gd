@@ -6,6 +6,9 @@ extends CharacterBody3D
 @export var rotation_speed := 10.0
 @export var gravity := 20.0
 
+func _ready() -> void:
+	add_to_group("player")
+	
 func _physics_process(delta: float) -> void:
 
 	if not is_on_floor():

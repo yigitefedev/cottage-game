@@ -10,6 +10,9 @@ extends Resource
 @export var harvest_stage_index: int = -1
 @export var harvest_item_id: StringName
 
+@export var harvest_amount_min: int = 3
+@export var harvest_amount_max: int = 5
+
 
 func get_stage_count() -> int:
 	return stage_visual_ids.size()

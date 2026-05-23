@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="HarvestCropInteractionAction" format=3 uid="uid://b5itln7kxm6y3"]
+
+[ext_resource type="Script" uid="uid://cp6oahxeg87m6" path="res://scripts/items/actions/interactions/HarvestCropInteractionAction.gd" id="1_4oacw"]
+
+[resource]
+script = ExtResource("1_4oacw")
+action_id = &"harvest_crop"
+metadata/_custom_type_script = "uid://cp6oahxeg87m6"

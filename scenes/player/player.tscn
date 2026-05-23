@@ -10,6 +10,9 @@
 [ext_resource type="Resource" uid="uid://mitahegfm6sn" path="res://resources/items/Instances/CarrotSeedInstance.tres" id="8_qek5x"]
 [ext_resource type="Script" uid="uid://3a5hhiyj8g4l" path="res://scripts/player/PlayerTileTargeter.gd" id="9_5gtgg"]
 [ext_resource type="Script" uid="uid://cwe3et2glprvk" path="res://scripts/player/ToolController.gd" id="10_h17s1"]
+[ext_resource type="Script" uid="uid://y5u3rcw5oqrn" path="res://scripts/player/InteractionController.gd" id="11_je7p5"]
+[ext_resource type="Script" uid="uid://b8rvg2cqb7cxw" path="res://scripts/items/actions/InteractionAction.gd" id="12_gx1jg"]
+[ext_resource type="Resource" uid="uid://b5itln7kxm6y3" path="res://resources/actions/HarvestCropInteractionAction.tres" id="13_ugbui"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_k2fmo"]
 radius = 0.4
@@ -53,3 +56,7 @@ starting_items = Array[ExtResource("5_qek5x")]([ExtResource("6_5gtgg"), ExtResou
 
 [node name="ToolController" type="Node3D" parent="." unique_id=611790258]
 script = ExtResource("10_h17s1")
+
+[node name="InteractionController" type="Node3D" parent="." unique_id=1943167925]
+script = ExtResource("11_je7p5")
+interaction_actions = Array[ExtResource("12_gx1jg")]([ExtResource("13_ugbui")])

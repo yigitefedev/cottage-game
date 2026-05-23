@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://5ci0a8jskrlw"]
+
+[ext_resource type="Script" uid="uid://dt8mv0q2spnp" path="res://scripts/items/DroppedItem.gd" id="1_p32ve"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_7jbjh"]
+radius = 1.2
+
+[node name="DroppedItem" type="Node3D" unique_id=1276363792]
+script = ExtResource("1_p32ve")
+
+[node name="IconSprite" type="Sprite3D" parent="." unique_id=1149333986]
+billboard = 1
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1824245279]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1127916642]
+shape = SubResource("SphereShape3D_7jbjh")

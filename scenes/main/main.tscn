@@ -8,7 +8,9 @@
 [ext_resource type="Resource" uid="uid://ce18jgnbrf4l3" path="res://resources/grid/MainTileVisualDatabase.tres" id="6_ow5a4"]
 [ext_resource type="Script" uid="uid://cnb76lnyqkvh4" path="res://scripts/managers/CropGrowthManager.gd" id="7_b1x3f"]
 [ext_resource type="PackedScene" uid="uid://bbo0ih22dkv77" path="res://scenes/UI/InventoryUI.tscn" id="7_hujxm"]
+[ext_resource type="Script" uid="uid://pmihujj6ji8c" path="res://scripts/items/WorldItemSpawner.gd" id="8_a8run"]
 [ext_resource type="Script" uid="uid://0wsht7q1r577" path="res://scripts/UI/ClockLabel.gd" id="8_yyfjg"]
+[ext_resource type="PackedScene" uid="uid://5ci0a8jskrlw" path="res://scenes/items/DroppedItem.tscn" id="9_ouso4"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_iuonh"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -106,6 +108,10 @@ visual_database = ExtResource("6_ow5a4")
 
 [node name="CropGrowthManager" type="Node3D" parent="Managers" unique_id=967012601]
 script = ExtResource("7_b1x3f")
+
+[node name="WorldItemSpawner" type="Node3D" parent="Managers" unique_id=1252260209]
+script = ExtResource("8_a8run")
+dropped_item_scene = ExtResource("9_ouso4")
 
 [node name="UI" type="Control" parent="." unique_id=2032844883]
 layout_mode = 3

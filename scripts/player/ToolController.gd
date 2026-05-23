@@ -16,17 +16,10 @@ func _ready() -> void:
 
 	grid_manager = get_tree().get_first_node_in_group("grid_manager")
 	tile_visual_manager = get_tree().get_first_node_in_group("tile_visual_manager")
-	
-	print("ToolController ready")
-	print("inventory: ", player_inventory)
-	print("targeter: ", tile_targeter)
-	print("grid: ", grid_manager)
-	print("visual manager: ", tile_visual_manager)
 
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("use_item"):
-		print("F pressed")
 		use_selected_item()
 
 
