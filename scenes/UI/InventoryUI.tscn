@@ -3,6 +3,10 @@
 [ext_resource type="Script" uid="uid://ddpke71ruamfh" path="res://scripts/UI/InventoryUI.gd" id="1_5entl"]
 [ext_resource type="PackedScene" uid="uid://0yi14361xc03" path="res://scenes/UI/InventorySlotUI.tscn" id="2_31fix"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_31fix"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1lpy6"]
+
 [node name="InventoryUI" type="Control" unique_id=86191429]
 layout_mode = 3
 anchors_preset = 15
@@ -27,6 +31,7 @@ offset_right = 260.0
 offset_bottom = -13.48999
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_31fix")
 
 [node name="MarginContainer" type="MarginContainer" parent="HotbarPanel" unique_id=253970415]
 layout_mode = 2
@@ -39,7 +44,7 @@ theme_override_constants/margin_bottom = 8
 layout_mode = 2
 theme_override_constants/h_separation = 6
 theme_override_constants/v_separation = 6
-columns = 7
+columns = 9
 
 [node name="InventoryPanel" type="PanelContainer" parent="." unique_id=1028859456]
 layout_mode = 1
@@ -54,6 +59,7 @@ offset_right = 260.0
 offset_bottom = 120.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_1lpy6")
 
 [node name="MarginContainer" type="MarginContainer" parent="InventoryPanel" unique_id=56896923]
 layout_mode = 2

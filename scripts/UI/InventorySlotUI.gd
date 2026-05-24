@@ -3,15 +3,19 @@ extends PanelContainer
 
 @onready var amount_label: Label = $AmountLabel
 @onready var icon: TextureRect = $Icon
-@onready var panel_stylebox: StyleBoxFlat = get_theme_stylebox("panel").duplicate()
+@onready var panel_stylebox: StyleBoxTexture = get_theme_stylebox("panel").duplicate()
 
+var is_hotbar_slot := false
+var hotbar_index := -1
 var is_hovered := false
 var slot_index: int = -1
 var player_inventory: PlayerInventory
 
+
 func _ready() -> void:
 	add_theme_stylebox_override("panel", panel_stylebox)
-	mouse_entered.connect(func(): 
+
+	mouse_entered.connect(func():
 		is_hovered = true
 		refresh()
 	)
@@ -20,18 +24,27 @@ func _ready() -> void:
 		is_hovered = false
 		refresh()
 	)
+
 	update_highlight()
-func setup(_player_inventory: PlayerInventory, _slot_index: int) -> void:
+
+
+func setup(_player_inventory: PlayerInventory, _slot_index: int, _is_hotbar_slot: bool = false, _hotbar_index: int = -1) -> void:
 	player_inventory = _player_inventory
 	slot_index = _slot_index
+	is_hotbar_slot = _is_hotbar_slot
+	hotbar_index = _hotbar_index
 	refresh()
+
 
 func update_highlight() -> void:
 	var selected := false
 	var inventory_is_open := false
 
 	if player_inventory != null:
-		selected = slot_index == player_inventory.selected_index
+		if is_hotbar_slot:
+			selected = hotbar_index == player_inventory.selected_index
+		else:
+			selected = false
 
 	var inventory_ui := get_tree().get_first_node_in_group("inventory_ui")
 
@@ -39,12 +52,13 @@ func update_highlight() -> void:
 		inventory_is_open = inventory_ui.is_inventory_open()
 
 	if selected and not inventory_is_open:
-		panel_stylebox.bg_color = Color(0.75, 0.75, 0.75, 1.0)
+		panel_stylebox.modulate_color = Color(0.75, 0.75, 0.75, 1.0)
 	elif is_hovered:
-		panel_stylebox.bg_color = Color(0.75, 0.75, 0.75, 1.0)
+		panel_stylebox.modulate_color = Color(0.75, 0.75, 0.75, 1.0)
 	else:
-		panel_stylebox.bg_color = Color(0.2, 0.2, 0.2, 1.0)
-	
+		panel_stylebox.modulate_color = Color(0.2, 0.2, 0.2, 1.0)
+
+
 func refresh() -> void:
 	if icon == null:
 		return
@@ -63,10 +77,8 @@ func refresh() -> void:
 
 		if item.amount > 1:
 			amount_label.text = str(item.amount)
-
 		elif item.state.has("water"):
 			amount_label.text = str(item.state["water"])
-
 		else:
 			amount_label.text = ""
 
@@ -75,6 +87,9 @@ func refresh() -> void:
 
 func _get_drag_data(mouse_pos: Vector2) -> Variant:
 	if player_inventory == null:
+		return null
+
+	if is_hotbar_slot:
 		return null
 
 	var item := player_inventory.inventory.get_slot(slot_index)
@@ -105,7 +120,18 @@ func _get_drag_data(mouse_pos: Vector2) -> Variant:
 
 
 func _can_drop_data(_position: Vector2, data: Variant) -> bool:
-	return typeof(data) == TYPE_DICTIONARY and data.has("slot_index")
+	if is_hotbar_slot:
+		return false
+
+	if player_inventory == null:
+		return false
+
+	if typeof(data) != TYPE_DICTIONARY or not data.has("slot_index"):
+		return false
+
+	var from_index: int = data["slot_index"]
+
+	return player_inventory.can_swap_slots(from_index, slot_index)
 
 
 func _drop_data(_position: Vector2, data: Variant) -> void:
@@ -113,6 +139,8 @@ func _drop_data(_position: Vector2, data: Variant) -> void:
 
 	if player_inventory != null:
 		player_inventory.swap_slots(from_index, slot_index)
+
+
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_DRAG_END:
 		icon.visible = true

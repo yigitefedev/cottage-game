@@ -12,6 +12,8 @@
 [ext_resource type="Script" uid="uid://0wsht7q1r577" path="res://scripts/UI/ClockLabel.gd" id="8_yyfjg"]
 [ext_resource type="PackedScene" uid="uid://5ci0a8jskrlw" path="res://scenes/items/DroppedItem.tscn" id="9_ouso4"]
 [ext_resource type="Script" uid="uid://cyvp2is3h7hey" path="res://scripts/grid/CornerVisualManager.gd" id="10_blune"]
+[ext_resource type="Script" uid="uid://b7ilypk1ermuo" path="res://scripts/UI/ToolRadialMenu.gd" id="12_th5th"]
+[ext_resource type="PackedScene" uid="uid://0yi14361xc03" path="res://scenes/UI/InventorySlotUI.tscn" id="13_7smn1"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_iuonh"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -146,6 +148,49 @@ layout_mode = 1
 offset_right = 1240.0
 offset_bottom = 680.0
 
+[node name="ToolRadialMenu" type="Control" parent="UI" unique_id=564621786]
+layout_mode = 1
+anchor_left = 15.205001
+anchor_top = 8.501
+anchor_right = 15.205001
+anchor_bottom = 8.501
+offset_left = -608.2
+offset_top = -340.04
+offset_right = 671.8
+offset_bottom = 379.96
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("12_th5th")
+slot_scene = ExtResource("13_7smn1")
+
+[node name="CenterDot" type="TextureRect" parent="UI/ToolRadialMenu" unique_id=778391217]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SlotContainer" type="Control" parent="UI/ToolRadialMenu" unique_id=1482064172]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="ClockLabel" type="Label" parent="UI" unique_id=1552289050]
 layout_mode = 0
 offset_left = 1102.0
@@ -155,9 +200,3 @@ offset_bottom = 89.0
 theme_override_font_sizes/font_size = 22
 text = "00:00"
 script = ExtResource("8_yyfjg")
-
-[node name="hithubtest" type="Control" parent="." unique_id=1898106157]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0

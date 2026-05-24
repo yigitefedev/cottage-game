@@ -11,6 +11,7 @@ var player_inventory: PlayerInventory
 var hotbar_slots: Array[InventorySlotUI] = []
 var inventory_slots: Array[InventorySlotUI] = []
 
+
 func _ready() -> void:
 	player_inventory = get_tree().get_first_node_in_group("player_inventory")
 	add_to_group("inventory_ui")
@@ -29,6 +30,11 @@ func _ready() -> void:
 
 
 func _input(event: InputEvent) -> void:
+	var radial_menu := get_tree().get_first_node_in_group("tool_radial_menu")
+
+	if radial_menu != null and radial_menu.is_open:
+		return
+
 	if event.is_action_pressed("open_inventory"):
 		var is_open := not inventory_panel.visible
 
@@ -36,6 +42,7 @@ func _input(event: InputEvent) -> void:
 		hotbar_panel.visible = not is_open
 
 		refresh_all()
+
 
 func build_ui() -> void:
 	for child in hotbar_grid.get_children():
@@ -47,25 +54,44 @@ func build_ui() -> void:
 	hotbar_slots.clear()
 	inventory_slots.clear()
 
-	for i in range(7):
+	build_hotbar_slots()
+	build_inventory_slots()
+
+
+func build_hotbar_slots() -> void:
+	for hotbar_index in range(player_inventory.HOTBAR_SIZE):
+		var inventory_index := player_inventory.get_inventory_index_for_hotbar_index(hotbar_index)
+
 		var slot := slot_scene.instantiate() as InventorySlotUI
 		hotbar_grid.add_child(slot)
-		slot.setup(player_inventory, i)
+
+		slot.setup(player_inventory, inventory_index, true, hotbar_index)
+		slot.hotbar_index = hotbar_index
+		slot.is_hotbar_slot = true
+
 		hotbar_slots.append(slot)
 
-	for i in range(player_inventory.inventory.get_slot_count()):
+
+func build_inventory_slots() -> void:
+	for inventory_index in range(player_inventory.inventory.get_slot_count()):
 		var slot := slot_scene.instantiate() as InventorySlotUI
 		inventory_grid.add_child(slot)
-		slot.setup(player_inventory, i)
+
+		slot.setup(player_inventory, inventory_index, false, -1)
+		slot.is_hotbar_slot = false
+
 		inventory_slots.append(slot)
 
 
 func refresh_all(_index := -1) -> void:
-	for slot in hotbar_slots:
-		slot.refresh()
+	for i in range(hotbar_slots.size()):
+		var inventory_index := player_inventory.get_inventory_index_for_hotbar_index(i)
+		hotbar_slots[i].setup(player_inventory, inventory_index, true, i)
+		hotbar_slots[i].refresh()
 
 	for slot in inventory_slots:
 		slot.refresh()
-		
+
+
 func is_inventory_open() -> bool:
 	return inventory_panel.visible

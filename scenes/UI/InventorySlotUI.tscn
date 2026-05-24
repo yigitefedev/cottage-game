@@ -1,8 +1,10 @@
 [gd_scene format=3 uid="uid://0yi14361xc03"]
 
 [ext_resource type="Script" uid="uid://mfjchjfl84wt" path="res://scripts/UI/InventorySlotUI.gd" id="1_4r25q"]
+[ext_resource type="Texture2D" uid="uid://c50y5yu4lo3x6" path="res://art/gecici/circleslot.png" id="1_x02sc"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4r25q"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uptgi"]
+texture = ExtResource("1_x02sc")
 
 [node name="InventorySlotUI" type="PanelContainer" unique_id=1971431526]
 custom_minimum_size = Vector2(64, 64)
@@ -13,7 +15,7 @@ offset_right = -1216.0
 offset_bottom = -656.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_4r25q")
+theme_override_styles/panel = SubResource("StyleBoxTexture_uptgi")
 script = ExtResource("1_4r25q")
 
 [node name="Icon" type="TextureRect" parent="." unique_id=179942678]
@@ -26,5 +28,7 @@ stretch_mode = 5
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.3647059)
 text = "32"
 horizontal_alignment = 2
