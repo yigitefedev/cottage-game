@@ -52,6 +52,9 @@ transparency = 1
 shading_mode = 0
 albedo_color = Color(1, 1, 1, 0.10980392)
 
+[sub_resource type="PlaneMesh" id="PlaneMesh_blune"]
+size = Vector2(0.4, 0.4)
+
 [node name="Main" type="Node3D" unique_id=1441963032]
 
 [node name="World" type="Node3D" parent="." unique_id=1539479685]
@@ -94,8 +97,13 @@ mesh = SubResource("PlaneMesh_k2fmo")
 surface_material_override/0 = SubResource("StandardMaterial3D_l3cfh")
 
 [node name="TargetHighlight" type="MeshInstance3D" parent="Managers/TileSelector" unique_id=2048169253]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 mesh = SubResource("PlaneMesh_k2fmo")
+surface_material_override/0 = SubResource("StandardMaterial3D_l3cfh")
+
+[node name="CornerTargetHighlight" type="MeshInstance3D" parent="Managers/TileSelector" unique_id=874130457]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+mesh = SubResource("PlaneMesh_blune")
 surface_material_override/0 = SubResource("StandardMaterial3D_l3cfh")
 
 [node name="UsableTileBorders" type="MeshInstance3D" parent="Managers/TileSelector" unique_id=1593310863]

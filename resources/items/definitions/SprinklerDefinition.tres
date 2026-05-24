@@ -11,7 +11,7 @@ max_stack = 20
 tags = Array[StringName]([&"placeable", &"corner_object"])
 primary_action = ExtResource("1_wwt3i")
 properties = {
-"object_id ": "sprinkler",
+"object_id": "sprinkler",
 "visual_id": "sprinkler",
 "visual_layer": "object"
 }

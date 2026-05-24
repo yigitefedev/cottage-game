@@ -24,6 +24,9 @@ func can_use(context: ItemUseContext) -> bool:
 
 	if corner != null and corner.has_object():
 		return false
+	
+	if not is_corner_usable(context, context.target_corner_coord):
+		return false
 
 	return true
 
@@ -49,3 +52,19 @@ func use(context: ItemUseContext) -> void:
 
 	if context.selected_item.amount <= 0:
 		context.player_inventory.inventory.set_slot(context.selected_slot_index, null)
+	
+func is_corner_usable(context: ItemUseContext, corner_coord: Vector2i) -> bool:
+	var affected_tiles := [
+		corner_coord + Vector2i(-1, -1),
+		corner_coord + Vector2i(0, -1),
+		corner_coord + Vector2i(-1, 0),
+		corner_coord + Vector2i(0, 0),
+	]
+
+	for tile_coord in affected_tiles:
+		var tile := context.grid_manager.get_tile(tile_coord)
+
+		if tile != null and tile.usable:
+			return true
+
+	return false

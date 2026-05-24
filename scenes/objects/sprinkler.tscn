@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://bw07kufhqr7w8"]
 
+[ext_resource type="Script" uid="uid://due3m63krchr5" path="res://scripts/objects/Sprinkler.gd" id="1_q8fkr"]
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fq2bf"]
 albedo_color = Color(0.14984, 0.24, 0.12239999, 1)
 
@@ -9,6 +11,7 @@ radius = 0.1
 height = 0.8
 
 [node name="Sprinkler" type="Node3D" unique_id=566501150]
+script = ExtResource("1_q8fkr")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2080017071]
 mesh = SubResource("CapsuleMesh_q8fkr")

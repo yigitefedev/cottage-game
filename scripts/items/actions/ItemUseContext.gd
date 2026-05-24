@@ -17,6 +17,7 @@ var tile_targeter: PlayerTileTargeter
 var target_tile_coord: Vector2i
 var target_tile: GameTileData
 
+
 var corner_targeter: PlayerCornerTargeter
 var target_corner_coord: Vector2i
 var target_corner: GameCornerData

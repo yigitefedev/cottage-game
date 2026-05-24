@@ -43,13 +43,8 @@ func process_crop_growth(coord: Vector2i, tile: GameTileData) -> void:
 	if tile.crop_harvestable:
 		return
 
-	#sulama şartı
-	#var ground: StringName = tile.visual_layers.get(&"ground", &"")
-#
-	#var watered := ground == &"tilled_soil_watered"
-#
-	#if not watered:
-		#return
+	if not tile.has_flag(&"watered"):
+		return
 
 	tile.crop_days_in_stage += 1
 	tile.crop_growth_day += 1

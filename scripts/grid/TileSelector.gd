@@ -1,4 +1,15 @@
 extends Node3D
+enum SelectionMode {
+	TILE,
+	CORNER,
+	EDGE
+}
+
+@onready var corner_target_highlight: MeshInstance3D = $CornerTargetHighlight
+
+var player_corner_targeter: PlayerCornerTargeter
+var player_inventory: PlayerInventory
+var selection_mode: SelectionMode = SelectionMode.TILE
 
 @onready var hover_highlight: MeshInstance3D = $HoverHighlight
 @onready var target_highlight: MeshInstance3D = $TargetHighlight
@@ -30,15 +41,18 @@ func _ready() -> void:
 	unusable_border_material.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
 	
 	player_tile_targeter = get_tree().get_first_node_in_group("player_tile_targeter")
+	player_corner_targeter = get_tree().get_first_node_in_group("player_corner_targeter")
+	player_inventory = get_tree().get_first_node_in_group("player_inventory")
 	
 
 func _physics_process(_delta: float) -> void:
 	update_hovered_tile()
 	handle_debug_input()
+	update_selection_mode()
 	update_debug_text()
 	update_hover_visual()
 	update_tile_borders()
-	update_target_visual()
+	update_target_visuals()
 
 
 func update_hovered_tile() -> void:
@@ -149,12 +163,44 @@ func handle_debug_input() -> void:
 	
 	if Input.is_action_just_pressed("debug_save_grid"):
 		grid_manager.save_grid_definition()
-func update_target_visual() -> void:
-	if target_highlight == null:
+func update_selection_mode() -> void:
+	selection_mode = SelectionMode.TILE
+
+	if player_inventory == null:
+		player_inventory = get_tree().get_first_node_in_group("player_inventory")
+
+	if player_inventory == null:
 		return
 
-	if not DevManager.dev_mode:
+	var selected_item := player_inventory.get_selected_item()
+	if selected_item == null:
+		return
+
+	if selected_item.has_tag(&"corner_object"):
+		selection_mode = SelectionMode.CORNER
+		return
+
+	if selected_item.has_tag(&"edge_object"):
+		selection_mode = SelectionMode.EDGE
+		return
+func update_target_visuals() -> void:
+	if target_highlight != null:
 		target_highlight.visible = false
+
+	if corner_target_highlight != null:
+		corner_target_highlight.visible = false
+
+	match selection_mode:
+		SelectionMode.TILE:
+			update_tile_target_visual()
+
+		SelectionMode.CORNER:
+			update_corner_target_visual()
+
+		SelectionMode.EDGE:
+			pass
+func update_tile_target_visual() -> void:
+	if target_highlight == null:
 		return
 
 	if player_tile_targeter == null:
@@ -173,6 +219,23 @@ func update_target_visual() -> void:
 
 	target_highlight.visible = true
 	target_highlight.global_position = grid_manager.tile_to_world(target_coord) + Vector3.UP * 0.055
+	
+func update_corner_target_visual() -> void:
+	if corner_target_highlight == null:
+		return
+
+	if player_corner_targeter == null:
+		player_corner_targeter = get_tree().get_first_node_in_group("player_corner_targeter")
+
+	if player_corner_targeter == null or grid_manager == null:
+		corner_target_highlight.visible = false
+		return
+
+	var target_corner := player_corner_targeter.get_target_corner()
+
+	corner_target_highlight.visible = true
+	corner_target_highlight.global_position = grid_manager.corner_to_world(target_corner) + Vector3.UP * 0.075
+
 func update_debug_text() -> void:
 	if debug_label == null:
 		return
