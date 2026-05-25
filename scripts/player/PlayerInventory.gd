@@ -33,9 +33,23 @@ func _ready() -> void:
 		inventory.height = 3
 		inventory.setup_slots()
 
-		for i in starting_items.size():
-			if i < inventory.slots.size():
-				inventory.set_slot(i, starting_items[i])
+		for item in starting_items:
+			if item == null:
+				continue
+
+			if item_is_tool(item):
+				var placed := false
+
+				for slot_index in range(TOOL_ROW_START, TOOL_ROW_END + 1):
+					if inventory.get_slot(slot_index) == null:
+						inventory.set_slot(slot_index, item)
+						placed = true
+						break
+
+				if placed:
+					continue
+
+			var remaining := inventory.add_item(item)
 
 	inventory_changed.emit()
 	selected_slot_changed.emit(selected_index)
@@ -103,7 +117,7 @@ func can_place_item_in_slot(item: ItemInstanceData, index: int) -> bool:
 		return item_is_tool(item)
 
 	if is_normal_slot(index):
-		return not item_is_tool(item)
+		return true
 
 	return false
 

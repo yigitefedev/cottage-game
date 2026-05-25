@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://btxsmkg0315vt"]
+
+[ext_resource type="Script" uid="uid://kia7nkogevgg" path="res://scripts/items/ItemDefinition.gd" id="1_cjs2u"]
+[ext_resource type="Texture2D" uid="uid://b86jepfswtj3h" path="res://art/gecici/shovel.png" id="1_t2ube"]
+
+[resource]
+script = ExtResource("1_cjs2u")
+id = &"shovel"
+display_name = "Shovel"
+icon = ExtResource("1_t2ube")
+max_stack = 1
+tags = Array[StringName]([&"tool", &"shovel"])
+metadata/_custom_type_script = "uid://kia7nkogevgg"

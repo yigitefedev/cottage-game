@@ -14,7 +14,11 @@
 [ext_resource type="Resource" uid="uid://bnust1wonsqvb" path="res://resources/items/Instances/SprinkleInstance.tres" id="11_fcs02"]
 [ext_resource type="Script" uid="uid://y5u3rcw5oqrn" path="res://scripts/player/InteractionController.gd" id="11_je7p5"]
 [ext_resource type="Script" uid="uid://b8rvg2cqb7cxw" path="res://scripts/items/actions/InteractionAction.gd" id="12_gx1jg"]
+[ext_resource type="Resource" uid="uid://d2yypqee2oths" path="res://resources/items/Instances/HandAxeInstance.tres" id="12_lgqa7"]
+[ext_resource type="Resource" uid="uid://uv30h086nvn2" path="res://resources/items/Instances/MalletInstance.tres" id="13_8ydkj"]
 [ext_resource type="Resource" uid="uid://b5itln7kxm6y3" path="res://resources/actions/HarvestCropInteractionAction.tres" id="13_ugbui"]
+[ext_resource type="Resource" uid="uid://2pfris35hhvg" path="res://resources/items/Instances/ScytheInstance.tres" id="14_3j4b4"]
+[ext_resource type="Resource" uid="uid://cur6fyq5prnxu" path="res://resources/items/Instances/ShovelInstance.tres" id="15_yj68g"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_k2fmo"]
 radius = 0.4
@@ -57,7 +61,7 @@ fov = 40.0
 [node name="PlayerInventory" type="Node3D" parent="." unique_id=1437805635]
 script = ExtResource("3_gmlin")
 inventory = ExtResource("4_0owmy")
-starting_items = Array[ExtResource("5_qek5x")]([ExtResource("6_5gtgg"), ExtResource("7_h17s1"), ExtResource("8_qek5x"), ExtResource("11_fcs02")])
+starting_items = Array[ExtResource("5_qek5x")]([ExtResource("6_5gtgg"), ExtResource("7_h17s1"), ExtResource("8_qek5x"), ExtResource("11_fcs02"), ExtResource("12_lgqa7"), ExtResource("13_8ydkj"), ExtResource("14_3j4b4"), ExtResource("15_yj68g")])
 
 [node name="ToolController" type="Node3D" parent="." unique_id=611790258]
 script = ExtResource("10_h17s1")

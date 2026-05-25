@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ItemInstanceData" format=3 uid="uid://uv30h086nvn2"]
+
+[ext_resource type="Script" uid="uid://caddfd8wsvlsh" path="res://scripts/items/ItemInstanceData.gd" id="1_d74ut"]
+[ext_resource type="Resource" uid="uid://clqkhhriotd8m" path="res://resources/items/definitions/MalletDefinition.tres" id="1_pjy5y"]
+
+[resource]
+script = ExtResource("1_d74ut")
+definition = ExtResource("1_pjy5y")
+metadata/_custom_type_script = "uid://caddfd8wsvlsh"

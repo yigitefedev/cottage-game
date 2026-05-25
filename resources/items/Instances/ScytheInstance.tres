@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ItemInstanceData" format=3 uid="uid://2pfris35hhvg"]
+
+[ext_resource type="Resource" uid="uid://pi5l23rl041y" path="res://resources/items/definitions/ScytheDefinition.tres" id="1_7t3o2"]
+[ext_resource type="Script" uid="uid://caddfd8wsvlsh" path="res://scripts/items/ItemInstanceData.gd" id="1_bl8jd"]
+
+[resource]
+script = ExtResource("1_bl8jd")
+definition = ExtResource("1_7t3o2")
+metadata/_custom_type_script = "uid://caddfd8wsvlsh"

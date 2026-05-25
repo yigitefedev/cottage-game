@@ -93,6 +93,8 @@ func close_menu() -> void:
 	is_open = false
 	visible = false
 	selected_radial_index = -1
+	for slot in slots:
+		slot.hide_tooltip()
 
 
 func confirm_selection() -> void:
@@ -148,8 +150,10 @@ func update_slot_visuals() -> void:
 
 		if i == selected_radial_index:
 			slot.scale = Vector2.ONE * selected_scale
+			slot.show_tooltip()
 		else:
 			slot.scale = Vector2.ONE * normal_scale
+			slot.hide_tooltip()
 
 
 func refresh_slots() -> void:

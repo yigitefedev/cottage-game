@@ -4,6 +4,7 @@ extends PanelContainer
 @onready var amount_label: Label = $AmountLabel
 @onready var icon: TextureRect = $Icon
 @onready var panel_stylebox: StyleBoxTexture = get_theme_stylebox("panel").duplicate()
+@onready var tooltip_label: Label = $TooltipLabel
 
 var is_hotbar_slot := false
 var hotbar_index := -1
@@ -17,14 +18,17 @@ func _ready() -> void:
 
 	mouse_entered.connect(func():
 		is_hovered = true
+		show_tooltip()
 		refresh()
 	)
 
 	mouse_exited.connect(func():
 		is_hovered = false
+		hide_tooltip()
 		refresh()
 	)
 
+	hide_tooltip()
 	update_highlight()
 
 
@@ -144,3 +148,36 @@ func _drop_data(_position: Vector2, data: Variant) -> void:
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_DRAG_END:
 		icon.visible = true
+
+func get_item_display_name() -> String:
+	if player_inventory == null or player_inventory.inventory == null:
+		return ""
+
+	var item := player_inventory.inventory.get_slot(slot_index)
+
+	if item == null or item.definition == null:
+		return ""
+
+	return item.definition.display_name
+
+
+func show_tooltip() -> void:
+	if tooltip_label == null:
+		return
+
+	var item_name := get_item_display_name()
+
+	if item_name == "":
+		hide_tooltip()
+		return
+
+	tooltip_label.text = item_name
+	tooltip_label.visible = true
+
+
+func hide_tooltip() -> void:
+	if tooltip_label == null:
+		return
+
+	tooltip_label.visible = false
+	

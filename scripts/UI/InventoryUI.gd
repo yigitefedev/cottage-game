@@ -6,6 +6,7 @@ extends Control
 @onready var inventory_panel: PanelContainer = $InventoryPanel
 @onready var inventory_grid: GridContainer = $InventoryPanel/MarginContainer/InventoryGrid
 @onready var hotbar_panel: PanelContainer = $HotbarPanel
+@onready var selected_item_name_label: Label = $SelectedItemNameLabel
 
 var player_inventory: PlayerInventory
 var hotbar_slots: Array[InventorySlotUI] = []
@@ -26,6 +27,7 @@ func _ready() -> void:
 	build_ui()
 	inventory_panel.visible = false
 	hotbar_panel.visible = true
+	selected_item_name_label.visible = false
 	refresh_all()
 
 
@@ -91,7 +93,27 @@ func refresh_all(_index := -1) -> void:
 
 	for slot in inventory_slots:
 		slot.refresh()
+	
+	update_selected_item_name()
 
 
 func is_inventory_open() -> bool:
 	return inventory_panel.visible
+
+func update_selected_item_name() -> void:
+	if selected_item_name_label == null or player_inventory == null:
+		return
+
+	if inventory_panel.visible:
+		selected_item_name_label.visible = false
+		return
+
+	var item := player_inventory.get_selected_item()
+
+	if item == null or item.definition == null:
+		selected_item_name_label.visible = false
+		selected_item_name_label.text = ""
+		return
+
+	selected_item_name_label.visible = true
+	selected_item_name_label.text = item.definition.display_name

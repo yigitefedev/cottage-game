@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ItemInstanceData" format=3 uid="uid://d2yypqee2oths"]
+
+[ext_resource type="Script" uid="uid://caddfd8wsvlsh" path="res://scripts/items/ItemInstanceData.gd" id="1_5ayfc"]
+[ext_resource type="Resource" uid="uid://do77cqgm2006l" path="res://resources/items/definitions/HandAxeDefinition.tres" id="1_jw7bc"]
+
+[resource]
+script = ExtResource("1_5ayfc")
+definition = ExtResource("1_jw7bc")
+metadata/_custom_type_script = "uid://caddfd8wsvlsh"

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b6sscj87wp7q"
-path="res://.godot/imported/hoe.jpg-18e5edfa6e5b15fdc63c0c4a83de8072.ctex"
+uid="uid://blvfmm0655u37"
+path="res://.godot/imported/mallet.png-12c70dc732e705640d9947185bead74f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/gecici/hoe.jpg"
-dest_files=["res://.godot/imported/hoe.jpg-18e5edfa6e5b15fdc63c0c4a83de8072.ctex"]
+source_file="res://art/gecici/mallet.png"
+dest_files=["res://.godot/imported/mallet.png-12c70dc732e705640d9947185bead74f.ctex"]
 
 [params]
 

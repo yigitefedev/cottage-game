@@ -1,14 +1,10 @@
-[gd_resource type="Resource" script_class="GameGridDefinition" format=3 uid="uid://oxra6ror7fy4"]
+[gd_resource type="Resource" script_class="GameGridDefinition" format=3 uid="uid://ljjvgcr2hlst"]
 
 [ext_resource type="Script" uid="uid://bqwxcfxkiyvlb" path="res://scripts/grid/GameGridDefinition.gd" id="1_o6v66"]
 
 [resource]
 script = ExtResource("1_o6v66")
 tile_entries = Array[Dictionary]([{
-"coord": Vector2i(2, -1),
-"ground_id": &"grass",
-"usable": false
-}, {
 "coord": Vector2i(3, -1),
 "ground_id": &"grass",
 "usable": true
@@ -33,14 +29,6 @@ tile_entries = Array[Dictionary]([{
 "ground_id": &"grass",
 "usable": true
 }, {
-"coord": Vector2i(2, 0),
-"ground_id": &"grass",
-"usable": true
-}, {
-"coord": Vector2i(3, 0),
-"ground_id": &"grass",
-"usable": true
-}, {
 "coord": Vector2i(6, -2),
 "ground_id": &"grass",
 "usable": false
@@ -53,7 +41,151 @@ tile_entries = Array[Dictionary]([{
 "ground_id": &"grass",
 "usable": false
 }, {
-"coord": Vector2i(9, -2),
+"coord": Vector2i(1, -3),
+"ground_id": &"grass",
+"usable": true
+}, {
+"coord": Vector2i(3, -2),
+"ground_id": &"grass",
+"usable": true
+}, {
+"coord": Vector2i(2, -2),
+"ground_id": &"grass",
+"usable": true
+}, {
+"coord": Vector2i(2, -1),
+"ground_id": &"grass",
+"usable": true
+}, {
+"coord": Vector2i(1, -1),
+"ground_id": &"grass",
+"usable": true
+}, {
+"coord": Vector2i(1, -2),
+"ground_id": &"grass",
+"usable": true
+}, {
+"coord": Vector2i(4, -3),
+"ground_id": &"grass",
+"usable": true
+}, {
+"coord": Vector2i(4, -2),
+"ground_id": &"grass",
+"usable": true
+}, {
+"coord": Vector2i(4, -1),
+"ground_id": &"grass",
+"usable": true
+}, {
+"coord": Vector2i(7, -3),
+"ground_id": &"grass",
+"usable": false
+}, {
+"coord": Vector2i(7, -2),
+"ground_id": &"grass",
+"usable": false
+}, {
+"coord": Vector2i(7, -1),
+"ground_id": &"grass",
+"usable": false
+}, {
+"coord": Vector2i(5, -5),
+"ground_id": &"grass",
+"usable": false
+}, {
+"coord": Vector2i(6, -5),
+"ground_id": &"grass",
+"usable": false
+}, {
+"coord": Vector2i(4, -5),
+"ground_id": &"grass",
+"usable": true
+}, {
+"coord": Vector2i(3, -5),
+"ground_id": &"grass",
+"usable": true
+}, {
+"coord": Vector2i(2, -5),
+"ground_id": &"grass",
+"usable": true
+}, {
+"coord": Vector2i(1, -5),
+"ground_id": &"grass",
+"usable": true
+}, {
+"coord": Vector2i(1, -6),
+"ground_id": &"grass",
+"usable": true
+}, {
+"coord": Vector2i(2, -6),
+"ground_id": &"grass",
+"usable": true
+}, {
+"coord": Vector2i(3, -6),
+"ground_id": &"grass",
+"usable": true
+}, {
+"coord": Vector2i(4, -6),
+"ground_id": &"grass",
+"usable": true
+}, {
+"coord": Vector2i(5, -6),
+"ground_id": &"grass",
+"usable": true
+}, {
+"coord": Vector2i(6, -6),
+"ground_id": &"grass",
+"usable": true
+}, {
+"coord": Vector2i(7, -6),
+"ground_id": &"grass",
+"usable": true
+}, {
+"coord": Vector2i(7, -5),
+"ground_id": &"grass",
+"usable": true
+}, {
+"coord": Vector2i(7, -7),
+"ground_id": &"grass",
+"usable": true
+}, {
+"coord": Vector2i(6, -7),
+"ground_id": &"grass",
+"usable": false
+}, {
+"coord": Vector2i(5, -7),
+"ground_id": &"grass",
+"usable": false
+}, {
+"coord": Vector2i(4, -7),
+"ground_id": &"grass",
+"usable": true
+}, {
+"coord": Vector2i(3, -7),
+"ground_id": &"grass",
+"usable": true
+}, {
+"coord": Vector2i(2, -7),
+"ground_id": &"grass",
+"usable": true
+}, {
+"coord": Vector2i(1, -7),
+"ground_id": &"grass",
+"usable": true
+}, {
+"coord": Vector2i(8, -6),
+"ground_id": &"grass",
+"usable": true
+}, {
+"coord": Vector2i(9, -6),
+"ground_id": &"grass",
+"usable": true
+}, {
+"coord": Vector2i(9, -5),
+"ground_id": &"grass",
+"usable": true
+}, {
+"coord": Vector2i(9, -4),
 "ground_id": &"grass",
 "usable": true
 }, {
@@ -61,79 +193,123 @@ tile_entries = Array[Dictionary]([{
 "ground_id": &"grass",
 "usable": true
 }, {
-"coord": Vector2i(10, -3),
+"coord": Vector2i(9, -2),
 "ground_id": &"grass",
 "usable": true
 }, {
-"coord": Vector2i(10, -2),
+"coord": Vector2i(8, -2),
 "ground_id": &"grass",
 "usable": true
 }, {
-"coord": Vector2i(12, -2),
+"coord": Vector2i(-1, -5),
 "ground_id": &"grass",
 "usable": true
 }, {
-"coord": Vector2i(12, -3),
+"coord": Vector2i(-1, -4),
 "ground_id": &"grass",
 "usable": true
 }, {
-"coord": Vector2i(13, -3),
+"coord": Vector2i(-1, -3),
 "ground_id": &"grass",
 "usable": true
 }, {
-"coord": Vector2i(13, -2),
+"coord": Vector2i(-2, -3),
 "ground_id": &"grass",
 "usable": true
 }, {
-"coord": Vector2i(10, -4),
+"coord": Vector2i(-3, -3),
 "ground_id": &"grass",
 "usable": true
 }, {
-"coord": Vector2i(11, -4),
+"coord": Vector2i(-3, -4),
 "ground_id": &"grass",
 "usable": true
 }, {
-"coord": Vector2i(12, -4),
+"coord": Vector2i(-3, -5),
 "ground_id": &"grass",
 "usable": true
 }, {
-"coord": Vector2i(11, -5),
+"coord": Vector2i(-2, -5),
 "ground_id": &"grass",
 "usable": true
 }, {
-"coord": Vector2i(10, -5),
+"coord": Vector2i(-5, -5),
 "ground_id": &"grass",
 "usable": true
 }, {
-"coord": Vector2i(12, -5),
+"coord": Vector2i(-5, -4),
 "ground_id": &"grass",
 "usable": true
 }, {
-"coord": Vector2i(11, -6),
+"coord": Vector2i(-5, -3),
 "ground_id": &"grass",
 "usable": true
 }, {
-"coord": Vector2i(10, -6),
+"coord": Vector2i(-6, -3),
 "ground_id": &"grass",
 "usable": true
 }, {
-"coord": Vector2i(12, -6),
+"coord": Vector2i(-7, -3),
 "ground_id": &"grass",
 "usable": true
 }, {
-"coord": Vector2i(11, -8),
+"coord": Vector2i(-7, -4),
+"ground_id": &"grass",
+"usable": true
+}, {
+"coord": Vector2i(-7, -5),
+"ground_id": &"grass",
+"usable": true
+}, {
+"coord": Vector2i(-6, -5),
+"ground_id": &"grass",
+"usable": true
+}, {
+"coord": Vector2i(-6, -4),
 "ground_id": &"grass",
 "usable": false
 }, {
-"coord": Vector2i(11, -7),
+"coord": Vector2i(-1, -7),
 "ground_id": &"grass",
 "usable": true
 }, {
-"coord": Vector2i(1, -3),
+"coord": Vector2i(-2, -7),
 "ground_id": &"grass",
 "usable": true
 }, {
-"coord": Vector2i(1, 0),
+"coord": Vector2i(-3, -7),
+"ground_id": &"grass",
+"usable": true
+}, {
+"coord": Vector2i(-3, -8),
+"ground_id": &"grass",
+"usable": true
+}, {
+"coord": Vector2i(-3, -9),
+"ground_id": &"grass",
+"usable": true
+}, {
+"coord": Vector2i(-2, -9),
+"ground_id": &"grass",
+"usable": true
+}, {
+"coord": Vector2i(-1, -9),
+"ground_id": &"grass",
+"usable": true
+}, {
+"coord": Vector2i(-1, -11),
+"ground_id": &"grass",
+"usable": true
+}, {
+"coord": Vector2i(-1, -10),
+"ground_id": &"grass",
+"usable": true
+}, {
+"coord": Vector2i(-2, -11),
+"ground_id": &"grass",
+"usable": true
+}, {
+"coord": Vector2i(-3, -11),
 "ground_id": &"grass",
 "usable": true
 }])
