@@ -6,7 +6,9 @@ enum SelectionMode {
 }
 
 @onready var corner_target_highlight: MeshInstance3D = $CornerTargetHighlight
+@onready var edge_target_highlight: MeshInstance3D = $EdgeTargetHighlight
 
+var player_edge_targeter: PlayerEdgeTargeter
 var player_corner_targeter: PlayerCornerTargeter
 var player_inventory: PlayerInventory
 var selection_mode: SelectionMode = SelectionMode.TILE
@@ -43,8 +45,15 @@ func _ready() -> void:
 	player_tile_targeter = get_tree().get_first_node_in_group("player_tile_targeter")
 	player_corner_targeter = get_tree().get_first_node_in_group("player_corner_targeter")
 	player_inventory = get_tree().get_first_node_in_group("player_inventory")
-	
+	player_edge_targeter = get_tree().get_first_node_in_group("player_edge_targeter")
+	if corner_target_highlight != null:
+		corner_target_highlight.visible = false
 
+	if edge_target_highlight != null:
+		edge_target_highlight.visible = false
+
+	if target_highlight != null:
+		target_highlight.visible = false
 func _physics_process(_delta: float) -> void:
 	update_hovered_tile()
 	handle_debug_input()
@@ -189,6 +198,9 @@ func update_target_visuals() -> void:
 
 	if corner_target_highlight != null:
 		corner_target_highlight.visible = false
+	
+	if edge_target_highlight != null:
+		edge_target_highlight.visible = false
 
 	match selection_mode:
 		SelectionMode.TILE:
@@ -198,7 +210,7 @@ func update_target_visuals() -> void:
 			update_corner_target_visual()
 
 		SelectionMode.EDGE:
-			pass
+			update_edge_target_visual()
 func update_tile_target_visual() -> void:
 	if target_highlight == null:
 		return
@@ -236,6 +248,32 @@ func update_corner_target_visual() -> void:
 	corner_target_highlight.visible = true
 	corner_target_highlight.global_position = grid_manager.corner_to_world(target_corner) + Vector3.UP * 0.075
 
+func update_edge_target_visual() -> void:
+	if edge_target_highlight == null:
+		return
+
+	if player_edge_targeter == null:
+		player_edge_targeter = get_tree().get_first_node_in_group("player_edge_targeter")
+
+	if player_edge_targeter == null or grid_manager == null:
+		edge_target_highlight.visible = false
+		return
+
+	var edge_coord := player_edge_targeter.get_target_edge_coord()
+	var orientation := player_edge_targeter.get_target_edge_orientation()
+
+	edge_target_highlight.visible = true
+
+	edge_target_highlight.global_position = (
+		grid_manager.edge_to_world(edge_coord, orientation)
+		+ Vector3.UP * 0.08
+	)
+
+	if orientation == &"vertical":
+		edge_target_highlight.global_rotation.y = PI * 0.5
+	else:
+		edge_target_highlight.global_rotation.y = 0.0
+		
 func update_debug_text() -> void:
 	if debug_label == null:
 		return

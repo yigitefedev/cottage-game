@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="PlaceEdgeObjectAction" format=3 uid="uid://btfeaf45eeqao"]
+
+[ext_resource type="Script" uid="uid://d165w4wahgvjd" path="res://scripts/items/actions/item_actions/PlaceEdgeObjectAction.gd" id="1_q1mfl"]
+
+[resource]
+script = ExtResource("1_q1mfl")
+action_id = &"place_edge_object"
+metadata/_custom_type_script = "uid://dtoher1if8xcv"

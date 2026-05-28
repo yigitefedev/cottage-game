@@ -8,6 +8,8 @@ var grid_manager: GridManager
 var tile_visual_manager: TileVisualManager
 var corner_targeter: PlayerCornerTargeter
 var corner_visual_manager: CornerVisualManager
+var edge_targeter: PlayerEdgeTargeter
+var edge_visual_manager: EdgeVisualManager
 
 func _ready() -> void:
 	await get_tree().process_frame
@@ -19,7 +21,8 @@ func _ready() -> void:
 
 	grid_manager = get_tree().get_first_node_in_group("grid_manager")
 	tile_visual_manager = get_tree().get_first_node_in_group("tile_visual_manager")
-
+	edge_targeter = get_tree().get_first_node_in_group("player_edge_targeter")
+	edge_visual_manager = get_tree().get_first_node_in_group("edge_visual_manager")
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("use_item"):
@@ -77,4 +80,13 @@ func build_context(item: ItemInstanceData) -> ItemUseContext:
 	if corner_targeter != null:
 		context.target_corner_coord = corner_targeter.get_target_corner()
 		context.target_corner = grid_manager.get_corner(context.target_corner_coord)
+	
+	context.edge_targeter = edge_targeter
+	context.edge_visual_manager = edge_visual_manager
+
+	if edge_targeter != null:
+		context.target_edge_coord = edge_targeter.get_target_edge_coord()
+		context.target_edge_orientation = edge_targeter.get_target_edge_orientation()
+		context.target_edge = edge_targeter.get_target_edge_data()
+	
 	return context

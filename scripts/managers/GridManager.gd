@@ -96,3 +96,51 @@ func get_corner(coord: Vector2i) -> GameCornerData:
 
 func get_or_create_corner(coord: Vector2i) -> GameCornerData:
 	return grid_data.get_or_create_corner(coord)
+
+func has_edge(coord: Vector2i, orientation: StringName) -> bool:
+	return grid_data.has_edge(coord, orientation)
+
+
+func get_edge(coord: Vector2i, orientation: StringName) -> GameEdgeData:
+	return grid_data.get_edge(coord, orientation)
+
+
+func get_or_create_edge(coord: Vector2i, orientation: StringName) -> GameEdgeData:
+	return grid_data.get_or_create_edge(coord, orientation)
+	
+func get_edge_from_tile_direction(tile_coord: Vector2i, direction: Vector2i) -> Dictionary:
+	var edge_coord := tile_coord
+	var orientation := &"horizontal"
+
+	if direction == Vector2i.UP:
+		edge_coord = tile_coord
+		orientation = &"horizontal"
+	elif direction == Vector2i.DOWN:
+		edge_coord = tile_coord + Vector2i(0, 1)
+		orientation = &"horizontal"
+	elif direction == Vector2i.LEFT:
+		edge_coord = tile_coord
+		orientation = &"vertical"
+	elif direction == Vector2i.RIGHT:
+		edge_coord = tile_coord + Vector2i(1, 0)
+		orientation = &"vertical"
+
+	return {
+		"coord": edge_coord,
+		"orientation": orientation
+	}
+
+
+func edge_to_world(coord: Vector2i, orientation: StringName) -> Vector3:
+	var world_pos := global_position + Vector3(
+		coord.x * tile_size,
+		0.0,
+		coord.y * tile_size
+	)
+
+	if orientation == &"horizontal":
+		world_pos.x += tile_size * 0.5
+	elif orientation == &"vertical":
+		world_pos.z += tile_size * 0.5
+
+	return world_pos

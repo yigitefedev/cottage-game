@@ -21,3 +21,10 @@ var target_tile: GameTileData
 var corner_targeter: PlayerCornerTargeter
 var target_corner_coord: Vector2i
 var target_corner: GameCornerData
+
+var edge_visual_manager: EdgeVisualManager
+var edge_targeter: PlayerEdgeTargeter
+
+var target_edge_coord: Vector2i
+var target_edge_orientation: StringName
+var target_edge: GameEdgeData

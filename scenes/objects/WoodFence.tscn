@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://uu30hme0tkst"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_gclv4"]
+size = Vector3(1, 0.6, 0.08)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mkb71"]
+albedo_color = Color(0.48, 0.26688, 0.12479999, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gclv4"]
+size = Vector3(1, 0.6, 0.08)
+
+[node name="WoodFence" type="StaticBody3D" unique_id=1013733852]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1331245414]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
+mesh = SubResource("BoxMesh_gclv4")
+surface_material_override/0 = SubResource("StandardMaterial3D_mkb71")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1004119315]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
+shape = SubResource("BoxShape3D_gclv4")

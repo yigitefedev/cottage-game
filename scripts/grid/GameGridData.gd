@@ -40,6 +40,10 @@ func has_edge(coord: Vector2i, orientation: StringName) -> bool:
 	return edges.has(get_edge_key(coord, orientation))
 
 
+func get_edge(coord: Vector2i, orientation: StringName) -> GameEdgeData:
+	return edges.get(get_edge_key(coord, orientation), null)
+
+
 func get_or_create_edge(coord: Vector2i, orientation: StringName) -> GameEdgeData:
 	var key := get_edge_key(coord, orientation)
 

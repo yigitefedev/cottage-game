@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://b77p6xia1eutj" path="res://scenes/Tiles/crops/carrot_stage_2.tscn" id="6_3c05e"]
 [ext_resource type="PackedScene" uid="uid://cjbb5bxvu0a23" path="res://scenes/Tiles/crops/carrot_stage_3.tscn" id="7_01v4t"]
 [ext_resource type="PackedScene" uid="uid://bw07kufhqr7w8" path="res://scenes/objects/sprinkler.tscn" id="8_h8ws0"]
+[ext_resource type="PackedScene" uid="uid://uu30hme0tkst" path="res://scenes/objects/WoodFence.tscn" id="9_3c05e"]
 
 [sub_resource type="Resource" id="Resource_enaxe"]
 script = ExtResource("1_ytpcr")
@@ -52,7 +53,14 @@ id = &"sprinkler"
 scene = ExtResource("8_h8ws0")
 metadata/_custom_type_script = "uid://id3822kkb4kt"
 
+[sub_resource type="Resource" id="Resource_01v4t"]
+script = ExtResource("1_ytpcr")
+id = &"wood_fence"
+scene = ExtResource("9_3c05e")
+y_offset = 0.0
+metadata/_custom_type_script = "uid://id3822kkb4kt"
+
 [resource]
 script = ExtResource("2_gbvab")
-definitions = Array[ExtResource("1_ytpcr")]([SubResource("Resource_enaxe"), SubResource("Resource_mopa2"), SubResource("Resource_xo00v"), SubResource("Resource_nb242"), SubResource("Resource_eodge"), SubResource("Resource_ndjhc"), SubResource("Resource_3c05e")])
+definitions = Array[ExtResource("1_ytpcr")]([SubResource("Resource_enaxe"), SubResource("Resource_mopa2"), SubResource("Resource_xo00v"), SubResource("Resource_nb242"), SubResource("Resource_eodge"), SubResource("Resource_ndjhc"), SubResource("Resource_3c05e"), SubResource("Resource_01v4t")])
 metadata/_custom_type_script = "uid://qkxfl6cnlm5g"

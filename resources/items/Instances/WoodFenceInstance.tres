@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ItemInstanceData" format=3 uid="uid://chcrn30ywiu07"]
+
+[ext_resource type="Resource" uid="uid://jakij0lhes76" path="res://resources/items/definitions/WoodFenceDefinition.tres" id="1_1a38f"]
+[ext_resource type="Script" uid="uid://caddfd8wsvlsh" path="res://scripts/items/ItemInstanceData.gd" id="1_x17p8"]
+
+[resource]
+script = ExtResource("1_x17p8")
+definition = ExtResource("1_1a38f")
+amount = 10
+metadata/_custom_type_script = "uid://caddfd8wsvlsh"

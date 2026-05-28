@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://jakij0lhes76"]
+
+[ext_resource type="Script" uid="uid://kia7nkogevgg" path="res://scripts/items/ItemDefinition.gd" id="1_5gcm5"]
+[ext_resource type="Texture2D" uid="uid://cncf52y2hi7dl" path="res://art/gecici/PlaceableObject.png" id="1_faoov"]
+[ext_resource type="Resource" uid="uid://btfeaf45eeqao" path="res://resources/actions/PlaceEdgeObjectAction.tres" id="2_smy5v"]
+
+[resource]
+script = ExtResource("1_5gcm5")
+id = &"wood_fence"
+display_name = "Wood Fence"
+icon = ExtResource("1_faoov")
+max_stack = 60
+tags = Array[StringName]([&"edge_object", &"placeable"])
+primary_action = ExtResource("2_smy5v")
+properties = {
+"object_id": "wood_fence",
+"visual_id": "wood_fence",
+"visual_layer": "object"
+}
+metadata/_custom_type_script = "uid://kia7nkogevgg"
