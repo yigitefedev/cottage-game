@@ -13,8 +13,10 @@
 [ext_resource type="Script" uid="uid://0wsht7q1r577" path="res://scripts/UI/ClockLabel.gd" id="8_yyfjg"]
 [ext_resource type="PackedScene" uid="uid://5ci0a8jskrlw" path="res://scenes/items/DroppedItem.tscn" id="9_ouso4"]
 [ext_resource type="Script" uid="uid://cyvp2is3h7hey" path="res://scripts/grid/CornerVisualManager.gd" id="10_blune"]
+[ext_resource type="Script" uid="uid://b6m26k5efuxm6" path="res://scripts/managers/GridObjectManager.gd" id="12_hxu8e"]
 [ext_resource type="Script" uid="uid://b7ilypk1ermuo" path="res://scripts/UI/ToolRadialMenu.gd" id="12_th5th"]
 [ext_resource type="PackedScene" uid="uid://0yi14361xc03" path="res://scenes/UI/InventorySlotUI.tscn" id="13_7smn1"]
+[ext_resource type="Resource" uid="uid://bomxrfkxcp8o8" path="res://resources/items/MainItemDatabase.tres" id="13_nvumn"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_iuonh"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -142,6 +144,10 @@ script = ExtResource("7_b1x3f")
 [node name="WorldItemSpawner" type="Node3D" parent="Managers" unique_id=1252260209]
 script = ExtResource("8_a8run")
 dropped_item_scene = ExtResource("9_ouso4")
+
+[node name="GridObjectManager" type="Node3D" parent="Managers" unique_id=1635431882]
+script = ExtResource("12_hxu8e")
+item_database = ExtResource("13_nvumn")
 
 [node name="UI" type="Control" parent="." unique_id=2032844883]
 layout_mode = 3

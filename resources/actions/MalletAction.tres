@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="MalletAction" format=3 uid="uid://4qemobjnyyae"]
+
+[ext_resource type="Script" uid="uid://cr7crnlic3a78" path="res://scripts/items/actions/item_actions/MalletAction.gd" id="1_00rs8"]
+
+[resource]
+script = ExtResource("1_00rs8")
+action_id = &"mallet_action"
+metadata/_custom_type_script = "uid://cr7crnlic3a78"

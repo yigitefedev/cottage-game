@@ -7,6 +7,7 @@ var tool_controller: ToolController
 
 var selected_slot_index: int
 var selected_item: ItemInstanceData
+var grid_object_manager: GridObjectManager
 
 var crop_database: CropDatabase
 var grid_manager: GridManager

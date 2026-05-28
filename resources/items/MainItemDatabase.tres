@@ -11,8 +11,9 @@
 [ext_resource type="Resource" uid="uid://clqkhhriotd8m" path="res://resources/items/definitions/MalletDefinition.tres" id="8_myv56"]
 [ext_resource type="Resource" uid="uid://pi5l23rl041y" path="res://resources/items/definitions/ScytheDefinition.tres" id="9_411tq"]
 [ext_resource type="Resource" uid="uid://btxsmkg0315vt" path="res://resources/items/definitions/ShovelDefinition.tres" id="10_p0skv"]
+[ext_resource type="Resource" uid="uid://jakij0lhes76" path="res://resources/items/definitions/WoodFenceDefinition.tres" id="11_myv56"]
 
 [resource]
 script = ExtResource("2_wnd64")
-items = Array[ExtResource("1_p6ucb")]([ExtResource("2_pf8bb"), ExtResource("3_o4wrg"), ExtResource("4_o4wrg"), ExtResource("5_yhaa3"), ExtResource("6_x7q8d"), ExtResource("7_xcwhg"), ExtResource("8_myv56"), ExtResource("9_411tq"), ExtResource("10_p0skv")])
+items = Array[ExtResource("1_p6ucb")]([ExtResource("2_pf8bb"), ExtResource("3_o4wrg"), ExtResource("4_o4wrg"), ExtResource("5_yhaa3"), ExtResource("6_x7q8d"), ExtResource("7_xcwhg"), ExtResource("8_myv56"), ExtResource("9_411tq"), ExtResource("10_p0skv"), ExtResource("11_myv56")])
 metadata/_custom_type_script = "uid://l6ftqlnw0abi"
