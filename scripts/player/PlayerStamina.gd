@@ -40,6 +40,11 @@ func refill() -> void:
 	recalculate_max_stamina()
 	current_stamina = max_stamina
 	stamina_changed.emit(current_stamina, max_stamina)
+	
+func refill_percent(percent: float) -> void:
+	recalculate_max_stamina()
+	current_stamina = roundi(max_stamina * clampf(percent, 0.0, 1.0))
+	stamina_changed.emit(current_stamina, max_stamina)
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("debug_refill_stamina"):

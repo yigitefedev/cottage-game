@@ -5,6 +5,7 @@ signal hour_passed(day: int, hour: int)
 signal day_started(day: int)
 signal day_changed(day: int)
 signal time_skipped(minutes: int)
+signal forced_sleep_requested
 
 @export var seconds_per_game_minute := 1.0
 @export var minutes_per_tick := 10
@@ -20,6 +21,7 @@ var current_minute := 0
 var _second_accumulator := 0.0
 var _last_hour := 6
 var _last_day := 1
+var forced_sleep_triggered_today := false
 
 func _ready() -> void:
 	add_to_group("time_manager")
@@ -54,6 +56,11 @@ func advance_time(minutes: int) -> void:
 
 	if current_day != _last_day:
 		_last_day = current_day
+
+	if current_hour == 2 and current_minute == 0 and not forced_sleep_triggered_today:
+		forced_sleep_triggered_today = true
+		forced_sleep_requested.emit()
+		return
 
 	if current_hour == day_start_hour and current_minute == 0:
 		current_day += 1
@@ -108,6 +115,7 @@ func sleep_until_next_day(wake_hour: int, wake_minute: int = 0) -> void:
 	_last_day = current_day
 	_last_hour = current_hour
 	_second_accumulator = 0.0
+	forced_sleep_triggered_today = false
 
 	time_skipped.emit(skipped_minutes)
 	day_changed.emit(current_day)
@@ -126,10 +134,10 @@ func get_sleep_wake_hour() -> int:
 	if current_hour >= 0 and current_hour < 2:
 		return 8
 
-	if current_hour >= 2 and current_hour < day_start_hour:
-		return 10
-
 	return 6
+func get_forced_sleep_wake_hour() -> int:
+	return 10
+	
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("debug_toggle_time_pause"):
 		toggle_pause()

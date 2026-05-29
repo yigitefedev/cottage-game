@@ -3,18 +3,19 @@ extends Node3D
 
 @export var dropped_item_scene: PackedScene
 
+
 func _ready() -> void:
 	add_to_group("world_item_spawner")
 
 
-func spawn_item(item: ItemInstanceData, position: Vector3, scatter_strength := 3.5) -> DroppedItem:
+func spawn_item(item: ItemInstanceData, spawn_position: Vector3, scatter_strength := 3.5) -> DroppedItem:
 	if dropped_item_scene == null:
 		return null
 
 	var dropped := dropped_item_scene.instantiate() as DroppedItem
 	add_child(dropped)
 
-	dropped.global_position = position
+	dropped.global_position = spawn_position
 
 	var random_dir := Vector3(
 		randf_range(-1.0, 1.0),
@@ -33,7 +34,7 @@ func spawn_item(item: ItemInstanceData, position: Vector3, scatter_strength := 3
 	return dropped
 
 
-func spawn_item_stack(definition: ItemDefinition, amount: int, position: Vector3) -> void:
+func spawn_item_stack(definition: ItemDefinition, amount: int, spawn_position: Vector3) -> void:
 	if definition == null or amount <= 0:
 		return
 
@@ -41,4 +42,4 @@ func spawn_item_stack(definition: ItemDefinition, amount: int, position: Vector3
 	item.definition = definition
 	item.amount = amount
 
-	spawn_item(item, position)
+	spawn_item(item, spawn_position)

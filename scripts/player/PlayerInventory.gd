@@ -49,7 +49,7 @@ func _ready() -> void:
 				if placed:
 					continue
 
-			var remaining := inventory.add_item(item)
+			inventory.add_item(item)
 
 	inventory_changed.emit()
 	selected_slot_changed.emit(selected_index)

@@ -22,7 +22,9 @@ func _ready() -> void:
 	print("[SleepManager] time_manager: ", time_manager)
 	print("[SleepManager] player_stamina: ", player_stamina)
 	print("[SleepManager] fade_rect: ", fade_rect)
-
+	
+	if time_manager != null:
+		time_manager.forced_sleep_requested.connect(force_sleep)
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("debug_sleep"):
@@ -97,3 +99,19 @@ func fade_from_black() -> void:
 	await tween.finished
 
 	fade_rect.visible = false
+func force_sleep() -> void:
+	if is_sleeping:
+		return
+
+	is_sleeping = true
+
+	await fade_to_black()
+
+	time_manager.sleep_until_next_day(10)
+
+	if player_stamina != null:
+		player_stamina.refill_percent(0.6)
+
+	await fade_from_black()
+
+	is_sleeping = false

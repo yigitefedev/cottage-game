@@ -21,7 +21,7 @@ func _ready() -> void:
 	if not TimeManager.day_started.is_connected(on_day_started):
 		TimeManager.day_started.connect(on_day_started)
 
-func on_day_started(day: int) -> void:
+func on_day_started(_day: int) -> void:
 
 	water_nearby_tiles()
 
