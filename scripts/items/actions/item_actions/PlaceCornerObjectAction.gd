@@ -32,21 +32,25 @@ func can_use(context: ItemUseContext) -> bool:
 
 
 func use(context: ItemUseContext) -> void:
+	if not can_use(context):
+		return
+
+	if context.grid_object_manager == null:
+		return
+
 	var object_id: StringName = context.selected_item.get_property("object_id", &"")
 	var visual_layer: StringName = context.selected_item.get_property("visual_layer", &"object")
 	var visual_id: StringName = context.selected_item.get_property("visual_id", object_id)
 
-	if object_id == &"":
+	var placed: bool = context.grid_object_manager.place_corner_object(
+		context.target_corner_coord,
+		object_id,
+		visual_layer,
+		visual_id
+	)
+
+	if not placed:
 		return
-
-	var coord := context.target_corner_coord
-	var corner := context.grid_manager.get_or_create_corner(coord)
-
-	corner.object_id = object_id
-	corner.set_visual(visual_layer, visual_id)
-
-	if context.corner_visual_manager != null:
-		context.corner_visual_manager.refresh_corner(coord)
 
 	context.selected_item.amount -= 1
 

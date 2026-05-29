@@ -65,14 +65,37 @@ func harvest_tile(context: InteractionContext, coord: Vector2i, tile: GameTileDa
 
 
 func clear_crop(context: InteractionContext, coord: Vector2i, tile: GameTileData) -> void:
-	tile.crop_id = &""
-	tile.crop_growth_day = 0
-	tile.crop_stage_index = 0
-	tile.crop_days_in_stage = 0
-	tile.crop_harvestable = false
-	tile.crop_quality = 0
+	var crop := crop_database.get_crop(tile.crop_id)
 
-	tile.remove_visual(&"crop")
+	if crop != null and crop.regrow_after_harvest:
+		var reset_stage: int = clampi(
+			crop.regrow_stage_index,
+			0,
+			crop.stage_visual_ids.size() - 1
+		)
+
+		tile.crop_growth_day = 0
+		tile.crop_stage_index = reset_stage
+		tile.crop_days_in_stage = 0
+		tile.crop_harvestable = false
+		tile.crop_quality = 0
+
+		var visual_id: StringName = crop.stage_visual_ids[reset_stage]
+
+		if visual_id != &"":
+			tile.set_visual(&"crop", visual_id)
+		else:
+			tile.remove_visual(&"crop")
+
+	else:
+		tile.crop_id = &""
+		tile.crop_growth_day = 0
+		tile.crop_stage_index = 0
+		tile.crop_days_in_stage = 0
+		tile.crop_harvestable = false
+		tile.crop_quality = 0
+
+		tile.remove_visual(&"crop")
 
 	context.tile_visual_manager.refresh_tile(coord)
 	

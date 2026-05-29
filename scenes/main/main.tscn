@@ -17,6 +17,8 @@
 [ext_resource type="Script" uid="uid://b7ilypk1ermuo" path="res://scripts/UI/ToolRadialMenu.gd" id="12_th5th"]
 [ext_resource type="PackedScene" uid="uid://0yi14361xc03" path="res://scenes/UI/InventorySlotUI.tscn" id="13_7smn1"]
 [ext_resource type="Resource" uid="uid://bomxrfkxcp8o8" path="res://resources/items/MainItemDatabase.tres" id="13_nvumn"]
+[ext_resource type="Script" uid="uid://c3htoi4pjfls8" path="res://scripts/managers/SleepManager.gd" id="14_necax"]
+[ext_resource type="Script" uid="uid://ci21tn5q1ub2o" path="res://scripts/UI/StaminaUI.gd" id="18_ou6is"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_iuonh"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -93,6 +95,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5506983, 0)
 script = ExtResource("2_iuonh")
 grid_definition = ExtResource("3_l3cfh")
 
+[node name="GridObjectManager" type="Node3D" parent="Managers" unique_id=1635431882]
+script = ExtResource("12_hxu8e")
+item_database = ExtResource("13_nvumn")
+
 [node name="TileSelector" type="Node3D" parent="Managers" unique_id=1697809969 node_paths=PackedStringArray("grid_manager", "debug_label")]
 script = ExtResource("3_k2fmo")
 grid_manager = NodePath("../GridManager")
@@ -145,9 +151,9 @@ script = ExtResource("7_b1x3f")
 script = ExtResource("8_a8run")
 dropped_item_scene = ExtResource("9_ouso4")
 
-[node name="GridObjectManager" type="Node3D" parent="Managers" unique_id=1635431882]
-script = ExtResource("12_hxu8e")
-item_database = ExtResource("13_nvumn")
+[node name="SleepManager" type="Node3D" parent="Managers" unique_id=956891416 node_paths=PackedStringArray("fade_rect")]
+script = ExtResource("14_necax")
+fade_rect = NodePath("../../UI/SleepFadeRect")
 
 [node name="UI" type="Control" parent="." unique_id=2032844883]
 layout_mode = 3
@@ -220,3 +226,34 @@ offset_bottom = 89.0
 theme_override_font_sizes/font_size = 22
 text = "00:00"
 script = ExtResource("8_yyfjg")
+
+[node name="StaminaUI" type="Control" parent="UI" unique_id=643561204]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("18_ou6is")
+
+[node name="StaminaBar" type="ProgressBar" parent="UI/StaminaUI" unique_id=933955937]
+layout_mode = 0
+offset_left = 1102.0
+offset_top = 87.925
+offset_right = 1248.0
+offset_bottom = 114.92504
+value = 100.0
+
+[node name="StaminaLabel" type="Label" parent="UI/StaminaUI" unique_id=1594469724]
+visible = false
+layout_mode = 0
+offset_left = 1027.0
+offset_top = 88.0
+offset_right = 1067.0
+offset_bottom = 111.0
+text = "stamina"
+
+[node name="SleepFadeRect" type="ColorRect" parent="UI" unique_id=514526863]
+visible = false
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+color = Color(0, 0, 0, 1)

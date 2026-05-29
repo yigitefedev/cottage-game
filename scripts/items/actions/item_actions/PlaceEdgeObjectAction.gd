@@ -36,23 +36,23 @@ func use(context: ItemUseContext) -> void:
 	if not can_use(context):
 		return
 
+	if context.grid_object_manager == null:
+		return
+
 	var object_id: StringName = context.selected_item.get_property("object_id", &"")
 	var visual_layer: StringName = context.selected_item.get_property("visual_layer", &"object")
 	var visual_id: StringName = context.selected_item.get_property("visual_id", object_id)
 
-	if object_id == &"" or visual_id == &"":
+	var placed: bool = context.grid_object_manager.place_edge_object(
+		context.target_edge_coord,
+		context.target_edge_orientation,
+		object_id,
+		visual_layer,
+		visual_id
+	)
+
+	if not placed:
 		return
-
-	var coord := context.target_edge_coord
-	var orientation := context.target_edge_orientation
-
-	var edge := context.grid_manager.get_or_create_edge(coord, orientation)
-
-	edge.object_id = object_id
-	edge.set_visual(visual_layer, visual_id)
-
-	if context.edge_visual_manager != null:
-		context.edge_visual_manager.refresh_edge(coord, orientation)
 
 	context.selected_item.amount -= 1
 

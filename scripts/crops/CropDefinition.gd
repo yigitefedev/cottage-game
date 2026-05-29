@@ -13,6 +13,9 @@ extends Resource
 @export var harvest_amount_min: int = 3
 @export var harvest_amount_max: int = 5
 
+@export var regrow_after_harvest := false
+@export var regrow_stage_index := 1
+
 
 func get_stage_count() -> int:
 	return stage_visual_ids.size()

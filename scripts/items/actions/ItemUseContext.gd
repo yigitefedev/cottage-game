@@ -4,6 +4,7 @@ extends RefCounted
 var player: CharacterBody3D
 var player_inventory: PlayerInventory
 var tool_controller: ToolController
+var player_stamina: PlayerStamina
 
 var selected_slot_index: int
 var selected_item: ItemInstanceData

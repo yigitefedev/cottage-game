@@ -4,6 +4,7 @@ signal time_tick(day: int, hour: int, minute: int)
 signal hour_passed(day: int, hour: int)
 signal day_started(day: int)
 signal day_changed(day: int)
+signal time_skipped(minutes: int)
 
 @export var seconds_per_game_minute := 1.0
 @export var minutes_per_tick := 10
@@ -20,6 +21,8 @@ var _second_accumulator := 0.0
 var _last_hour := 6
 var _last_day := 1
 
+func _ready() -> void:
+	add_to_group("time_manager")
 
 func _process(delta: float) -> void:
 	if is_paused:
@@ -95,7 +98,38 @@ func toggle_pause() -> void:
 
 func set_time_scale(value: float) -> void:
 	time_scale = max(value, 0.0)
-	
+func sleep_until_next_day(wake_hour: int, wake_minute: int = 0) -> void:
+	var skipped_minutes := get_minutes_until_next_day_time(wake_hour, wake_minute)
+
+	current_day += 1
+	current_hour = wake_hour
+	current_minute = wake_minute
+
+	_last_day = current_day
+	_last_hour = current_hour
+	_second_accumulator = 0.0
+
+	time_skipped.emit(skipped_minutes)
+	day_changed.emit(current_day)
+	day_started.emit(current_day)
+	time_tick.emit(current_day, current_hour, current_minute)
+
+
+func get_minutes_until_next_day_time(wake_hour: int, wake_minute: int = 0) -> int:
+	var current_total := current_hour * 60 + current_minute
+	var target_total := wake_hour * 60 + wake_minute
+
+	return (24 * 60 - current_total) + target_total
+
+
+func get_sleep_wake_hour() -> int:
+	if current_hour >= 0 and current_hour < 2:
+		return 8
+
+	if current_hour >= 2 and current_hour < day_start_hour:
+		return 10
+
+	return 6
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("debug_toggle_time_pause"):
 		toggle_pause()

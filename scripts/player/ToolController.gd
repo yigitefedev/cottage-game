@@ -11,6 +11,7 @@ var corner_visual_manager: CornerVisualManager
 var edge_targeter: PlayerEdgeTargeter
 var edge_visual_manager: EdgeVisualManager
 var grid_object_manager: GridObjectManager
+var player_stamina: PlayerStamina
 
 func _ready() -> void:
 	await get_tree().process_frame
@@ -24,6 +25,7 @@ func _ready() -> void:
 	tile_visual_manager = get_tree().get_first_node_in_group("tile_visual_manager")
 	edge_targeter = get_tree().get_first_node_in_group("player_edge_targeter")
 	edge_visual_manager = get_tree().get_first_node_in_group("edge_visual_manager")
+	player_stamina = get_tree().get_first_node_in_group("player_stamina")
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("use_item"):
@@ -52,7 +54,14 @@ func use_selected_item() -> void:
 	if not action.can_use(context):
 		return
 
-	action.use(context)
+	if player_stamina != null:
+		if not player_stamina.can_spend(action.stamina_cost):
+			return
+
+		action.use(context)
+		player_stamina.spend(action.stamina_cost)
+	else:
+		action.use(context)
 
 	player_inventory.inventory_changed.emit()
 
@@ -78,6 +87,7 @@ func build_context(item: ItemInstanceData) -> ItemUseContext:
 	context.corner_targeter = corner_targeter
 	context.corner_visual_manager = corner_visual_manager
 	context.grid_object_manager = grid_object_manager
+	context.player_stamina = player_stamina
 
 	if corner_targeter != null:
 		context.target_corner_coord = corner_targeter.get_target_corner()

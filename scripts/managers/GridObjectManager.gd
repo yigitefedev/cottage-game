@@ -137,3 +137,45 @@ func find_item_definition_for_object(object_id: StringName) -> ItemDefinition:
 			return definition
 
 	return null
+func place_corner_object(coord: Vector2i, object_id: StringName, visual_layer: StringName, visual_id: StringName) -> bool:
+	if grid_manager == null:
+		return false
+
+	if object_id == &"" or visual_id == &"":
+		return false
+
+	var corner := grid_manager.get_corner(coord)
+
+	if corner != null and corner.has_object():
+		return false
+
+	corner = grid_manager.get_or_create_corner(coord)
+	corner.object_id = object_id
+	corner.set_visual(visual_layer, visual_id)
+
+	if corner_visual_manager != null:
+		corner_visual_manager.refresh_corner(coord)
+
+	return true
+
+
+func place_edge_object(coord: Vector2i, orientation: StringName, object_id: StringName, visual_layer: StringName, visual_id: StringName) -> bool:
+	if grid_manager == null:
+		return false
+
+	if object_id == &"" or visual_id == &"":
+		return false
+
+	var edge := grid_manager.get_edge(coord, orientation)
+
+	if edge != null and edge.has_object():
+		return false
+
+	edge = grid_manager.get_or_create_edge(coord, orientation)
+	edge.object_id = object_id
+	edge.set_visual(visual_layer, visual_id)
+
+	if edge_visual_manager != null:
+		edge_visual_manager.refresh_edge(coord, orientation)
+
+	return true

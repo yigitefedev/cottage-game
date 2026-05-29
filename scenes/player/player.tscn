@@ -21,6 +21,7 @@
 [ext_resource type="Resource" uid="uid://2pfris35hhvg" path="res://resources/items/Instances/ScytheInstance.tres" id="14_3j4b4"]
 [ext_resource type="Resource" uid="uid://cur6fyq5prnxu" path="res://resources/items/Instances/ShovelInstance.tres" id="15_yj68g"]
 [ext_resource type="Resource" uid="uid://chcrn30ywiu07" path="res://resources/items/Instances/WoodFenceInstance.tres" id="17_3j4b4"]
+[ext_resource type="Script" uid="uid://k36bkwxba1as" path="res://scripts/player/PlayerStamina.gd" id="22_yj68g"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_k2fmo"]
 radius = 0.4
@@ -74,3 +75,6 @@ script = ExtResource("10_h17s1")
 [node name="InteractionController" type="Node3D" parent="." unique_id=1943167925]
 script = ExtResource("11_je7p5")
 interaction_actions = Array[ExtResource("12_gx1jg")]([ExtResource("13_ugbui")])
+
+[node name="PlayerStamina" type="Node3D" parent="." unique_id=2095934666]
+script = ExtResource("22_yj68g")
