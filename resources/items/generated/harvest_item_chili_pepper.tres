@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://dakk26y8seyfs"]
+
+[ext_resource type="Script" uid="uid://kia7nkogevgg" path="res://scripts/items/ItemDefinition.gd" id="1_6o8mf"]
+
+[resource]
+script = ExtResource("1_6o8mf")
+id = &"harvest_item_chili_pepper"
+display_name = "Chili Pepper"
+max_stack = 20
+tags = Array[StringName]([&"herb"])
+properties = {
+"buy_price": 30,
+"sell_price": 24
+}

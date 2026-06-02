@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="CropDefinition" format=3 uid="uid://cdbvshuu1t0yp"]
+
+[ext_resource type="Script" uid="uid://gdt274ukb23n" path="res://scripts/crops/CropDefinition.gd" id="1_edxtm"]
+
+[resource]
+script = ExtResource("1_edxtm")
+id = &"crop_cherry"
+display_name = "Cherry"
+stage_visual_ids = Array[StringName]([&"cherry_stage_0", &"cherry_stage_1", &"cherry_stage_2", &"cherry_stage_3"])
+stage_duration_days = Array[int]([2, 2, 2, 0])
+harvest_stage_index = 3
+harvest_item_id = &"harvest_item_cherry"
+harvest_amount_min = 1
+harvest_amount_max = 1
+regrow_after_harvest = true
+grow_seasons = Array[StringName]([&"spring"])

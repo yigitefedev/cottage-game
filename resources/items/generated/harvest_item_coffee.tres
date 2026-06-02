@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://dsa58qm2mvy1q"]
+
+[ext_resource type="Script" uid="uid://kia7nkogevgg" path="res://scripts/items/ItemDefinition.gd" id="1_pqt27"]
+
+[resource]
+script = ExtResource("1_pqt27")
+id = &"harvest_item_coffee"
+display_name = "Coffee"
+max_stack = 20
+tags = Array[StringName]([&"herb"])
+properties = {
+"buy_price": 135,
+"sell_price": 100
+}

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://cvu7sqdpawc0p"]
+
+[ext_resource type="Resource" uid="uid://bajkmoy6k2odm" path="res://resources/actions/PlantSeedAction.tres" id="1_ik46p"]
+[ext_resource type="Script" uid="uid://kia7nkogevgg" path="res://scripts/items/ItemDefinition.gd" id="2_34hbv"]
+
+[resource]
+script = ExtResource("2_34hbv")
+id = &"sapling_item_birch"
+display_name = "Birch Sapling"
+max_stack = 30
+tags = Array[StringName]([&"sapling"])
+primary_action = ExtResource("1_ik46p")
+properties = {
+"buy_price": 400,
+"crop_id": &"crop_birch",
+"sell_price": 200
+}

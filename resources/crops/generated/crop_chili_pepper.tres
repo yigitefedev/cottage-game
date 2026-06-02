@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="CropDefinition" format=3 uid="uid://cpkreakjmhei1"]
+
+[ext_resource type="Script" uid="uid://gdt274ukb23n" path="res://scripts/crops/CropDefinition.gd" id="1_n4uah"]
+
+[resource]
+script = ExtResource("1_n4uah")
+id = &"crop_chili_pepper"
+display_name = "Chili Pepper"
+stage_visual_ids = Array[StringName]([&"chili_pepper_stage_0", &"chili_pepper_stage_1", &"chili_pepper_stage_2", &"chili_pepper_stage_3"])
+stage_duration_days = Array[int]([3, 3, 3, 0])
+harvest_stage_index = 3
+harvest_item_id = &"harvest_item_chili_pepper"
+harvest_amount_max = 3
+regrow_after_harvest = true
+grow_seasons = Array[StringName]([&"spring", &"fall", &"summer"])

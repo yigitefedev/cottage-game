@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://c75trv27rmkxv"]
+
+[ext_resource type="Script" uid="uid://kia7nkogevgg" path="res://scripts/items/ItemDefinition.gd" id="1_qb4rj"]
+
+[resource]
+script = ExtResource("1_qb4rj")
+id = &"harvest_item_chamomile"
+display_name = "Chamomile"
+max_stack = 20
+tags = Array[StringName]([&"herb"])
+properties = {
+"buy_price": 30,
+"sell_price": 22
+}

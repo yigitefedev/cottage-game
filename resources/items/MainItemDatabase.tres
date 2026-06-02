@@ -12,8 +12,238 @@
 [ext_resource type="Resource" uid="uid://pi5l23rl041y" path="res://resources/items/definitions/ScytheDefinition.tres" id="9_411tq"]
 [ext_resource type="Resource" uid="uid://btxsmkg0315vt" path="res://resources/items/definitions/ShovelDefinition.tres" id="10_p0skv"]
 [ext_resource type="Resource" uid="uid://jakij0lhes76" path="res://resources/items/definitions/WoodFenceDefinition.tres" id="11_myv56"]
+[ext_resource type="Resource" uid="uid://4ijrikp47nw4" path="res://resources/items/generated/harvest_item_beetroot.tres" id="12_63ls7"]
+[ext_resource type="Resource" uid="uid://bajkmoy6k2odm" path="res://resources/actions/PlantSeedAction.tres" id="12_xrq87"]
+[ext_resource type="Resource" uid="uid://dvkv10pd2vwq8" path="res://resources/items/generated/seed_item_beetroot.tres" id="13_615rs"]
+[ext_resource type="Resource" uid="uid://cibjdk0hy0wc" path="res://resources/items/generated/harvest_item_blackberry.tres" id="14_buvhf"]
+[ext_resource type="Resource" uid="uid://cipwtgo4eld8f" path="res://resources/items/generated/seed_item_blackberry.tres" id="15_bjfyb"]
+[ext_resource type="Resource" uid="uid://bnoo8r3bp0f2o" path="res://resources/items/generated/harvest_item_blueberry.tres" id="16_rdc8o"]
+[ext_resource type="Resource" uid="uid://cjuvqlnn5auog" path="res://resources/items/generated/seed_item_blueberry.tres" id="17_4vbqn"]
+[ext_resource type="Resource" uid="uid://s10myqx63asc" path="res://resources/items/generated/harvest_item_broccoli.tres" id="18_wv1fo"]
+[ext_resource type="Resource" uid="uid://butwl01c3f7uv" path="res://resources/items/generated/seed_item_broccoli.tres" id="19_ll8fg"]
+[ext_resource type="Resource" uid="uid://cf8spe4lv026w" path="res://resources/items/generated/harvest_item_cabbage.tres" id="20_a8c7y"]
+[ext_resource type="Resource" uid="uid://c02c3h1u3h4p6" path="res://resources/items/generated/seed_item_cabbage.tres" id="21_u0wn5"]
+[ext_resource type="Resource" uid="uid://b0fbhqxmx28mu" path="res://resources/items/generated/harvest_item_carrot.tres" id="22_6thbp"]
+[ext_resource type="Resource" uid="uid://bbyi8bhlunb5c" path="res://resources/items/generated/seed_item_carrot.tres" id="23_88ibx"]
+[ext_resource type="Resource" uid="uid://cccwv3auru23l" path="res://resources/items/generated/harvest_item_cauliflower.tres" id="24_5ifix"]
+[ext_resource type="Resource" uid="uid://t4hdf7ojy2p5" path="res://resources/items/generated/seed_item_cauliflower.tres" id="25_0fnmh"]
+[ext_resource type="Resource" uid="uid://il6mhl5mjlrm" path="res://resources/items/generated/harvest_item_corn.tres" id="26_vjtvw"]
+[ext_resource type="Resource" uid="uid://ogsmjrkqj8to" path="res://resources/items/generated/seed_item_corn.tres" id="27_ekl2y"]
+[ext_resource type="Resource" uid="uid://cfrwaat271p44" path="res://resources/items/generated/harvest_item_melon.tres" id="28_u0qh8"]
+[ext_resource type="Resource" uid="uid://b66xufaa4epc8" path="res://resources/items/generated/seed_item_melon.tres" id="29_3spih"]
+[ext_resource type="Resource" uid="uid://btcgc5dr6ws4o" path="res://resources/items/generated/harvest_item_oat.tres" id="30_krkiu"]
+[ext_resource type="Resource" uid="uid://cqttvt031sokk" path="res://resources/items/generated/seed_item_oat.tres" id="31_jbi0m"]
+[ext_resource type="Resource" uid="uid://dn7kk767ybv0a" path="res://resources/items/generated/harvest_item_onion.tres" id="32_d553r"]
+[ext_resource type="Resource" uid="uid://bbbm4qpabhp11" path="res://resources/items/generated/seed_item_onion.tres" id="33_em04f"]
+[ext_resource type="Resource" uid="uid://byxsgm0r33ers" path="res://resources/items/generated/harvest_item_potato.tres" id="34_fdc1y"]
+[ext_resource type="Resource" uid="uid://ptf80j1apoem" path="res://resources/items/generated/seed_item_potato.tres" id="35_5lcwl"]
+[ext_resource type="Resource" uid="uid://s5ag0fbeau8j" path="res://resources/items/generated/harvest_item_pumpkin.tres" id="36_ic631"]
+[ext_resource type="Resource" uid="uid://d4hcsnv0b2s4g" path="res://resources/items/generated/seed_item_pumpkin.tres" id="37_1tckn"]
+[ext_resource type="Resource" uid="uid://b5jhe0gf3qo2s" path="res://resources/items/generated/harvest_item_raspberry.tres" id="38_e6o85"]
+[ext_resource type="Resource" uid="uid://u0vgrexo7rjo" path="res://resources/items/generated/seed_item_raspberry.tres" id="39_tukap"]
+[ext_resource type="Resource" uid="uid://ch5xqu7on6nlh" path="res://resources/items/generated/harvest_item_rice.tres" id="40_j2uen"]
+[ext_resource type="Resource" uid="uid://cgfjka5vi0iel" path="res://resources/items/generated/seed_item_rice.tres" id="41_tn78b"]
+[ext_resource type="Resource" uid="uid://bri24bfdswbed" path="res://resources/items/generated/harvest_item_strawberry.tres" id="42_hwinh"]
+[ext_resource type="Resource" uid="uid://deiukkx3r0ra8" path="res://resources/items/generated/seed_item_strawberry.tres" id="43_8rgte"]
+[ext_resource type="Resource" uid="uid://c44bjlaicbgmy" path="res://resources/items/generated/harvest_item_sunflower.tres" id="44_otbg7"]
+[ext_resource type="Resource" uid="uid://3prd2xxacefb" path="res://resources/items/generated/seed_item_sunflower.tres" id="45_nvhoo"]
+[ext_resource type="Resource" uid="uid://fnnkbd5d31u6" path="res://resources/items/generated/harvest_item_wheat.tres" id="46_31u43"]
+[ext_resource type="Resource" uid="uid://7miaw65v2ukw" path="res://resources/items/generated/seed_item_wheat.tres" id="47_y1b11"]
+[ext_resource type="Resource" uid="uid://cem8vy4yac0v2" path="res://resources/items/generated/harvest_item_cucumber.tres" id="48_q405n"]
+[ext_resource type="Resource" uid="uid://m6uyewujl4pr" path="res://resources/items/generated/seed_item_cucumber.tres" id="49_fts1f"]
+[ext_resource type="Resource" uid="uid://s8y6mvt173er" path="res://resources/items/generated/harvest_item_grape.tres" id="50_jw28u"]
+[ext_resource type="Resource" uid="uid://v6wfve82yv3i" path="res://resources/items/generated/seed_item_grape.tres" id="51_vta6p"]
+[ext_resource type="Resource" uid="uid://bbeso3a1y5d2o" path="res://resources/items/generated/harvest_item_green_bean.tres" id="52_l4vb8"]
+[ext_resource type="Resource" uid="uid://ctkmcbmpx8tu1" path="res://resources/items/generated/seed_item_green_bean.tres" id="53_gtty8"]
+[ext_resource type="Resource" uid="uid://kkdlvjxerli5" path="res://resources/items/generated/harvest_item_tomato.tres" id="54_ut0ps"]
+[ext_resource type="Resource" uid="uid://oa7hijcm7bke" path="res://resources/items/generated/seed_item_tomato.tres" id="55_x0djj"]
+[ext_resource type="Resource" uid="uid://b582cqwfeqbip" path="res://resources/items/generated/harvest_item_basil.tres" id="56_8680u"]
+[ext_resource type="Resource" uid="uid://bnxxnqq07ferv" path="res://resources/items/generated/seed_item_basil.tres" id="57_gx54o"]
+[ext_resource type="Resource" uid="uid://c75trv27rmkxv" path="res://resources/items/generated/harvest_item_chamomile.tres" id="58_g3tt6"]
+[ext_resource type="Resource" uid="uid://bqcplp1nrlv45" path="res://resources/items/generated/seed_item_chamomile.tres" id="59_podm7"]
+[ext_resource type="Resource" uid="uid://dakk26y8seyfs" path="res://resources/items/generated/harvest_item_chili_pepper.tres" id="60_kx63g"]
+[ext_resource type="Resource" uid="uid://bcxmwhblaynpg" path="res://resources/items/generated/seed_item_chili_pepper.tres" id="61_3w4dw"]
+[ext_resource type="Resource" uid="uid://dsa58qm2mvy1q" path="res://resources/items/generated/harvest_item_coffee.tres" id="62_onlxt"]
+[ext_resource type="Resource" uid="uid://cekf2vinb7ogp" path="res://resources/items/generated/seed_item_coffee.tres" id="63_mdvyq"]
+[ext_resource type="Resource" uid="uid://d28iskqfcif4h" path="res://resources/items/generated/harvest_item_garlic.tres" id="64_fy73a"]
+[ext_resource type="Resource" uid="uid://cn2klm3pbg3xs" path="res://resources/items/generated/seed_item_garlic.tres" id="65_y2jr6"]
+[ext_resource type="Resource" uid="uid://dacbuekqxhl7h" path="res://resources/items/generated/harvest_item_ginger.tres" id="66_m6cbd"]
+[ext_resource type="Resource" uid="uid://dbeeli1dcvthr" path="res://resources/items/generated/seed_item_ginger.tres" id="67_eki1y"]
+[ext_resource type="Resource" uid="uid://clyworw5mtpm2" path="res://resources/items/generated/harvest_item_lavender.tres" id="68_t7qt2"]
+[ext_resource type="Resource" uid="uid://h5u32bewhxvj" path="res://resources/items/generated/seed_item_lavender.tres" id="69_stvg0"]
+[ext_resource type="Resource" uid="uid://drw5kej6edmhl" path="res://resources/items/generated/harvest_item_mint.tres" id="70_wprsg"]
+[ext_resource type="Resource" uid="uid://cxgatnd5h86xy" path="res://resources/items/generated/seed_item_mint.tres" id="71_xpo46"]
+[ext_resource type="Resource" uid="uid://c3nyy3brom51" path="res://resources/items/generated/harvest_item_rosemary.tres" id="72_bg5xr"]
+[ext_resource type="Resource" uid="uid://bc4lt8scljj7v" path="res://resources/items/generated/seed_item_rosemary.tres" id="73_k125y"]
+[ext_resource type="Resource" uid="uid://d2ilfgpfutr0m" path="res://resources/items/generated/harvest_item_sage.tres" id="74_pqqis"]
+[ext_resource type="Resource" uid="uid://cj4kugdyoojdr" path="res://resources/items/generated/seed_item_sage.tres" id="75_u38oh"]
+[ext_resource type="Resource" uid="uid://c02rapxfprci6" path="res://resources/items/generated/harvest_item_apple.tres" id="76_m7hcb"]
+[ext_resource type="Resource" uid="uid://dbfkcqvy6m6p5" path="res://resources/items/generated/harvest_item_cocoa.tres" id="78_apqc0"]
+[ext_resource type="Resource" uid="uid://cjmq8mcn51vhv" path="res://resources/items/generated/harvest_item_lemon.tres" id="79_jymb3"]
+[ext_resource type="Resource" uid="uid://b5pjqlflajfqq" path="res://resources/items/generated/harvest_item_olive.tres" id="80_urv6i"]
+[ext_resource type="Resource" uid="uid://cuhyvbadxtncp" path="res://resources/items/generated/harvest_item_orange.tres" id="81_2n5vd"]
+[ext_resource type="Resource" uid="uid://7fvk60r12if1" path="res://resources/items/generated/harvest_item_peach.tres" id="82_bx8qh"]
+[ext_resource type="Resource" uid="uid://dy57wtgc71hvd" path="res://resources/items/generated/harvest_item_birch.tres" id="83_0k6n8"]
+[ext_resource type="Resource" uid="uid://c4huhomj0iw4k" path="res://resources/items/generated/harvest_item_cherry.tres" id="84_d57fh"]
+[ext_resource type="Resource" uid="uid://djp2ibmqsgtme" path="res://resources/items/generated/harvest_item_maple.tres" id="85_ujjdn"]
+[ext_resource type="Resource" uid="uid://dlbmeu6awiiuj" path="res://resources/items/generated/harvest_item_oak.tres" id="86_j0a1e"]
+[ext_resource type="Resource" uid="uid://rdh5htyhyo51" path="res://resources/items/generated/harvest_item_pine.tres" id="87_ged4s"]
+[ext_resource type="Resource" uid="uid://cih4up5u2xubb" path="res://resources/items/generated/sapling_item_apple.tres" id="88_gg1un"]
+[ext_resource type="Resource" uid="uid://725a6qub2u7w" path="res://resources/items/generated/sapling_item_cocoa.tres" id="89_lwtnb"]
+[ext_resource type="Resource" uid="uid://b1dos8igr42qd" path="res://resources/items/generated/sapling_item_lemon.tres" id="90_f6tgv"]
+[ext_resource type="Resource" uid="uid://w4uc7dstcak5" path="res://resources/items/generated/sapling_item_olive.tres" id="91_fs8gb"]
+[ext_resource type="Resource" uid="uid://dy3dle5srveru" path="res://resources/items/generated/sapling_item_orange.tres" id="92_yrf7t"]
+[ext_resource type="Resource" uid="uid://ber0lsrnbrbyh" path="res://resources/items/generated/sapling_item_peach.tres" id="93_nvyf4"]
+[ext_resource type="Resource" uid="uid://cvu7sqdpawc0p" path="res://resources/items/generated/sapling_item_birch.tres" id="94_7v2mi"]
+[ext_resource type="Resource" uid="uid://drkiuvd48mwlv" path="res://resources/items/generated/sapling_item_cherry.tres" id="95_5qsa0"]
+[ext_resource type="Resource" uid="uid://7jer0a7r00g7" path="res://resources/items/generated/sapling_item_maple.tres" id="96_7vbdj"]
+[ext_resource type="Resource" uid="uid://dhuf6ompvdbrs" path="res://resources/items/generated/sapling_item_oak.tres" id="97_2umse"]
+[ext_resource type="Resource" uid="uid://oqby10kvsyg6" path="res://resources/items/generated/sapling_item_pine.tres" id="98_yn6iu"]
+
+[sub_resource type="Resource" id="Resource_nmvji"]
+script = ExtResource("1_p6ucb")
+id = &"seed_item_apple"
+display_name = "Apple Seed"
+max_stack = 30
+tags = Array[StringName]([&"sapling"])
+primary_action = ExtResource("12_xrq87")
+properties = {
+"buy_price": 400,
+"crop_id": &"crop_apple",
+"sell_price": 200
+}
+
+[sub_resource type="Resource" id="Resource_uifl6"]
+script = ExtResource("1_p6ucb")
+id = &"seed_item_cocoa"
+display_name = "Cocoa Seed"
+max_stack = 30
+tags = Array[StringName]([&"sapling"])
+primary_action = ExtResource("12_xrq87")
+properties = {
+"buy_price": 800,
+"crop_id": &"crop_cocoa",
+"sell_price": 400
+}
+
+[sub_resource type="Resource" id="Resource_gg20c"]
+script = ExtResource("1_p6ucb")
+id = &"seed_item_lemon"
+display_name = "Lemon Seed"
+max_stack = 30
+tags = Array[StringName]([&"sapling"])
+primary_action = ExtResource("12_xrq87")
+properties = {
+"buy_price": 500,
+"crop_id": &"crop_lemon",
+"sell_price": 250
+}
+
+[sub_resource type="Resource" id="Resource_qxj36"]
+script = ExtResource("1_p6ucb")
+id = &"seed_item_olive"
+display_name = "Olive Seed"
+max_stack = 30
+tags = Array[StringName]([&"sapling"])
+primary_action = ExtResource("12_xrq87")
+properties = {
+"buy_price": 800,
+"crop_id": &"crop_olive",
+"sell_price": 400
+}
+
+[sub_resource type="Resource" id="Resource_ckst1"]
+script = ExtResource("1_p6ucb")
+id = &"seed_item_orange"
+display_name = "Orange Seed"
+max_stack = 30
+tags = Array[StringName]([&"sapling"])
+primary_action = ExtResource("12_xrq87")
+properties = {
+"buy_price": 500,
+"crop_id": &"crop_orange",
+"sell_price": 250
+}
+
+[sub_resource type="Resource" id="Resource_615rs"]
+script = ExtResource("1_p6ucb")
+id = &"seed_item_peach"
+display_name = "Peach Seed"
+max_stack = 30
+tags = Array[StringName]([&"sapling"])
+primary_action = ExtResource("12_xrq87")
+properties = {
+"buy_price": 600,
+"crop_id": &"crop_peach",
+"sell_price": 300
+}
+
+[sub_resource type="Resource" id="Resource_bjfyb"]
+script = ExtResource("1_p6ucb")
+id = &"seed_item_birch"
+display_name = "Birch Seed"
+max_stack = 30
+tags = Array[StringName]([&"sapling"])
+primary_action = ExtResource("12_xrq87")
+properties = {
+"buy_price": 400,
+"crop_id": &"crop_birch",
+"sell_price": 200
+}
+
+[sub_resource type="Resource" id="Resource_4vbqn"]
+script = ExtResource("1_p6ucb")
+id = &"seed_item_cherry"
+display_name = "Cherry Seed"
+max_stack = 30
+tags = Array[StringName]([&"sapling"])
+primary_action = ExtResource("12_xrq87")
+properties = {
+"buy_price": 600,
+"crop_id": &"crop_cherry",
+"sell_price": 300
+}
+
+[sub_resource type="Resource" id="Resource_ll8fg"]
+script = ExtResource("1_p6ucb")
+id = &"seed_item_maple"
+display_name = "Maple Seed"
+max_stack = 30
+tags = Array[StringName]([&"sapling"])
+primary_action = ExtResource("12_xrq87")
+properties = {
+"buy_price": 500,
+"crop_id": &"crop_maple",
+"sell_price": 250
+}
+
+[sub_resource type="Resource" id="Resource_u0wn5"]
+script = ExtResource("1_p6ucb")
+id = &"seed_item_oak"
+display_name = "Oak Seed"
+max_stack = 30
+tags = Array[StringName]([&"sapling"])
+primary_action = ExtResource("12_xrq87")
+properties = {
+"buy_price": 400,
+"crop_id": &"crop_oak",
+"sell_price": 200
+}
+
+[sub_resource type="Resource" id="Resource_88ibx"]
+script = ExtResource("1_p6ucb")
+id = &"seed_item_pine"
+display_name = "Pine Seed"
+max_stack = 30
+tags = Array[StringName]([&"sapling"])
+primary_action = ExtResource("12_xrq87")
+properties = {
+"buy_price": 400,
+"crop_id": &"crop_pine",
+"sell_price": 200
+}
 
 [resource]
 script = ExtResource("2_wnd64")
-items = Array[ExtResource("1_p6ucb")]([ExtResource("2_pf8bb"), ExtResource("3_o4wrg"), ExtResource("4_o4wrg"), ExtResource("5_yhaa3"), ExtResource("6_x7q8d"), ExtResource("7_xcwhg"), ExtResource("8_myv56"), ExtResource("9_411tq"), ExtResource("10_p0skv"), ExtResource("11_myv56")])
+items = Array[ExtResource("1_p6ucb")]([ExtResource("2_pf8bb"), ExtResource("3_o4wrg"), ExtResource("4_o4wrg"), ExtResource("5_yhaa3"), ExtResource("6_x7q8d"), ExtResource("7_xcwhg"), ExtResource("8_myv56"), ExtResource("9_411tq"), ExtResource("10_p0skv"), ExtResource("11_myv56"), ExtResource("12_63ls7"), ExtResource("13_615rs"), ExtResource("14_buvhf"), ExtResource("15_bjfyb"), ExtResource("16_rdc8o"), ExtResource("17_4vbqn"), ExtResource("18_wv1fo"), ExtResource("19_ll8fg"), ExtResource("20_a8c7y"), ExtResource("21_u0wn5"), ExtResource("22_6thbp"), ExtResource("23_88ibx"), ExtResource("24_5ifix"), ExtResource("25_0fnmh"), ExtResource("26_vjtvw"), ExtResource("27_ekl2y"), ExtResource("28_u0qh8"), ExtResource("29_3spih"), ExtResource("30_krkiu"), ExtResource("31_jbi0m"), ExtResource("32_d553r"), ExtResource("33_em04f"), ExtResource("34_fdc1y"), ExtResource("35_5lcwl"), ExtResource("36_ic631"), ExtResource("37_1tckn"), ExtResource("38_e6o85"), ExtResource("39_tukap"), ExtResource("40_j2uen"), ExtResource("41_tn78b"), ExtResource("42_hwinh"), ExtResource("43_8rgte"), ExtResource("44_otbg7"), ExtResource("45_nvhoo"), ExtResource("46_31u43"), ExtResource("47_y1b11"), ExtResource("48_q405n"), ExtResource("49_fts1f"), ExtResource("50_jw28u"), ExtResource("51_vta6p"), ExtResource("52_l4vb8"), ExtResource("53_gtty8"), ExtResource("54_ut0ps"), ExtResource("55_x0djj"), ExtResource("56_8680u"), ExtResource("57_gx54o"), ExtResource("58_g3tt6"), ExtResource("59_podm7"), ExtResource("60_kx63g"), ExtResource("61_3w4dw"), ExtResource("62_onlxt"), ExtResource("63_mdvyq"), ExtResource("64_fy73a"), ExtResource("65_y2jr6"), ExtResource("66_m6cbd"), ExtResource("67_eki1y"), ExtResource("68_t7qt2"), ExtResource("69_stvg0"), ExtResource("70_wprsg"), ExtResource("71_xpo46"), ExtResource("72_bg5xr"), ExtResource("73_k125y"), ExtResource("74_pqqis"), ExtResource("75_u38oh"), ExtResource("76_m7hcb"), SubResource("Resource_nmvji"), ExtResource("78_apqc0"), SubResource("Resource_uifl6"), ExtResource("79_jymb3"), SubResource("Resource_gg20c"), ExtResource("80_urv6i"), SubResource("Resource_qxj36"), ExtResource("81_2n5vd"), SubResource("Resource_ckst1"), ExtResource("82_bx8qh"), SubResource("Resource_615rs"), ExtResource("83_0k6n8"), SubResource("Resource_bjfyb"), ExtResource("84_d57fh"), SubResource("Resource_4vbqn"), ExtResource("85_ujjdn"), SubResource("Resource_ll8fg"), ExtResource("86_j0a1e"), SubResource("Resource_u0wn5"), ExtResource("87_ged4s"), SubResource("Resource_88ibx"), ExtResource("88_gg1un"), ExtResource("89_lwtnb"), ExtResource("90_f6tgv"), ExtResource("91_fs8gb"), ExtResource("92_yrf7t"), ExtResource("93_nvyf4"), ExtResource("94_7v2mi"), ExtResource("95_5qsa0"), ExtResource("96_7vbdj"), ExtResource("97_2umse"), ExtResource("98_yn6iu")])
 metadata/_custom_type_script = "uid://l6ftqlnw0abi"

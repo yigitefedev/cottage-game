@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://dbeeli1dcvthr"]
+
+[ext_resource type="Resource" uid="uid://bajkmoy6k2odm" path="res://resources/actions/PlantSeedAction.tres" id="1_023mg"]
+[ext_resource type="Script" uid="uid://kia7nkogevgg" path="res://scripts/items/ItemDefinition.gd" id="2_yymvh"]
+
+[resource]
+script = ExtResource("2_yymvh")
+id = &"seed_item_ginger"
+display_name = "Ginger Seed"
+max_stack = 30
+tags = Array[StringName]([&"seed"])
+primary_action = ExtResource("1_023mg")
+properties = {
+"buy_price": 100,
+"crop_id": &"crop_ginger",
+"sell_price": 50
+}

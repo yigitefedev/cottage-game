@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="CropDefinition" format=3 uid="uid://t10subvm3o7"]
+
+[ext_resource type="Script" uid="uid://gdt274ukb23n" path="res://scripts/crops/CropDefinition.gd" id="1_iajap"]
+
+[resource]
+script = ExtResource("1_iajap")
+id = &"crop_beetroot"
+display_name = "Beetroot"
+stage_visual_ids = Array[StringName]([&"beetroot_stage_0", &"beetroot_stage_1", &"beetroot_stage_2", &"beetroot_stage_3"])
+stage_duration_days = Array[int]([3, 2, 2, 0])
+harvest_stage_index = 3
+harvest_item_id = &"harvest_item_beetroot"
+harvest_amount_min = 2
+harvest_amount_max = 2
+grow_seasons = Array[StringName]([&"fall"])

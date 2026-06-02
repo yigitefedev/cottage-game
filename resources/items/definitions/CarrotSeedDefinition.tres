@@ -6,7 +6,7 @@
 
 [resource]
 script = ExtResource("1_53gym")
-id = &"carror_seed"
+id = &"carrot_seed"
 display_name = "Carrot Seed"
 icon = ExtResource("1_4qc6v")
 max_stack = 30

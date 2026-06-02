@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="CropDefinition" format=3 uid="uid://28uq7hbdedwj"]
+
+[ext_resource type="Script" uid="uid://gdt274ukb23n" path="res://scripts/crops/CropDefinition.gd" id="1_daejj"]
+
+[resource]
+script = ExtResource("1_daejj")
+id = &"crop_green_bean"
+display_name = "Green Bean"
+stage_visual_ids = Array[StringName]([&"green_bean_stage_0", &"green_bean_stage_1", &"green_bean_stage_2", &"green_bean_stage_3"])
+stage_duration_days = Array[int]([3, 2, 2, 0])
+harvest_stage_index = 3
+harvest_item_id = &"harvest_item_green_bean"
+harvest_amount_min = 4
+harvest_amount_max = 4
+grow_seasons = Array[StringName]([&"spring", &"fall", &"summer"])

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="CropDefinition" format=3 uid="uid://cab6uqq8gbilf"]
+
+[ext_resource type="Script" uid="uid://gdt274ukb23n" path="res://scripts/crops/CropDefinition.gd" id="1_6akrk"]
+
+[resource]
+script = ExtResource("1_6akrk")
+id = &"crop_wheat"
+display_name = "Wheat"
+stage_visual_ids = Array[StringName]([&"wheat_stage_0", &"wheat_stage_1", &"wheat_stage_2", &"wheat_stage_3"])
+stage_duration_days = Array[int]([3, 2, 2, 0])
+harvest_stage_index = 3
+harvest_item_id = &"harvest_item_wheat"
+harvest_amount_max = 3
+grow_seasons = Array[StringName]([&"fall"])

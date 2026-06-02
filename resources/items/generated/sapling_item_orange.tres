@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://dy3dle5srveru"]
+
+[ext_resource type="Resource" uid="uid://bajkmoy6k2odm" path="res://resources/actions/PlantSeedAction.tres" id="1_w4fy4"]
+[ext_resource type="Script" uid="uid://kia7nkogevgg" path="res://scripts/items/ItemDefinition.gd" id="2_eo1j0"]
+
+[resource]
+script = ExtResource("2_eo1j0")
+id = &"sapling_item_orange"
+display_name = "Orange Sapling"
+max_stack = 30
+tags = Array[StringName]([&"sapling"])
+primary_action = ExtResource("1_w4fy4")
+properties = {
+"buy_price": 500,
+"crop_id": &"crop_orange",
+"sell_price": 250
+}

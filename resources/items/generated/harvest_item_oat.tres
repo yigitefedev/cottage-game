@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://btcgc5dr6ws4o"]
+
+[ext_resource type="Script" uid="uid://kia7nkogevgg" path="res://scripts/items/ItemDefinition.gd" id="1_dc118"]
+
+[resource]
+script = ExtResource("1_dc118")
+id = &"harvest_item_oat"
+display_name = "Oat"
+max_stack = 20
+tags = Array[StringName]([&"crop"])
+properties = {
+"buy_price": 15,
+"sell_price": 10
+}

@@ -15,6 +15,7 @@ extends Resource
 
 @export var regrow_after_harvest := false
 @export var regrow_stage_index := 1
+@export var grow_seasons: Array[StringName] = []
 
 
 func get_stage_count() -> int:

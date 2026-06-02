@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://cqttvt031sokk"]
+
+[ext_resource type="Resource" uid="uid://bajkmoy6k2odm" path="res://resources/actions/PlantSeedAction.tres" id="1_qj0om"]
+[ext_resource type="Script" uid="uid://kia7nkogevgg" path="res://scripts/items/ItemDefinition.gd" id="2_3wo37"]
+
+[resource]
+script = ExtResource("2_3wo37")
+id = &"seed_item_oat"
+display_name = "Oat Seed"
+max_stack = 30
+tags = Array[StringName]([&"seed"])
+primary_action = ExtResource("1_qj0om")
+properties = {
+"buy_price": 10,
+"crop_id": &"crop_oat",
+"sell_price": 5
+}

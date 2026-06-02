@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://dy57wtgc71hvd"]
+
+[ext_resource type="Script" uid="uid://kia7nkogevgg" path="res://scripts/items/ItemDefinition.gd" id="1_tbh8t"]
+
+[resource]
+script = ExtResource("1_tbh8t")
+id = &"harvest_item_birch"
+display_name = "Birch"
+max_stack = 20
+tags = Array[StringName]([&"tree_product"])
+properties = {
+"buy_price": 95,
+"sell_price": 70
+}

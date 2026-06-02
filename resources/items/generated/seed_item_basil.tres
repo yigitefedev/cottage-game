@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://bnxxnqq07ferv"]
+
+[ext_resource type="Resource" uid="uid://bajkmoy6k2odm" path="res://resources/actions/PlantSeedAction.tres" id="1_b3djc"]
+[ext_resource type="Script" uid="uid://kia7nkogevgg" path="res://scripts/items/ItemDefinition.gd" id="2_74qh8"]
+
+[resource]
+script = ExtResource("2_74qh8")
+id = &"seed_item_basil"
+display_name = "Basil Seed"
+max_stack = 30
+tags = Array[StringName]([&"seed"])
+primary_action = ExtResource("1_b3djc")
+properties = {
+"buy_price": 130,
+"crop_id": &"crop_basil",
+"sell_price": 65
+}

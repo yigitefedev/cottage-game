@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://djp2ibmqsgtme"]
+
+[ext_resource type="Script" uid="uid://kia7nkogevgg" path="res://scripts/items/ItemDefinition.gd" id="1_rrn8b"]
+
+[resource]
+script = ExtResource("1_rrn8b")
+id = &"harvest_item_maple"
+display_name = "Maple"
+max_stack = 20
+tags = Array[StringName]([&"tree_product"])
+properties = {
+"buy_price": 145,
+"sell_price": 110
+}

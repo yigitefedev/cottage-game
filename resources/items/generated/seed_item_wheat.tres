@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://7miaw65v2ukw"]
+
+[ext_resource type="Resource" uid="uid://bajkmoy6k2odm" path="res://resources/actions/PlantSeedAction.tres" id="1_8b4un"]
+[ext_resource type="Script" uid="uid://kia7nkogevgg" path="res://scripts/items/ItemDefinition.gd" id="2_ko1bw"]
+
+[resource]
+script = ExtResource("2_ko1bw")
+id = &"seed_item_wheat"
+display_name = "Wheat Seed"
+max_stack = 30
+tags = Array[StringName]([&"seed"])
+primary_action = ExtResource("1_8b4un")
+properties = {
+"buy_price": 8,
+"crop_id": &"crop_wheat",
+"sell_price": 5
+}

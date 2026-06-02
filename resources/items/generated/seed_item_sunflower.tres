@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://3prd2xxacefb"]
+
+[ext_resource type="Resource" uid="uid://bajkmoy6k2odm" path="res://resources/actions/PlantSeedAction.tres" id="1_hkypo"]
+[ext_resource type="Script" uid="uid://kia7nkogevgg" path="res://scripts/items/ItemDefinition.gd" id="2_hltcq"]
+
+[resource]
+script = ExtResource("2_hltcq")
+id = &"seed_item_sunflower"
+display_name = "Sunflower Seed"
+max_stack = 30
+tags = Array[StringName]([&"seed"])
+primary_action = ExtResource("1_hkypo")
+properties = {
+"buy_price": 16,
+"crop_id": &"crop_sunflower",
+"sell_price": 10
+}
