@@ -17,16 +17,16 @@ func use(context: ItemUseContext) -> void:
 
 	var ground: StringName = tile.visual_layers.get(&"ground", &"")
 
-	if ground == &"tilled_soil" or ground == &"tilled_soil_watered":
+	if ground == &"tilled_soil":
 		remove_soil(tile)
 	else:
 		add_soil(tile)
 
-	context.tile_visual_manager.refresh_tile(coord)
+	context.tile_visual_manager.refresh_tile_and_neighbors(coord)
 
 
 func add_soil(tile: GameTileData) -> void:
-	tile.set_flag(&"tilled", true)
+	tile.set_flag(&"tilled", true)	
 	tile.set_flag(&"watered", false)
 
 	tile.set_visual(&"ground", &"tilled_soil")

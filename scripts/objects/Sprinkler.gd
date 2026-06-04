@@ -22,7 +22,7 @@ func _ready() -> void:
 		TimeManager.day_started.connect(on_day_started)
 
 func on_day_started(_day: int) -> void:
-
+	await get_tree().create_timer(0.8).timeout
 	water_nearby_tiles()
 
 
@@ -52,8 +52,8 @@ func water_nearby_tiles() -> void:
 			continue
 
 		tile.set_flag(&"watered", true)
-		tile.set_visual(&"ground", &"tilled_soil_watered")
-
+		tile.set_flag(&"just_watered", true)
+		tile.set_flag(&"slow_water_tween", true)
 
 		if tile_visual_manager != null:
 			tile_visual_manager.refresh_tile(tile_coord)

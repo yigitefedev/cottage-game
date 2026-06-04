@@ -2,25 +2,31 @@ class_name WaterTileAction
 extends ItemAction
 
 func can_use(context: ItemUseContext) -> bool:
+	if context == null:
+		return false
+
 	if context.target_tile == null:
 		return false
 
-	var current_ground = context.target_tile.visual_layers.get(&"ground", &"")
-
-	if current_ground != &"tilled_soil":
+	if context.selected_item == null:
 		return false
 
-	if not context.selected_item.state.has("water"):
+	if not context.target_tile.has_flag(&"tilled"):
 		return false
 
-	return context.selected_item.state["water"] > 0
+	if context.target_tile.has_flag(&"watered"):
+		return false
+
+	var water_amount: int = context.selected_item.state.get("water", 0)
+
+	if water_amount <= 0:
+		return false
+
+	return true
 
 
 func use(context: ItemUseContext) -> void:
 	context.target_tile.set_flag(&"watered", true)
-
-	context.target_tile.set_visual(&"ground", &"tilled_soil_watered")
-
+	context.target_tile.set_flag(&"just_watered", true)
 	context.selected_item.state["water"] -= 1
-
 	context.tile_visual_manager.refresh_tile(context.target_tile_coord)

@@ -71,15 +71,11 @@ func process_crop_growth(coord: Vector2i, tile: GameTileData) -> void:
 
 	tile_visual_manager.refresh_tile(coord)
 
-
 func reset_watered_state(coord: Vector2i, tile: GameTileData) -> void:
-	var ground: StringName = tile.visual_layers.get(&"ground", &"")
-
-	if ground != &"tilled_soil_watered":
+	if not tile.has_flag(&"watered"):
 		return
-
-	tile.set_visual(&"ground", &"tilled_soil")
 
 	tile.set_flag(&"watered", false)
 
-	tile_visual_manager.refresh_tile(coord)
+	if tile_visual_manager != null:
+		tile_visual_manager.refresh_tile_and_neighbors(coord)

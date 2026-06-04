@@ -67,6 +67,8 @@ func spawn_tile_visual(coord: Vector2i, visual_id: StringName) -> void:
 	add_child(visual)
 
 	visual.global_position = grid_manager.tile_to_world(coord) + Vector3.UP * definition.y_offset
+	if visual.has_method("setup"):
+		visual.setup(coord, grid_manager)
 
 	if not active_tile_visuals.has(coord):
 		active_tile_visuals[coord] = []
@@ -84,7 +86,13 @@ func clear_tile_visuals(coord: Vector2i) -> void:
 
 	active_tile_visuals.erase(coord)
 
-
+func refresh_tile_and_neighbors(coord: Vector2i) -> void:
+	refresh_tile(coord)
+	refresh_tile(coord + Vector2i.UP)
+	refresh_tile(coord + Vector2i.RIGHT)
+	refresh_tile(coord + Vector2i.DOWN)
+	refresh_tile(coord + Vector2i.LEFT)
+	
 func clear_all_tile_visuals() -> void:
 	for coord in active_tile_visuals.keys():
 		clear_tile_visuals(coord)

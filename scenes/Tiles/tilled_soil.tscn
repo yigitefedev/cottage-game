@@ -1,26 +1,101 @@
-[gd_scene format=3 uid="uid://duo4fitsvlgat"]
+[gd_scene format=4 uid="uid://duo4fitsvlgat"]
 
-[sub_resource type="Gradient" id="Gradient_0wd5j"]
-colors = PackedColorArray(0.72, 0.23616005, 0.11520002, 1, 1, 1, 1, 1)
+[ext_resource type="Script" uid="uid://c46u5u07pv0ua" path="res://scripts/grid/TilledSoil.gd" id="1_01tlh"]
+[ext_resource type="Material" uid="uid://c67kww2csspcy" path="res://art/materials/tilled_soil.tres" id="2_wkb2m"]
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_01tlh"]
-noise_type = 0
-frequency = 0.0092
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q518e"]
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_wkb2m"]
-noise = SubResource("FastNoiseLite_01tlh")
-color_ramp = SubResource("Gradient_0wd5j")
+[sub_resource type="ArrayMesh" id="ArrayMesh_01tlh"]
+resource_name = "tilled_soil_Cube_002"
+_surfaces = [{
+"aabb": AABB(-0.5, -0.035, -0.5, 1, 0.07, 1),
+"attribute_data": PackedByteArray("/1//f/+f/z//n/9//1//P/9f/z//nwAA/5//P/9fAAD/n/+v/18jtP9f/6//n/9//1//f/+fI7T/X/+3/5//t/9f/7//n/+//1//x/+f/8f/X9vL/5/by/9f/8//n//P/1////+f////H/8/iyAjdP8f/2+vJE97JCL/d/9f/3//X/8/2ytzf/8v/3//J9p9/5//P//P/3//n/9//9fafSPUc3//3/9v/9//P9rd/3dz3yN0T9tPew=="),
+"format": 34896613399,
+"index_count": 108,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACgALAAgACgAMAAsACAANAAkADQAOAAkADQAPAA4ADwAQAA4ADwARABAAEQASABAAEQATABIAEwAUABIAEwAVABQAFQAWABQAFQAXABYAGAAWABcAGAAXABkAGgAbABwAGgAdABsAGwAdAB4AHQAaAB8AHwAaACAAHQAfACEAIQAfACIAHQAhACMAJAAlACYAJAAnACUAJQAnACgAJwAkACkAKQAkACoAJwApACsAKwApACwAJwArAC0A"),
+"material": SubResource("StandardMaterial3D_q518e"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 46,
+"vertex_data": PackedByteArray("//8AAAAAVNX///////9U1f////8AAFTV//8AAP//VNX//wAA////vwAA//////+//////////78AAAAA////v/8///8AABz+by8AAC4Cd/j/PwAAAAAc/v////8AAP////8AAAAA//9vL///LgJ3+P8fAACTCP/w/x///5MI//C+EgAAvhKq6b4S//++EqrpkwgAAP8fjOKTCP///x+M4i4CAABvL7vbLgL//28vu9sAAAAA/z/i1gAA////P+LWAAAAAP//VNUAAP////9U1QAAAAD///+/LgIAAG8v/78AAAAA/z//v74SAAC+Ev+/kwgAAP8f/7///wAAAAD/v///AAD///+/by8AAC4C/7//PwAAAAD/v/8fAACTCP+/////////////P///AAD///////8AAP///x///5MI//9vL///LgL//wAA////P///AAD///////+TCP///x///y4C//9vL///vhL//74S//+qKqoqqiqqKqoqqiqqKqoq/////////////////////wfBB8Hzw/PDB8EHwf+//7//v/+/88Pzw47HjseOx47H+sr6yvrK+spVzlXOVc5Vzr7RvtG+0b7RaNRo1GjUaNRU1VTVVNVU1QAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/3//f/+//3//v/9//7//f/+//3//v/9//7//f/+//3//v/+/AAD/vwAA")
+}]
+blend_shape_mode = 0
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wkb2m"]
-albedo_color = Color(0.49, 0.28616002, 0.23520002, 1)
-albedo_texture = SubResource("NoiseTexture2D_wkb2m")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h6b0o"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_wwvcq"]
-material = SubResource("StandardMaterial3D_wkb2m")
-size = Vector3(1, 0.1, 1)
+[sub_resource type="ArrayMesh" id="ArrayMesh_wkb2m"]
+resource_name = "tilled_soil_Cube_003"
+_surfaces = [{
+"aabb": AABB(-0.5, -0.035, -0.5, 1, 0.07, 1),
+"attribute_data": PackedByteArray("/1////+f/7//n////1//v/9f/7//n/9//5//v/9f/3//X/9//5//P/+f/3//X/8//1//P/+fAAD/n/8//18AAP8f/3//X/8//1//f/8f/z//n/9//9//P//f/3//n/8/"),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUA"),
+"material": SubResource("StandardMaterial3D_h6b0o"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("AAAAAP//VNUAAP//AABU1QAA/////1TVAAAAAAAAVNUAAAAAAAD///////8AAP//AAD//wAA/////wAAAAD/////AAAAAFTV////////VNX/////AABU1f//AAD//1TV//8AAP///78AAP//////v/////////+/AAAAAP///78AAAAAAAD/v///AAD///+///8AAAAA/78AAAAA////v/////8AAP//AAD///////8AAP//AAD/////////////VNVU1VTVVNVU1VTVVNVU1f+//7//v/+//7//v/+//7+qKqoqqiqqKqoqqiqqKqoq/////////////////////wAA/38AAP9/AAD/fwAA/3//f/+//3//v/9//7//f/+/")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_edf38"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_vbbfk"]
+resource_name = "tilled_soil_Cube_004"
+_surfaces = [{
+"aabb": AABB(-0.5, -0.035, -0.5, 1, 0.07, 1),
+"attribute_data": PackedByteArray("/1//P/+fAAD/n/8//18AAP+f/6//XyO0/1//r/+fI7QdquGF/1//t+FV4YX/n/+3c6rrgP9f/7+LVeuA/5//vwynDn//X//H8lgOf/+f/8chpN17/1/by91b3Xv/n9vL46H/d/9f/88bXv93/5//z/9f////n///eqAjdIRfI3T/n/9v/1//b/+f/z//X/8//x//P4sgI3T/H/9vryRPeyQi/3fbK3N//yfafeFV4YX/L/9//1//b/9f/z8bXv93hF8jdPJYDn/dW917i1XrgP+f/z96oCN0/5//byGk3Xvjof93c6rrgAynDn//z/9/Harhhf/f/2//3/8/2t3/d3PfI3T/19p9T9tPeyPUc38="),
+"format": 34896613399,
+"index_count": 180,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUABgAIAAQABwAJAAUABgAKAAgABwALAAkADAAIAAoACwANAAkADAAKAA4ACwAPAA0AEAAMAA4ADwARAA0AEAAOABIADwATABEAFAAQABIAEwAVABEAFAASABYAEwAXABUAGAAUABYAFwAZABUAGAAWABoAFwAbABkAHAAZABsAHAAbAB0AHgAYABoAHgAaAB8AIAAeAB8AIAAfACEAIQAiACAAIQAjACIAJAAlACYAJQAnACgAJAAnACUAJwApACoAJwArACkAJAArACcAKQArACwALQAkAC4ALwAkAC0AKwAkAC8ALwAtADAAKwAvADEAMQAvADIAKwAxADMANAA1ADYANQA3ADgANAA3ADUANwA5ADoANwA7ADkANAA7ADcAOQA7ADwAPQA0AD4APwA0AD0AOwA0AD8APwA9AEAAOwA/AEEAQQA/AEIAOwBBAEMA"),
+"material": SubResource("StandardMaterial3D_edf38"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 68,
+"vertex_data": PackedByteArray("//8AAP///78AAP//////v/////////+/AAAAAP///7//P///AAAc/m8vAAAuAnf4/z8AAAAAHP5vL///LgJ3+P+///8AABz+/x8AAJMI//D/vwAAAAAc/v8f//+TCP/wj9D//y4Cd/i+EgAAvhKq6Y/QAAAuAnf4vhL//74Squn/3///kwj/8JMIAAD/H4zi/98AAJMI//CTCP///x+M4kDt//++EqrpLgIAAG8vu9tA7QAAvhKq6S4C//9vL7vba/f///8fjOIAAAAA/z/i1mv3AAD/H4ziAAD///8/4tYAAAAA//9U1QAA/////1TV0P3//28vvNvQ/QAAby+72///////P+LW//8AAP8/4tb///////9U1f//AAD//1TVAAAAAP//AMAuAgAAby//vwAAAAD/P/+/vhIAAL4SI8CTCAAA/x//v28vAAAuAn3A/x8AAJMI/7//vwAAAAAPwP8/AAAAABs+//8AAP8//7///wAA////v2v3AAD/HxnA0P0AAG8v/7//3wAAkwgfHUDtAAC+EjzAj9AAAC4CDD3////////3/9D9//9vL737//////8///9A7f//vhIv/2v3////H7vwj9D//y4C/P7/3///kwhX/v8///8AANr//7///wAAff8AAP///z///wAA////////kwj///8f//8uAv//by////8f//+TCP//vhL//74S//9vL///LgL///////////////////////8HwQfB88PzwwfBB8Hzw/PD9z73Po7Hjsf3Pvc+jseOxws8Czz6yvrKCzwLPPrK+spwOHA4Vc5VznA4bzhVzlXOBDUENb7RvtEENQQ1vtG+0akxqTFo1GjUqTGpMWjUaNRU1VTVVNVU1UAuQC5ALkAuliuWK5YrliuqKqoqqiqqKpUBKoMAAP9/AAD/f7oGdY0AAP9/lgsslwAA/39HCVt7LidobAAA/38AAP9/uAsjegAA/3/RMaLjFRF0d+4W260GgPu/kIS2vf9//7/kgIy/Xo9PuI3AHAHnwNABE8AoAEbAjgD/f/+//3//v/9//7//vwAA/3//v/+/AAD/f/+/")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w1gi5"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_wwvcq"]
+resource_name = "tilled_soil_Cube_005"
+_surfaces = [{
+"aabb": AABB(-0.5, -0.035, -0.5, 1, 0.07, 1),
+"attribute_data": PackedByteArray("/1//D/+f2wv/n/8P/1/bC/1VATr/n/8HAaoBOv9f/wf/nwAA/18AAJRVCT9qqgk/+FjpQAan6UDhWx1EHaQdRB1e/0fhof9HhV/bS3mg20v/X/9P/5//T/9f/2//n/9vhV8jdHmgI3QdXv934aH/d+Fb4XsdpOF7+FgWfwanFn+UVfWAaqr1gP1V/YUBqv2F/1//r/+f/6//XyO0/58jtP9f/7f/n/+3/1//v/+f/7//X//H/5//x/9f28v/n9vL/1//z/+f/8//X//v/5//7/9fI/T/nyP0/1//9/+f//f/X////5////8f/0+LICN0/x//b68kT3skIv932ytzf/8n2n39Vf2F/y//fyQi/0eLINtL/yckQq8kr0T4WBZ/lFX1gP8v/z/bK4tAHV7/d+Fb4XuFX9tLlFUJP/1VATr/X/9vhV8jdP9f/0/hWx1E+FjpQB1e/0f/n/9PeaAjdP+f/28dpOF74aH/d2qq9YAGpxZ//8//fwGq/YXhof9HeaDbSwan6UAdpB1E/9fafSPUc38BqgE6aqoJP9rd/3dP2097c9/bSyPUi0D/z/8//9//b3PfI3T/3/9PT9uvRP/XJELa3f9H"),
+"format": 34896613399,
+"index_count": 324,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAAAAIAAwAFAAEABAACAAYAAwAHAAUABwAIAAUABwAJAAgABgAKAAQABgALAAoACwAMAAoACwANAAwADQAOAAwADQAPAA4ADwAQAA4ADwARABAAEQASABAAEQATABIAEwAUABIAEwAVABQAFgAUABUAFgAVABcAFwAYABYAFwAZABgAGQAaABgAGQAbABoAGwAcABoAGwAdABwAHQAeABwAHQAfAB4AHwAgAB4AHwAhACAAIQAiACAAIQAjACIAJAAiACMAJAAjACUAJQAmACQAJQAnACYAJwAoACYAJwApACgAKQAqACgAKQArACoAKwAsACoAKwAtACwALQAuACwALQAvAC4ALwAwAC4ALwAxADAAMgAwADEAMgAxADMANAAyADMANAAzADUANgA0ADUANgA1ADcAOAA2ADcAOAA3ADkAOgA7ADwAOwA9AD4AOgA9ADsAPQA/AEAAPQBBAD8AOgBBAD0APwBBAEIAQwA6AEQARQA6AEMARQBDAEYARQBBADoAQQBHAEgASQBFAEoAQQBLAEcARwBLAEwAQQBFAE0AQQBNAEsATgBFAEkATgBJAE8ATQBFAE4ASwBNAFAASwBQAFEAUABNAFIATQBOAFMAUwBOAFQATQBTAFUAVgBXAFgAVwBZAFoAVgBZAFcAWQBbAFwAWQBdAFsAVgBdAFkAWwBdAF4AXwBWAGAAYQBWAF8AYQBfAGIAYQBdAFYAXQBjAGQAZQBhAGYAXQBnAGMAYwBnAGgAXQBhAGkAXQBpAGcAagBhAGUAagBlAGsAaQBhAGoAZwBpAGwAZwBsAG0AbABpAG4AaQBqAG8AbwBqAHAAaQBvAHEA"),
+"material": SubResource("StandardMaterial3D_w1gi5"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 114,
+"vertex_data": PackedByteArray("/z8AAP//CsBvL///0P2wwP8//////wrAby8AAND9sMD/vwAA//8KwP8f//9r97rC/7//////CsD/HwAAa/e6wr4S//9A7fzFvhIAAEDt/MWP0AAA0P2wwI/Q///Q/bDA/98AAGv3usL/3///a/e6wkDtAABA7fzFQO3//0Dt/MVr9wAA/99Kymv3////30rK0P0AAI/Qd8/Q/f//j9B3z///AAD/v87T//////+/ztP//wAA/z/i1v//////P+LW0P0AAG8vu9vQ/f//by+722v3AAD/H4zia/f///8fjOJA7QAAvhKq6UDt//++Eqrp/98AAJMI//D/3///kwj/8I/QAAAuAnf4j9D//y4Cd/j/vwAAAAAc/v+///8AABz+/z8AAAAAHP7/P///AAAc/m8vAAAuAnf4by///y4Cd/j/HwAAkwj/8P8f//+TCP/wvhIAAL4Squm+Ev//vhKq6ZMIAAD/H4zikwj///8fjOIuAgAAby+72y4C//9vL7vbAAAAAP8/4tYAAP///z/i1gAAAAD/v87TAAD///+/ztMuAgAAj9B3zy4C//+P0HfPkwgAAP/fSsqTCP///99Kyr4SAABA7fzFvhL//0Dt/MUAAAAA/78PwC4CAABvL/+/AAAAAP8//7++EgAAvhIlwJMIAAD/H/+/by8AAC4Cg8D/HwAAkwj/v/+/AAAAAA7A/z8AAAAAPz6TCAAA/9//vy4CAACP0P+//x8AAGv3AMC+EgAAQO3/v//fAACTCHcdj9AAAC4CEz3/PwAA//8EwG8vAADQ/f+/a/cAAP8fUsFA7QAAvhI/wND9AACP0P+/j9AAAND9/7//vwAA//8AwP//AAD/P/+/0P0AAG8v/7///wAA/7//v0DtAABA7S/A/98AAGv3CMBr9wAA/9/5wv//////v1f+0P3//28vl/v//////z///0Dt//++EjX/a/f///8fVfCP0P//LgL3/v/f//+TCE/+/z///wAA7v//v///AAB9/2v3////3+T30P3//4/Q////3///a/eq/kDt//9A7XX7/x///5MI//9vL///LgL///+//////wT/j9D//9D9hQ+TCP///x///74S//++Ev//LgL//4/Qhf9vL///0P1P//8///////oLAAD///8///8uAv//by///wAA////v///vhL//0Dt////H///a/f//5MI////3///EPwQ/KjyqPIQ/BD8qPKo8u4D7gOq6arp7gPuA6rpqun/4v/i/+L/4lYNVg1WDVYNVBZUFlQWVBb/HP8c/xz/HEsiSyJLIksivya/Jr8mvya5KbkpuSm5KZYrliuWK5YrQC5ALkAuQC6pMakxqTGpMQQ1BDUENQQ1cDhwOHA4cDgLPAs8CzwLPPc+9z73Pvc+B8EHwQfBB8Hzw/PD88Pzw47HjseOx47H+sr6yvrK+spVzlXOVc5Vzr7RvtG+0b7RaNRo1GjUaNRF1kXWRdZF1j/ZP9k/2T/Zs92z3bPds93/4v/i/+L/4p4EPIkAAP9/AAD/f/UG6Y0AAP9/1AunlwAA/38OCXh7FCb1bAAA/38AAACAKAFRggAA/3+nMU3j3Ba4rWgFS30AAP9/VSLUbnMRRXfgAQ9/kQE2fzYC5H4AAP9/AAD/fwEA/n+uB1yPFQd0fAEXAq7nwNABuISivf9//7/dgJC/v48fuJDAIgHrwNgBCMARAEbAjwA8xHkI/3//v7nAdQFtwtwE/3//v/9//78TgXW/nI8wuP9//7//vwAAhoC7v8GAnr8fxkEM/3//v/+/AAD/vwAA/3//v/9//7//f/+/")
+}]
+blend_shape_mode = 0
 
 [node name="TilledSoil" type="Node3D" unique_id=74866083]
+script = ExtResource("1_01tlh")
+dry_color = Color(0.45, 0.23197497, 0.1935, 1)
+watered_color = Color(0.26, 0.13433333, 0.13, 1)
+color_transition_time = 3.0
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=180812982]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
-mesh = SubResource("BoxMesh_wwvcq")
+[node name="1" type="MeshInstance3D" parent="." unique_id=664950614]
+visible = false
+mesh = SubResource("ArrayMesh_01tlh")
+surface_material_override/0 = ExtResource("2_wkb2m")
+
+[node name="0" type="MeshInstance3D" parent="." unique_id=1862308013]
+visible = false
+mesh = SubResource("ArrayMesh_wkb2m")
+surface_material_override/0 = ExtResource("2_wkb2m")
+
+[node name="2" type="MeshInstance3D" parent="." unique_id=1299334660]
+visible = false
+mesh = SubResource("ArrayMesh_vbbfk")
+surface_material_override/0 = ExtResource("2_wkb2m")
+
+[node name="4" type="MeshInstance3D" parent="." unique_id=416850949]
+mesh = SubResource("ArrayMesh_wwvcq")
+surface_material_override/0 = ExtResource("2_wkb2m")
