@@ -20,24 +20,28 @@ metadata/_custom_type_script = "uid://id3822kkb4kt"
 script = ExtResource("1_ytpcr")
 id = &"carrot_stage_0"
 scene = ExtResource("4_o20sn")
+y_offset = 0.0
 metadata/_custom_type_script = "uid://id3822kkb4kt"
 
 [sub_resource type="Resource" id="Resource_nb242"]
 script = ExtResource("1_ytpcr")
 id = &"carrot_stage_1"
 scene = ExtResource("5_h8ws0")
+y_offset = 0.0
 metadata/_custom_type_script = "uid://id3822kkb4kt"
 
 [sub_resource type="Resource" id="Resource_eodge"]
 script = ExtResource("1_ytpcr")
 id = &"carrot_stage_2"
 scene = ExtResource("6_3c05e")
+y_offset = 0.0
 metadata/_custom_type_script = "uid://id3822kkb4kt"
 
 [sub_resource type="Resource" id="Resource_ndjhc"]
 script = ExtResource("1_ytpcr")
 id = &"carrot_stage_3"
 scene = ExtResource("7_01v4t")
+y_offset = 0.0
 metadata/_custom_type_script = "uid://id3822kkb4kt"
 
 [sub_resource type="Resource" id="Resource_3c05e"]

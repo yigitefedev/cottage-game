@@ -7,6 +7,10 @@ var has_setup := false
 var grid_manager: GridManager
 var tile_visual_manager: TileVisualManager
 
+@onready var head: MeshInstance3D = $head
+
+@export var spin_duration := 12
+@export var spin_rotations := 24
 
 func setup(coord: Vector2i) -> void:
 	corner_coord = coord
@@ -22,7 +26,10 @@ func _ready() -> void:
 		TimeManager.day_started.connect(on_day_started)
 
 func on_day_started(_day: int) -> void:
-	await get_tree().create_timer(0.8).timeout
+	await get_tree().create_timer(2.0).timeout
+
+	play_spin_animation()
+
 	water_nearby_tiles()
 
 
@@ -57,3 +64,16 @@ func water_nearby_tiles() -> void:
 
 		if tile_visual_manager != null:
 			tile_visual_manager.refresh_tile(tile_coord)
+			
+func play_spin_animation() -> void:
+	if head == null:
+		return
+
+	var tween := create_tween()
+
+	tween.tween_property(
+		head,
+		"rotation:y",
+		head.rotation.y + TAU * spin_rotations,
+		spin_duration
+	)
