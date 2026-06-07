@@ -29,8 +29,6 @@ var target_corner_coord: Vector2i
 var target_edge_coord: Vector2i
 var target_edge_orientation: StringName = &"horizontal"
 var target_tile: GameTileData
-signal target_changed
-
 
 func _ready() -> void:
 	add_to_group("targeting_system")

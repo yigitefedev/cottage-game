@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://c5q0wi8lyo8tv" path="res://scripts/managers/GridManager.gd" id="2_iuonh"]
 [ext_resource type="Material" uid="uid://cudoptcrtgl7u" path="res://external/Materials/grass.tres" id="2_m4h2d"]
 [ext_resource type="Script" uid="uid://bhsgdpgsj3ryi" path="res://scripts/grid/TileSelector.gd" id="3_k2fmo"]
-[ext_resource type="Resource" uid="uid://dmjx0qikjayj1" path="res://resources/grid/GameGridDefinition.tres" id="3_l3cfh"]
+[ext_resource type="Resource" uid="uid://c5hf35ii1ecji" path="res://resources/grid/GameGridDefinition.tres" id="3_l3cfh"]
 [ext_resource type="ArrayMesh" uid="uid://bpj527hgs6rpt" path="res://external/Assets/Meshes/grass_plane_mesh2.res" id="4_p8abn"]
 [ext_resource type="Script" uid="uid://duya06q6bg4x5" path="res://scripts/grid/TileVisualManager.gd" id="5_6q06x"]
 [ext_resource type="Resource" uid="uid://ce18jgnbrf4l3" path="res://resources/grid/MainTileVisualDatabase.tres" id="6_ow5a4"]
