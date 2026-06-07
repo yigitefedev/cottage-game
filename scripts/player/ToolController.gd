@@ -4,6 +4,7 @@ extends Node
 var player_inventory: PlayerInventory
 var tile_targeter: PlayerTileTargeter
 const crop_database: CropDatabase = preload("res://resources/crops/MainCropDatabase.tres")
+const item_database: ItemDatabase = preload("res://resources/items/MainItemDatabase.tres")
 var grid_manager: GridManager
 var tile_visual_manager: TileVisualManager
 var corner_targeter: PlayerCornerTargeter
@@ -12,7 +13,9 @@ var edge_targeter: PlayerEdgeTargeter
 var edge_visual_manager: EdgeVisualManager
 var grid_object_manager: GridObjectManager
 var player_stamina: PlayerStamina
-
+var grass_mask_manager: GrassMaskManager
+var world_item_spawner: WorldItemSpawner
+var player: CharacterBody3D
 func _ready() -> void:
 	await get_tree().process_frame
 	crop_database.build_lookup()
@@ -26,10 +29,13 @@ func _ready() -> void:
 	edge_targeter = get_tree().get_first_node_in_group("player_edge_targeter")
 	edge_visual_manager = get_tree().get_first_node_in_group("edge_visual_manager")
 	player_stamina = get_tree().get_first_node_in_group("player_stamina")
-
+	player = get_tree().get_first_node_in_group("player") as CharacterBody3D
+	world_item_spawner = get_tree().get_first_node_in_group("world_item_spawner")
+	grass_mask_manager = get_tree().get_first_node_in_group("grass_mask_manager")
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("use_item"):
 		use_selected_item()
+	
 
 
 func use_selected_item() -> void:
@@ -50,7 +56,6 @@ func use_selected_item() -> void:
 		return
 
 	var context := build_context(item)
-
 	if not action.can_use(context):
 		return
 
@@ -62,14 +67,14 @@ func use_selected_item() -> void:
 		player_stamina.spend(action.stamina_cost)
 	else:
 		action.use(context)
-
 	player_inventory.inventory_changed.emit()
+
 
 
 func build_context(item: ItemInstanceData) -> ItemUseContext:
 	var context := ItemUseContext.new()
 
-	context.player = get_parent() as CharacterBody3D
+	context.player = player
 
 	context.player_inventory = player_inventory
 	context.tool_controller = self
@@ -88,6 +93,9 @@ func build_context(item: ItemInstanceData) -> ItemUseContext:
 	context.corner_visual_manager = corner_visual_manager
 	context.grid_object_manager = grid_object_manager
 	context.player_stamina = player_stamina
+	context.grass_mask_manager = grass_mask_manager
+	context.world_item_spawner = world_item_spawner
+	context.item_database = item_database
 
 	if corner_targeter != null:
 		context.target_corner_coord = corner_targeter.get_target_corner()

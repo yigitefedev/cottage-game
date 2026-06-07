@@ -77,8 +77,8 @@ blend_shape_mode = 0
 
 [node name="TilledSoil" type="Node3D" unique_id=74866083]
 script = ExtResource("1_01tlh")
-dry_color = Color(0.45, 0.23197497, 0.1935, 1)
-watered_color = Color(0.26, 0.13433333, 0.13, 1)
+dry_color = Color(0.5411765, 0.3529412, 0.23529412, 1)
+watered_color = Color(0.30980393, 0.2, 0.15686275, 1)
 color_transition_time = 3.0
 
 [node name="1" type="MeshInstance3D" parent="." unique_id=664950614]

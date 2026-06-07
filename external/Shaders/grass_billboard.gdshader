@@ -11,11 +11,16 @@ global uniform sampler2D grass_mask_texture;
 global uniform vec2 grass_mask_origin;
 global uniform vec2 grass_mask_size;
 
+
+
 uniform vec4 grass_color : source_color;
 uniform sampler2D grass_alpha : source_color;
 uniform float grass_bend_amount = 1.0;
 uniform float sway_back : hint_range(0.0, 1.0, 0.01) = 1.0;
 uniform float light_steps = 3.0;
+uniform float color_noise_scale : hint_range(0.005, 0.2, 0.001) = 0.04;
+uniform float color_variation_strength : hint_range(0.0, 1.0, 0.01) = 0.35;
+uniform float color_steps : hint_range(1.0, 8.0, 1.0) = 5.0;
 
 varying vec3 node_pos_view;
 varying vec3 node_pos_world;
@@ -83,11 +88,12 @@ void fragment() {
 		discard;
 	}
 	// Color Variation
-	float noise = texture(wind_noise, node_pos_world.xz * 0.04).r;
-	noise = (noise + 2.5) / 3.5;
-	noise = ceil(noise * 5.0) / 5.0;
+	float noise = texture(wind_noise, node_pos_world.xz * color_noise_scale).r;
+	noise = ceil(noise * color_steps) / color_steps;
 
-	ALBEDO = grass_color.rgb * noise;
+	float variation = mix(1.0, noise, color_variation_strength);
+
+	ALBEDO = grass_color.rgb * variation;
 	ALPHA = texture(grass_alpha, UV).r;
 	ALPHA_SCISSOR_THRESHOLD = 0.75;
 

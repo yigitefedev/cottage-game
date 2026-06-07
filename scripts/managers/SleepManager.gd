@@ -17,35 +17,25 @@ func _ready() -> void:
 
 	time_manager = get_tree().get_first_node_in_group("time_manager")
 	player_stamina = get_tree().get_first_node_in_group("player_stamina")
-	
-	print("[SleepManager] ready")
-	print("[SleepManager] time_manager: ", time_manager)
-	print("[SleepManager] player_stamina: ", player_stamina)
-	print("[SleepManager] fade_rect: ", fade_rect)
+
 	
 	if time_manager != null:
 		time_manager.forced_sleep_requested.connect(force_sleep)
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("debug_sleep"):
-		print("[SleepManager] debug_sleep pressed")
 		try_sleep()
 
 
 func try_sleep() -> void:
-	print("[SleepManager] try_sleep")
-
 	if is_sleeping:
-		print("[SleepManager] already sleeping")
 		return
 
 	sleep()
 
 
 func sleep() -> void:
-	print("[SleepManager] sleep start")
 	if time_manager == null:
-		print("[SleepManager] no time manager")
 		return
 
 	is_sleeping = true

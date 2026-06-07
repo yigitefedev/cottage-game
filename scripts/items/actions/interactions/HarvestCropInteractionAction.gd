@@ -60,6 +60,15 @@ func harvest_tile(context: InteractionContext, coord: Vector2i, tile: GameTileDa
 		item.amount = 1
 
 		context.world_item_spawner.spawn_item(item, drop_position)
+	var plant_waste_definition := item_database.get_item(&"plant_waste")
+
+	if plant_waste_definition != null:
+		for i in range(2):
+			var waste := ItemInstanceData.new()
+			waste.definition = plant_waste_definition
+			waste.amount = 1
+
+			context.world_item_spawner.spawn_item(waste, drop_position)
 
 	clear_crop(context, coord, tile)
 

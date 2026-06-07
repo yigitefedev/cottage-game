@@ -18,7 +18,7 @@ shader_parameter/outline_mask = 1.0
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vwrgi"]
 render_priority = 0
 shader = ExtResource("4_skbgy")
-shader_parameter/color = Color(0.3647059, 0.65882355, 0.1764706, 1)
+shader_parameter/color = Color(0.39594665, 0.64, 0.3072, 1)
 shader_parameter/alpha = ExtResource("5_6xoww")
 shader_parameter/leaves_scale = 1.0
 shader_parameter/leaf_bend_amount = 0.7

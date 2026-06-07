@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://c5q0wi8lyo8tv" path="res://scripts/managers/GridManager.gd" id="2_iuonh"]
 [ext_resource type="Material" uid="uid://cudoptcrtgl7u" path="res://external/Materials/grass.tres" id="2_m4h2d"]
 [ext_resource type="Script" uid="uid://bhsgdpgsj3ryi" path="res://scripts/grid/TileSelector.gd" id="3_k2fmo"]
-[ext_resource type="Resource" uid="uid://ljjvgcr2hlst" path="res://resources/grid/GameGridDefinition.tres" id="3_l3cfh"]
+[ext_resource type="Resource" uid="uid://dmjx0qikjayj1" path="res://resources/grid/GameGridDefinition.tres" id="3_l3cfh"]
 [ext_resource type="ArrayMesh" uid="uid://bpj527hgs6rpt" path="res://external/Assets/Meshes/grass_plane_mesh2.res" id="4_p8abn"]
 [ext_resource type="Script" uid="uid://duya06q6bg4x5" path="res://scripts/grid/TileVisualManager.gd" id="5_6q06x"]
 [ext_resource type="Resource" uid="uid://ce18jgnbrf4l3" path="res://resources/grid/MainTileVisualDatabase.tres" id="6_ow5a4"]
@@ -23,7 +23,9 @@
 [ext_resource type="Script" uid="uid://c3htoi4pjfls8" path="res://scripts/managers/SleepManager.gd" id="14_necax"]
 [ext_resource type="Script" uid="uid://ci21tn5q1ub2o" path="res://scripts/UI/StaminaUI.gd" id="18_ou6is"]
 [ext_resource type="Script" uid="uid://cb1box8yclrsp" path="res://scripts/managers/GrassMaskManager.gd" id="19_s17dp"]
+[ext_resource type="Script" uid="uid://bphui2daywmdy" path="res://scripts/managers/WindManager.gd" id="20_37hlw"]
 [ext_resource type="PackedScene" uid="uid://cdnwui5fdy5rh" path="res://external/Scenes/tree.tscn" id="20_r4lks"]
+[ext_resource type="Texture2D" uid="uid://bpswbjh4jj1ou" path="res://external/Assets/Textures/noise.tres" id="21_6llfj"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_m4h2d"]
 sky_top_color = Color(0.5635199, 0.39360002, 0.96, 1)
@@ -59,7 +61,7 @@ size = Vector2(50, 50)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_s17dp"]
 render_priority = 0
 shader = ExtResource("1_p8abn")
-shader_parameter/ground_color = Color(0.101960786, 0.6901961, 0.21176471, 1)
+shader_parameter/ground_color = Color(0.30800006, 0.66, 0.23760001, 1)
 shader_parameter/outline_mask = 1.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_iuonh"]
@@ -193,6 +195,10 @@ fade_rect = NodePath("../../UI/SleepFadeRect")
 
 [node name="GrassMaskManager" type="Node3D" parent="Managers" unique_id=326576980]
 script = ExtResource("19_s17dp")
+
+[node name="WindManager" type="Node3D" parent="Managers" unique_id=1556886251]
+script = ExtResource("20_37hlw")
+wind_noise = ExtResource("21_6llfj")
 
 [node name="UI" type="Control" parent="." unique_id=2032844883]
 layout_mode = 3

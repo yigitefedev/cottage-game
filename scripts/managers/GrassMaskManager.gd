@@ -101,3 +101,51 @@ func world_vec2_to_mask_pixel(world_xz: Vector2) -> Vector2i:
 		clampi(int(uv.x * mask_size_px.x), 0, mask_size_px.x - 1),
 		clampi(int(uv.y * mask_size_px.y), 0, mask_size_px.y - 1)
 	)
+func clear_tile_grass(coord: Vector2i) -> void:
+	paint_tile(coord, Color.BLACK)
+	apply_mask()
+func clear_arc(world_center: Vector3, forward: Vector3, radius: float, angle_degrees: float) -> void:
+	if mask_image == null:
+		return
+
+	var center_xz := Vector2(world_center.x, world_center.z)
+
+	var forward_xz := Vector2(forward.x, forward.z)
+	if forward_xz.length() <= 0.001:
+		forward_xz = Vector2(0, -1)
+	else:
+		forward_xz = forward_xz.normalized()
+
+	var center_px := world_vec2_to_mask_pixel(center_xz)
+	var radius_px := int(radius / world_size.x * mask_size_px.x)
+	var half_angle := deg_to_rad(angle_degrees * 0.5)
+
+	for y in range(center_px.y - radius_px, center_px.y + radius_px + 1):
+		for x in range(center_px.x - radius_px, center_px.x + radius_px + 1):
+			if x < 0 or y < 0 or x >= mask_size_px.x or y >= mask_size_px.y:
+				continue
+
+			var pixel_world := mask_pixel_to_world_vec2(Vector2i(x, y))
+			var dir := pixel_world - center_xz
+			var dist := dir.length()
+
+			if dist <= 0.001 or dist > radius:
+				continue
+
+			dir = dir.normalized()
+
+			var dot_value: float = clamp(forward_xz.dot(dir), -1.0, 1.0)
+			var angle := acos(dot_value)
+
+			if angle <= half_angle:
+				mask_image.set_pixel(x, y, Color.BLACK)
+
+	apply_mask()
+	
+func mask_pixel_to_world_vec2(pixel: Vector2i) -> Vector2:
+	var uv := Vector2(
+		float(pixel.x) / float(mask_size_px.x),
+		float(pixel.y) / float(mask_size_px.y)
+	)
+
+	return world_origin + uv * world_size
