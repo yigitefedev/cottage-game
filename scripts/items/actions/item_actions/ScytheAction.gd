@@ -4,7 +4,7 @@ extends ItemAction
 @export var cut_radius := 1.4
 @export var cut_angle_degrees := 110.0
 @export var plant_waste_amount := 1
-
+@export var minimum_pixels_for_waste := 20
 
 func can_use(context: ItemUseContext) -> bool:
 	if context == null:
@@ -32,14 +32,15 @@ func use(context: ItemUseContext) -> void:
 	var forward := get_player_forward(context.player)
 	var center := context.player.global_position + forward * 0.7
 
-	context.grass_mask_manager.clear_arc(
+	var removed_pixels: int = context.grass_mask_manager.clear_arc(
 		center,
 		forward,
 		cut_radius,
 		cut_angle_degrees
 	)
 
-	spawn_plant_waste(context, center + Vector3.UP * 0.4)
+	if removed_pixels >= minimum_pixels_for_waste:
+		spawn_plant_waste(context, center + Vector3.UP * 0.4)
 
 
 func spawn_plant_waste(context: ItemUseContext, drop_position: Vector3) -> void:

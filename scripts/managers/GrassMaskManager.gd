@@ -104,9 +104,11 @@ func world_vec2_to_mask_pixel(world_xz: Vector2) -> Vector2i:
 func clear_tile_grass(coord: Vector2i) -> void:
 	paint_tile(coord, Color.BLACK)
 	apply_mask()
-func clear_arc(world_center: Vector3, forward: Vector3, radius: float, angle_degrees: float) -> void:
+func clear_arc(world_center: Vector3, forward: Vector3, radius: float, angle_degrees: float) -> int:
 	if mask_image == null:
-		return
+		return 0
+
+	var removed_pixels := 0
 
 	var center_xz := Vector2(world_center.x, world_center.z)
 
@@ -138,9 +140,14 @@ func clear_arc(world_center: Vector3, forward: Vector3, radius: float, angle_deg
 			var angle := acos(dot_value)
 
 			if angle <= half_angle:
-				mask_image.set_pixel(x, y, Color.BLACK)
+				if mask_image.get_pixel(x, y).r > 0.5:
+					mask_image.set_pixel(x, y, Color.BLACK)
+					removed_pixels += 1
 
-	apply_mask()
+	if removed_pixels > 0:
+		apply_mask()
+
+	return removed_pixels
 	
 func mask_pixel_to_world_vec2(pixel: Vector2i) -> Vector2:
 	var uv := Vector2(

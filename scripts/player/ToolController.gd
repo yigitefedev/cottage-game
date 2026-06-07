@@ -4,7 +4,7 @@ extends Node
 var player_inventory: PlayerInventory
 var tile_targeter: PlayerTileTargeter
 const crop_database: CropDatabase = preload("res://resources/crops/MainCropDatabase.tres")
-const item_database: ItemDatabase = preload("res://resources/items/MainItemDatabase.tres")
+@export var item_database: ItemDatabase
 var grid_manager: GridManager
 var tile_visual_manager: TileVisualManager
 var corner_targeter: PlayerCornerTargeter
@@ -32,6 +32,9 @@ func _ready() -> void:
 	player = get_tree().get_first_node_in_group("player") as CharacterBody3D
 	world_item_spawner = get_tree().get_first_node_in_group("world_item_spawner")
 	grass_mask_manager = get_tree().get_first_node_in_group("grass_mask_manager")
+
+	if item_database != null:
+		item_database.build_lookup()
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("use_item"):
 		use_selected_item()
