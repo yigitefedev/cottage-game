@@ -230,7 +230,7 @@ func update_tile_target_visual() -> void:
 		return
 
 	target_highlight.visible = true
-	target_highlight.global_position = grid_manager.tile_to_world(target_coord) + Vector3.UP * 0.055
+	target_highlight.global_position = grid_manager.tile_to_world(target_coord) + Vector3.UP * 0.3
 	
 func update_corner_target_visual() -> void:
 	if corner_target_highlight == null:

@@ -76,7 +76,7 @@ func use_selected_item() -> void:
 
 func build_context(item: ItemInstanceData) -> ItemUseContext:
 	var context := ItemUseContext.new()
-
+	add_to_group("tool_controller")
 	context.player = player
 
 	context.player_inventory = player_inventory

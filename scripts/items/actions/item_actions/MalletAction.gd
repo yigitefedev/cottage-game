@@ -43,7 +43,7 @@ func use(context: ItemUseContext) -> void:
 			context.target_tile_coord,
 			drop_position
 		)
-
+	
 
 func has_breakable_edge(context: ItemUseContext) -> bool:
 	var edge := context.target_edge

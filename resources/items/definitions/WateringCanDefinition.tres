@@ -10,7 +10,7 @@ id = &"watering_can"
 display_name = "Watering Can"
 icon = ExtResource("1_hiynd")
 max_stack = 1
-tags = Array[StringName]([&"tool", &"watering_can"])
+tags = Array[StringName]([&"tool", &"watering_can", &"target_tile"])
 primary_action = ExtResource("2_hiynd")
 properties = {
 "capacity": 20

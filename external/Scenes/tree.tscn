@@ -143,7 +143,7 @@ void light(){
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gpe07"]
 render_priority = 0
 shader = SubResource("Shader_qn3p4")
-shader_parameter/albedo = Color(0.3647059, 0.65882355, 0.1764706, 1)
+shader_parameter/albedo = Color(0.39607844, 0.6392157, 0.30588236, 1)
 shader_parameter/texture_albedo = ExtResource("6_vd8dm")
 shader_parameter/alpha_scissor_threshold = 0.50000002375
 shader_parameter/specular = 0.0
@@ -152,6 +152,7 @@ shader_parameter/uv1_offset = Vector3(0, 0, 0)
 
 [sub_resource type="QuadMesh" id="QuadMesh_ub7rt"]
 material = SubResource("ShaderMaterial_gpe07")
+size = Vector2(0.4, 0.4)
 subdivide_depth = 3
 orientation = 1
 
@@ -169,8 +170,8 @@ transform = Transform3D(1.3916291, 0, 4.459546e-08, 0, 0.93000007, 0, -4.459546e
 cast_shadow = 3
 mesh = SubResource("ArrayMesh_adxj5")
 
-[node name="GPUParticles3D2" type="GPUParticles3D" parent="leaves2" index="0" unique_id=1541018864]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.054033, -4.2312803, 1.9154234)
+[node name="GPUParticles3D2" type="GPUParticles3D" parent="." index="3" unique_id=1541018864]
+transform = Transform3D(1.3916291, 0, 4.459546e-08, 0, 0.93000007, 0, -4.459546e-08, 0, 1.3916291, -0.016807318, 2.4479656, -0.029516902)
 cast_shadow = 0
 amount = 5
 lifetime = 10.0
