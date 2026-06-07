@@ -197,3 +197,38 @@ debug_sleep={
 [rendering]
 
 rendering_device/driver.windows="d3d12"
+
+[shader_globals]
+
+wind_strength={
+"type": "float",
+"value": 0.4
+}
+wind_speed={
+"type": "float",
+"value": 0.075
+}
+wind_scale={
+"type": "float",
+"value": 0.025
+}
+wind_noise={
+"type": "sampler2D",
+"value": "res://external/Assets/Textures/noise.tres"
+}
+wind_direction={
+"type": "vec3",
+"value": Vector3(1, 0, 1)
+}
+grass_mask_texture={
+"type": "sampler2D",
+"value": ""
+}
+grass_mask_origin={
+"type": "vec2",
+"value": Vector2(0, 0)
+}
+grass_mask_size={
+"type": "vec2",
+"value": Vector2(50, 50)
+}

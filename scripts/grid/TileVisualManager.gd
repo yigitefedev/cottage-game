@@ -6,12 +6,13 @@ extends Node3D
 
 var visual_lookup: Dictionary = {}
 var active_tile_visuals: Dictionary = {}
-
+var grass_mask_manager: GrassMaskManager
 
 func _ready() -> void:
 	add_to_group("tile_visual_manager")
 	build_visual_lookup()
 	refresh_all_tiles()
+	grass_mask_manager = get_tree().get_first_node_in_group("grass_mask_manager")
 
 
 func build_visual_lookup() -> void:
@@ -51,7 +52,11 @@ func refresh_tile(coord: Vector2i) -> void:
 	for layer in tile.get_visual_layers().keys():
 		var visual_id: StringName = tile.visual_layers[layer]
 		spawn_tile_visual(coord, visual_id)
+	if grass_mask_manager == null:
+		grass_mask_manager = get_tree().get_first_node_in_group("grass_mask_manager")
 
+	if grass_mask_manager != null:
+		grass_mask_manager.refresh_tile_mask(coord)
 
 func spawn_tile_visual(coord: Vector2i, visual_id: StringName) -> void:
 	if not visual_lookup.has(visual_id):

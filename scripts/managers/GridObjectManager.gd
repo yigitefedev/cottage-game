@@ -177,5 +177,5 @@ func place_edge_object(coord: Vector2i, orientation: StringName, object_id: Stri
 
 	if edge_visual_manager != null:
 		edge_visual_manager.refresh_edge(coord, orientation)
-
+	
 	return true
