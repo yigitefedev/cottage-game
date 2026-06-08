@@ -1,8 +1,6 @@
 class_name TilledSoil
 extends Node3D
 
-@export var dry_color := Color(0.56, 0.38, 0.24, 1.0)
-@export var watered_color := Color(0.32, 0.22, 0.16, 1.0)
 @export var color_transition_time := 1.0
 
 @onready var all_round: Node3D = $"4"
@@ -13,7 +11,7 @@ extends Node3D
 var coord: Vector2i
 var grid_manager: GridManager
 var active_shape: Node3D
-var material_instance: StandardMaterial3D
+var material_instance: ShaderMaterial
 
 
 func setup(_coord: Vector2i, _grid_manager: GridManager) -> void:
@@ -27,32 +25,74 @@ func setup(_coord: Vector2i, _grid_manager: GridManager) -> void:
 	if tile != null and tile.has_flag(&"watered"):
 		if tile.has_flag(&"just_watered"):
 			tile.set_flag(&"just_watered", false)
-			set_material_color(dry_color)
+			set_material_wetness(0.0)
 			update_material(false)
 		else:
 			update_material(true)
 	else:
 		update_material(true)
 
-func set_material_color(color: Color) -> void:
+
+func ensure_material_instance() -> bool:
 	if active_shape == null:
-		return
+		return false
 
 	var mesh_instance := find_mesh_instance(active_shape)
 	if mesh_instance == null:
-		return
+		return false
 
 	if material_instance == null:
 		var base_mat := mesh_instance.get_active_material(0)
-		if base_mat != null:
-			material_instance = base_mat.duplicate() as StandardMaterial3D
+
+		if base_mat != null and base_mat is ShaderMaterial:
+			material_instance = base_mat.duplicate() as ShaderMaterial
 		else:
-			material_instance = StandardMaterial3D.new()
+			return false
 
 		mesh_instance.set_surface_override_material(0, material_instance)
 
-	material_instance.albedo_color = color
-	
+	return true
+
+
+func set_material_wetness(value: float) -> void:
+	if not ensure_material_instance():
+		return
+
+	material_instance.set_shader_parameter("wetness", value)
+
+
+func update_material(instant: bool = false) -> void:
+	var tile := grid_manager.get_tile(coord)
+	if tile == null or active_shape == null:
+		return
+
+	if not ensure_material_instance():
+		return
+
+	var target_wetness := 1.0 if tile.has_flag(&"watered") else 0.0
+
+	if instant:
+		material_instance.set_shader_parameter("wetness", target_wetness)
+		return
+
+	var duration := color_transition_time
+
+	if tile.has_flag(&"slow_water_tween"):
+		duration *= 4.0
+		tile.set_flag(&"slow_water_tween", false)
+
+	var start_wetness := float(material_instance.get_shader_parameter("wetness"))
+
+	var tween := create_tween()
+	tween.tween_method(
+		func(value: float) -> void:
+			material_instance.set_shader_parameter("wetness", value),
+		start_wetness,
+		target_wetness,
+		duration
+	)
+
+
 func update_shape() -> void:
 	var up := has_soil(coord + Vector2i.UP)
 	var right := has_soil(coord + Vector2i.RIGHT)
@@ -88,39 +128,8 @@ func update_shape() -> void:
 
 	active_shape.visible = true
 
-
-func update_material(instant: bool = false) -> void:
-	var tile := grid_manager.get_tile(coord)
-	if tile == null or active_shape == null:
-		return
-
-	var mesh_instance := find_mesh_instance(active_shape)
-	if mesh_instance == null:
-		return
-
-	if material_instance == null:
-		var base_mat := mesh_instance.get_active_material(0)
-		if base_mat != null:
-			material_instance = base_mat.duplicate() as StandardMaterial3D
-		else:
-			material_instance = StandardMaterial3D.new()
-
-		mesh_instance.set_surface_override_material(0, material_instance)
-
-	var target_color := watered_color if tile.has_flag(&"watered") else dry_color
-
-	if instant:
-		material_instance.albedo_color = target_color
-		return
-
-	var duration := color_transition_time
-
-	if tile.has_flag(&"slow_water_tween"):
-		duration *= 4.0
-		tile.set_flag(&"slow_water_tween", false)
-
-	var tween := create_tween()
-	tween.tween_property(material_instance, "albedo_color", target_color, duration)
+	material_instance = null
+	ensure_material_instance()
 
 
 func find_mesh_instance(root: Node) -> MeshInstance3D:

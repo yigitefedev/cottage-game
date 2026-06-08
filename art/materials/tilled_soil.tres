@@ -1,6 +1,46 @@
-[gd_resource type="StandardMaterial3D" format=3 uid="uid://c67kww2csspcy"]
+[gd_resource type="ShaderMaterial" format=3 uid="uid://c67kww2csspcy"]
+
+[ext_resource type="Shader" uid="uid://cms1efrhdw11v" path="res://art/shaders/soil_world_noise.gdshader" id="1_hww63"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_wwvcq"]
+frequency = 0.02
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_acd4g"]
+noise = SubResource("FastNoiseLite_wwvcq")
+seamless = true
+bump_strength = 19.4
 
 [resource]
-albedo_color = Color(0.39, 0.17549999, 0.13259998, 1)
-grow_amount = 0.188
-stencil_flags = 2
+render_priority = 0
+shader = ExtResource("1_hww63")
+shader_parameter/soil_dark = Color(0.28, 0.19, 0.13, 1)
+shader_parameter/soil_mid = Color(0.42, 0.29, 0.2, 1)
+shader_parameter/soil_light = Color(0.52, 0.38, 0.27, 1)
+shader_parameter/fleck_dark = Color(0.34, 0.25, 0.19, 1)
+shader_parameter/fleck_light = Color(0.55, 0.43, 0.33, 1)
+shader_parameter/fleck_green = Color(0.34, 0.38, 0.23, 1)
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_acd4g")
+shader_parameter/noise_scale = 0.04
+shader_parameter/toon_strength = 0.165
+shader_parameter/fleck_scale = 6.2
+shader_parameter/fleck_size = 0.195
+shader_parameter/fleck_softness = 0.03
+shader_parameter/fleck_chance = 0.9
+shader_parameter/fleck_strength = 0.69
+shader_parameter/green_fleck_scale = 3.5
+shader_parameter/green_fleck_size = 0.08
+shader_parameter/green_fleck_chance = 0.9
+shader_parameter/green_fleck_strength = 1.1
+shader_parameter/soil_mossy = Color(0.4, 0.397, 0.22000001, 1)
+shader_parameter/moss_strength = 0.88
+shader_parameter/moss_noise_scale = 0.045
+shader_parameter/wet_top = 0.0
+shader_parameter/wet_right = 0.0
+shader_parameter/wet_bottom = 0.0
+shader_parameter/wet_left = 0.0
+shader_parameter/wet_blend_width = 0.385
+shader_parameter/neighbor_wet_strength = 0.595
+shader_parameter/wet_noise_scale = 0.26
+shader_parameter/wet_edge_noise_strength = 0.28
+shader_parameter/wetness = 0.0
+shader_parameter/wet_darkness = 0.6

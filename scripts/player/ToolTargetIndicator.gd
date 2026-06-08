@@ -28,5 +28,5 @@ func _process(_delta: float) -> void:
 		return
 
 	tile_indicator.visible = true
-	tile_indicator.global_position = grid_manager.tile_to_world(targeting_system.target_tile_coord) + Vector3.UP * 0.5
+	tile_indicator.global_position = grid_manager.tile_to_world(targeting_system.target_tile_coord) + Vector3.UP * 0.24
 	tile_indicator.global_rotation = Vector3.ZERO

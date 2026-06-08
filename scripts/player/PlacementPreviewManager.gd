@@ -158,10 +158,10 @@ func apply_preview_material(root: Node, is_valid: bool) -> void:
 	if root == null:
 		return
 
-	var color := Color(1.0, 1.0, 1.0, 0.45)
+	var color := Color(1.0, 1.0, 1.0, 0.2)
 
 	if not is_valid:
-		color = Color(1.0, 0.35, 0.45, 0.45)
+		color = Color(1.0, 0.35, 0.45, 0.2)
 
 	if root is MeshInstance3D:
 		var mesh_instance := root as MeshInstance3D
