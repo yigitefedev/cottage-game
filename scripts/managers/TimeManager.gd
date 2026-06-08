@@ -137,16 +137,3 @@ func get_sleep_wake_hour() -> int:
 	return 6
 func get_forced_sleep_wake_hour() -> int:
 	return 10
-	
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("debug_toggle_time_pause"):
-		toggle_pause()
-
-	if event.is_action_pressed("debug_time_speed_1"):
-		set_time_scale(1.0)
-
-	if event.is_action_pressed("debug_time_speed_5"):
-		set_time_scale(10.0)
-
-	if event.is_action_pressed("debug_time_speed_20"):
-		set_time_scale(200.0)

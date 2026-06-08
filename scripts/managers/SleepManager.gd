@@ -22,11 +22,6 @@ func _ready() -> void:
 	if time_manager != null:
 		time_manager.forced_sleep_requested.connect(force_sleep)
 
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("debug_sleep"):
-		try_sleep()
-
-
 func try_sleep() -> void:
 	if is_sleeping:
 		return
