@@ -116,8 +116,6 @@ func _on_show_grid_data_toggled(enabled: bool) -> void:
 	if grid_data_panel == null:
 		grid_data_panel = get_tree().get_first_node_in_group("grid_data_panel")
 
-	print("[DebugMenu] show grid data:", enabled, " panel:", grid_data_panel)
-
 	if grid_data_panel != null:
 		grid_data_panel.set_show_data(enabled)
 		

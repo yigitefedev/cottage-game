@@ -290,6 +290,7 @@ color = Color(0, 0, 0, 1)
 [node name="Dev" type="Node3D" parent="." unique_id=1722527143]
 
 [node name="DevUI" type="Control" parent="Dev" unique_id=663780241]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -365,9 +366,10 @@ horizontal_alignment = 1
 layout_mode = 2
 size_flags_vertical = 0
 tab_alignment = 1
-current_tab = 0
+current_tab = 3
 
 [node name="Grid" type="VBoxContainer" parent="Dev/DevUI/DebugMenu/PanelContainer/VBoxContainer/TabContainer" unique_id=1514267215]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -402,7 +404,6 @@ metadata/_tab_index = 1
 
 [node name="WorldToolsCheckBox" type="CheckBox" parent="Dev/DevUI/DebugMenu/PanelContainer/VBoxContainer/TabContainer/World" unique_id=522274368]
 layout_mode = 2
-button_pressed = true
 text = "World Tools"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Dev/DevUI/DebugMenu/PanelContainer/VBoxContainer/TabContainer/World" unique_id=257386855]
@@ -515,7 +516,6 @@ metadata/_tab_index = 2
 
 [node name="PlayerToolsCheckBox" type="CheckBox" parent="Dev/DevUI/DebugMenu/PanelContainer/VBoxContainer/TabContainer/Player" unique_id=1577334837]
 layout_mode = 2
-button_pressed = true
 text = "Player Tools"
 
 [node name="PlayerToolsControls" type="VBoxContainer" parent="Dev/DevUI/DebugMenu/PanelContainer/VBoxContainer/TabContainer/Player" unique_id=446719861]
@@ -526,13 +526,11 @@ layout_mode = 2
 text = "Refill Stamina"
 
 [node name="Time" type="VBoxContainer" parent="Dev/DevUI/DebugMenu/PanelContainer/VBoxContainer/TabContainer" unique_id=972897816]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 3
 
 [node name="TimeToolsCheckBox" type="CheckBox" parent="Dev/DevUI/DebugMenu/PanelContainer/VBoxContainer/TabContainer/Time" unique_id=729899396]
 layout_mode = 2
-button_pressed = true
 text = "Time Tools"
 
 [node name="TimeToolsControls" type="VBoxContainer" parent="Dev/DevUI/DebugMenu/PanelContainer/VBoxContainer/TabContainer/Time" unique_id=1320523793]
@@ -544,6 +542,7 @@ text = "Sleep"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Dev/DevUI/DebugMenu/PanelContainer/VBoxContainer/TabContainer/Time/TimeToolsControls" unique_id=1857933911]
 layout_mode = 2
+theme_override_constants/separation = 19
 
 [node name="PauseTimeButton" type="Button" parent="Dev/DevUI/DebugMenu/PanelContainer/VBoxContainer/TabContainer/Time/TimeToolsControls/HBoxContainer" unique_id=745963958]
 layout_mode = 2
@@ -579,12 +578,9 @@ visible = false
 
 [node name="DevPlayerTools" type="Node3D" parent="Dev" unique_id=1848268558]
 script = ExtResource("29_i7in8")
-tool_enabled = true
 
 [node name="DevTimeTools" type="Node3D" parent="Dev" unique_id=1040956668]
 script = ExtResource("30_gkmcc")
-tool_enabled = true
 
 [node name="DevWorldTools" type="Node3D" parent="Dev" unique_id=1165186068]
 script = ExtResource("31_7nlll")
-tool_enabled = true

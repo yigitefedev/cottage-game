@@ -15,7 +15,6 @@ func _ready() -> void:
 	
 
 func _process(_delta: float) -> void:
-	print("[GridDataPanel] show:", show_data, " debugger:", dev_grid_debugger)
 	if not show_data:
 		visible = false
 		return
