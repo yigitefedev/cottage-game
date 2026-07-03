@@ -102,44 +102,6 @@ albedo_texture = ExtResource("11_0bhws")
 
 [node name="Main" type="Node3D" unique_id=1441963032]
 
-[node name="World" type="Node3D" parent="." unique_id=1539479685]
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="World" unique_id=265328766]
-transform = Transform3D(0.98618174, -0.093293354, 0.13690129, 7.566612e-08, 0.8263637, 0.5631369, -0.16566719, -0.55535525, 0.81494474, 0, 4.540125, -5.9411197)
-light_color = Color(1, 0.685, 0.37, 1)
-light_energy = 1.644
-shadow_enabled = true
-directional_shadow_mode = 1
-directional_shadow_pancake_size = 400.0
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="World" unique_id=893147600]
-environment = SubResource("Environment_p8abn")
-compositor = SubResource("Compositor_s17dp")
-
-[node name="Ground" type="StaticBody3D" parent="World" unique_id=2146532682]
-
-[node name="Ground_mesh" type="MeshInstance3D" parent="World/Ground" unique_id=736615475]
-mesh = SubResource("PlaneMesh_hyk8p")
-surface_material_override/0 = SubResource("ShaderMaterial_s17dp")
-
-[node name="Ground_collison" type="CollisionShape3D" parent="World/Ground" unique_id=896662111]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-shape = SubResource("BoxShape3D_iuonh")
-
-[node name="Assets" type="Node3D" parent="World" unique_id=1212883394]
-
-[node name="tree" parent="World/Assets" unique_id=372346887 instance=ExtResource("20_r4lks")]
-transform = Transform3D(-0.37895945, 0, -0.58854884, 0, 0.7, 0, 0.58854884, 0, -0.37895945, -5.157921, 0.21518189, 0.25378704)
-
-[node name="MultiMeshGrass" type="MultiMeshInstance3D" parent="World" unique_id=884847476]
-transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)
-material_override = ExtResource("2_m4h2d")
-cast_shadow = 0
-multimesh = SubResource("MultiMesh_m4h2d")
-
-[node name="Player" parent="." unique_id=1422361473 instance=ExtResource("1_hyk8p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5506983, 0)
-
 [node name="Managers" type="Node3D" parent="." unique_id=1740106769]
 
 [node name="GridManager" type="Node3D" parent="Managers" unique_id=47125669]
@@ -183,7 +145,75 @@ script = ExtResource("19_s17dp")
 script = ExtResource("20_37hlw")
 wind_noise = ExtResource("21_6llfj")
 
+[node name="World" type="Node3D" parent="." unique_id=1539479685]
+
+[node name="EntityRoot" type="Node3D" parent="World" unique_id=350252833]
+
+[node name="LevelRoot" type="Node3D" parent="World" unique_id=905614223]
+
+[node name="EffectsRoot" type="Node3D" parent="World" unique_id=1405380245]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="World" unique_id=265328766]
+transform = Transform3D(0.98618174, -0.093293354, 0.13690129, 7.566612e-08, 0.8263637, 0.5631369, -0.16566719, -0.55535525, 0.81494474, 0, 4.540125, -5.9411197)
+light_color = Color(1, 0.685, 0.37, 1)
+light_energy = 1.644
+shadow_enabled = true
+directional_shadow_mode = 1
+directional_shadow_pancake_size = 400.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="World" unique_id=893147600]
+environment = SubResource("Environment_p8abn")
+compositor = SubResource("Compositor_s17dp")
+
+[node name="Ground" type="StaticBody3D" parent="World" unique_id=2146532682]
+
+[node name="Ground_mesh" type="MeshInstance3D" parent="World/Ground" unique_id=736615475]
+mesh = SubResource("PlaneMesh_hyk8p")
+surface_material_override/0 = SubResource("ShaderMaterial_s17dp")
+
+[node name="Ground_collison" type="CollisionShape3D" parent="World/Ground" unique_id=896662111]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_iuonh")
+
+[node name="Assets" type="Node3D" parent="World" unique_id=1212883394]
+
+[node name="tree" parent="World/Assets" unique_id=372346887 instance=ExtResource("20_r4lks")]
+transform = Transform3D(-0.37895945, 0, -0.58854884, 0, 0.7, 0, 0.58854884, 0, -0.37895945, -5.157921, 0.21518189, 0.25378704)
+
+[node name="MultiMeshGrass" type="MultiMeshInstance3D" parent="World" unique_id=884847476]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)
+material_override = ExtResource("2_m4h2d")
+cast_shadow = 0
+multimesh = SubResource("MultiMesh_m4h2d")
+
+[node name="Player" parent="." unique_id=1422361473 instance=ExtResource("1_hyk8p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5506983, 0)
+
 [node name="UI" type="Control" parent="." unique_id=2032844883]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HudLayer" type="CanvasLayer" parent="UI" unique_id=1484387850]
+
+[node name="HudRoot" type="Control" parent="UI/HudLayer" unique_id=2035118962]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="PauseLayer" type="CanvasLayer" parent="UI" unique_id=1775705170]
+
+[node name="PauseRoot" type="Control" parent="UI/PauseLayer" unique_id=493219246]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TransitionLayer" type="CanvasLayer" parent="UI" unique_id=577191112]
+
+[node name="TransitionRoot" type="Control" parent="UI/TransitionLayer" unique_id=45331899]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
