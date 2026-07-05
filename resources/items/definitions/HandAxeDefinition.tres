@@ -1,7 +1,7 @@
-[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://do77cqgm2006l"]
+[gd_resource type="Resource" script_class="ItemDefinition" format=3]
 
-[ext_resource type="Script" uid="uid://kia7nkogevgg" path="res://scripts/items/ItemDefinition.gd" id="1_025at"]
-[ext_resource type="Texture2D" uid="uid://c6tdkokfhh4dg" path="res://art/gecici/hand_axe.png" id="1_boii4"]
+[ext_resource type="Script" path="res://scripts/items/ItemDefinition.gd" id="1_025at"]
+[ext_resource type="Texture2D" path="res://art/gecici/hand_axe.png" id="1_boii4"]
 
 [resource]
 script = ExtResource("1_025at")

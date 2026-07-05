@@ -1,7 +1,7 @@
-[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://b6hcjwe0eglcm"]
+[gd_resource type="ShaderMaterial" load_steps=3 format=3]
 
-[ext_resource type="Shader" uid="uid://co2jw3fnyc6aa" path="res://Shaders/tree_leaves.gdshader" id="1_fsj3v"]
-[ext_resource type="Texture2D" uid="uid://3cj462y71s5w" path="res://Assets/Textures/leaf_alpha.png" id="2_ll40k"]
+[ext_resource type="Shader" path="res://Shaders/tree_leaves.gdshader" id="1_fsj3v"]
+[ext_resource type="Texture2D" path="res://Assets/Textures/leaf_alpha.png" id="2_ll40k"]
 
 [resource]
 render_priority = 0

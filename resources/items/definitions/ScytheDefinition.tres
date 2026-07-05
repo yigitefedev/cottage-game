@@ -1,8 +1,8 @@
-[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://pi5l23rl041y"]
+[gd_resource type="Resource" script_class="ItemDefinition" format=3]
 
-[ext_resource type="Script" uid="uid://kia7nkogevgg" path="res://scripts/items/ItemDefinition.gd" id="1_gklg7"]
-[ext_resource type="Texture2D" uid="uid://btr4eooocycsm" path="res://art/gecici/scythe.png" id="1_m6b7t"]
-[ext_resource type="Resource" uid="uid://dmsclal15wog5" path="res://resources/actions/ScytheAction.tres" id="2_vdldj"]
+[ext_resource type="Script" path="res://scripts/items/ItemDefinition.gd" id="1_gklg7"]
+[ext_resource type="Texture2D" path="res://art/gecici/scythe.png" id="1_m6b7t"]
+[ext_resource type="Resource" path="res://resources/actions/ScytheAction.tres" id="2_vdldj"]
 
 [resource]
 script = ExtResource("1_gklg7")

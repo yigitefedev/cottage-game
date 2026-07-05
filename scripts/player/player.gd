@@ -18,8 +18,9 @@ func _physics_process(delta: float) -> void:
 
 	var input_vector := Vector2.ZERO
 
-	input_vector.x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
-	input_vector.y = Input.get_action_strength("move_back") - Input.get_action_strength("move_forward")
+	if not DevManager.is_gameplay_input_locked():
+		input_vector.x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
+		input_vector.y = Input.get_action_strength("move_back") - Input.get_action_strength("move_forward")
 
 	input_vector = input_vector.normalized()
 

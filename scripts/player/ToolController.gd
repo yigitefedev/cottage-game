@@ -39,6 +39,8 @@ func _ready() -> void:
 	if item_database != null:
 		item_database.build_lookup()
 func _input(event: InputEvent) -> void:
+	if DevManager.is_gameplay_input_locked():
+		return
 	if event.is_action_pressed("use_item"):
 		use_selected_item()
 	

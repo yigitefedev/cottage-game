@@ -29,6 +29,8 @@ func _ready() -> void:
 
 
 func _input(event: InputEvent) -> void:
+	if DevManager.is_gameplay_input_locked():
+		return
 	if event.is_action_pressed("tool_radial"):
 		open_menu()
 

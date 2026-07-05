@@ -1,6 +1,8 @@
 class_name DebugMenu
 extends Control
 
+@onready var panel_container: PanelContainer = $PanelContainer
+
 #griddebugger
 @onready var grid_debugger_checkbox: CheckBox = $PanelContainer/VBoxContainer/TabContainer/Grid/GridDebuggerCheckBox
 @onready var grid_debugger_controls: VBoxContainer = $PanelContainer/VBoxContainer/TabContainer/Grid/VBoxContainer
@@ -55,6 +57,9 @@ func _ready() -> void:
 	save_grid_button.pressed.connect(_on_save_grid_pressed)
 	load_grid_button.pressed.connect(_on_load_grid_pressed)
 	_update_grid_debugger_controls()
+	
+	mouse_filter = Control.MOUSE_FILTER_IGNORE
+	panel_container.mouse_filter = Control.MOUSE_FILTER_STOP
 	
 	dev_player_tools = get_tree().get_first_node_in_group("dev_player_tools")
 

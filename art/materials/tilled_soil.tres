@@ -1,4 +1,4 @@
-[gd_resource type="ShaderMaterial" format=3 uid="uid://c67kww2csspcy"]
+[gd_resource type="ShaderMaterial" format=3 uid="uid://da34s5tidom1e"]
 
 [ext_resource type="Shader" uid="uid://cms1efrhdw11v" path="res://art/shaders/soil_world_noise.gdshader" id="1_hww63"]
 

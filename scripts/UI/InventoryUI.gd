@@ -32,6 +32,8 @@ func _ready() -> void:
 
 
 func _input(event: InputEvent) -> void:
+	if DevManager.is_gameplay_input_locked():
+		return
 	var radial_menu := get_tree().get_first_node_in_group("tool_radial_menu")
 
 	if radial_menu != null and radial_menu.is_open:

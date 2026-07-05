@@ -1,11 +1,11 @@
-[gd_scene format=4 uid="uid://cdnwui5fdy5rh"]
+[gd_scene format=4]
 
-[ext_resource type="PackedScene" uid="uid://bioksfn7mydfa" path="res://external/Assets/Meshes/tree.glb" id="1_hv7ha"]
-[ext_resource type="Shader" uid="uid://c0dy1aqj1b4q3" path="res://external/Shaders/trunk_shader.gdshader" id="2_hp8hp"]
-[ext_resource type="Texture2D" uid="uid://cy7kh4dvdd34v" path="res://external/Assets/Textures/tree_bark.png" id="3_s4js1"]
-[ext_resource type="Shader" uid="uid://co2jw3fnyc6aa" path="res://external/Shaders/tree_leaves.gdshader" id="4_skbgy"]
-[ext_resource type="Texture2D" uid="uid://3cj462y71s5w" path="res://external/Assets/Textures/leaf_alpha.png" id="5_6xoww"]
-[ext_resource type="Texture2D" uid="uid://dey5onb6mwp3f" path="res://external/Assets/Textures/leaf_particle.png" id="6_vd8dm"]
+[ext_resource type="PackedScene" path="res://external/Assets/Meshes/tree.glb" id="1_hv7ha"]
+[ext_resource type="Shader" path="res://external/Shaders/trunk_shader.gdshader" id="2_hp8hp"]
+[ext_resource type="Texture2D" path="res://external/Assets/Textures/tree_bark.png" id="3_s4js1"]
+[ext_resource type="Shader" path="res://external/Shaders/tree_leaves.gdshader" id="4_skbgy"]
+[ext_resource type="Texture2D" path="res://external/Assets/Textures/leaf_alpha.png" id="5_6xoww"]
+[ext_resource type="Texture2D" path="res://external/Assets/Textures/leaf_particle.png" id="6_vd8dm"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4i2od"]
 render_priority = 0

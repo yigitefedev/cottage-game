@@ -1,36 +1,37 @@
-[gd_scene format=3 uid="uid://74dmywrwcyug"]
+[gd_scene format=3 uid="uid://cjgukq424w2j5"]
 
-[ext_resource type="PackedScene" uid="uid://npbqcyja1nl1" path="res://scenes/player/player.tscn" id="1_hyk8p"]
+[ext_resource type="PackedScene" path="res://scenes/player/player.tscn" id="1_hyk8p"]
 [ext_resource type="Shader" uid="uid://bifltg3r6fjhh" path="res://external/Shaders/ground_shader.gdshader" id="1_p8abn"]
 [ext_resource type="Script" uid="uid://c5q0wi8lyo8tv" path="res://scripts/managers/GridManager.gd" id="2_iuonh"]
-[ext_resource type="Material" uid="uid://cudoptcrtgl7u" path="res://external/Materials/grass.tres" id="2_m4h2d"]
-[ext_resource type="Resource" uid="uid://b3vekefpmqabq" path="res://resources/grid/GameGridDefinition.tres" id="3_l3cfh"]
-[ext_resource type="ArrayMesh" uid="uid://bpj527hgs6rpt" path="res://external/Assets/Meshes/grass_plane_mesh2.res" id="4_p8abn"]
+[ext_resource type="Material" path="res://external/Materials/grass.tres" id="2_m4h2d"]
+[ext_resource type="Resource" path="res://resources/grid/GameGridDefinition.tres" id="3_l3cfh"]
+[ext_resource type="ArrayMesh" uid="uid://cbk61hqmfyprt" path="res://external/Assets/Meshes/grass_plane_mesh2.res" id="4_p8abn"]
 [ext_resource type="Script" uid="uid://duya06q6bg4x5" path="res://scripts/grid/TileVisualManager.gd" id="5_6q06x"]
-[ext_resource type="Resource" uid="uid://ce18jgnbrf4l3" path="res://resources/grid/MainTileVisualDatabase.tres" id="6_ow5a4"]
+[ext_resource type="Resource" uid="uid://b33k8ghvkm2d5" path="res://resources/grid/MainTileVisualDatabase.tres" id="6_ow5a4"]
 [ext_resource type="Script" uid="uid://cnb76lnyqkvh4" path="res://scripts/managers/CropGrowthManager.gd" id="7_b1x3f"]
-[ext_resource type="PackedScene" uid="uid://bbo0ih22dkv77" path="res://scenes/UI/InventoryUI.tscn" id="7_hujxm"]
+[ext_resource type="PackedScene" path="res://scenes/UI/InventoryUI.tscn" id="7_hujxm"]
 [ext_resource type="Script" uid="uid://pmihujj6ji8c" path="res://scripts/items/WorldItemSpawner.gd" id="8_a8run"]
 [ext_resource type="Script" uid="uid://cywh0so5mkog1" path="res://scripts/grid/EdgeVisualManager.gd" id="8_raeie"]
 [ext_resource type="Script" uid="uid://0wsht7q1r577" path="res://scripts/UI/ClockLabel.gd" id="8_yyfjg"]
-[ext_resource type="PackedScene" uid="uid://5ci0a8jskrlw" path="res://scenes/items/DroppedItem.tscn" id="9_ouso4"]
+[ext_resource type="PackedScene" path="res://scenes/items/DroppedItem.tscn" id="9_ouso4"]
 [ext_resource type="Script" uid="uid://cyvp2is3h7hey" path="res://scripts/grid/CornerVisualManager.gd" id="10_blune"]
 [ext_resource type="Texture2D" uid="uid://cpwrbj4g433bf" path="res://art/gecici/selection_alpha.png" id="11_0bhws"]
 [ext_resource type="Script" uid="uid://b6m26k5efuxm6" path="res://scripts/managers/GridObjectManager.gd" id="12_hxu8e"]
 [ext_resource type="Script" uid="uid://b7ilypk1ermuo" path="res://scripts/UI/ToolRadialMenu.gd" id="12_th5th"]
-[ext_resource type="PackedScene" uid="uid://0yi14361xc03" path="res://scenes/UI/InventorySlotUI.tscn" id="13_7smn1"]
-[ext_resource type="Resource" uid="uid://bomxrfkxcp8o8" path="res://resources/items/MainItemDatabase.tres" id="13_nvumn"]
+[ext_resource type="PackedScene" path="res://scenes/UI/InventorySlotUI.tscn" id="13_7smn1"]
+[ext_resource type="Resource" uid="uid://7eua66muqd68" path="res://resources/items/MainItemDatabase.tres" id="13_nvumn"]
 [ext_resource type="Script" uid="uid://c3htoi4pjfls8" path="res://scripts/managers/SleepManager.gd" id="14_necax"]
 [ext_resource type="Script" uid="uid://ci21tn5q1ub2o" path="res://scripts/UI/StaminaUI.gd" id="18_ou6is"]
 [ext_resource type="Script" uid="uid://cb1box8yclrsp" path="res://scripts/managers/GrassMaskManager.gd" id="19_s17dp"]
 [ext_resource type="Script" uid="uid://bphui2daywmdy" path="res://scripts/managers/WindManager.gd" id="20_37hlw"]
-[ext_resource type="PackedScene" uid="uid://cdnwui5fdy5rh" path="res://external/Scenes/tree.tscn" id="20_r4lks"]
-[ext_resource type="Texture2D" uid="uid://bpswbjh4jj1ou" path="res://external/Assets/Textures/noise.tres" id="21_6llfj"]
+[ext_resource type="PackedScene" path="res://external/Scenes/tree.tscn" id="20_r4lks"]
+[ext_resource type="Texture2D" uid="uid://b0e76x6crc4mo" path="res://external/Assets/Textures/noise.tres" id="21_6llfj"]
 [ext_resource type="Script" uid="uid://bamo0qlboufs2" path="res://scripts/dev tools/DebugMenu.gd" id="26_62atk"]
 [ext_resource type="Script" uid="uid://coxvqk4pi8ggm" path="res://scripts/dev tools/GridDataPanel.gd" id="26_ii537"]
 [ext_resource type="Script" uid="uid://dghbnixyc318d" path="res://scripts/dev tools/DevUI.gd" id="26_rofvo"]
 [ext_resource type="Script" uid="uid://bw6mtsfw5rask" path="res://scripts/dev tools/DevGridDebugger.gd" id="27_62atk"]
 [ext_resource type="Script" uid="uid://byhmomnhklmda" path="res://scripts/dev tools/DevPlayerTools.gd" id="29_i7in8"]
+[ext_resource type="Script" uid="uid://cgq343uy607i7" path="res://scripts/dev tools/DevConsole.gd" id="29_tbnf8"]
 [ext_resource type="Script" uid="uid://c2f8ox50p76p0" path="res://scripts/dev tools/DevTimeTools.gd" id="30_gkmcc"]
 [ext_resource type="Script" uid="uid://bcfl1jikg318d" path="res://scripts/dev tools/DevWorldTools.gd" id="31_7nlll"]
 
@@ -329,6 +330,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
+mouse_filter = 2
 script = ExtResource("26_rofvo")
 
 [node name="GridDataPanel" type="PanelContainer" parent="Dev/DevUI" unique_id=25935634]
@@ -589,6 +591,49 @@ text = "x10"
 [node name="TimeScale200Button" type="Button" parent="Dev/DevUI/DebugMenu/PanelContainer/VBoxContainer/TabContainer/Time/TimeToolsControls/HBoxContainer" unique_id=647802123]
 layout_mode = 2
 text = "x200"
+
+[node name="DevConsole" type="CanvasLayer" parent="Dev/DevUI/DebugMenu" unique_id=956823151]
+layer = 100
+script = ExtResource("29_tbnf8")
+
+[node name="PanelContainer" type="PanelContainer" parent="Dev/DevUI/DebugMenu/DevConsole" unique_id=1618661480]
+custom_minimum_size = Vector2(400, 300)
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="Dev/DevUI/DebugMenu/DevConsole/PanelContainer" unique_id=2068080385]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Dev/DevUI/DebugMenu/DevConsole/PanelContainer/MarginContainer" unique_id=618854560]
+layout_mode = 2
+
+[node name="OutputText" type="RichTextLabel" parent="Dev/DevUI/DebugMenu/DevConsole/PanelContainer/MarginContainer/VBoxContainer" unique_id=799528449]
+custom_minimum_size = Vector2(400, 400)
+layout_mode = 2
+focus_mode = 2
+bbcode_enabled = true
+text = "console"
+fit_content = true
+selection_enabled = true
+
+[node name="AutocompleteList" type="ItemList" parent="Dev/DevUI/DebugMenu/DevConsole/PanelContainer/MarginContainer/VBoxContainer" unique_id=1721784402]
+visible = false
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+mouse_filter = 2
+auto_width = true
+auto_height = true
+
+[node name="CommandInput" type="LineEdit" parent="Dev/DevUI/DebugMenu/DevConsole/PanelContainer/MarginContainer/VBoxContainer" unique_id=416326681]
+layout_mode = 2
+placeholder_text = "command..."
+keep_editing_on_text_submit = true
+caret_blink = true
+caret_mid_grapheme = true
 
 [node name="DevGridDebugger" type="Node3D" parent="Dev" unique_id=658431487 node_paths=PackedStringArray("grid_manager")]
 script = ExtResource("27_62atk")

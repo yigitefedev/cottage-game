@@ -12,7 +12,7 @@ func _ready() -> void:
 	add_to_group("grid_data_panel")
 	visible = false
 	dev_grid_debugger = get_tree().get_first_node_in_group("dev_grid_debugger")
-	
+	mouse_filter = Control.MOUSE_FILTER_IGNORE
 
 func _process(_delta: float) -> void:
 	if not show_data:

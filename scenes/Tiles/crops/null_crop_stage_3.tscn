@@ -1,6 +1,6 @@
-[gd_scene format=3 uid="uid://dv7yw1sfmxd4i"]
+[gd_scene format=3]
 
-[ext_resource type="Script" uid="uid://j1po6i72wki0" path="res://scripts/crops/PlaceholderCropVisual.gd" id="1_gtk47"]
+[ext_resource type="Script" path="res://scripts/crops/PlaceholderCropVisual.gd" id="1_gtk47"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_12j5o"]
 radius = 0.12

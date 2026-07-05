@@ -1,7 +1,7 @@
-[gd_scene format=4 uid="uid://bw07kufhqr7w8"]
+[gd_scene format=4]
 
-[ext_resource type="Script" uid="uid://due3m63krchr5" path="res://scripts/objects/Sprinkler.gd" id="1_q8fkr"]
-[ext_resource type="Material" uid="uid://cf1hqff12c7du" path="res://art/materials/sprinkle.tres" id="2_2g0ac"]
+[ext_resource type="Script" path="res://scripts/objects/Sprinkler.gd" id="1_q8fkr"]
+[ext_resource type="Material" path="res://art/materials/sprinkle.tres" id="2_2g0ac"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pc1fi"]
 

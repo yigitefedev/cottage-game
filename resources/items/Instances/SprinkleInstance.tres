@@ -1,7 +1,7 @@
-[gd_resource type="Resource" script_class="ItemInstanceData" format=3 uid="uid://bnust1wonsqvb"]
+[gd_resource type="Resource" script_class="ItemInstanceData" format=3]
 
-[ext_resource type="Resource" uid="uid://cu81xokn20shg" path="res://resources/items/definitions/SprinklerDefinition.tres" id="1_smlwr"]
-[ext_resource type="Script" uid="uid://caddfd8wsvlsh" path="res://scripts/items/ItemInstanceData.gd" id="1_ss4x1"]
+[ext_resource type="Resource" path="res://resources/items/definitions/SprinklerDefinition.tres" id="1_smlwr"]
+[ext_resource type="Script" path="res://scripts/items/ItemInstanceData.gd" id="1_ss4x1"]
 
 [resource]
 script = ExtResource("1_ss4x1")

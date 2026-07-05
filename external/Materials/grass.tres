@@ -1,7 +1,7 @@
-[gd_resource type="ShaderMaterial" format=3 uid="uid://cudoptcrtgl7u"]
+[gd_resource type="ShaderMaterial" format=3]
 
-[ext_resource type="Shader" uid="uid://de4s8l7jecutp" path="res://external/Shaders/grass_billboard.gdshader" id="1_528a5"]
-[ext_resource type="Texture2D" uid="uid://32bpa4nk3av1" path="res://external/Assets/Textures/grass_round.png" id="2_4d6mx"]
+[ext_resource type="Shader" path="res://external/Shaders/grass_billboard.gdshader" id="1_528a5"]
+[ext_resource type="Texture2D" path="res://external/Assets/Textures/grass_round.png" id="2_4d6mx"]
 
 [resource]
 render_priority = 0

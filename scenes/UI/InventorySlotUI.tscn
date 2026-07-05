@@ -1,7 +1,7 @@
-[gd_scene format=3 uid="uid://0yi14361xc03"]
+[gd_scene format=3]
 
-[ext_resource type="Script" uid="uid://mfjchjfl84wt" path="res://scripts/UI/InventorySlotUI.gd" id="1_4r25q"]
-[ext_resource type="Texture2D" uid="uid://c50y5yu4lo3x6" path="res://art/gecici/circleslot.png" id="1_x02sc"]
+[ext_resource type="Script" path="res://scripts/UI/InventorySlotUI.gd" id="1_4r25q"]
+[ext_resource type="Texture2D" path="res://art/gecici/circleslot.png" id="1_x02sc"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uptgi"]
 texture = ExtResource("1_x02sc")

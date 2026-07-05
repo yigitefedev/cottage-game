@@ -1,7 +1,7 @@
-[gd_scene format=3 uid="uid://bbo0ih22dkv77"]
+[gd_scene format=3]
 
-[ext_resource type="Script" uid="uid://ddpke71ruamfh" path="res://scripts/UI/InventoryUI.gd" id="1_5entl"]
-[ext_resource type="PackedScene" uid="uid://0yi14361xc03" path="res://scenes/UI/InventorySlotUI.tscn" id="2_31fix"]
+[ext_resource type="Script" path="res://scripts/UI/InventoryUI.gd" id="1_5entl"]
+[ext_resource type="PackedScene" path="res://scenes/UI/InventorySlotUI.tscn" id="2_31fix"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_31fix"]
 

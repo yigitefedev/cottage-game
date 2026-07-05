@@ -1,8 +1,8 @@
-[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://cjge2yn1p7yr0"]
+[gd_resource type="Resource" script_class="ItemDefinition" format=3]
 
-[ext_resource type="Texture2D" uid="uid://cxphalj0fembq" path="res://art/gecici/hoe.png" id="1_dj88x"]
-[ext_resource type="Script" uid="uid://kia7nkogevgg" path="res://scripts/items/ItemDefinition.gd" id="1_i8636"]
-[ext_resource type="Resource" uid="uid://dbsk6wkmsqpvb" path="res://resources/actions/HoeTileAction.tres" id="2_dj88x"]
+[ext_resource type="Texture2D" path="res://art/gecici/hoe.png" id="1_dj88x"]
+[ext_resource type="Script" path="res://scripts/items/ItemDefinition.gd" id="1_i8636"]
+[ext_resource type="Resource" path="res://resources/actions/HoeTileAction.tres" id="2_dj88x"]
 
 [resource]
 script = ExtResource("1_i8636")

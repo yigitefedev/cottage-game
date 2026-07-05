@@ -1,7 +1,7 @@
-[gd_resource type="Resource" script_class="ItemInstanceData" format=3 uid="uid://bgf8nj3d15cjk"]
+[gd_resource type="Resource" script_class="ItemInstanceData" format=3]
 
-[ext_resource type="Resource" uid="uid://d4hcsnv0b2s4g" path="res://resources/items/generated/seed_item_pumpkin.tres" id="1_34hhx"]
-[ext_resource type="Script" uid="uid://caddfd8wsvlsh" path="res://scripts/items/ItemInstanceData.gd" id="2_h1tdh"]
+[ext_resource type="Resource" path="res://resources/items/generated/seed_item_pumpkin.tres" id="1_34hhx"]
+[ext_resource type="Script" path="res://scripts/items/ItemInstanceData.gd" id="2_h1tdh"]
 
 [resource]
 script = ExtResource("2_h1tdh")

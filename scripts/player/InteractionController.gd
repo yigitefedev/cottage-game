@@ -22,6 +22,8 @@ func _ready() -> void:
 	world_item_spawner = get_tree().get_first_node_in_group("world_item_spawner")
 
 func _input(event: InputEvent) -> void:
+	if DevManager.is_gameplay_input_locked():
+		return
 	if event.is_action_pressed("interact"):
 		try_interact()
 

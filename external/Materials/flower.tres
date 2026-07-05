@@ -1,7 +1,7 @@
-[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://cb8qpausjnncx"]
+[gd_resource type="ShaderMaterial" load_steps=3 format=3]
 
-[ext_resource type="Shader" uid="uid://c7cwe7mbxco0l" path="res://Shaders/flower.gdshader" id="1_kuus5"]
-[ext_resource type="Texture2D" uid="uid://lutv5fsvi56n" path="res://Assets/Textures/flower.png" id="2_58uos"]
+[ext_resource type="Shader" path="res://Shaders/flower.gdshader" id="1_kuus5"]
+[ext_resource type="Texture2D" path="res://Assets/Textures/flower.png" id="2_58uos"]
 
 [resource]
 render_priority = 0

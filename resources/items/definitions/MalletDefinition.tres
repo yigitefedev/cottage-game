@@ -1,8 +1,8 @@
-[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://clqkhhriotd8m"]
+[gd_resource type="Resource" script_class="ItemDefinition" format=3]
 
-[ext_resource type="Texture2D" uid="uid://blvfmm0655u37" path="res://art/gecici/mallet.png" id="1_ao6w4"]
-[ext_resource type="Script" uid="uid://kia7nkogevgg" path="res://scripts/items/ItemDefinition.gd" id="1_qvvwl"]
-[ext_resource type="Resource" uid="uid://4qemobjnyyae" path="res://resources/actions/MalletAction.tres" id="2_hu1dx"]
+[ext_resource type="Texture2D" path="res://art/gecici/mallet.png" id="1_ao6w4"]
+[ext_resource type="Script" path="res://scripts/items/ItemDefinition.gd" id="1_qvvwl"]
+[ext_resource type="Resource" path="res://resources/actions/MalletAction.tres" id="2_hu1dx"]
 
 [resource]
 script = ExtResource("1_qvvwl")

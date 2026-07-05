@@ -1,7 +1,7 @@
-[gd_resource type="Resource" script_class="ItemInstanceData" format=3 uid="uid://mitahegfm6sn"]
+[gd_resource type="Resource" script_class="ItemInstanceData" format=3]
 
-[ext_resource type="Resource" uid="uid://bbyi8bhlunb5c" path="res://resources/items/generated/seed_item_carrot.tres" id="1_8ovl8"]
-[ext_resource type="Script" uid="uid://caddfd8wsvlsh" path="res://scripts/items/ItemInstanceData.gd" id="1_ihkis"]
+[ext_resource type="Resource" path="res://resources/items/generated/seed_item_carrot.tres" id="1_8ovl8"]
+[ext_resource type="Script" path="res://scripts/items/ItemInstanceData.gd" id="1_ihkis"]
 
 [resource]
 script = ExtResource("1_ihkis")

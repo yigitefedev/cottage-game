@@ -1,7 +1,7 @@
-[gd_resource type="Resource" script_class="ItemInstanceData" format=3 uid="uid://3p0sssxbkdxi"]
+[gd_resource type="Resource" script_class="ItemInstanceData" format=3]
 
-[ext_resource type="Resource" uid="uid://ptf80j1apoem" path="res://resources/items/generated/seed_item_potato.tres" id="1_1sp8b"]
-[ext_resource type="Script" uid="uid://caddfd8wsvlsh" path="res://scripts/items/ItemInstanceData.gd" id="1_jff2x"]
+[ext_resource type="Resource" path="res://resources/items/generated/seed_item_potato.tres" id="1_1sp8b"]
+[ext_resource type="Script" path="res://scripts/items/ItemInstanceData.gd" id="1_jff2x"]
 
 [resource]
 script = ExtResource("1_jff2x")

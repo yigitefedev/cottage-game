@@ -56,6 +56,8 @@ func _ready() -> void:
 
 
 func _input(event: InputEvent) -> void:
+	if DevManager.is_gameplay_input_locked():
+		return
 	for i in HOTBAR_SIZE:
 		if event.is_action_pressed("hotbar_%s" % [i + 1]):
 			select_slot(i)

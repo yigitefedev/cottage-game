@@ -1,7 +1,7 @@
-[gd_scene format=4 uid="uid://duo4fitsvlgat"]
+[gd_scene format=4]
 
-[ext_resource type="Script" uid="uid://c46u5u07pv0ua" path="res://scripts/grid/TilledSoil.gd" id="1_01tlh"]
-[ext_resource type="Material" uid="uid://c67kww2csspcy" path="res://art/materials/tilled_soil.tres" id="2_wkb2m"]
+[ext_resource type="Script" path="res://scripts/grid/TilledSoil.gd" id="1_01tlh"]
+[ext_resource type="Material" path="res://art/materials/tilled_soil.tres" id="2_wkb2m"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q518e"]
 

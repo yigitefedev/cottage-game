@@ -1,8 +1,8 @@
-[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://b1dos8igr42qd"]
+[gd_resource type="Resource" script_class="ItemDefinition" format=3]
 
-[ext_resource type="Resource" uid="uid://bajkmoy6k2odm" path="res://resources/actions/PlantSeedAction.tres" id="1_lkwfo"]
-[ext_resource type="Texture2D" uid="uid://di4gg4mphafhp" path="res://art/icons/icon_seed_item_null.png" id="1_rioxv"]
-[ext_resource type="Script" uid="uid://kia7nkogevgg" path="res://scripts/items/ItemDefinition.gd" id="2_rioxv"]
+[ext_resource type="Resource" path="res://resources/actions/PlantSeedAction.tres" id="1_lkwfo"]
+[ext_resource type="Texture2D" path="res://art/icons/icon_seed_item_null.png" id="1_rioxv"]
+[ext_resource type="Script" path="res://scripts/items/ItemDefinition.gd" id="2_rioxv"]
 
 [resource]
 script = ExtResource("2_rioxv")

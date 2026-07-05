@@ -1,6 +1,6 @@
-[gd_scene format=3 uid="uid://5ci0a8jskrlw"]
+[gd_scene format=3]
 
-[ext_resource type="Script" uid="uid://dt8mv0q2spnp" path="res://scripts/items/DroppedItem.gd" id="1_p32ve"]
+[ext_resource type="Script" path="res://scripts/items/DroppedItem.gd" id="1_p32ve"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_7jbjh"]
 radius = 1.2
