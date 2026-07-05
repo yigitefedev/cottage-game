@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://cm1u6kqm6rio3"]
+
+[ext_resource type="Script" uid="uid://j1po6i72wki0" path="res://scripts/crops/PlaceholderCropVisual.gd" id="1_gsjo1"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_gsjo1"]
+radius = 0.05
+height = 0.2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gsjo1"]
+albedo_color = Color(0.68583333, 1, 0.35000002, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_6r7mb"]
+material = SubResource("StandardMaterial3D_gsjo1")
+radius = 0.02
+height = 0.15
+
+[node name="NullCrop_stage_1" type="Node3D" unique_id=1013908767]
+script = ExtResource("1_gsjo1")
+label_path = NodePath("Label3D")
+capsule_mesh_path = NodePath("MeshInstance3D")
+stage_index = 1
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1700690005]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.051785544, 0)
+mesh = SubResource("CapsuleMesh_gsjo1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D" unique_id=313537919]
+transform = Transform3D(1, 0, 0, 0, 1.0952876, 0, 0, 0, 1, 0, 0.12245001, 0)
+mesh = SubResource("SphereMesh_6r7mb")
+
+[node name="Label3D" type="Label3D" parent="." unique_id=824747947]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55442417, 0)
+pixel_size = 0.0025
+billboard = 1
+text = "placeholder"
+font_size = 39

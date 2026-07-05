@@ -1,11 +1,13 @@
 [gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://cibjdk0hy0wc"]
 
+[ext_resource type="Texture2D" uid="uid://b3pnpdohcd1sc" path="res://art/icons/icon_harvest_item_null.png" id="1_6mmim"]
 [ext_resource type="Script" uid="uid://kia7nkogevgg" path="res://scripts/items/ItemDefinition.gd" id="1_g7jhr"]
 
 [resource]
 script = ExtResource("1_g7jhr")
 id = &"harvest_item_blackberry"
 display_name = "Blackberry"
+icon = ExtResource("1_6mmim")
 max_stack = 20
 tags = Array[StringName]([&"crop"])
 properties = {

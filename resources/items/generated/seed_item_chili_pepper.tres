@@ -1,12 +1,14 @@
 [gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://bcxmwhblaynpg"]
 
 [ext_resource type="Resource" uid="uid://bajkmoy6k2odm" path="res://resources/actions/PlantSeedAction.tres" id="1_jb1t6"]
+[ext_resource type="Texture2D" uid="uid://di4gg4mphafhp" path="res://art/icons/icon_seed_item_null.png" id="1_pouns"]
 [ext_resource type="Script" uid="uid://kia7nkogevgg" path="res://scripts/items/ItemDefinition.gd" id="2_pouns"]
 
 [resource]
 script = ExtResource("2_pouns")
 id = &"seed_item_chili_pepper"
 display_name = "Chili Pepper Seed"
+icon = ExtResource("1_pouns")
 max_stack = 30
 tags = Array[StringName]([&"seed"])
 primary_action = ExtResource("1_jb1t6")

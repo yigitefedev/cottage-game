@@ -3,6 +3,7 @@ extends Node3D
 
 @export var outline_material: Material
 var grid_manager: GridManager
+var object_target_resolver: ObjectTargetResolver
 var targeting_system: TargetingSystem
 var current_target: Node3D
 var outlined_meshes: Array[MeshInstance3D] = []
@@ -11,6 +12,7 @@ var corner_visual_manager: CornerVisualManager
 
 func _ready() -> void:
 	await get_tree().process_frame
+	object_target_resolver = get_tree().get_first_node_in_group("object_target_resolver")
 	targeting_system = get_tree().get_first_node_in_group("targeting_system")
 	if edge_visual_manager == null:
 		edge_visual_manager = get_tree().get_first_node_in_group("edge_visual_manager")
@@ -47,86 +49,13 @@ func update_target() -> void:
 
 
 func get_object_target() -> Node3D:
-	var edge_target := get_edge_object_target()
-	if edge_target != null:
-		return edge_target
+	if object_target_resolver == null:
+		object_target_resolver = get_tree().get_first_node_in_group("object_target_resolver")
 
-	var corner_target := get_corner_object_target()
-	if corner_target != null:
-		return corner_target
-
-	var tile_target := get_tile_object_target()
-	if tile_target != null:
-		return tile_target
-
-	return null
-func get_corner_object_target() -> Node3D:
-	if targeting_system == null or corner_visual_manager == null or grid_manager == null:
+	if object_target_resolver == null:
 		return null
 
-	var coord := targeting_system.target_corner_coord
-	var corner := grid_manager.get_corner(coord)
-
-	if corner == null or not corner.has_object():
-		return null
-
-	if not corner_visual_manager.active_corner_visuals.has(coord):
-		return null
-
-	for visual in corner_visual_manager.active_corner_visuals[coord]:
-		if visual is Node3D:
-			return visual
-
-	return null
-	
-func get_edge_object_target() -> Node3D:
-	if targeting_system == null or edge_visual_manager == null or grid_manager == null:
-		return null
-
-	var edge := grid_manager.get_edge(
-		targeting_system.target_edge_coord,
-		targeting_system.target_edge_orientation
-	)
-
-	if edge == null or not edge.has_object():
-		return null
-
-	var key := edge_visual_manager.make_edge_key(
-		targeting_system.target_edge_coord,
-		targeting_system.target_edge_orientation
-	)
-	if not edge_visual_manager.active_edge_visuals.has(key):
-		return null
-
-	for visual in edge_visual_manager.active_edge_visuals[key]:
-		if visual is Node3D:
-			return visual
-
-	return null
-
-
-func get_tile_object_target() -> Node3D:
-	var tile := targeting_system.target_tile
-
-	if tile == null:
-		return null
-
-	if tile.object_ids.is_empty():
-		return null
-
-	var tile_visual_manager := get_tree().get_first_node_in_group("tile_visual_manager") as TileVisualManager
-
-	if tile_visual_manager == null:
-		return null
-
-	if not tile_visual_manager.active_tile_visuals.has(targeting_system.target_tile_coord):
-		return null
-
-	for visual in tile_visual_manager.active_tile_visuals[targeting_system.target_tile_coord]:
-		if visual is Node3D:
-			return visual
-
-	return null
+	return object_target_resolver.get_current_visual()
 
 
 

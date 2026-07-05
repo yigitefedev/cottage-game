@@ -9,6 +9,10 @@
 [ext_resource type="PackedScene" uid="uid://cjbb5bxvu0a23" path="res://scenes/Tiles/crops/carrot_stage_3.tscn" id="7_01v4t"]
 [ext_resource type="PackedScene" uid="uid://bw07kufhqr7w8" path="res://scenes/objects/sprinkler.tscn" id="8_h8ws0"]
 [ext_resource type="PackedScene" uid="uid://uu30hme0tkst" path="res://scenes/objects/WoodFence.tscn" id="9_3c05e"]
+[ext_resource type="PackedScene" uid="uid://ccpwgnu5m0bev" path="res://scenes/Tiles/crops/null_crop_stage_0.tscn" id="9_nb242"]
+[ext_resource type="PackedScene" uid="uid://cm1u6kqm6rio3" path="res://scenes/Tiles/crops/null_crop_stage_1.tscn" id="10_eodge"]
+[ext_resource type="PackedScene" uid="uid://dk4bwelbxg025" path="res://scenes/Tiles/crops/null_crop_stage_2.tscn" id="11_ndjhc"]
+[ext_resource type="PackedScene" uid="uid://dv7yw1sfmxd4i" path="res://scenes/Tiles/crops/null_crop_stage_3.tscn" id="12_lvh87"]
 
 [sub_resource type="Resource" id="Resource_enaxe"]
 script = ExtResource("1_ytpcr")
@@ -57,7 +61,35 @@ scene = ExtResource("9_3c05e")
 y_offset = 0.0
 metadata/_custom_type_script = "uid://id3822kkb4kt"
 
+[sub_resource type="Resource" id="Resource_ixdjf"]
+script = ExtResource("1_ytpcr")
+id = &"nullcrop_stage_0"
+scene = ExtResource("9_nb242")
+y_offset = 0.0
+metadata/_custom_type_script = "uid://id3822kkb4kt"
+
+[sub_resource type="Resource" id="Resource_gtk47"]
+script = ExtResource("1_ytpcr")
+id = &"nullcrop_stage_1"
+scene = ExtResource("10_eodge")
+y_offset = 0.0
+metadata/_custom_type_script = "uid://id3822kkb4kt"
+
+[sub_resource type="Resource" id="Resource_p64xw"]
+script = ExtResource("1_ytpcr")
+id = &"nullcrop_stage_2"
+scene = ExtResource("11_ndjhc")
+y_offset = 0.0
+metadata/_custom_type_script = "uid://id3822kkb4kt"
+
+[sub_resource type="Resource" id="Resource_86cfi"]
+script = ExtResource("1_ytpcr")
+id = &"nullcrop_stage_3"
+scene = ExtResource("12_lvh87")
+y_offset = 0.0
+metadata/_custom_type_script = "uid://id3822kkb4kt"
+
 [resource]
 script = ExtResource("2_gbvab")
-definitions = Array[ExtResource("1_ytpcr")]([SubResource("Resource_enaxe"), SubResource("Resource_xo00v"), SubResource("Resource_nb242"), SubResource("Resource_eodge"), SubResource("Resource_ndjhc"), SubResource("Resource_3c05e"), SubResource("Resource_01v4t")])
+definitions = Array[ExtResource("1_ytpcr")]([SubResource("Resource_enaxe"), SubResource("Resource_xo00v"), SubResource("Resource_nb242"), SubResource("Resource_eodge"), SubResource("Resource_ndjhc"), SubResource("Resource_3c05e"), SubResource("Resource_01v4t"), SubResource("Resource_ixdjf"), SubResource("Resource_gtk47"), SubResource("Resource_p64xw"), SubResource("Resource_86cfi")])
 metadata/_custom_type_script = "uid://qkxfl6cnlm5g"

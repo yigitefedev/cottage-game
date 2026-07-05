@@ -10,6 +10,7 @@ var world_item_spawner: WorldItemSpawner
 var selected_slot_index: int
 var selected_item: ItemInstanceData
 var grid_object_manager: GridObjectManager
+var object_target_resolver: ObjectTargetResolver
 
 var crop_database: CropDatabase
 var grid_manager: GridManager

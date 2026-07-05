@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://caddfd8wsvlsh" path="res://scripts/items/ItemInstanceData.gd" id="5_qek5x"]
 [ext_resource type="Resource" uid="uid://duii35a1lpgad" path="res://resources/items/Instances/HoeInstance.tres" id="6_5gtgg"]
 [ext_resource type="Script" uid="uid://3ka7dko4n3d2" path="res://scripts/player/ToolTargetIndicator.gd" id="6_6cv16"]
+[ext_resource type="Script" uid="uid://dq8ukij1mw7sa" path="res://scripts/player/ObjectTargetResolver.gd" id="6_iqsei"]
 [ext_resource type="Texture2D" uid="uid://cpwrbj4g433bf" path="res://art/gecici/selection_alpha.png" id="7_6cv16"]
 [ext_resource type="Resource" uid="uid://cpqui8ww5fnx5" path="res://resources/items/Instances/WateringCanInstance.tres" id="7_h17s1"]
 [ext_resource type="Resource" uid="uid://mitahegfm6sn" path="res://resources/items/Instances/CarrotSeedInstance.tres" id="8_qek5x"]
@@ -25,6 +26,8 @@
 [ext_resource type="Resource" uid="uid://cur6fyq5prnxu" path="res://resources/items/Instances/ShovelInstance.tres" id="15_yj68g"]
 [ext_resource type="Resource" uid="uid://chcrn30ywiu07" path="res://resources/items/Instances/WoodFenceInstance.tres" id="17_3j4b4"]
 [ext_resource type="Resource" uid="uid://bomxrfkxcp8o8" path="res://resources/items/MainItemDatabase.tres" id="19_ioxgp"]
+[ext_resource type="Resource" uid="uid://bgf8nj3d15cjk" path="res://resources/items/Instances/PumpkinSeedInstance.tres" id="20_tffgl"]
+[ext_resource type="Resource" uid="uid://3p0sssxbkdxi" path="res://resources/items/Instances/PotatoSeedInstance.tres" id="21_pk8ii"]
 [ext_resource type="Script" uid="uid://k36bkwxba1as" path="res://scripts/player/PlayerStamina.gd" id="22_yj68g"]
 [ext_resource type="Script" uid="uid://b2ffmuno4balp" path="res://scripts/player/PlacementPreviewManager.gd" id="27_j4nxn"]
 [ext_resource type="Script" uid="uid://6pxgprc2xmbp" path="res://scripts/player/ObjectTargetIndicator.gd" id="28_28m0y"]
@@ -74,6 +77,9 @@ shape = SubResource("CapsuleShape3D_k2fmo")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Player" unique_id=1700088938]
 mesh = SubResource("CapsuleMesh_l3cfh")
 
+[node name="ObjectTargetResolver" type="Node3D" parent="Player" unique_id=2005957773]
+script = ExtResource("6_iqsei")
+
 [node name="CameraRig" type="Node3D" parent="." unique_id=1164539971 node_paths=PackedStringArray("target")]
 script = ExtResource("2_gmlin")
 target = NodePath("../Player")
@@ -86,7 +92,7 @@ fov = 40.0
 [node name="PlayerInventory" type="Node3D" parent="." unique_id=1437805635]
 script = ExtResource("3_gmlin")
 inventory = ExtResource("4_0owmy")
-starting_items = Array[ExtResource("5_qek5x")]([ExtResource("6_5gtgg"), ExtResource("7_h17s1"), ExtResource("8_qek5x"), ExtResource("11_fcs02"), ExtResource("12_lgqa7"), ExtResource("13_8ydkj"), ExtResource("14_3j4b4"), ExtResource("15_yj68g"), ExtResource("17_3j4b4")])
+starting_items = Array[ExtResource("5_qek5x")]([ExtResource("6_5gtgg"), ExtResource("7_h17s1"), ExtResource("8_qek5x"), ExtResource("11_fcs02"), ExtResource("12_lgqa7"), ExtResource("13_8ydkj"), ExtResource("14_3j4b4"), ExtResource("15_yj68g"), ExtResource("17_3j4b4"), ExtResource("20_tffgl"), ExtResource("21_pk8ii")])
 
 [node name="ToolController" type="Node3D" parent="." unique_id=611790258]
 script = ExtResource("10_h17s1")

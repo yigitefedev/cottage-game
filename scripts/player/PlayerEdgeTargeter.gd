@@ -3,7 +3,7 @@ extends Node
 
 var player_tile_targeter: PlayerTileTargeter
 var grid_manager: GridManager
-
+var player_inventory: PlayerInventory
 var selected_direction: Vector2i = Vector2i.UP
 var target_tile_coord: Vector2i
 var target_edge_coord: Vector2i
@@ -17,19 +17,39 @@ func _ready() -> void:
 
 	player_tile_targeter = get_tree().get_first_node_in_group("player_tile_targeter")
 	grid_manager = get_tree().get_first_node_in_group("grid_manager")
-
+	player_inventory = get_tree().get_first_node_in_group("player_inventory")
 	update_target_edge()
 
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("cycle_edge_direction"):
-		cycle_direction()
+	if not event.is_action_pressed("cycle_edge_direction"):
+		return
 
+	if not should_cycle_edge_direction():
+		return
+
+	cycle_direction()
 
 func _physics_process(_delta: float) -> void:
 	update_target_edge()
 
+func should_cycle_edge_direction() -> bool:
+	if player_inventory == null:
+		player_inventory = get_tree().get_first_node_in_group("player_inventory")
 
+	if player_inventory == null:
+		return false
+
+	var item: ItemInstanceData = player_inventory.get_selected_item()
+
+	if item == null:
+		return false
+
+	if item.definition == null:
+		return false
+
+	return item.has_tag(&"edge_object")
+	
 func cycle_direction() -> void:
 	if selected_direction == Vector2i.UP:
 		selected_direction = Vector2i.RIGHT

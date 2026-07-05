@@ -1,11 +1,13 @@
 [gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://b5pjqlflajfqq"]
 
+[ext_resource type="Texture2D" uid="uid://b3pnpdohcd1sc" path="res://art/icons/icon_harvest_item_null.png" id="1_1aqm3"]
 [ext_resource type="Script" uid="uid://kia7nkogevgg" path="res://scripts/items/ItemDefinition.gd" id="1_8pok3"]
 
 [resource]
 script = ExtResource("1_8pok3")
 id = &"harvest_item_olive"
 display_name = "Olive"
+icon = ExtResource("1_1aqm3")
 max_stack = 20
 tags = Array[StringName]([&"fruit"])
 properties = {

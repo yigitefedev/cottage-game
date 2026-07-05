@@ -16,6 +16,8 @@ var player_stamina: PlayerStamina
 var grass_mask_manager: GrassMaskManager
 var world_item_spawner: WorldItemSpawner
 var player: CharacterBody3D
+var object_target_resolver: ObjectTargetResolver
+
 func _ready() -> void:
 	await get_tree().process_frame
 	crop_database.build_lookup()
@@ -32,7 +34,8 @@ func _ready() -> void:
 	player = get_tree().get_first_node_in_group("player") as CharacterBody3D
 	world_item_spawner = get_tree().get_first_node_in_group("world_item_spawner")
 	grass_mask_manager = get_tree().get_first_node_in_group("grass_mask_manager")
-
+	object_target_resolver = get_tree().get_first_node_in_group("object_target_resolver")
+	
 	if item_database != null:
 		item_database.build_lookup()
 func _input(event: InputEvent) -> void:
@@ -81,7 +84,10 @@ func build_context(item: ItemInstanceData) -> ItemUseContext:
 
 	context.player_inventory = player_inventory
 	context.tool_controller = self
+	if object_target_resolver == null:
+		object_target_resolver = get_tree().get_first_node_in_group("object_target_resolver")
 
+	context.object_target_resolver = object_target_resolver
 	context.selected_slot_index = player_inventory.selected_index
 	context.selected_item = item
 	context.crop_database = crop_database

@@ -1,5 +1,6 @@
 [gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://cipwtgo4eld8f"]
 
+[ext_resource type="Texture2D" uid="uid://di4gg4mphafhp" path="res://art/icons/icon_seed_item_null.png" id="1_gfi2j"]
 [ext_resource type="Resource" uid="uid://bajkmoy6k2odm" path="res://resources/actions/PlantSeedAction.tres" id="1_yqgsx"]
 [ext_resource type="Script" uid="uid://kia7nkogevgg" path="res://scripts/items/ItemDefinition.gd" id="2_gfi2j"]
 
@@ -7,6 +8,7 @@
 script = ExtResource("2_gfi2j")
 id = &"seed_item_blackberry"
 display_name = "Blackberry Seed"
+icon = ExtResource("1_gfi2j")
 max_stack = 30
 tags = Array[StringName]([&"seed"])
 primary_action = ExtResource("1_yqgsx")

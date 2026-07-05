@@ -1,5 +1,6 @@
 [gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://cekf2vinb7ogp"]
 
+[ext_resource type="Texture2D" uid="uid://di4gg4mphafhp" path="res://art/icons/icon_seed_item_null.png" id="1_d3i3d"]
 [ext_resource type="Resource" uid="uid://bajkmoy6k2odm" path="res://resources/actions/PlantSeedAction.tres" id="1_xwriw"]
 [ext_resource type="Script" uid="uid://kia7nkogevgg" path="res://scripts/items/ItemDefinition.gd" id="2_d3i3d"]
 
@@ -7,6 +8,7 @@
 script = ExtResource("2_d3i3d")
 id = &"seed_item_coffee"
 display_name = "Coffee Seed"
+icon = ExtResource("1_d3i3d")
 max_stack = 30
 tags = Array[StringName]([&"seed"])
 primary_action = ExtResource("1_xwriw")

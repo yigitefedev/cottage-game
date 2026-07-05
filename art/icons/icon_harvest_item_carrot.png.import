@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bytu422wh6val"
-path.s3tc="res://.godot/imported/seed_carrot.png-c191f9fbccd10085af9a6891a53abed3.s3tc.ctex"
+uid="uid://ca1wd2a41i36j"
+path.s3tc="res://.godot/imported/icon_harvest_item_carrot.png-50d6f6ed4a2902eb406bfa016fbc3381.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://art/gecici/seed_carrot.png"
-dest_files=["res://.godot/imported/seed_carrot.png-c191f9fbccd10085af9a6891a53abed3.s3tc.ctex"]
+source_file="res://art/icons/icon_harvest_item_carrot.png"
+dest_files=["res://.godot/imported/icon_harvest_item_carrot.png-50d6f6ed4a2902eb406bfa016fbc3381.s3tc.ctex"]
 
 [params]
 

@@ -65,7 +65,11 @@ func break_edge_object(coord: Vector2i, orientation: StringName, drop_position: 
 	return true
 
 
-func break_tile_object(coord: Vector2i, drop_position: Vector3 = Vector3.ZERO) -> bool:
+func break_tile_object(
+	coord: Vector2i,
+	drop_position: Vector3 = Vector3.ZERO,
+	object_id_to_break: StringName = &""
+) -> bool:
 	if grid_manager == null:
 		return false
 
@@ -77,12 +81,20 @@ func break_tile_object(coord: Vector2i, drop_position: Vector3 = Vector3.ZERO) -
 	if tile.object_ids.is_empty():
 		return false
 
-	var object_id: StringName = tile.object_ids[0]
+	var object_id: StringName = object_id_to_break
+
+	if object_id == &"":
+		object_id = tile.object_ids[0]
+
+	if not tile.object_ids.has(object_id):
+		return false
 
 	spawn_object_drop(object_id, drop_position)
 
 	tile.object_ids.erase(object_id)
-	tile.remove_visual(&"object")
+
+	if tile.object_ids.is_empty():
+		tile.remove_visual(&"object")
 
 	if tile_visual_manager != null:
 		tile_visual_manager.refresh_tile(coord)

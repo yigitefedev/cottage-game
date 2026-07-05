@@ -1,11 +1,13 @@
 [gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://bri24bfdswbed"]
 
 [ext_resource type="Script" uid="uid://kia7nkogevgg" path="res://scripts/items/ItemDefinition.gd" id="1_1t7bf"]
+[ext_resource type="Texture2D" uid="uid://b3pnpdohcd1sc" path="res://art/icons/icon_harvest_item_null.png" id="1_lx0us"]
 
 [resource]
 script = ExtResource("1_1t7bf")
 id = &"harvest_item_strawberry"
 display_name = "Strawberry"
+icon = ExtResource("1_lx0us")
 max_stack = 20
 tags = Array[StringName]([&"crop"])
 properties = {

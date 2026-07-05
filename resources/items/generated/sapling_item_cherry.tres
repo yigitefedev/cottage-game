@@ -1,5 +1,6 @@
 [gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://drkiuvd48mwlv"]
 
+[ext_resource type="Texture2D" uid="uid://di4gg4mphafhp" path="res://art/icons/icon_seed_item_null.png" id="1_plu2s"]
 [ext_resource type="Resource" uid="uid://bajkmoy6k2odm" path="res://resources/actions/PlantSeedAction.tres" id="1_sjc6l"]
 [ext_resource type="Script" uid="uid://kia7nkogevgg" path="res://scripts/items/ItemDefinition.gd" id="2_plu2s"]
 
@@ -7,6 +8,7 @@
 script = ExtResource("2_plu2s")
 id = &"sapling_item_cherry"
 display_name = "Cherry Sapling"
+icon = ExtResource("1_plu2s")
 max_stack = 30
 tags = Array[StringName]([&"sapling"])
 primary_action = ExtResource("1_sjc6l")

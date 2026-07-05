@@ -2,7 +2,7 @@
 extends EditorScript
 
 const JSON_PATH := "res://data/import/crop_table.json"
-
+const ICON_DIR := "res://art/icons/"
 const CROP_DB_PATH := "res://resources/crops/MainCropDatabase.tres"
 const ITEM_DB_PATH := "res://resources/items/MainItemDatabase.tres"
 
@@ -141,7 +141,7 @@ func update_harvest_item_definition(
 
 	item.properties["buy_price"] = int(row.get("harvest_buy_price", 0))
 	item.properties["sell_price"] = int(row.get("harvest_sell_price", 0))
-
+	apply_icon_by_convention(item, item_id)
 
 func update_seed_item_definition(
 	item: ItemDefinition,
@@ -162,7 +162,7 @@ func update_seed_item_definition(
 	item.properties["crop_id"] = crop_id
 	item.properties["buy_price"] = int(row.get("seed_buy_price", 0))
 	item.properties["sell_price"] = int(row.get("seed_sell_price", 0))
-
+	apply_icon_by_convention(item, item_id)
 
 func parse_stage_durations(value, growth_days: int) -> Array[int]:
 	if value != null and str(value).strip_edges() != "":
@@ -323,3 +323,56 @@ func to_pascal_case(value: String) -> String:
 		result += part.substr(0, 1).to_upper() + part.substr(1).to_lower()
 
 	return result
+func apply_icon_by_convention(item: ItemDefinition, item_id: StringName) -> void:
+	var icon: Texture2D = find_icon_for_item(item_id)
+
+	if icon == null:
+		return
+
+	item.icon = icon
+
+
+func find_icon_for_item(item_id: StringName) -> Texture2D:
+	var id_text := String(item_id)
+
+	var specific_icon: Texture2D = load_icon_by_name("icon_%s" % id_text)
+
+	if specific_icon != null:
+		return specific_icon
+
+	var fallback_icon: Texture2D = find_fallback_icon_for_item(id_text)
+
+	if fallback_icon != null:
+		return fallback_icon
+
+	return null
+func find_fallback_icon_for_item(item_id: String) -> Texture2D:
+	if item_id.begins_with("seed_item_"):
+		return load_icon_by_name("icon_seed_item_null")
+
+	if item_id.begins_with("sapling_item_"):
+		return load_icon_by_name("icon_seed_item_null")
+
+	if item_id.begins_with("harvest_item_"):
+		return load_icon_by_name("icon_harvest_item_null")
+
+	return null
+func load_icon_by_name(icon_name: String) -> Texture2D:
+	var possible_paths: Array[String] = [
+		ICON_DIR + icon_name + ".png",
+		ICON_DIR + icon_name + ".webp",
+		ICON_DIR + icon_name + ".svg",
+		ICON_DIR + icon_name + ".tres",
+		ICON_DIR + icon_name + ".res"
+	]
+
+	for path: String in possible_paths:
+		if not ResourceLoader.exists(path):
+			continue
+
+		var resource: Resource = load(path)
+
+		if resource is Texture2D:
+			return resource as Texture2D
+
+	return null

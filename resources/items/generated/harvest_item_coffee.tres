@@ -1,11 +1,13 @@
 [gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://dsa58qm2mvy1q"]
 
+[ext_resource type="Texture2D" uid="uid://b3pnpdohcd1sc" path="res://art/icons/icon_harvest_item_null.png" id="1_ie7lx"]
 [ext_resource type="Script" uid="uid://kia7nkogevgg" path="res://scripts/items/ItemDefinition.gd" id="1_pqt27"]
 
 [resource]
 script = ExtResource("1_pqt27")
 id = &"harvest_item_coffee"
 display_name = "Coffee"
+icon = ExtResource("1_ie7lx")
 max_stack = 20
 tags = Array[StringName]([&"herb"])
 properties = {

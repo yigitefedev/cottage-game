@@ -59,19 +59,24 @@ func refresh_tile(coord: Vector2i) -> void:
 		grass_mask_manager.refresh_tile_mask(coord)
 
 func spawn_tile_visual(coord: Vector2i, visual_id: StringName) -> void:
-	if not visual_lookup.has(visual_id):
+	var definition: TileVisualDefinition = get_visual_definition_with_fallback(visual_id)
+
+	if definition == null:
 		push_warning("No TileVisualDefinition found for id: %s" % visual_id)
 		return
-
-	var definition: TileVisualDefinition = visual_lookup[visual_id]
 
 	if definition.scene == null:
 		return
 
 	var visual := definition.scene.instantiate() as Node3D
+
+	if visual == null:
+		return
+
 	add_child(visual)
 
 	visual.global_position = grid_manager.tile_to_world(coord) + Vector3.UP * definition.y_offset
+
 	if visual.has_method("setup"):
 		visual.setup(coord, grid_manager)
 
@@ -79,7 +84,46 @@ func spawn_tile_visual(coord: Vector2i, visual_id: StringName) -> void:
 		active_tile_visuals[coord] = []
 
 	active_tile_visuals[coord].append(visual)
+func get_visual_definition_with_fallback(visual_id: StringName) -> TileVisualDefinition:
+	if visual_lookup.has(visual_id):
+		var definition: TileVisualDefinition = visual_lookup[visual_id]
 
+		if definition != null and definition.scene != null:
+			return definition
+
+	var fallback_id: StringName = get_nullcrop_fallback_id(visual_id)
+
+	if fallback_id == &"":
+		return null
+
+	if not visual_lookup.has(fallback_id):
+		return null
+
+	var fallback_definition: TileVisualDefinition = visual_lookup[fallback_id]
+
+	if fallback_definition == null:
+		return null
+
+	if fallback_definition.scene == null:
+		return null
+
+	return fallback_definition
+
+
+func get_nullcrop_fallback_id(visual_id: StringName) -> StringName:
+	var text: String = String(visual_id)
+	var marker := "_stage_"
+	var marker_index: int = text.find(marker)
+
+	if marker_index == -1:
+		return &""
+
+	var stage_text: String = text.substr(marker_index + marker.length())
+
+	if stage_text == "":
+		return &""
+
+	return StringName("nullcrop_stage_%s" % stage_text)
 
 func clear_tile_visuals(coord: Vector2i) -> void:
 	if not active_tile_visuals.has(coord):
