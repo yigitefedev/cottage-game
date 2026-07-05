@@ -9,13 +9,17 @@ var grid_manager: GridManager
 var tile_visual_manager: TileVisualManager
 var tile_targeter: PlayerTileTargeter
 var world_item_spawner: WorldItemSpawner
+@export var item_database: ItemDatabase
 
+var player_inventory: PlayerInventory
+var workstation_manager: WorkstationManager
 
 func _ready() -> void:
 	await get_tree().process_frame
 
 	player = get_parent() as CharacterBody3D
-
+	player_inventory = get_tree().get_first_node_in_group("player_inventory")
+	workstation_manager = get_tree().get_first_node_in_group("workstation_manager")
 	grid_manager = get_tree().get_first_node_in_group("grid_manager")
 	tile_visual_manager = get_tree().get_first_node_in_group("tile_visual_manager")
 	tile_targeter = get_tree().get_first_node_in_group("player_tile_targeter")
@@ -49,7 +53,12 @@ func build_context() -> InteractionContext:
 	context.tile_visual_manager = tile_visual_manager
 	context.tile_targeter = tile_targeter
 	context.world_item_spawner = world_item_spawner
+	context.player_inventory = player_inventory
+	context.workstation_manager = workstation_manager
 
+	if player_inventory != null:
+		context.selected_item = player_inventory.get_selected_item()
+		context.selected_inventory_index = player_inventory.get_inventory_index_for_hotbar_index(player_inventory.selected_index)
 	if tile_targeter != null:
 		context.target_tile_coord = tile_targeter.get_target_tile()
 		context.target_tile = tile_targeter.get_target_tile_data()

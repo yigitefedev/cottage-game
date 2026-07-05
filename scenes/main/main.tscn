@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cjgukq424w2j5"]
 
-[ext_resource type="PackedScene" path="res://scenes/player/player.tscn" id="1_hyk8p"]
+[ext_resource type="PackedScene" uid="uid://8bs2vul1ik81" path="res://scenes/player/player.tscn" id="1_hyk8p"]
 [ext_resource type="Shader" uid="uid://bifltg3r6fjhh" path="res://external/Shaders/ground_shader.gdshader" id="1_p8abn"]
 [ext_resource type="Script" uid="uid://c5q0wi8lyo8tv" path="res://scripts/managers/GridManager.gd" id="2_iuonh"]
 [ext_resource type="Material" path="res://external/Materials/grass.tres" id="2_m4h2d"]
@@ -21,6 +21,9 @@
 [ext_resource type="PackedScene" path="res://scenes/UI/InventorySlotUI.tscn" id="13_7smn1"]
 [ext_resource type="Resource" uid="uid://7eua66muqd68" path="res://resources/items/MainItemDatabase.tres" id="13_nvumn"]
 [ext_resource type="Script" uid="uid://c3htoi4pjfls8" path="res://scripts/managers/SleepManager.gd" id="14_necax"]
+[ext_resource type="Script" uid="uid://bmjqfytt8vyba" path="res://scripts/workstations/WorkstationManager.gd" id="16_os81g"]
+[ext_resource type="Resource" uid="uid://dlhcvrl3symsi" path="res://resources/workstations/MainWorkstationDefinitionDatabase.tres" id="17_1k3ck"]
+[ext_resource type="Resource" uid="uid://djnxmabq5iebk" path="res://resources/workstations/MainWorkstationRecipeDatabase.tres" id="18_62f45"]
 [ext_resource type="Script" uid="uid://ci21tn5q1ub2o" path="res://scripts/UI/StaminaUI.gd" id="18_ou6is"]
 [ext_resource type="Script" uid="uid://cb1box8yclrsp" path="res://scripts/managers/GrassMaskManager.gd" id="19_s17dp"]
 [ext_resource type="Script" uid="uid://bphui2daywmdy" path="res://scripts/managers/WindManager.gd" id="20_37hlw"]
@@ -145,6 +148,12 @@ script = ExtResource("19_s17dp")
 [node name="WindManager" type="Node3D" parent="Managers" unique_id=1556886251]
 script = ExtResource("20_37hlw")
 wind_noise = ExtResource("21_6llfj")
+
+[node name="WorkstationManager" type="Node3D" parent="Managers" unique_id=120029662 node_paths=PackedStringArray("grid_manager")]
+script = ExtResource("16_os81g")
+definition_database = ExtResource("17_1k3ck")
+recipe_database = ExtResource("18_62f45")
+grid_manager = NodePath("../GridManager")
 
 [node name="World" type="Node3D" parent="." unique_id=1539479685]
 

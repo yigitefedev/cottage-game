@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="WorkstationInteractionAction" format=3 uid="uid://cas15abp0kb14"]
+
+[ext_resource type="Script" uid="uid://csssspedf7obj" path="res://scripts/items/actions/interactions/WorkstationInteractionAction.gd" id="1_j2unr"]
+
+[resource]
+script = ExtResource("1_j2unr")
+metadata/_custom_type_script = "uid://csssspedf7obj"

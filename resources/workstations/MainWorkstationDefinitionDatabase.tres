@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="WorkstationDefinitionDatabase" format=3 uid="uid://dlhcvrl3symsi"]
+
+[ext_resource type="Script" uid="uid://bqrh2a7flhtgy" path="res://scripts/workstations/WorkstationDefinition.gd" id="1_i757m"]
+[ext_resource type="Script" uid="uid://dxewd2dyg4j7" path="res://scripts/workstations/WorkstationDefinitionDatabase.gd" id="2_4wcbx"]
+[ext_resource type="Resource" uid="uid://cb4rwyw4l0saq" path="res://resources/workstations/definitions/SeedMakerWorkstationDefinition.tres" id="2_wlkuw"]
+
+[resource]
+script = ExtResource("2_4wcbx")
+definitions = Array[ExtResource("1_i757m")]([ExtResource("2_wlkuw")])
+metadata/_custom_type_script = "uid://dxewd2dyg4j7"

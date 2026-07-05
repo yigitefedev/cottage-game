@@ -92,7 +92,8 @@ func break_tile_object(
 	spawn_object_drop(object_id, drop_position)
 
 	tile.object_ids.erase(object_id)
-
+	if tile.custom_data.has("workstation"):
+		tile.custom_data.erase("workstation")
 	if tile.object_ids.is_empty():
 		tile.remove_visual(&"object")
 
@@ -101,6 +102,42 @@ func break_tile_object(
 
 	return true
 
+func place_tile_object(
+	coord: Vector2i,
+	object_id: StringName,
+	visual_layer: StringName,
+	visual_id: StringName
+) -> bool:
+	if grid_manager == null:
+		return false
+
+	if object_id == &"" or visual_id == &"":
+		return false
+
+	var tile: GameTileData = grid_manager.get_tile(coord)
+
+	if tile == null:
+		return false
+
+	if not tile.usable:
+		return false
+
+	if tile.has_crop():
+		return false
+
+	if tile.has_flag(&"tilled"):
+		return false
+
+	if not tile.object_ids.is_empty():
+		return false
+
+	tile.object_ids.append(object_id)
+	tile.set_visual(visual_layer, visual_id)
+
+	if tile_visual_manager != null:
+		tile_visual_manager.refresh_tile(coord)
+
+	return true
 
 func spawn_object_drop(object_id: StringName, drop_position: Vector3) -> void:
 	if object_id == &"":

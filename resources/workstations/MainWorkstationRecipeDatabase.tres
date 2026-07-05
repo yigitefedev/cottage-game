@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="WorkstationRecipeDatabase" format=3 uid="uid://djnxmabq5iebk"]
+
+[ext_resource type="Script" uid="uid://c7jau1m52c4y5" path="res://scripts/workstations/WorkstationRecipe.gd" id="1_fwhsv"]
+[ext_resource type="Resource" uid="uid://bmgmvlf51wk02" path="res://resources/workstations/recipes/seed_maker_carrot.tres" id="2_cc4af"]
+[ext_resource type="Script" uid="uid://bnnd534glrqui" path="res://scripts/workstations/WorkstationRecipeDatabase.gd" id="2_qn8an"]
+
+[resource]
+script = ExtResource("2_qn8an")
+recipes = Array[ExtResource("1_fwhsv")]([ExtResource("2_cc4af")])
+metadata/_custom_type_script = "uid://bnnd534glrqui"

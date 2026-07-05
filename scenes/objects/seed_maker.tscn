@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://d0as685vm3brl"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_61ot5"]
+albedo_color = Color(0.62, 0.38192004, 0.22320001, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_12j5o"]
+material = SubResource("StandardMaterial3D_61ot5")
+size = Vector3(0.6, 1, 0.6)
+
+[node name="SeedMaker" type="Node3D" unique_id=1261464105]
+
+[node name="Model" type="Node3D" parent="." unique_id=1764247513]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Model" unique_id=1155987701]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+mesh = SubResource("BoxMesh_12j5o")
+
+[node name="Label3D" type="Label3D" parent="Model" unique_id=444673927]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3348517, 0)
+billboard = 1
+text = "Seed Maker"
+font_size = 35

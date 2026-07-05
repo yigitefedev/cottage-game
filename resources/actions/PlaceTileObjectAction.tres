@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="PlaceTileObjectAction" format=3 uid="uid://br51u8ksnijsw"]
+
+[ext_resource type="Script" uid="uid://bv46nwab8gvji" path="res://scripts/items/actions/item_actions/PlaceTileObjectAction.gd" id="1_rkigv"]
+
+[resource]
+script = ExtResource("1_rkigv")
+metadata/_custom_type_script = "uid://bv46nwab8gvji"

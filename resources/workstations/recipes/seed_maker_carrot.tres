@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="WorkstationRecipe" format=3 uid="uid://bmgmvlf51wk02"]
+
+[ext_resource type="Script" uid="uid://bim5jhnj0kkyl" path="res://scripts/workstations/WorkstationItemStack.gd" id="1_taeev"]
+[ext_resource type="Script" uid="uid://c7jau1m52c4y5" path="res://scripts/workstations/WorkstationRecipe.gd" id="2_ipghr"]
+
+[sub_resource type="Resource" id="Resource_oh4jo"]
+script = ExtResource("1_taeev")
+item_id = &"harvest_item_carrot"
+metadata/_custom_type_script = "uid://bim5jhnj0kkyl"
+
+[sub_resource type="Resource" id="Resource_tla2u"]
+script = ExtResource("1_taeev")
+item_id = &"seed_item_carrot"
+metadata/_custom_type_script = "uid://bim5jhnj0kkyl"
+
+[resource]
+script = ExtResource("2_ipghr")
+id = &"seed_maker_carrot"
+display_name = "Carrot Seeds"
+workstation_type = &"seed_maker"
+inputs = Array[ExtResource("1_taeev")]([SubResource("Resource_oh4jo")])
+outputs = Array[ExtResource("1_taeev")]([SubResource("Resource_tla2u")])
+metadata/_custom_type_script = "uid://c7jau1m52c4y5"

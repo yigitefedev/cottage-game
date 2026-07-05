@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://bsj156t6nevng"]
+
+[ext_resource type="Texture2D" uid="uid://cncf52y2hi7dl" path="res://art/gecici/PlaceableObject.png" id="1_6tm12"]
+[ext_resource type="Script" uid="uid://kia7nkogevgg" path="res://scripts/items/ItemDefinition.gd" id="1_o7gmv"]
+[ext_resource type="Script" uid="uid://bv46nwab8gvji" path="res://scripts/items/actions/item_actions/PlaceTileObjectAction.gd" id="2_ptfpc"]
+
+[sub_resource type="Resource" id="Resource_dcswr"]
+script = ExtResource("2_ptfpc")
+metadata/_custom_type_script = "uid://bv46nwab8gvji"
+
+[resource]
+script = ExtResource("1_o7gmv")
+id = &"seed_maker"
+display_name = "Seed Maker"
+icon = ExtResource("1_6tm12")
+max_stack = 5
+tags = Array[StringName]([&"placeable_object"])
+primary_action = SubResource("Resource_dcswr")
+properties = {
+"object_id": "seed_maker",
+"visual_id": "seed_maker",
+"visual_layer": "object"
+}
+metadata/_custom_type_script = "uid://kia7nkogevgg"

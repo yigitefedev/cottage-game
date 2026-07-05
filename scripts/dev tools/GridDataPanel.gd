@@ -55,7 +55,73 @@ func update_text() -> void:
 
 	grid_data_text.text = format_grid_data(coord, tile, corner_coord, corner, edge_coord, edge_orientation, edge)
 
+func format_workstation_data(raw_state: Variant) -> String:
+	var text: String = "\n[b][WORKSTATION][/b]\n"
 
+	if not (raw_state is Dictionary):
+		text += "Invalid workstation data\n\n"
+		return text
+
+	var state: Dictionary = raw_state
+
+	var workstation_state: StringName = StringName(state.get("state", &""))
+	var workstation_type: StringName = StringName(state.get("workstation_type", &""))
+	var recipe_id: StringName = StringName(state.get("recipe_id", &""))
+
+	var remaining_minutes: int = int(state.get("remaining_minutes", 0))
+	var duration_minutes: int = int(state.get("duration_minutes", 0))
+
+	text += "Type: %s\n" % [workstation_type]
+	text += "State: %s\n" % [workstation_state]
+	text += "Recipe: %s\n" % [recipe_id]
+	text += "Remaining: %s min\n" % [remaining_minutes]
+	text += "Duration: %s min\n" % [duration_minutes]
+
+	if duration_minutes > 0:
+		var completed_minutes: int = duration_minutes - remaining_minutes
+		var progress: float = clampf(float(completed_minutes) / float(duration_minutes), 0.0, 1.0)
+		text += "Progress: %s%%\n" % [roundi(progress * 100.0)]
+	else:
+		text += "Progress: 0%%\n"
+
+	text += "\n[b]Inputs[/b]\n"
+	text += format_workstation_slots(state.get("input_slots", []), true)
+
+	text += "\n[b]Outputs[/b]\n"
+	text += format_workstation_slots(state.get("output_slots", []), false)
+
+	text += "\n"
+	return text
+func format_workstation_slots(raw_slots: Variant, show_required: bool) -> String:
+	var text: String = ""
+
+	if not (raw_slots is Array):
+		return "Invalid slots\n"
+
+	var slots: Array = raw_slots
+
+	if slots.is_empty():
+		return "None\n"
+
+	for raw_slot: Variant in slots:
+		if not (raw_slot is Dictionary):
+			continue
+
+		var slot: Dictionary = raw_slot
+		var item_id: StringName = StringName(slot.get("item_id", &""))
+
+		if show_required:
+			var current_amount: int = int(slot.get("current_amount", 0))
+			var required_amount: int = int(slot.get("required_amount", 0))
+			text += "- %s: %s/%s\n" % [item_id, current_amount, required_amount]
+		else:
+			var amount: int = int(slot.get("amount", 0))
+			text += "- %s x%s\n" % [item_id, amount]
+
+	if text == "":
+		text = "None\n"
+
+	return text
 
 func format_empty_tile_data(coord: Vector2i) -> String:
 	return """[b]Tile[/b]: %s
@@ -98,6 +164,12 @@ func format_grid_data(
 		text += "Objects: %s\n" % [tile.object_ids]
 		text += "Flags: %s\n" % [tile.flags]
 		text += "Visuals: %s\n\n" % [tile.visual_layers]
+		text += "Custom Data Keys: %s\n" % [tile.custom_data.keys()]
+
+		if tile.custom_data.has("workstation"):
+			text += format_workstation_data(tile.custom_data["workstation"])
+		else:
+			text += "[b][WORKSTATION][/b]\nNone\n\n"
 
 	text += "[b][CORNER][/b]\n"
 	if corner == null:
