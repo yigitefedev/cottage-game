@@ -1,22 +1,53 @@
 [gd_scene format=3 uid="uid://d0as685vm3brl"]
 
+[ext_resource type="Script" uid="uid://ugu2s2qlqt6k" path="res://scripts/workstations/WorkstationRoot.gd" id="1_kivrf"]
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_61ot5"]
 albedo_color = Color(0.62, 0.38192004, 0.22320001, 1)
 
-[sub_resource type="BoxMesh" id="BoxMesh_12j5o"]
+[sub_resource type="BoxMesh" id="BoxMesh_5io77"]
 material = SubResource("StandardMaterial3D_61ot5")
 size = Vector3(0.6, 1, 0.6)
 
-[node name="SeedMaker" type="Node3D" unique_id=1261464105]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5io77"]
+lifetime_randomness = 0.17
+emission_shape = 3
+emission_box_extents = Vector3(0.24, 0.355, 0.28)
+gravity = Vector3(0, 0.2, 0)
+scale_min = 0.19999999
+scale_over_velocity_max = 120.14
+color = Color(0.58, 0.58, 0.58, 0.65882355)
 
-[node name="Model" type="Node3D" parent="." unique_id=1764247513]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ftswq"]
+transparency = 1
+albedo_color = Color(0.72, 0.72, 0.72, 0.89411765)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Model" unique_id=1155987701]
+[sub_resource type="SphereMesh" id="SphereMesh_kivrf"]
+material = SubResource("StandardMaterial3D_ftswq")
+radius = 0.1
+height = 0.2
+radial_segments = 8
+rings = 4
+
+[node name="Seed Maker" type="Node3D" unique_id=1261464105]
+script = ExtResource("1_kivrf")
+
+[node name="Model" type="Node3D" parent="." unique_id=877118065]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Model" unique_id=1764499100]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-mesh = SubResource("BoxMesh_12j5o")
+mesh = SubResource("BoxMesh_5io77")
 
-[node name="Label3D" type="Label3D" parent="Model" unique_id=444673927]
+[node name="Label3D" type="Label3D" parent="Model" unique_id=882493363]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3348517, 0)
 billboard = 1
 text = "Seed Maker"
 font_size = 35
+
+[node name="Particles" type="GPUParticles3D" parent="." unique_id=1790783379]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+emitting = false
+amount = 4
+lifetime = 2.0
+process_material = SubResource("ParticleProcessMaterial_5io77")
+draw_pass_1 = SubResource("SphereMesh_kivrf")

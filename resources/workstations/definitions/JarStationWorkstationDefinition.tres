@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="WorkstationDefinition" format=3 uid="uid://butwt3f1karh6"]
+
+[ext_resource type="Script" uid="uid://bqrh2a7flhtgy" path="res://scripts/workstations/WorkstationDefinition.gd" id="1_f5vbe"]
+
+[resource]
+script = ExtResource("1_f5vbe")
+id = &"jar_station"
+display_name = "Jarring Table"
+workstation_type = &"jar_station"
+max_input_slots = 2
+object_id = &"jar_station"
+visual_id = &"jar_station"
+metadata/_custom_type_script = "uid://bqrh2a7flhtgy"

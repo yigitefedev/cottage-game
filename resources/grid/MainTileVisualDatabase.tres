@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" path="res://scenes/Tiles/crops/null_crop_stage_2.tscn" id="11_ndjhc"]
 [ext_resource type="PackedScene" path="res://scenes/Tiles/crops/null_crop_stage_3.tscn" id="12_lvh87"]
 [ext_resource type="PackedScene" uid="uid://d0as685vm3brl" path="res://scenes/objects/seed_maker.tscn" id="13_eodge"]
+[ext_resource type="PackedScene" uid="uid://bkf67ftko7j0j" path="res://scenes/objects/jar_station.tscn" id="14_ndjhc"]
 
 [sub_resource type="Resource" id="Resource_enaxe"]
 script = ExtResource("1_ytpcr")
@@ -97,7 +98,14 @@ scene = ExtResource("13_eodge")
 y_offset = 0.0
 metadata/_custom_type_script = "uid://id3822kkb4kt"
 
+[sub_resource type="Resource" id="Resource_xtxwi"]
+script = ExtResource("1_ytpcr")
+id = &"jar_station"
+scene = ExtResource("14_ndjhc")
+y_offset = 0.0
+metadata/_custom_type_script = "uid://id3822kkb4kt"
+
 [resource]
 script = ExtResource("2_gbvab")
-definitions = Array[ExtResource("1_ytpcr")]([SubResource("Resource_enaxe"), SubResource("Resource_xo00v"), SubResource("Resource_nb242"), SubResource("Resource_eodge"), SubResource("Resource_ndjhc"), SubResource("Resource_3c05e"), SubResource("Resource_01v4t"), SubResource("Resource_ixdjf"), SubResource("Resource_gtk47"), SubResource("Resource_p64xw"), SubResource("Resource_86cfi"), SubResource("Resource_sek6m")])
+definitions = Array[ExtResource("1_ytpcr")]([SubResource("Resource_enaxe"), SubResource("Resource_xo00v"), SubResource("Resource_nb242"), SubResource("Resource_eodge"), SubResource("Resource_ndjhc"), SubResource("Resource_3c05e"), SubResource("Resource_01v4t"), SubResource("Resource_ixdjf"), SubResource("Resource_gtk47"), SubResource("Resource_p64xw"), SubResource("Resource_86cfi"), SubResource("Resource_sek6m"), SubResource("Resource_xtxwi")])
 metadata/_custom_type_script = "uid://qkxfl6cnlm5g"

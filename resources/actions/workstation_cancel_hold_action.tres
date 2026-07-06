@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="WorkstationCancelHoldAction" format=3 uid="uid://tjp3fqu1qh8n"]
+
+[ext_resource type="Script" uid="uid://cofwc26avlojc" path="res://scripts/items/actions/interactions/WorkstationCancelHoldAction.gd" id="1_d0ukd"]
+
+[resource]
+script = ExtResource("1_d0ukd")
+action_id = &"WorkstationCancelHoldAction"
+metadata/_custom_type_script = "uid://cofwc26avlojc"

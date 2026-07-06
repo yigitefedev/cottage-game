@@ -9,7 +9,7 @@
 [ext_resource type="Script" uid="uid://duya06q6bg4x5" path="res://scripts/grid/TileVisualManager.gd" id="5_6q06x"]
 [ext_resource type="Resource" uid="uid://b33k8ghvkm2d5" path="res://resources/grid/MainTileVisualDatabase.tres" id="6_ow5a4"]
 [ext_resource type="Script" uid="uid://cnb76lnyqkvh4" path="res://scripts/managers/CropGrowthManager.gd" id="7_b1x3f"]
-[ext_resource type="PackedScene" path="res://scenes/UI/InventoryUI.tscn" id="7_hujxm"]
+[ext_resource type="PackedScene" uid="uid://boqd5w3qpvhqv" path="res://scenes/UI/InventoryUI.tscn" id="7_hujxm"]
 [ext_resource type="Script" uid="uid://pmihujj6ji8c" path="res://scripts/items/WorldItemSpawner.gd" id="8_a8run"]
 [ext_resource type="Script" uid="uid://cywh0so5mkog1" path="res://scripts/grid/EdgeVisualManager.gd" id="8_raeie"]
 [ext_resource type="Script" uid="uid://0wsht7q1r577" path="res://scripts/UI/ClockLabel.gd" id="8_yyfjg"]
@@ -33,6 +33,7 @@
 [ext_resource type="Script" uid="uid://coxvqk4pi8ggm" path="res://scripts/dev tools/GridDataPanel.gd" id="26_ii537"]
 [ext_resource type="Script" uid="uid://dghbnixyc318d" path="res://scripts/dev tools/DevUI.gd" id="26_rofvo"]
 [ext_resource type="Script" uid="uid://bw6mtsfw5rask" path="res://scripts/dev tools/DevGridDebugger.gd" id="27_62atk"]
+[ext_resource type="Script" uid="uid://sqp2t5qenc0s" path="res://scripts/UI/WorkstationBubbleUI.gd" id="29_1k3ck"]
 [ext_resource type="Script" uid="uid://byhmomnhklmda" path="res://scripts/dev tools/DevPlayerTools.gd" id="29_i7in8"]
 [ext_resource type="Script" uid="uid://cgq343uy607i7" path="res://scripts/dev tools/DevConsole.gd" id="29_tbnf8"]
 [ext_resource type="Script" uid="uid://c2f8ox50p76p0" path="res://scripts/dev tools/DevTimeTools.gd" id="30_gkmcc"]
@@ -140,7 +141,7 @@ dropped_item_scene = ExtResource("9_ouso4")
 
 [node name="SleepManager" type="Node3D" parent="Managers" unique_id=956891416 node_paths=PackedStringArray("fade_rect")]
 script = ExtResource("14_necax")
-fade_rect = NodePath("../../UI/SleepFadeRect")
+fade_rect = NodePath("../../UI/TransitionLayer/TransitionRoot/SleepFadeRect")
 
 [node name="GrassMaskManager" type="Node3D" parent="Managers" unique_id=326576980]
 script = ExtResource("19_s17dp")
@@ -213,6 +214,102 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
+[node name="InventoryUI" parent="UI/HudLayer/HudRoot" unique_id=86191429 instance=ExtResource("7_hujxm")]
+layout_mode = 1
+offset_right = 1240.0
+offset_bottom = 680.0
+
+[node name="StaminaUI" type="Control" parent="UI/HudLayer/HudRoot" unique_id=643561204]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("18_ou6is")
+
+[node name="StaminaBar" type="ProgressBar" parent="UI/HudLayer/HudRoot/StaminaUI" unique_id=933955937]
+layout_mode = 0
+offset_left = 1102.0
+offset_top = 87.925
+offset_right = 1248.0
+offset_bottom = 114.92504
+value = 100.0
+
+[node name="StaminaLabel" type="Label" parent="UI/HudLayer/HudRoot/StaminaUI" unique_id=1594469724]
+visible = false
+layout_mode = 0
+offset_left = 1027.0
+offset_top = 88.0
+offset_right = 1067.0
+offset_bottom = 111.0
+text = "stamina"
+
+[node name="ClockLabel" type="Label" parent="UI/HudLayer/HudRoot" unique_id=1552289050]
+layout_mode = 0
+offset_left = 1102.0
+offset_top = 58.0
+offset_right = 1158.0
+offset_bottom = 89.0
+theme_override_font_sizes/font_size = 22
+text = "00:00"
+script = ExtResource("8_yyfjg")
+
+[node name="ToolRadialMenu" type="Control" parent="UI/HudLayer/HudRoot" unique_id=564621786]
+layout_mode = 1
+anchor_left = 15.205001
+anchor_top = 8.501
+anchor_right = 15.205001
+anchor_bottom = 8.501
+offset_left = -608.2
+offset_top = -340.04
+offset_right = 671.8
+offset_bottom = 379.96
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("12_th5th")
+slot_scene = ExtResource("13_7smn1")
+
+[node name="CenterDot" type="TextureRect" parent="UI/HudLayer/HudRoot/ToolRadialMenu" unique_id=778391217]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SlotContainer" type="Control" parent="UI/HudLayer/HudRoot/ToolRadialMenu" unique_id=1482064172]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="WorkstationBubbleUI" type="Control" parent="UI/HudLayer/HudRoot" unique_id=286100123]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("29_1k3ck")
+item_database = ExtResource("13_nvumn")
+bubble_world_offset = Vector3(0, 1.5, 0)
+slot_size = Vector2(45, 45)
+slot_separation = 7.0
+progress_color = Color(0.5304748, 0.92296195, 0.5036233, 0.6509804)
+
 [node name="PauseLayer" type="CanvasLayer" parent="UI" unique_id=1775705170]
 
 [node name="PauseRoot" type="Control" parent="UI/PauseLayer" unique_id=493219246]
@@ -229,97 +326,7 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="DebugLabel" type="Label" parent="UI" unique_id=2050414616]
-visible = false
-layout_mode = 0
-offset_left = 20.0
-offset_top = 20.0
-offset_right = 60.0
-offset_bottom = 43.0
-text = "Debug"
-
-[node name="InventoryUI" parent="UI" unique_id=86191429 instance=ExtResource("7_hujxm")]
-layout_mode = 1
-offset_right = 1240.0
-offset_bottom = 680.0
-
-[node name="ToolRadialMenu" type="Control" parent="UI" unique_id=564621786]
-layout_mode = 1
-anchor_left = 15.205001
-anchor_top = 8.501
-anchor_right = 15.205001
-anchor_bottom = 8.501
-offset_left = -608.2
-offset_top = -340.04
-offset_right = 671.8
-offset_bottom = 379.96
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("12_th5th")
-slot_scene = ExtResource("13_7smn1")
-
-[node name="CenterDot" type="TextureRect" parent="UI/ToolRadialMenu" unique_id=778391217]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="SlotContainer" type="Control" parent="UI/ToolRadialMenu" unique_id=1482064172]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="ClockLabel" type="Label" parent="UI" unique_id=1552289050]
-layout_mode = 0
-offset_left = 1102.0
-offset_top = 58.0
-offset_right = 1158.0
-offset_bottom = 89.0
-theme_override_font_sizes/font_size = 22
-text = "00:00"
-script = ExtResource("8_yyfjg")
-
-[node name="StaminaUI" type="Control" parent="UI" unique_id=643561204]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("18_ou6is")
-
-[node name="StaminaBar" type="ProgressBar" parent="UI/StaminaUI" unique_id=933955937]
-layout_mode = 0
-offset_left = 1102.0
-offset_top = 87.925
-offset_right = 1248.0
-offset_bottom = 114.92504
-value = 100.0
-
-[node name="StaminaLabel" type="Label" parent="UI/StaminaUI" unique_id=1594469724]
-visible = false
-layout_mode = 0
-offset_left = 1027.0
-offset_top = 88.0
-offset_right = 1067.0
-offset_bottom = 111.0
-text = "stamina"
-
-[node name="SleepFadeRect" type="ColorRect" parent="UI" unique_id=514526863]
+[node name="SleepFadeRect" type="ColorRect" parent="UI/TransitionLayer/TransitionRoot" unique_id=514526863]
 visible = false
 modulate = Color(1, 1, 1, 0)
 layout_mode = 0
@@ -603,6 +610,7 @@ text = "x200"
 
 [node name="DevConsole" type="CanvasLayer" parent="Dev/DevUI/DebugMenu" unique_id=956823151]
 layer = 100
+visible = false
 script = ExtResource("29_tbnf8")
 
 [node name="PanelContainer" type="PanelContainer" parent="Dev/DevUI/DebugMenu/DevConsole" unique_id=1618661480]

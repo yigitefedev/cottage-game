@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://c1mw1quyydmwo"]
+
+[ext_resource type="Texture2D" uid="uid://cncf52y2hi7dl" path="res://art/gecici/PlaceableObject.png" id="1_03m38"]
+[ext_resource type="Script" uid="uid://kia7nkogevgg" path="res://scripts/items/ItemDefinition.gd" id="1_5ikvk"]
+[ext_resource type="Script" uid="uid://bv46nwab8gvji" path="res://scripts/items/actions/item_actions/PlaceTileObjectAction.gd" id="2_y04rv"]
+
+[sub_resource type="Resource" id="Resource_a7d4s"]
+script = ExtResource("2_y04rv")
+metadata/_custom_type_script = "uid://bv46nwab8gvji"
+
+[resource]
+script = ExtResource("1_5ikvk")
+id = &"jar_station"
+display_name = "Jarring Table"
+icon = ExtResource("1_03m38")
+max_stack = 5
+tags = Array[StringName]([&"placeable_object"])
+primary_action = SubResource("Resource_a7d4s")
+properties = {
+"object_id": "jar_station",
+"visual_id": "jar_station",
+"visual_layer": "object"
+}
+metadata/_custom_type_script = "uid://kia7nkogevgg"

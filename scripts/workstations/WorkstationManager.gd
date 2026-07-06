@@ -61,7 +61,46 @@ func ensure_refs() -> void:
 	if recipe_database != null:
 		recipe_database.build_lookup()
 
+func get_current_tick_progress_ratio() -> float:
+	if time_manager == null:
+		return 0.0
 
+	if not time_manager.has_method("get_tick_progress_ratio"):
+		return 0.0
+
+	return float(time_manager.call("get_tick_progress_ratio"))
+func get_visual_progress_ratio(coord: Vector2i) -> float:
+	var state: Dictionary = get_or_create_state(coord)
+
+	if state.is_empty():
+		return 0.0
+
+	var current_state: StringName = StringName(state.get("state", STATE_EMPTY))
+
+	if current_state == STATE_DONE:
+		return 1.0
+
+	if current_state != STATE_PROCESSING:
+		return 0.0
+
+	var duration_minutes: int = int(state.get("duration_minutes", 0))
+
+	if duration_minutes <= 0:
+		return 0.0
+
+	var remaining_minutes: int = int(state.get("remaining_minutes", 0))
+	var completed_minutes: int = duration_minutes - remaining_minutes
+
+	var tick_alpha: float = get_current_tick_progress_ratio()
+	var visual_extra_minutes: float = float(get_minutes_per_tick()) * tick_alpha
+
+	if visual_extra_minutes > float(remaining_minutes):
+		visual_extra_minutes = float(remaining_minutes)
+
+	var visual_completed_minutes: float = float(completed_minutes) + visual_extra_minutes
+
+	return clampf(visual_completed_minutes / float(duration_minutes), 0.0, 1.0)
+	
 func is_workstation_tile(coord: Vector2i) -> bool:
 	var definition: WorkstationDefinition = get_definition_for_tile(coord)
 	return definition != null
@@ -145,7 +184,60 @@ func clear_state(coord: Vector2i) -> void:
 	if tile.custom_data.has("workstation"):
 		tile.custom_data.erase("workstation")
 
+func can_cancel(coord: Vector2i) -> bool:
+	var state: Dictionary = get_or_create_state(coord)
 
+	if state.is_empty():
+		return false
+
+	var current_state: StringName = StringName(state.get("state", STATE_EMPTY))
+
+	return current_state == STATE_COLLECTING_INPUTS or current_state == STATE_PROCESSING
+	
+func get_refund_slots(coord: Vector2i) -> Array[Dictionary]:
+	var result: Array[Dictionary] = []
+	var state: Dictionary = get_or_create_state(coord)
+
+	if state.is_empty():
+		return result
+
+	var raw_slots: Variant = state.get("input_slots", [])
+
+	if not (raw_slots is Array):
+		return result
+
+	var slots: Array = raw_slots
+
+	for raw_slot: Variant in slots:
+		if not (raw_slot is Dictionary):
+			continue
+
+		var slot: Dictionary = raw_slot
+		var item_id: StringName = StringName(slot.get("item_id", &""))
+		var current_amount: int = int(slot.get("current_amount", 0))
+
+		if item_id == &"":
+			continue
+
+		if current_amount <= 0:
+			continue
+
+
+		result.append({
+			"item_id": item_id,
+			"amount": current_amount
+		})
+
+	return result
+	
+func cancel_workstation(coord: Vector2i) -> Array[Dictionary]:
+	if not can_cancel(coord):
+		return []
+
+	var refunds: Array[Dictionary] = get_refund_slots(coord)
+	reset_to_empty(coord)
+
+	return refunds
 func try_insert_item(coord: Vector2i, item_id: StringName, available_amount: int) -> int:
 	if available_amount <= 0:
 		return 0
@@ -252,7 +344,7 @@ func try_add_input_to_active_recipe(coord: Vector2i, state: Dictionary, item_id:
 func add_item_to_input_slots(state: Dictionary, item_id: StringName, available_amount: int) -> int:
 	var raw_slots: Variant = state.get("input_slots", [])
 
-	if not raw_slots is Array:
+	if not (raw_slots is Array):
 		return 0
 
 	var slots: Array = raw_slots
@@ -262,7 +354,7 @@ func add_item_to_input_slots(state: Dictionary, item_id: StringName, available_a
 	for i: int in range(slots.size()):
 		var raw_slot: Variant = slots[i]
 
-		if not raw_slot is Dictionary:
+		if not (raw_slot is Dictionary):
 			continue
 
 		var slot: Dictionary = raw_slot
@@ -307,7 +399,7 @@ func update_state_after_input_change(state: Dictionary) -> void:
 func are_all_inputs_complete(state: Dictionary) -> bool:
 	var raw_slots: Variant = state.get("input_slots", [])
 
-	if not raw_slots is Array:
+	if not (raw_slots is Array):
 		return false
 
 	var slots: Array = raw_slots
@@ -316,7 +408,7 @@ func are_all_inputs_complete(state: Dictionary) -> bool:
 		return false
 
 	for raw_slot in slots:
-		if not raw_slot is Dictionary:
+		if not (raw_slot is Dictionary):
 			return false
 
 		var slot: Dictionary = raw_slot

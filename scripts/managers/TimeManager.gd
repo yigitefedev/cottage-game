@@ -38,6 +38,14 @@ func _process(delta: float) -> void:
 		_second_accumulator -= seconds_per_tick
 		advance_time(minutes_per_tick)
 
+func get_tick_progress_ratio() -> float:
+	var seconds_per_tick: float = seconds_per_game_minute * float(minutes_per_tick)
+
+	if seconds_per_tick <= 0.0:
+		return 0.0
+
+	return clampf(_second_accumulator / seconds_per_tick, 0.0, 1.0)
+
 func advance_time(minutes: int) -> void:
 	current_minute += minutes
 

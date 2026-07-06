@@ -1,6 +1,6 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://boqd5w3qpvhqv"]
 
-[ext_resource type="Script" path="res://scripts/UI/InventoryUI.gd" id="1_5entl"]
+[ext_resource type="Script" uid="uid://ddpke71ruamfh" path="res://scripts/UI/InventoryUI.gd" id="1_5entl"]
 [ext_resource type="PackedScene" path="res://scenes/UI/InventorySlotUI.tscn" id="2_31fix"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_31fix"]
@@ -84,5 +84,5 @@ offset_top = -117.08502
 offset_bottom = -94.08502
 grow_horizontal = 2
 grow_vertical = 0
-text = "yarrak"
+text = "Hotbar"
 horizontal_alignment = 1

@@ -3,6 +3,11 @@ extends Node
 
 @export var interaction_actions: Array[InteractionAction] = []
 
+var active_hold_action: HoldInteractionAction
+var active_hold_context: InteractionContext
+var active_hold_time := 0.0
+var active_hold_completed := false
+
 var player: CharacterBody3D
 
 var grid_manager: GridManager
@@ -25,13 +30,99 @@ func _ready() -> void:
 	tile_targeter = get_tree().get_first_node_in_group("player_tile_targeter")
 	world_item_spawner = get_tree().get_first_node_in_group("world_item_spawner")
 
+func _process(delta: float) -> void:
+	update_hold_interaction(delta)
+
+func update_hold_interaction(delta: float) -> void:
+	if active_hold_action == null:
+		return
+
+	if active_hold_completed:
+		return
+
+	if not Input.is_action_pressed("interact"):
+		return
+
+	active_hold_time += delta
+
+	if active_hold_time >= active_hold_action.hold_duration_seconds:
+		active_hold_completed = true
+		active_hold_action.complete_hold(active_hold_context)
+		clear_active_hold()
+	
 func _input(event: InputEvent) -> void:
 	if DevManager.is_gameplay_input_locked():
 		return
 	if event.is_action_pressed("interact"):
-		try_interact()
+		start_interaction_input()
+		get_viewport().set_input_as_handled()
+		return
+
+	if event.is_action_released("interact"):
+		release_interaction_input()
+		get_viewport().set_input_as_handled()
+		return
+
+func start_interaction_input() -> void:
+	var context: InteractionContext = build_context()
+	var hold_action: HoldInteractionAction = find_hold_action(context)
+
+	if hold_action != null:
+		active_hold_action = hold_action
+		active_hold_context = context
+		active_hold_time = 0.0
+		active_hold_completed = false
+		return
+
+	run_normal_interaction(context)
 
 
+func release_interaction_input() -> void:
+	if active_hold_action == null:
+		return
+
+	if not active_hold_completed:
+		var context: InteractionContext = build_context()
+		run_normal_interaction(context)
+
+	clear_active_hold()
+
+
+func clear_active_hold() -> void:
+	active_hold_action = null
+	active_hold_context = null
+	active_hold_time = 0.0
+	active_hold_completed = false
+
+
+func find_hold_action(context: InteractionContext) -> HoldInteractionAction:
+	for action: InteractionAction in interaction_actions:
+		if action == null:
+			continue
+
+		if not (action is HoldInteractionAction):
+			continue
+
+		var hold_action := action as HoldInteractionAction
+
+		if hold_action.can_start_hold(context):
+			return hold_action
+
+	return null
+
+
+func run_normal_interaction(context: InteractionContext) -> void:
+	for action: InteractionAction in interaction_actions:
+		if action == null:
+			continue
+
+		if action is HoldInteractionAction:
+			continue
+
+		if action.can_interact(context):
+			action.interact(context)
+			return
+			
 func try_interact() -> void:
 	var context := build_context()
 

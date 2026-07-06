@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://0p623nxavd38"]
+
+[ext_resource type="Texture2D" uid="uid://cncf52y2hi7dl" path="res://art/gecici/PlaceableObject.png" id="1_cqme7"]
+[ext_resource type="Script" uid="uid://kia7nkogevgg" path="res://scripts/items/ItemDefinition.gd" id="1_ykosl"]
+
+[resource]
+script = ExtResource("1_ykosl")
+id = &"jar_empty"
+display_name = "Empty Jar"
+icon = ExtResource("1_cqme7")
+max_stack = 20
+metadata/_custom_type_script = "uid://kia7nkogevgg"

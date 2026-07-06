@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="WorkstationRecipe" format=3 uid="uid://cxl8xg31wu1b"]
+
+[ext_resource type="Script" uid="uid://bim5jhnj0kkyl" path="res://scripts/workstations/WorkstationItemStack.gd" id="1_n0kpd"]
+[ext_resource type="Script" uid="uid://c7jau1m52c4y5" path="res://scripts/workstations/WorkstationRecipe.gd" id="2_88neg"]
+
+[sub_resource type="Resource" id="Resource_bfh1s"]
+script = ExtResource("1_n0kpd")
+item_id = &"harvest_item_strawberry"
+amount = 3
+metadata/_custom_type_script = "uid://bim5jhnj0kkyl"
+
+[sub_resource type="Resource" id="Resource_5lpi5"]
+script = ExtResource("1_n0kpd")
+item_id = &"jar_empty"
+metadata/_custom_type_script = "uid://bim5jhnj0kkyl"
+
+[sub_resource type="Resource" id="Resource_k0kv6"]
+script = ExtResource("1_n0kpd")
+item_id = &"jam_strawberry"
+metadata/_custom_type_script = "uid://bim5jhnj0kkyl"
+
+[resource]
+script = ExtResource("2_88neg")
+id = &"jar_station_strawberry_jam"
+display_name = "Strawberry Jam"
+workstation_type = &"jar_station"
+inputs = Array[ExtResource("1_n0kpd")]([SubResource("Resource_bfh1s"), SubResource("Resource_5lpi5")])
+outputs = Array[ExtResource("1_n0kpd")]([SubResource("Resource_k0kv6")])
+duration_minutes = 180
+metadata/_custom_type_script = "uid://c7jau1m52c4y5"

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://e26phqgwj0qo"]
+
+[ext_resource type="Script" uid="uid://kia7nkogevgg" path="res://scripts/items/ItemDefinition.gd" id="1_m11dl"]
+[ext_resource type="Texture2D" uid="uid://cncf52y2hi7dl" path="res://art/gecici/PlaceableObject.png" id="1_si701"]
+
+[resource]
+script = ExtResource("1_m11dl")
+id = &"jam_strawberry"
+display_name = "Strawberry Jam"
+icon = ExtResource("1_si701")
+max_stack = 20
+metadata/_custom_type_script = "uid://kia7nkogevgg"
