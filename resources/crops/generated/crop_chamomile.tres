@@ -1,6 +1,6 @@
-[gd_resource type="Resource" script_class="CropDefinition" format=3]
+[gd_resource type="Resource" script_class="CropDefinition" format=3 uid="uid://r5r2y8dlmr0o"]
 
-[ext_resource type="Script" path="res://scripts/crops/CropDefinition.gd" id="1_10tkc"]
+[ext_resource type="Script" uid="uid://gdt274ukb23n" path="res://scripts/crops/CropDefinition.gd" id="1_10tkc"]
 
 [resource]
 script = ExtResource("1_10tkc")
@@ -13,3 +13,4 @@ harvest_item_id = &"harvest_item_chamomile"
 harvest_amount_max = 3
 regrow_after_harvest = true
 grow_seasons = Array[StringName]([&"spring"])
+allowed_planting_surfaces = Array[StringName]([&"garden_bed"])

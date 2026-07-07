@@ -1,6 +1,6 @@
-[gd_resource type="Resource" script_class="CropDefinition" format=3]
+[gd_resource type="Resource" script_class="CropDefinition" format=3 uid="uid://cb02idh6s8f2s"]
 
-[ext_resource type="Script" path="res://scripts/crops/CropDefinition.gd" id="1_nah4t"]
+[ext_resource type="Script" uid="uid://gdt274ukb23n" path="res://scripts/crops/CropDefinition.gd" id="1_nah4t"]
 
 [resource]
 script = ExtResource("1_nah4t")
@@ -13,3 +13,4 @@ harvest_item_id = &"harvest_item_basil"
 harvest_amount_max = 3
 regrow_after_harvest = true
 grow_seasons = Array[StringName]([&"summer"])
+allowed_planting_surfaces = Array[StringName]([&"garden_bed"])

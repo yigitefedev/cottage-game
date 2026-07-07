@@ -8,6 +8,9 @@ func can_use(context: ItemUseContext) -> bool:
 	if not context.target_tile.usable:
 		return false
 
+	if not context.target_tile.object_ids.is_empty():
+		return false
+
 	return true
 
 

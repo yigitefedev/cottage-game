@@ -1,7 +1,7 @@
-[gd_scene format=4]
+[gd_scene format=4 uid="uid://c8ra0v1l1xs6"]
 
-[ext_resource type="Script" path="res://scripts/grid/TilledSoil.gd" id="1_01tlh"]
-[ext_resource type="Material" path="res://art/materials/tilled_soil.tres" id="2_wkb2m"]
+[ext_resource type="Script" uid="uid://c46u5u07pv0ua" path="res://scripts/grid/TilledSoil.gd" id="1_01tlh"]
+[ext_resource type="Material" uid="uid://da34s5tidom1e" path="res://art/materials/tilled_soil.tres" id="2_wkb2m"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q518e"]
 
@@ -75,6 +75,13 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
+[sub_resource type="PlaneMesh" id="PlaneMesh_wkb2m"]
+size = Vector2(1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vbbfk"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0)
+
 [node name="TilledSoil" type="Node3D" unique_id=74866083]
 script = ExtResource("1_01tlh")
 color_transition_time = 3.0
@@ -97,3 +104,8 @@ surface_material_override/0 = ExtResource("2_wkb2m")
 visible = false
 mesh = SubResource("ArrayMesh_wwvcq")
 surface_material_override/0 = ExtResource("2_wkb2m")
+
+[node name="planting_surface" type="MeshInstance3D" parent="." unique_id=1786348879]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.03, 0)
+mesh = SubResource("PlaneMesh_wkb2m")
+surface_material_override/0 = SubResource("StandardMaterial3D_vbbfk")

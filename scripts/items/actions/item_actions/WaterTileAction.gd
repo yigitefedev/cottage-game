@@ -11,7 +11,7 @@ func can_use(context: ItemUseContext) -> bool:
 	if context.selected_item == null:
 		return false
 
-	if not context.target_tile.has_flag(&"tilled"):
+	if not PlantingSurfaceResolver.is_waterable(context.target_tile):
 		return false
 
 	if context.target_tile.has_flag(&"watered"):
@@ -29,4 +29,8 @@ func use(context: ItemUseContext) -> void:
 	context.target_tile.set_flag(&"watered", true)
 	context.target_tile.set_flag(&"just_watered", true)
 	context.selected_item.state["water"] -= 1
-	context.tile_visual_manager.refresh_tile_layer(context.target_tile_coord, &"ground")
+
+	var surface_layer := PlantingSurfaceResolver.get_surface_visual_layer(context.target_tile)
+
+	if surface_layer != &"":
+		context.tile_visual_manager.refresh_tile_layer(context.target_tile_coord, surface_layer)

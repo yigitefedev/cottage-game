@@ -96,15 +96,17 @@ func water_nearby_tiles(refresh_visuals: bool = true) -> void:
 		if not tile.usable:
 			continue
 
-		if not tile.has_flag(&"tilled"):
+		if not PlantingSurfaceResolver.is_waterable(tile):
 			continue
 
 		tile.set_flag(&"watered", true)
 		tile.set_flag(&"just_watered", refresh_visuals)
 		tile.set_flag(&"slow_water_tween", refresh_visuals)
 
-		if refresh_visuals and tile_visual_manager != null:
-			tile_visual_manager.refresh_tile_layer(tile_coord, &"ground")
+		var surface_layer := PlantingSurfaceResolver.get_surface_visual_layer(tile)
+
+		if refresh_visuals and tile_visual_manager != null and surface_layer != &"":
+			tile_visual_manager.refresh_tile_layer(tile_coord, surface_layer)
 			
 func play_spin_animation() -> void:
 	if head == null:

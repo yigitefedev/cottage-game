@@ -139,10 +139,10 @@ func can_spawn_weed_on_tile(tile: GameTileData) -> bool:
 	if not tile.usable:
 		return false
 
-	if not tile.has_flag(&"tilled"):
+	if not PlantingSurfaceResolver.has_surface(tile):
 		return false
 
-	if not tile.object_ids.is_empty():
+	if not PlantingSurfaceResolver.allows_weeds(tile):
 		return false
 
 	return not has_weed(tile)

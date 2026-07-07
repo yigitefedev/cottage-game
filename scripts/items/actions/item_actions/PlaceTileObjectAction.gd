@@ -62,12 +62,14 @@ func use(context: ItemUseContext) -> void:
 	var object_id: StringName = StringName(context.selected_item.get_property("object_id", &""))
 	var visual_layer: StringName = StringName(context.selected_item.get_property("visual_layer", &"object"))
 	var visual_id: StringName = StringName(context.selected_item.get_property("visual_id", object_id))
+	var object_properties: Dictionary = context.selected_item.definition.properties
 
 	var placed: bool = context.grid_object_manager.place_tile_object(
 		context.target_tile_coord,
 		object_id,
 		visual_layer,
-		visual_id
+		visual_id,
+		object_properties
 	)
 
 	if not placed:

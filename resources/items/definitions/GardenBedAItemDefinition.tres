@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://clmwv53fflflm"]
+
+[ext_resource type="Texture2D" uid="uid://cncf52y2hi7dl" path="res://art/gecici/PlaceableObject.png" id="1_8ksw2"]
+[ext_resource type="Script" uid="uid://kia7nkogevgg" path="res://scripts/items/ItemDefinition.gd" id="2_l0j2q"]
+[ext_resource type="Script" uid="uid://bv46nwab8gvji" path="res://scripts/items/actions/item_actions/PlaceTileObjectAction.gd" id="3_v0h4p"]
+
+[sub_resource type="Resource" id="Resource_l7i5r"]
+script = ExtResource("3_v0h4p")
+metadata/_custom_type_script = "uid://bv46nwab8gvji"
+
+[resource]
+script = ExtResource("2_l0j2q")
+id = &"garden_bed_a"
+display_name = "Garden Bed A"
+icon = ExtResource("1_8ksw2")
+max_stack = 5
+tags = Array[StringName]([&"placeable_object"])
+primary_action = SubResource("Resource_l7i5r")
+properties = {
+"allows_weeds": false,
+"object_id": "garden_bed_a",
+"planting_surface": "garden_bed",
+"visual_id": "garden_bed_a",
+"visual_layer": "object",
+"waterable": true
+}
+metadata/_custom_type_script = "uid://kia7nkogevgg"

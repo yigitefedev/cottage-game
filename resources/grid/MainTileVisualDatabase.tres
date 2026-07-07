@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://id3822kkb4kt" path="res://scripts/grid/TileVisualDefinition.gd" id="1_ytpcr"]
 [ext_resource type="Script" uid="uid://qkxfl6cnlm5g" path="res://scripts/grid/TileVisualDatabase.gd" id="2_gbvab"]
-[ext_resource type="PackedScene" path="res://scenes/Tiles/tilled_soil.tscn" id="2_wyve8"]
+[ext_resource type="PackedScene" uid="uid://c8ra0v1l1xs6" path="res://scenes/Tiles/tilled_soil.tscn" id="2_wyve8"]
 [ext_resource type="PackedScene" path="res://scenes/Tiles/crops/carrot_stage_0.tscn" id="4_o20sn"]
 [ext_resource type="PackedScene" path="res://scenes/Tiles/crops/carrot_stage_1.tscn" id="5_h8ws0"]
 [ext_resource type="PackedScene" path="res://scenes/Tiles/crops/carrot_stage_2.tscn" id="6_3c05e"]
@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://batnnglr251xj" path="res://scenes/Tiles/weeds/weed_level_1a.tscn" id="16_weed1"]
 [ext_resource type="PackedScene" uid="uid://cttayfamwpvfq" path="res://scenes/Tiles/weeds/weed_level_2a.tscn" id="17_weed2"]
 [ext_resource type="PackedScene" uid="uid://qhwyj6fj5vo4" path="res://scenes/Tiles/weeds/weed_level_3a.tscn" id="18_weed3"]
+[ext_resource type="PackedScene" uid="uid://bhctxrpo4c1jq" path="res://scenes/objects/GardenBedA.tscn" id="19_gbeda"]
 
 [sub_resource type="Resource" id="Resource_enaxe"]
 script = ExtResource("1_ytpcr")
@@ -137,7 +138,14 @@ scene = ExtResource("18_weed3")
 y_offset = 0.0
 metadata/_custom_type_script = "uid://id3822kkb4kt"
 
+[sub_resource type="Resource" id="Resource_gbeda"]
+script = ExtResource("1_ytpcr")
+id = &"garden_bed_a"
+scene = ExtResource("19_gbeda")
+y_offset = 0.0
+metadata/_custom_type_script = "uid://id3822kkb4kt"
+
 [resource]
 script = ExtResource("2_gbvab")
-definitions = Array[ExtResource("1_ytpcr")]([SubResource("Resource_enaxe"), SubResource("Resource_xo00v"), SubResource("Resource_nb242"), SubResource("Resource_eodge"), SubResource("Resource_ndjhc"), SubResource("Resource_3c05e"), SubResource("Resource_01v4t"), SubResource("Resource_ixdjf"), SubResource("Resource_gtk47"), SubResource("Resource_p64xw"), SubResource("Resource_86cfi"), SubResource("Resource_sek6m"), SubResource("Resource_xtxwi"), SubResource("Resource_rmj1b"), SubResource("Resource_weed1"), SubResource("Resource_weed2"), SubResource("Resource_weed3")])
+definitions = Array[ExtResource("1_ytpcr")]([SubResource("Resource_enaxe"), SubResource("Resource_xo00v"), SubResource("Resource_nb242"), SubResource("Resource_eodge"), SubResource("Resource_ndjhc"), SubResource("Resource_3c05e"), SubResource("Resource_01v4t"), SubResource("Resource_ixdjf"), SubResource("Resource_gtk47"), SubResource("Resource_p64xw"), SubResource("Resource_86cfi"), SubResource("Resource_sek6m"), SubResource("Resource_xtxwi"), SubResource("Resource_rmj1b"), SubResource("Resource_weed1"), SubResource("Resource_weed2"), SubResource("Resource_weed3"), SubResource("Resource_gbeda")])
 metadata/_custom_type_script = "uid://qkxfl6cnlm5g"

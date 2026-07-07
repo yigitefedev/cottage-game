@@ -121,6 +121,9 @@ func update_crop_definition(
 	if "grow_seasons" in crop:
 		crop.grow_seasons = parse_seasons(String(row.get("season", "")))
 
+	if "allowed_planting_surfaces" in crop:
+		crop.allowed_planting_surfaces = get_allowed_planting_surfaces(String(row.get("type", "crop")))
+
 	if "harvest_type" in crop:
 		crop.harvest_type = StringName(row.get("type", "crop"))
 
@@ -236,6 +239,14 @@ func get_required_structure(crop_type: String) -> StringName:
 			return &"tree"
 		_:
 			return &"soil"
+
+
+func get_allowed_planting_surfaces(crop_type: String) -> Array[StringName]:
+	match crop_type:
+		"garden_bed":
+			return [&"garden_bed"]
+		_:
+			return [&"field"]
 
 
 func get_seed_tags(crop_type: String) -> Array[StringName]:

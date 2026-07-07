@@ -57,7 +57,7 @@ func refresh_tile(coord: Vector2i) -> void:
 	if tile == null:
 		return
 
-	for layer in tile.get_visual_layers().keys():
+	for layer in get_ordered_visual_layers(tile):
 		var visual_id: StringName = tile.visual_layers[layer]
 		spawn_tile_visual(coord, visual_id, layer)
 
@@ -101,7 +101,7 @@ func spawn_tile_visual(coord: Vector2i, visual_id: StringName, layer: StringName
 
 	add_child(visual)
 
-	visual.global_position = grid_manager.tile_to_world(coord) + Vector3.UP * definition.y_offset
+	visual.global_position = get_visual_spawn_position(coord, definition, layer)
 
 	if visual.has_method("setup"):
 		visual.setup(coord, grid_manager)
@@ -116,6 +116,70 @@ func spawn_tile_visual(coord: Vector2i, visual_id: StringName, layer: StringName
 			active_tile_visual_layers[coord] = {}
 
 		active_tile_visual_layers[coord][layer] = visual
+
+
+func get_ordered_visual_layers(tile: GameTileData) -> Array[StringName]:
+	var result: Array[StringName] = []
+	var preferred_layers: Array[StringName] = [&"ground", &"object", &"crop", &"weed"]
+
+	for layer in preferred_layers:
+		if tile.visual_layers.has(layer):
+			result.append(layer)
+
+	for layer in tile.get_visual_layers().keys():
+		var layer_name := StringName(layer)
+
+		if not result.has(layer_name):
+			result.append(layer_name)
+
+	return result
+
+
+func get_visual_spawn_position(
+	coord: Vector2i,
+	definition: TileVisualDefinition,
+	layer: StringName
+) -> Vector3:
+	if layer == &"crop":
+		var surface_position: Variant = get_planting_surface_position(coord)
+
+		if surface_position is Vector3:
+			var typed_surface_position: Vector3 = surface_position
+			return typed_surface_position + Vector3.UP * definition.y_offset
+
+	return grid_manager.tile_to_world(coord) + Vector3.UP * definition.y_offset
+
+
+func get_planting_surface_position(coord: Vector2i) -> Variant:
+	var tile := grid_manager.get_tile(coord) if grid_manager != null else null
+
+	if tile == null:
+		return null
+
+	var surface_layer := PlantingSurfaceResolver.get_surface_visual_layer(tile)
+
+	if surface_layer == &"":
+		return null
+
+	if not active_tile_visual_layers.has(coord):
+		return null
+
+	var layer_visuals: Dictionary = active_tile_visual_layers[coord]
+
+	if not layer_visuals.has(surface_layer):
+		return null
+
+	var surface_visual: Node = layer_visuals[surface_layer]
+
+	if not is_instance_valid(surface_visual):
+		return null
+
+	var marker := surface_visual.find_child("planting_surface", true, false) as Node3D
+
+	if marker == null:
+		return null
+
+	return marker.global_position
 
 func get_visual_definition_with_fallback(visual_id: StringName) -> TileVisualDefinition:
 	if visual_lookup.has(visual_id):

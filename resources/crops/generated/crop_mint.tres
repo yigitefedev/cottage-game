@@ -1,6 +1,6 @@
-[gd_resource type="Resource" script_class="CropDefinition" format=3]
+[gd_resource type="Resource" script_class="CropDefinition" format=3 uid="uid://6mf0wav4ypyx"]
 
-[ext_resource type="Script" path="res://scripts/crops/CropDefinition.gd" id="1_k2x2u"]
+[ext_resource type="Script" uid="uid://gdt274ukb23n" path="res://scripts/crops/CropDefinition.gd" id="1_k2x2u"]
 
 [resource]
 script = ExtResource("1_k2x2u")
@@ -14,3 +14,4 @@ harvest_amount_min = 4
 harvest_amount_max = 4
 regrow_after_harvest = true
 grow_seasons = Array[StringName]([&"spring", &"fall", &"summer"])
+allowed_planting_surfaces = Array[StringName]([&"garden_bed"])

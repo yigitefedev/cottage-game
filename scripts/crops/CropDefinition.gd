@@ -16,6 +16,7 @@ extends Resource
 @export var regrow_after_harvest := false
 @export var regrow_stage_index := 1
 @export var grow_seasons: Array[StringName] = []
+@export var allowed_planting_surfaces: Array[StringName] = [&"field"]
 
 
 func get_stage_count() -> int:
@@ -38,3 +39,13 @@ func get_stage_duration(stage_index: int) -> int:
 
 func is_stage_harvestable(stage_index: int) -> bool:
 	return stage_index == harvest_stage_index
+
+
+func can_plant_on_surface(surface_id: StringName) -> bool:
+	if surface_id == &"":
+		return false
+
+	if allowed_planting_surfaces.is_empty():
+		return surface_id == &"field"
+
+	return allowed_planting_surfaces.has(surface_id)
