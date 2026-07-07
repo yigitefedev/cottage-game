@@ -15,6 +15,9 @@ func _ready() -> void:
 	refresh_all_tiles()
 	grass_mask_manager = get_tree().get_first_node_in_group("grass_mask_manager")
 
+	if not TimeManager.time_simulation_finished.is_connected(on_time_simulation_finished):
+		TimeManager.time_simulation_finished.connect(on_time_simulation_finished)
+
 
 func build_visual_lookup() -> void:
 	visual_lookup.clear()
@@ -27,6 +30,10 @@ func build_visual_lookup() -> void:
 			continue
 
 		visual_lookup[definition.id] = definition
+
+
+func on_time_simulation_finished() -> void:
+	refresh_all_tiles()
 
 
 func refresh_all_tiles() -> void:

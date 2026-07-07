@@ -16,8 +16,8 @@ func _ready() -> void:
 	add_to_group("weed_manager")
 	ensure_refs()
 
-	if not TimeManager.day_started.is_connected(on_day_started):
-		TimeManager.day_started.connect(on_day_started)
+	if not TimeManager.day_simulated.is_connected(on_day_simulated):
+		TimeManager.day_simulated.connect(on_day_simulated)
 
 
 func ensure_refs() -> void:
@@ -28,7 +28,11 @@ func ensure_refs() -> void:
 		tile_visual_manager = get_tree().get_first_node_in_group("tile_visual_manager")
 
 
-func on_day_started(_day: int) -> void:
+func on_day_simulated(_day: int, fast_forward: bool) -> void:
+	simulate_day(not fast_forward)
+
+
+func simulate_day(refresh_visuals: bool = true) -> void:
 	ensure_refs()
 
 	if grid_manager == null:
@@ -36,9 +40,9 @@ func on_day_started(_day: int) -> void:
 
 	var weed_coords := get_weed_coords()
 
-	grow_existing_weeds(weed_coords)
-	spread_existing_weeds(weed_coords)
-	spawn_random_weeds()
+	grow_existing_weeds(weed_coords, refresh_visuals)
+	spread_existing_weeds(weed_coords, refresh_visuals)
+	spawn_random_weeds(refresh_visuals)
 
 
 func get_weed_coords() -> Array[Vector2i]:
@@ -59,7 +63,7 @@ func get_weed_coords() -> Array[Vector2i]:
 	return result
 
 
-func grow_existing_weeds(weed_coords: Array[Vector2i]) -> void:
+func grow_existing_weeds(weed_coords: Array[Vector2i], refresh_visuals: bool = true) -> void:
 	for coord: Vector2i in weed_coords:
 		var tile := grid_manager.get_tile(coord)
 
@@ -74,10 +78,10 @@ func grow_existing_weeds(weed_coords: Array[Vector2i]) -> void:
 		if randf() > growth_chance:
 			continue
 
-		set_weed_level(tile, current_level + 1)
+		set_weed_level(tile, current_level + 1, refresh_visuals)
 
 
-func spread_existing_weeds(weed_coords: Array[Vector2i]) -> void:
+func spread_existing_weeds(weed_coords: Array[Vector2i], refresh_visuals: bool = true) -> void:
 	for coord: Vector2i in weed_coords:
 		if randf() > spread_chance:
 			continue
@@ -93,10 +97,10 @@ func spread_existing_weeds(weed_coords: Array[Vector2i]) -> void:
 		if target_tile == null:
 			continue
 
-		spawn_weed(target_tile)
+		spawn_weed(target_tile, 1, refresh_visuals)
 
 
-func spawn_random_weeds() -> void:
+func spawn_random_weeds(refresh_visuals: bool = true) -> void:
 	for coord in grid_manager.grid_data.tiles.keys():
 		var tile: GameTileData = grid_manager.grid_data.tiles[coord]
 
@@ -106,7 +110,7 @@ func spawn_random_weeds() -> void:
 		if randf() > random_spawn_chance:
 			continue
 
-		spawn_weed(tile)
+		spawn_weed(tile, 1, refresh_visuals)
 
 
 func get_spread_targets(coord: Vector2i) -> Array[Vector2i]:
@@ -164,7 +168,7 @@ func get_weed_level(tile: GameTileData) -> int:
 	return 1
 
 
-func set_weed_level(tile: GameTileData, level: int) -> void:
+func set_weed_level(tile: GameTileData, level: int, refresh_visuals: bool = true) -> void:
 	if tile == null:
 		return
 
@@ -175,20 +179,22 @@ func set_weed_level(tile: GameTileData, level: int) -> void:
 	}
 
 	tile.set_visual(&"weed", get_visual_id_for_level(safe_level))
-	refresh_weed_visual(tile.coord)
+	if refresh_visuals:
+		refresh_weed_visual(tile.coord)
 
 
-func spawn_weed(tile: GameTileData, level: int = 1) -> void:
-	set_weed_level(tile, level)
+func spawn_weed(tile: GameTileData, level: int = 1, refresh_visuals: bool = true) -> void:
+	set_weed_level(tile, level, refresh_visuals)
 
 
-func remove_weed(tile: GameTileData) -> void:
+func remove_weed(tile: GameTileData, refresh_visuals: bool = true) -> void:
 	if tile == null:
 		return
 
 	tile.custom_data.erase(WEED_KEY)
 	tile.remove_visual(&"weed")
-	refresh_weed_visual(tile.coord)
+	if refresh_visuals:
+		refresh_weed_visual(tile.coord)
 
 
 func get_visual_id_for_level(level: int) -> StringName:

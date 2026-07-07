@@ -27,6 +27,9 @@ func _exit_tree() -> void:
 	if TimeManager.day_started.is_connected(on_day_started):
 		TimeManager.day_started.disconnect(on_day_started)
 
+	if TimeManager.day_simulated.is_connected(on_day_simulated):
+		TimeManager.day_simulated.disconnect(on_day_simulated)
+
 
 func ensure_refs() -> void:
 	grid_manager = get_tree().get_first_node_in_group("grid_manager")
@@ -39,6 +42,9 @@ func connect_day_started() -> void:
 
 	if not TimeManager.day_started.is_connected(on_day_started):
 		TimeManager.day_started.connect(on_day_started)
+
+	if not TimeManager.day_simulated.is_connected(on_day_simulated):
+		TimeManager.day_simulated.connect(on_day_simulated)
 
 
 func on_day_started(_day: int) -> void:
@@ -55,7 +61,14 @@ func on_day_started(_day: int) -> void:
 	water_nearby_tiles()
 
 
-func water_nearby_tiles() -> void:
+func on_day_simulated(_day: int, fast_forward: bool) -> void:
+	if not fast_forward:
+		return
+
+	water_nearby_tiles(false)
+
+
+func water_nearby_tiles(refresh_visuals: bool = true) -> void:
 	if not has_setup:
 		return
 
@@ -87,10 +100,10 @@ func water_nearby_tiles() -> void:
 			continue
 
 		tile.set_flag(&"watered", true)
-		tile.set_flag(&"just_watered", true)
-		tile.set_flag(&"slow_water_tween", true)
+		tile.set_flag(&"just_watered", refresh_visuals)
+		tile.set_flag(&"slow_water_tween", refresh_visuals)
 
-		if tile_visual_manager != null:
+		if refresh_visuals and tile_visual_manager != null:
 			tile_visual_manager.refresh_tile_layer(tile_coord, &"ground")
 			
 func play_spin_animation() -> void:

@@ -20,13 +20,20 @@ func _ready() -> void:
 
 	ensure_refs()
 
-	if time_manager != null and time_manager.has_signal("time_tick"):
-		time_manager.time_tick.connect(_on_time_tick)
+	if time_manager != null and time_manager.has_signal("time_advanced"):
+		time_manager.time_advanced.connect(_on_time_advanced)
 	if time_manager != null and time_manager.has_signal("time_skipped"):
 		time_manager.time_skipped.connect(_on_time_skipped)
 
+
+func _on_time_advanced(minutes: int) -> void:
+	process_workstations_by_minutes(minutes)
+
+
 func _on_time_skipped(minutes: int) -> void:
 	process_workstations_by_minutes(minutes)
+
+
 func process_workstations_by_minutes(minutes_to_advance: int) -> void:
 	ensure_refs()
 
@@ -431,10 +438,6 @@ func save_state(coord: Vector2i, state: Dictionary) -> void:
 		return
 
 	tile.custom_data["workstation"] = state
-
-
-func _on_time_tick(_day: int, _hour: int, _minute: int) -> void:
-	process_workstations()
 
 
 func process_workstations() -> void:

@@ -13,10 +13,14 @@ func _ready() -> void:
 
 	crop_database.build_lookup()
 
-	TimeManager.day_started.connect(on_day_started)
+	TimeManager.day_simulated.connect(on_day_simulated)
 
 
-func on_day_started(_day: int) -> void:
+func on_day_simulated(_day: int, fast_forward: bool) -> void:
+	simulate_day(not fast_forward)
+
+
+func simulate_day(refresh_visuals: bool = true) -> void:
 	if grid_manager == null:
 		return
 
@@ -26,12 +30,12 @@ func on_day_started(_day: int) -> void:
 		if tile == null:
 			continue
 
-		process_crop_growth(coord, tile)
+		process_crop_growth(coord, tile, refresh_visuals)
 
-		reset_watered_state(coord, tile)
+		reset_watered_state(coord, tile, refresh_visuals)
 
 
-func process_crop_growth(coord: Vector2i, tile: GameTileData) -> void:
+func process_crop_growth(coord: Vector2i, tile: GameTileData, refresh_visuals: bool = true) -> void:
 	if tile.crop_id == &"":
 		return
 
@@ -69,13 +73,16 @@ func process_crop_growth(coord: Vector2i, tile: GameTileData) -> void:
 
 	tile.crop_harvestable = crop.is_stage_harvestable(tile.crop_stage_index)
 
-	tile_visual_manager.refresh_tile_layer(coord, &"crop")
+	if refresh_visuals and tile_visual_manager != null:
+		tile_visual_manager.refresh_tile_layer(coord, &"crop")
 
-func reset_watered_state(coord: Vector2i, tile: GameTileData) -> void:
+func reset_watered_state(coord: Vector2i, tile: GameTileData, refresh_visuals: bool = true) -> void:
 	if not tile.has_flag(&"watered"):
 		return
 
 	tile.set_flag(&"watered", false)
+	tile.set_flag(&"just_watered", false)
+	tile.set_flag(&"slow_water_tween", false)
 
-	if tile_visual_manager != null:
+	if refresh_visuals and tile_visual_manager != null:
 		tile_visual_manager.refresh_tile_and_neighbors(coord)
