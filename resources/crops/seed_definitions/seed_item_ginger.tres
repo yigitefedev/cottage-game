@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://b5txg4d4sx03o"]
+
+[ext_resource type="Texture2D" uid="uid://di4gg4mphafhp" path="res://art/icons/icon_seed_item_null.png" id="1_guhwg"]
+[ext_resource type="Resource" path="res://resources/actions/PlantSeedAction.tres" id="2_jhdjf"]
+[ext_resource type="Script" uid="uid://kia7nkogevgg" path="res://scripts/items/ItemDefinition.gd" id="3_75w1o"]
+
+[resource]
+script = ExtResource("3_75w1o")
+id = &"seed_item_ginger"
+display_name = "Ginger Seed"
+icon = ExtResource("1_guhwg")
+max_stack = 30
+tags = Array[StringName]([&"seed"])
+primary_action = ExtResource("2_jhdjf")
+properties = {
+"buy_price": 100,
+"crop_id": &"crop_ginger",
+"sell_price": 50
+}

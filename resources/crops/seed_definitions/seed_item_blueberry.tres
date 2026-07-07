@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://bhnbecbj1ksc0"]
+
+[ext_resource type="Texture2D" uid="uid://di4gg4mphafhp" path="res://art/icons/icon_seed_item_null.png" id="1_mqpsh"]
+[ext_resource type="Resource" path="res://resources/actions/PlantSeedAction.tres" id="2_eagym"]
+[ext_resource type="Script" uid="uid://kia7nkogevgg" path="res://scripts/items/ItemDefinition.gd" id="3_vfrux"]
+
+[resource]
+script = ExtResource("3_vfrux")
+id = &"seed_item_blueberry"
+display_name = "Blueberry Seed"
+icon = ExtResource("1_mqpsh")
+max_stack = 30
+tags = Array[StringName]([&"seed"])
+primary_action = ExtResource("2_eagym")
+properties = {
+"buy_price": 160,
+"crop_id": &"crop_blueberry",
+"sell_price": 80
+}

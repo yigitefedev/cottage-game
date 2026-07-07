@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://c6wrts4060twl"]
+
+[ext_resource type="Texture2D" uid="uid://di4gg4mphafhp" path="res://art/icons/icon_seed_item_null.png" id="1_ux1fi"]
+[ext_resource type="Resource" path="res://resources/actions/PlantSeedAction.tres" id="2_mi7ss"]
+[ext_resource type="Script" uid="uid://kia7nkogevgg" path="res://scripts/items/ItemDefinition.gd" id="3_vumni"]
+
+[resource]
+script = ExtResource("3_vumni")
+id = &"seed_item_coffee"
+display_name = "Coffee Seed"
+icon = ExtResource("1_ux1fi")
+max_stack = 30
+tags = Array[StringName]([&"seed"])
+primary_action = ExtResource("2_mi7ss")
+properties = {
+"buy_price": 200,
+"crop_id": &"crop_coffee",
+"sell_price": 100
+}

@@ -1,10 +1,12 @@
-[gd_resource type="Resource" script_class="ItemInstanceData" format=3]
+[gd_resource type="Resource" script_class="ItemInstanceData" format=3 uid="uid://c4vm8op03st1"]
 
-[ext_resource type="Resource" path="res://resources/items/generated/seed_item_carrot.tres" id="1_8ovl8"]
-[ext_resource type="Script" path="res://scripts/items/ItemInstanceData.gd" id="1_ihkis"]
+[ext_resource type="Script" uid="uid://caddfd8wsvlsh" path="res://scripts/items/ItemInstanceData.gd" id="1_ihkis"]
+
+[sub_resource type="Resource" id="Resource_ihkis"]
+metadata/__load_path__ = "res://resources/crops/seed_definitions/seed_item_carrot.tres"
 
 [resource]
 script = ExtResource("1_ihkis")
-definition = ExtResource("1_8ovl8")
+definition = SubResource("Resource_ihkis")
 amount = 20
 metadata/_custom_type_script = "uid://caddfd8wsvlsh"

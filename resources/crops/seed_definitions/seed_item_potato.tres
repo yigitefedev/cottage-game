@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://c1fordgxegtke"]
+
+[ext_resource type="Texture2D" uid="uid://di4gg4mphafhp" path="res://art/icons/icon_seed_item_null.png" id="1_jfkds"]
+[ext_resource type="Resource" path="res://resources/actions/PlantSeedAction.tres" id="2_iide7"]
+[ext_resource type="Script" uid="uid://kia7nkogevgg" path="res://scripts/items/ItemDefinition.gd" id="3_kypyb"]
+
+[resource]
+script = ExtResource("3_kypyb")
+id = &"seed_item_potato"
+display_name = "Potato Seed"
+icon = ExtResource("1_jfkds")
+max_stack = 30
+tags = Array[StringName]([&"seed"])
+primary_action = ExtResource("2_iide7")
+properties = {
+"buy_price": 16,
+"crop_id": &"crop_potato",
+"sell_price": 10
+}

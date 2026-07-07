@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://bobrku0gouo4i"]
+
+[ext_resource type="Texture2D" uid="uid://di4gg4mphafhp" path="res://art/icons/icon_seed_item_null.png" id="1_w8nix"]
+[ext_resource type="Resource" path="res://resources/actions/PlantSeedAction.tres" id="2_jvnvt"]
+[ext_resource type="Script" uid="uid://kia7nkogevgg" path="res://scripts/items/ItemDefinition.gd" id="3_p775f"]
+
+[resource]
+script = ExtResource("3_p775f")
+id = &"seed_item_green_bean"
+display_name = "Green Bean Seed"
+icon = ExtResource("1_w8nix")
+max_stack = 30
+tags = Array[StringName]([&"seed"])
+primary_action = ExtResource("2_jvnvt")
+properties = {
+"buy_price": 80,
+"crop_id": &"crop_green_bean",
+"sell_price": 40
+}

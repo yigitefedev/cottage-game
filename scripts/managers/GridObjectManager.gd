@@ -1,6 +1,8 @@
 class_name GridObjectManager
 extends Node
 
+const TreeTileResolverScript := preload("res://scripts/grid/TreeTileResolver.gd")
+
 @export var item_database: ItemDatabase
 var grid_manager: GridManager
 var tile_visual_manager: TileVisualManager
@@ -129,6 +131,9 @@ func place_tile_object(
 		return false
 
 	if tile.has_crop():
+		return false
+
+	if TreeTileResolverScript.has_tree(tile):
 		return false
 
 	if tile.has_flag(&"tilled"):

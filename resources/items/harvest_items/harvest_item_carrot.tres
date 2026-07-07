@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://rj1lg4xdik2p"]
+
+[ext_resource type="Texture2D" uid="uid://ca1wd2a41i36j" path="res://art/icons/icon_harvest_item_carrot.png" id="1_0dwot"]
+[ext_resource type="Script" uid="uid://kia7nkogevgg" path="res://scripts/items/ItemDefinition.gd" id="2_g5xbt"]
+
+[resource]
+script = ExtResource("2_g5xbt")
+id = &"harvest_item_carrot"
+display_name = "Carrot"
+icon = ExtResource("1_0dwot")
+max_stack = 20
+tags = Array[StringName]([&"crop"])
+properties = {
+"buy_price": 15,
+"sell_price": 12
+}

@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="ItemInstanceData" format=3]
 
-[ext_resource type="Resource" path="res://resources/items/generated/seed_item_pumpkin.tres" id="1_34hhx"]
+[ext_resource type="Resource" path="res://resources/crops/seed_definitions/seed_item_pumpkin.tres" id="1_34hhx"]
 [ext_resource type="Script" path="res://scripts/items/ItemInstanceData.gd" id="2_h1tdh"]
 
 [resource]

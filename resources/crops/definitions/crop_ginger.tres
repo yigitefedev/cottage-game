@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="CropDefinition" format=3 uid="uid://cbpqp5hfn2gle"]
+
+[ext_resource type="Script" uid="uid://gdt274ukb23n" path="res://scripts/crops/CropDefinition.gd" id="1_pgxbs"]
+
+[resource]
+script = ExtResource("1_pgxbs")
+id = &"crop_ginger"
+display_name = "Ginger"
+stage_visual_ids = Array[StringName]([&"ginger_stage_0", &"ginger_stage_1", &"ginger_stage_2", &"ginger_stage_3"])
+stage_duration_days = Array[int]([4, 3, 3, 0])
+harvest_stage_index = 3
+harvest_item_id = &"harvest_item_ginger"
+harvest_amount_min = 2
+harvest_amount_max = 2
+regrow_after_harvest = true
+grow_seasons = Array[StringName]([&"fall"])
+allowed_planting_surfaces = Array[StringName]([&"garden_bed"])

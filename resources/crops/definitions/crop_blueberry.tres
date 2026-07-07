@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="CropDefinition" format=3 uid="uid://ds55dr75m4xwy"]
+
+[ext_resource type="Script" uid="uid://gdt274ukb23n" path="res://scripts/crops/CropDefinition.gd" id="1_yrka7"]
+
+[resource]
+script = ExtResource("1_yrka7")
+id = &"crop_blueberry"
+display_name = "Blueberry"
+stage_visual_ids = Array[StringName]([&"blueberry_stage_0", &"blueberry_stage_1", &"blueberry_stage_2", &"blueberry_stage_3"])
+stage_duration_days = Array[int]([3, 3, 3, 0])
+harvest_stage_index = 3
+harvest_item_id = &"harvest_item_blueberry"
+harvest_amount_min = 4
+harvest_amount_max = 4
+regrow_after_harvest = true
+grow_seasons = Array[StringName]([&"summer"])

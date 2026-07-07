@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="TreeDefinition" format=3 uid="uid://cbpa48i52hhre"]
+
+[ext_resource type="Script" uid="uid://cewd6aunydvld" path="res://scripts/crops/TreeDefinition.gd" id="1_086k5"]
+
+[resource]
+script = ExtResource("1_086k5")
+id = &"tree_cocoa"
+display_name = "Cocoa"
+stage_visual_ids = Array[StringName]([&"tree_stage_0", &"tree_stage_1", &"tree_stage_2", &"tree_stage_3"])
+stage_duration_days = Array[int]([1, 1, 1, 1])

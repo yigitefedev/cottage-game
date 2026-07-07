@@ -4,6 +4,7 @@ extends Node
 var player_inventory: PlayerInventory
 var tile_targeter: PlayerTileTargeter
 const crop_database: CropDatabase = preload("res://resources/crops/MainCropDatabase.tres")
+const tree_database = preload("res://resources/trees/MainTreeDatabase.tres")
 @export var item_database: ItemDatabase
 var grid_manager: GridManager
 var tile_visual_manager: TileVisualManager
@@ -21,6 +22,7 @@ var object_target_resolver: ObjectTargetResolver
 func _ready() -> void:
 	await get_tree().process_frame
 	crop_database.build_lookup()
+	tree_database.build_lookup()
 	player_inventory = get_tree().get_first_node_in_group("player_inventory")
 	tile_targeter = get_tree().get_first_node_in_group("player_tile_targeter")
 	corner_targeter = get_tree().get_first_node_in_group("player_corner_targeter")
@@ -93,6 +95,7 @@ func build_context(item: ItemInstanceData) -> ItemUseContext:
 	context.selected_slot_index = player_inventory.get_inventory_index_for_hotbar_index(player_inventory.selected_index)
 	context.selected_item = item
 	context.crop_database = crop_database
+	context.tree_database = tree_database
 
 	context.grid_manager = grid_manager
 	context.tile_visual_manager = tile_visual_manager

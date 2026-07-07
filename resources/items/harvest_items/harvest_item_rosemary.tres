@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://bcos5p61p32x7"]
+
+[ext_resource type="Texture2D" uid="uid://0g5628infim8" path="res://art/icons/icon_harvest_item_null.png" id="1_4le5m"]
+[ext_resource type="Script" uid="uid://kia7nkogevgg" path="res://scripts/items/ItemDefinition.gd" id="2_f7oym"]
+
+[resource]
+script = ExtResource("2_f7oym")
+id = &"harvest_item_rosemary"
+display_name = "Rosemary"
+icon = ExtResource("1_4le5m")
+max_stack = 20
+tags = Array[StringName]([&"herb"])
+properties = {
+"buy_price": 30,
+"sell_price": 24
+}

@@ -120,7 +120,7 @@ func spawn_tile_visual(coord: Vector2i, visual_id: StringName, layer: StringName
 
 func get_ordered_visual_layers(tile: GameTileData) -> Array[StringName]:
 	var result: Array[StringName] = []
-	var preferred_layers: Array[StringName] = [&"ground", &"object", &"crop", &"weed"]
+	var preferred_layers: Array[StringName] = [&"ground", &"object", &"tree", &"crop", &"weed"]
 
 	for layer in preferred_layers:
 		if tile.visual_layers.has(layer):

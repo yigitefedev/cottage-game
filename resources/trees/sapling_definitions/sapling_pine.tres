@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://bbxrp38ciauls"]
+
+[ext_resource type="Texture2D" uid="uid://di4gg4mphafhp" path="res://art/icons/icon_seed_item_null.png" id="1_i1n4e"]
+[ext_resource type="Resource" path="res://resources/actions/PlantSaplingAction.tres" id="2_rq72e"]
+[ext_resource type="Script" uid="uid://kia7nkogevgg" path="res://scripts/items/ItemDefinition.gd" id="3_tld7d"]
+
+[resource]
+script = ExtResource("3_tld7d")
+id = &"sapling_pine"
+display_name = "Pine Sapling"
+icon = ExtResource("1_i1n4e")
+max_stack = 30
+tags = Array[StringName]([&"sapling"])
+primary_action = ExtResource("2_rq72e")
+properties = {
+"buy_price": 400,
+"sell_price": 200,
+"tree_id": &"tree_pine"
+}

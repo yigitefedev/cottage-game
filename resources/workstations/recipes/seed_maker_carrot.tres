@@ -19,5 +19,5 @@ id = &"seed_maker_carrot"
 display_name = "Carrot Seeds"
 workstation_type = &"seed_maker"
 inputs = Array[ExtResource("1_taeev")]([SubResource("Resource_oh4jo")])
-outputs = Array[ExtResource("1_taeev")]([SubResource("Resource_tla2u")])
+outputs = Array[ExtResource("1_taeev")]([SubResource("Resource_tla2u"), null])
 metadata/_custom_type_script = "uid://c7jau1m52c4y5"

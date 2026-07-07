@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://dmqlynxidm5av"]
+
+[ext_resource type="Texture2D" uid="uid://di4gg4mphafhp" path="res://art/icons/icon_seed_item_null.png" id="1_edxx5"]
+[ext_resource type="Resource" path="res://resources/actions/PlantSeedAction.tres" id="2_mux0w"]
+[ext_resource type="Script" uid="uid://kia7nkogevgg" path="res://scripts/items/ItemDefinition.gd" id="3_uoy6c"]
+
+[resource]
+script = ExtResource("3_uoy6c")
+id = &"seed_item_chamomile"
+display_name = "Chamomile Seed"
+icon = ExtResource("1_edxx5")
+max_stack = 30
+tags = Array[StringName]([&"seed"])
+primary_action = ExtResource("2_mux0w")
+properties = {
+"buy_price": 140,
+"crop_id": &"crop_chamomile",
+"sell_price": 70
+}

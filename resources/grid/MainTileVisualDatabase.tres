@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://cttayfamwpvfq" path="res://scenes/Tiles/weeds/weed_level_2a.tscn" id="17_weed2"]
 [ext_resource type="PackedScene" uid="uid://qhwyj6fj5vo4" path="res://scenes/Tiles/weeds/weed_level_3a.tscn" id="18_weed3"]
 [ext_resource type="PackedScene" uid="uid://bhctxrpo4c1jq" path="res://scenes/objects/GardenBedA.tscn" id="19_gbeda"]
+[ext_resource type="PackedScene" path="res://external/Scenes/tree.tscn" id="20_tree"]
 
 [sub_resource type="Resource" id="Resource_enaxe"]
 script = ExtResource("1_ytpcr")
@@ -145,7 +146,91 @@ scene = ExtResource("19_gbeda")
 y_offset = 0.0
 metadata/_custom_type_script = "uid://id3822kkb4kt"
 
+[sub_resource type="Resource" id="Resource_tree_stage0"]
+script = ExtResource("1_ytpcr")
+id = &"tree_stage_0"
+scene = ExtResource("20_tree")
+y_offset = 0.0
+metadata/_custom_type_script = "uid://id3822kkb4kt"
+
+[sub_resource type="Resource" id="Resource_tree_stage1"]
+script = ExtResource("1_ytpcr")
+id = &"tree_stage_1"
+scene = ExtResource("20_tree")
+y_offset = 0.0
+metadata/_custom_type_script = "uid://id3822kkb4kt"
+
+[sub_resource type="Resource" id="Resource_tree_stage2"]
+script = ExtResource("1_ytpcr")
+id = &"tree_stage_2"
+scene = ExtResource("20_tree")
+y_offset = 0.0
+metadata/_custom_type_script = "uid://id3822kkb4kt"
+
+[sub_resource type="Resource" id="Resource_tree_stage3"]
+script = ExtResource("1_ytpcr")
+id = &"tree_stage_3"
+scene = ExtResource("20_tree")
+y_offset = 0.0
+metadata/_custom_type_script = "uid://id3822kkb4kt"
+
+[sub_resource type="Resource" id="Resource_oaktree0"]
+script = ExtResource("1_ytpcr")
+id = &"oak_tree_stage_0"
+scene = ExtResource("20_tree")
+y_offset = 0.0
+metadata/_custom_type_script = "uid://id3822kkb4kt"
+
+[sub_resource type="Resource" id="Resource_oaktree1"]
+script = ExtResource("1_ytpcr")
+id = &"oak_tree_stage_1"
+scene = ExtResource("20_tree")
+y_offset = 0.0
+metadata/_custom_type_script = "uid://id3822kkb4kt"
+
+[sub_resource type="Resource" id="Resource_oaktree2"]
+script = ExtResource("1_ytpcr")
+id = &"oak_tree_stage_2"
+scene = ExtResource("20_tree")
+y_offset = 0.0
+metadata/_custom_type_script = "uid://id3822kkb4kt"
+
+[sub_resource type="Resource" id="Resource_oaktree3"]
+script = ExtResource("1_ytpcr")
+id = &"oak_tree_stage_3"
+scene = ExtResource("20_tree")
+y_offset = 0.0
+metadata/_custom_type_script = "uid://id3822kkb4kt"
+
+[sub_resource type="Resource" id="Resource_appletree0"]
+script = ExtResource("1_ytpcr")
+id = &"apple_tree_stage_0"
+scene = ExtResource("20_tree")
+y_offset = 0.0
+metadata/_custom_type_script = "uid://id3822kkb4kt"
+
+[sub_resource type="Resource" id="Resource_appletree1"]
+script = ExtResource("1_ytpcr")
+id = &"apple_tree_stage_1"
+scene = ExtResource("20_tree")
+y_offset = 0.0
+metadata/_custom_type_script = "uid://id3822kkb4kt"
+
+[sub_resource type="Resource" id="Resource_appletree2"]
+script = ExtResource("1_ytpcr")
+id = &"apple_tree_stage_2"
+scene = ExtResource("20_tree")
+y_offset = 0.0
+metadata/_custom_type_script = "uid://id3822kkb4kt"
+
+[sub_resource type="Resource" id="Resource_appletree3"]
+script = ExtResource("1_ytpcr")
+id = &"apple_tree_stage_3"
+scene = ExtResource("20_tree")
+y_offset = 0.0
+metadata/_custom_type_script = "uid://id3822kkb4kt"
+
 [resource]
 script = ExtResource("2_gbvab")
-definitions = Array[ExtResource("1_ytpcr")]([SubResource("Resource_enaxe"), SubResource("Resource_xo00v"), SubResource("Resource_nb242"), SubResource("Resource_eodge"), SubResource("Resource_ndjhc"), SubResource("Resource_3c05e"), SubResource("Resource_01v4t"), SubResource("Resource_ixdjf"), SubResource("Resource_gtk47"), SubResource("Resource_p64xw"), SubResource("Resource_86cfi"), SubResource("Resource_sek6m"), SubResource("Resource_xtxwi"), SubResource("Resource_rmj1b"), SubResource("Resource_weed1"), SubResource("Resource_weed2"), SubResource("Resource_weed3"), SubResource("Resource_gbeda")])
+definitions = Array[ExtResource("1_ytpcr")]([SubResource("Resource_enaxe"), SubResource("Resource_xo00v"), SubResource("Resource_nb242"), SubResource("Resource_eodge"), SubResource("Resource_ndjhc"), SubResource("Resource_3c05e"), SubResource("Resource_01v4t"), SubResource("Resource_ixdjf"), SubResource("Resource_gtk47"), SubResource("Resource_p64xw"), SubResource("Resource_86cfi"), SubResource("Resource_sek6m"), SubResource("Resource_xtxwi"), SubResource("Resource_rmj1b"), SubResource("Resource_weed1"), SubResource("Resource_weed2"), SubResource("Resource_weed3"), SubResource("Resource_gbeda"), SubResource("Resource_tree_stage0"), SubResource("Resource_tree_stage1"), SubResource("Resource_tree_stage2"), SubResource("Resource_tree_stage3"), SubResource("Resource_oaktree0"), SubResource("Resource_oaktree1"), SubResource("Resource_oaktree2"), SubResource("Resource_oaktree3"), SubResource("Resource_appletree0"), SubResource("Resource_appletree1"), SubResource("Resource_appletree2"), SubResource("Resource_appletree3")])
 metadata/_custom_type_script = "uid://qkxfl6cnlm5g"

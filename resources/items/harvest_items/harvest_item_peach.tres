@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://m1uu2chebwkq"]
+
+[ext_resource type="Texture2D" uid="uid://0g5628infim8" path="res://art/icons/icon_harvest_item_null.png" id="1_5hfc3"]
+[ext_resource type="Script" uid="uid://kia7nkogevgg" path="res://scripts/items/ItemDefinition.gd" id="2_3i5pr"]
+
+[resource]
+script = ExtResource("2_3i5pr")
+id = &"harvest_item_peach"
+display_name = "Peach"
+icon = ExtResource("1_5hfc3")
+max_stack = 20
+tags = Array[StringName]([&"fruit"])
+properties = {
+"buy_price": 60,
+"sell_price": 44
+}

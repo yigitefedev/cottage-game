@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://dv2h4ijnk1q6d"]
+
+[ext_resource type="Texture2D" uid="uid://bytu422wh6val" path="res://art/icons/icon_seed_item_carrot.png" id="1_v65du"]
+[ext_resource type="Resource" path="res://resources/actions/PlantSeedAction.tres" id="2_s05q8"]
+[ext_resource type="Script" uid="uid://kia7nkogevgg" path="res://scripts/items/ItemDefinition.gd" id="3_bkm0i"]
+
+[resource]
+script = ExtResource("3_bkm0i")
+id = &"seed_item_carrot"
+display_name = "Carrot Seed"
+icon = ExtResource("1_v65du")
+max_stack = 30
+tags = Array[StringName]([&"seed"])
+primary_action = ExtResource("2_s05q8")
+properties = {
+"buy_price": 8,
+"crop_id": &"crop_carrot",
+"sell_price": 5
+}

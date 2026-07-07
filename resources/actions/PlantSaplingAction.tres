@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="PlantSaplingAction" format=3]
+
+[ext_resource type="Script" path="res://scripts/items/actions/item_actions/PlantSaplingAction.gd" id="1_sapling"]
+
+[resource]
+script = ExtResource("1_sapling")
+action_id = &"plant_sapling"

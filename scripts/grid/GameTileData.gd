@@ -24,7 +24,7 @@ func _init(_coord: Vector2i = Vector2i.ZERO) -> void:
 
 
 func is_used() -> bool:
-	return has_crop() or object_ids.size() > 0 or has_flag(&"tilled")
+	return has_crop() or object_ids.size() > 0 or has_flag(&"tilled") or custom_data.has("tree")
 
 
 func has_crop() -> bool:

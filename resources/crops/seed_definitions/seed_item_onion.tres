@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://4sowgr08y800"]
+
+[ext_resource type="Texture2D" uid="uid://di4gg4mphafhp" path="res://art/icons/icon_seed_item_null.png" id="1_y3utd"]
+[ext_resource type="Resource" path="res://resources/actions/PlantSeedAction.tres" id="2_cne02"]
+[ext_resource type="Script" uid="uid://kia7nkogevgg" path="res://scripts/items/ItemDefinition.gd" id="3_4rlra"]
+
+[resource]
+script = ExtResource("3_4rlra")
+id = &"seed_item_onion"
+display_name = "Onion Seed"
+icon = ExtResource("1_y3utd")
+max_stack = 30
+tags = Array[StringName]([&"seed"])
+primary_action = ExtResource("2_cne02")
+properties = {
+"buy_price": 10,
+"crop_id": &"crop_onion",
+"sell_price": 5
+}

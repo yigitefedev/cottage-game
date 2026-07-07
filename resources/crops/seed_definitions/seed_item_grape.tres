@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://dq8wq8p82dwqc"]
+
+[ext_resource type="Texture2D" uid="uid://di4gg4mphafhp" path="res://art/icons/icon_seed_item_null.png" id="1_k6xwo"]
+[ext_resource type="Resource" path="res://resources/actions/PlantSeedAction.tres" id="2_bf3uf"]
+[ext_resource type="Script" uid="uid://kia7nkogevgg" path="res://scripts/items/ItemDefinition.gd" id="3_816hw"]
+
+[resource]
+script = ExtResource("3_816hw")
+id = &"seed_item_grape"
+display_name = "Grape Seed"
+icon = ExtResource("1_k6xwo")
+max_stack = 30
+tags = Array[StringName]([&"seed"])
+primary_action = ExtResource("2_bf3uf")
+properties = {
+"buy_price": 100,
+"crop_id": &"crop_grape",
+"sell_price": 50
+}

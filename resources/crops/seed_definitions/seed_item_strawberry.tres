@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://cegx2f43iq3p1"]
+
+[ext_resource type="Texture2D" uid="uid://di4gg4mphafhp" path="res://art/icons/icon_seed_item_null.png" id="1_enb12"]
+[ext_resource type="Resource" path="res://resources/actions/PlantSeedAction.tres" id="2_kfo1v"]
+[ext_resource type="Script" uid="uid://kia7nkogevgg" path="res://scripts/items/ItemDefinition.gd" id="3_8jq3p"]
+
+[resource]
+script = ExtResource("3_8jq3p")
+id = &"seed_item_strawberry"
+display_name = "Strawberry Seed"
+icon = ExtResource("1_enb12")
+max_stack = 30
+tags = Array[StringName]([&"seed"])
+primary_action = ExtResource("2_kfo1v")
+properties = {
+"buy_price": 80,
+"crop_id": &"crop_strawberry",
+"sell_price": 40
+}

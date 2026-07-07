@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://hsoja6yr5mbl"]
+
+[ext_resource type="Texture2D" uid="uid://di4gg4mphafhp" path="res://art/icons/icon_seed_item_null.png" id="1_kg06o"]
+[ext_resource type="Resource" path="res://resources/actions/PlantSaplingAction.tres" id="2_waq43"]
+[ext_resource type="Script" uid="uid://kia7nkogevgg" path="res://scripts/items/ItemDefinition.gd" id="3_gv52p"]
+
+[resource]
+script = ExtResource("3_gv52p")
+id = &"sapling_cocoa"
+display_name = "Cocoa Sapling"
+icon = ExtResource("1_kg06o")
+max_stack = 30
+tags = Array[StringName]([&"sapling"])
+primary_action = ExtResource("2_waq43")
+properties = {
+"buy_price": 800,
+"sell_price": 400,
+"tree_id": &"tree_cocoa"
+}

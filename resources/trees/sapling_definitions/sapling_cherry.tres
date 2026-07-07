@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://b66o0mnnbgigc"]
+
+[ext_resource type="Texture2D" uid="uid://di4gg4mphafhp" path="res://art/icons/icon_seed_item_null.png" id="1_soaap"]
+[ext_resource type="Resource" path="res://resources/actions/PlantSaplingAction.tres" id="2_u7fjb"]
+[ext_resource type="Script" uid="uid://kia7nkogevgg" path="res://scripts/items/ItemDefinition.gd" id="3_g4e7g"]
+
+[resource]
+script = ExtResource("3_g4e7g")
+id = &"sapling_cherry"
+display_name = "Cherry Sapling"
+icon = ExtResource("1_soaap")
+max_stack = 30
+tags = Array[StringName]([&"sapling"])
+primary_action = ExtResource("2_u7fjb")
+properties = {
+"buy_price": 600,
+"sell_price": 300,
+"tree_id": &"tree_cherry"
+}

@@ -1,6 +1,7 @@
 class_name PlaceTileObjectAction
 extends ItemAction
 
+const TreeTileResolverScript := preload("res://scripts/grid/TreeTileResolver.gd")
 
 func can_use(context: ItemUseContext) -> bool:
 	if context == null:
@@ -36,6 +37,9 @@ func can_use(context: ItemUseContext) -> bool:
 		return false
 
 	if tile.has_crop():
+		return false
+
+	if TreeTileResolverScript.has_tree(tile):
 		return false
 
 	if tile.has_flag(&"tilled"):

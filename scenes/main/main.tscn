@@ -4,12 +4,13 @@
 [ext_resource type="Shader" uid="uid://bifltg3r6fjhh" path="res://external/Shaders/ground_shader.gdshader" id="1_p8abn"]
 [ext_resource type="Script" uid="uid://c5q0wi8lyo8tv" path="res://scripts/managers/GridManager.gd" id="2_iuonh"]
 [ext_resource type="Material" path="res://external/Materials/grass.tres" id="2_m4h2d"]
-[ext_resource type="Resource" path="res://resources/grid/GameGridDefinition.tres" id="3_l3cfh"]
+[ext_resource type="Resource" uid="uid://bhu1ohaerp04n" path="res://resources/grid/GameGridDefinition.tres" id="3_l3cfh"]
 [ext_resource type="ArrayMesh" uid="uid://cbk61hqmfyprt" path="res://external/Assets/Meshes/grass_plane_mesh2.res" id="4_p8abn"]
 [ext_resource type="Script" uid="uid://duya06q6bg4x5" path="res://scripts/grid/TileVisualManager.gd" id="5_6q06x"]
 [ext_resource type="Resource" uid="uid://b33k8ghvkm2d5" path="res://resources/grid/MainTileVisualDatabase.tres" id="6_ow5a4"]
 [ext_resource type="Script" uid="uid://cnb76lnyqkvh4" path="res://scripts/managers/CropGrowthManager.gd" id="7_b1x3f"]
 [ext_resource type="PackedScene" uid="uid://boqd5w3qpvhqv" path="res://scenes/UI/InventoryUI.tscn" id="7_hujxm"]
+[ext_resource type="Script" uid="uid://dwq0cbnic2qfu" path="res://scripts/managers/TreeGrowthManager.gd" id="7_treegrowth"]
 [ext_resource type="Script" uid="uid://ww1g023y6hka" path="res://scripts/managers/WeedManager.gd" id="7_weeds"]
 [ext_resource type="Script" uid="uid://pmihujj6ji8c" path="res://scripts/items/WorldItemSpawner.gd" id="8_a8run"]
 [ext_resource type="Script" uid="uid://cywh0so5mkog1" path="res://scripts/grid/EdgeVisualManager.gd" id="8_raeie"]
@@ -138,6 +139,9 @@ script = ExtResource("7_b1x3f")
 
 [node name="WeedManager" type="Node" parent="Managers" unique_id=253167674]
 script = ExtResource("7_weeds")
+
+[node name="TreeGrowthManager" type="Node" parent="Managers" unique_id=1669310567]
+script = ExtResource("7_treegrowth")
 
 [node name="WorldItemSpawner" type="Node3D" parent="Managers" unique_id=1252260209]
 script = ExtResource("8_a8run")

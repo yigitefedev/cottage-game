@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://bkuq04utr52s0"]
+
+[ext_resource type="Texture2D" uid="uid://0g5628infim8" path="res://art/icons/icon_harvest_item_null.png" id="1_iu18x"]
+[ext_resource type="Script" uid="uid://kia7nkogevgg" path="res://scripts/items/ItemDefinition.gd" id="2_i54kb"]
+
+[resource]
+script = ExtResource("2_i54kb")
+id = &"harvest_item_tomato"
+display_name = "Tomato"
+icon = ExtResource("1_iu18x")
+max_stack = 20
+tags = Array[StringName]([&"crop", &"trellis_crop"])
+properties = {
+"buy_price": 35,
+"sell_price": 26
+}

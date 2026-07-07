@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://jktr0a8q868o"]
+
+[ext_resource type="Texture2D" uid="uid://0g5628infim8" path="res://art/icons/icon_harvest_item_null.png" id="1_fjmis"]
+[ext_resource type="Script" uid="uid://kia7nkogevgg" path="res://scripts/items/ItemDefinition.gd" id="2_8pjjo"]
+
+[resource]
+script = ExtResource("2_8pjjo")
+id = &"harvest_item_basil"
+display_name = "Basil"
+icon = ExtResource("1_fjmis")
+max_stack = 20
+tags = Array[StringName]([&"herb"])
+properties = {
+"buy_price": 25,
+"sell_price": 20
+}

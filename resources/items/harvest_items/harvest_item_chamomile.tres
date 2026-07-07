@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://b0o6pdghyvmni"]
+
+[ext_resource type="Texture2D" uid="uid://0g5628infim8" path="res://art/icons/icon_harvest_item_null.png" id="1_rwi73"]
+[ext_resource type="Script" uid="uid://kia7nkogevgg" path="res://scripts/items/ItemDefinition.gd" id="2_nn3p6"]
+
+[resource]
+script = ExtResource("2_nn3p6")
+id = &"harvest_item_chamomile"
+display_name = "Chamomile"
+icon = ExtResource("1_rwi73")
+max_stack = 20
+tags = Array[StringName]([&"herb"])
+properties = {
+"buy_price": 30,
+"sell_price": 22
+}

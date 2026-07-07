@@ -13,6 +13,7 @@ var grid_object_manager: GridObjectManager
 var object_target_resolver: ObjectTargetResolver
 
 var crop_database: CropDatabase
+var tree_database: Resource
 var grid_manager: GridManager
 var tile_visual_manager: TileVisualManager
 var corner_visual_manager: CornerVisualManager

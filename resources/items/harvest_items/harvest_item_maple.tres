@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://bkgwqd54sf3au"]
+
+[ext_resource type="Texture2D" uid="uid://0g5628infim8" path="res://art/icons/icon_harvest_item_null.png" id="1_rqgi1"]
+[ext_resource type="Script" uid="uid://kia7nkogevgg" path="res://scripts/items/ItemDefinition.gd" id="2_4e0mq"]
+
+[resource]
+script = ExtResource("2_4e0mq")
+id = &"harvest_item_maple"
+display_name = "Maple"
+icon = ExtResource("1_rqgi1")
+max_stack = 20
+tags = Array[StringName]([&"tree_product"])
+properties = {
+"buy_price": 145,
+"sell_price": 110
+}

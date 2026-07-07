@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="CropDefinition" format=3 uid="uid://d0jw3mg8s22ng"]
+
+[ext_resource type="Script" uid="uid://gdt274ukb23n" path="res://scripts/crops/CropDefinition.gd" id="1_x6o51"]
+
+[resource]
+script = ExtResource("1_x6o51")
+id = &"crop_corn"
+display_name = "Corn"
+stage_visual_ids = Array[StringName]([&"corn_stage_0", &"corn_stage_1", &"corn_stage_2", &"corn_stage_3"])
+stage_duration_days = Array[int]([4, 4, 3, 0])
+harvest_stage_index = 3
+harvest_item_id = &"harvest_item_corn"
+harvest_amount_max = 3
+regrow_after_harvest = true
+grow_seasons = Array[StringName]([&"spring", &"fall", &"summer"])

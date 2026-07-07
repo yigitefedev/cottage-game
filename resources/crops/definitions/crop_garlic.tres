@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="CropDefinition" format=3 uid="uid://c8kouxm37y4jl"]
+
+[ext_resource type="Script" uid="uid://gdt274ukb23n" path="res://scripts/crops/CropDefinition.gd" id="1_vkaj5"]
+
+[resource]
+script = ExtResource("1_vkaj5")
+id = &"crop_garlic"
+display_name = "Garlic"
+stage_visual_ids = Array[StringName]([&"garlic_stage_0", &"garlic_stage_1", &"garlic_stage_2", &"garlic_stage_3"])
+stage_duration_days = Array[int]([2, 2, 2, 0])
+harvest_stage_index = 3
+harvest_item_id = &"harvest_item_garlic"
+harvest_amount_min = 2
+harvest_amount_max = 2
+regrow_after_harvest = true
+grow_seasons = Array[StringName]([&"spring"])
+allowed_planting_surfaces = Array[StringName]([&"garden_bed"])

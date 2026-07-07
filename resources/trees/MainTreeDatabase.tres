@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="TreeDatabase" format=3 uid="uid://c6mkp120s427x"]
+
+[ext_resource type="Script" uid="uid://c78kbbjwj721v" path="res://scripts/crops/TreeDatabase.gd" id="1_db"]
+[ext_resource type="Resource" uid="uid://b6uaivq2h0a0c" path="res://resources/trees/definitions/tree_apple.tres" id="2_ylumr"]
+[ext_resource type="Resource" uid="uid://cbpa48i52hhre" path="res://resources/trees/definitions/tree_cocoa.tres" id="3_y7386"]
+[ext_resource type="Resource" uid="uid://dkeb83p4oe24j" path="res://resources/trees/definitions/tree_lemon.tres" id="4_lcnnw"]
+[ext_resource type="Resource" uid="uid://df1jdhgtf4q2k" path="res://resources/trees/definitions/tree_olive.tres" id="5_ae5cg"]
+[ext_resource type="Resource" uid="uid://7e6kuddr4v57" path="res://resources/trees/definitions/tree_orange.tres" id="6_57562"]
+[ext_resource type="Resource" uid="uid://kv3n21pwkt62" path="res://resources/trees/definitions/tree_peach.tres" id="7_lwvwg"]
+[ext_resource type="Resource" uid="uid://g7wcenxme2l" path="res://resources/trees/definitions/tree_birch.tres" id="8_cg5wd"]
+[ext_resource type="Resource" uid="uid://cp0vf7xvyn7o3" path="res://resources/trees/definitions/tree_cherry.tres" id="9_u458u"]
+[ext_resource type="Resource" uid="uid://dgbyui0t36etd" path="res://resources/trees/definitions/tree_maple.tres" id="10_4voe4"]
+[ext_resource type="Resource" uid="uid://dtsmd2a75v5i0" path="res://resources/trees/definitions/tree_oak.tres" id="11_1bs4b"]
+[ext_resource type="Resource" uid="uid://bf2ps254nkp2g" path="res://resources/trees/definitions/tree_pine.tres" id="12_f2ywt"]
+
+[resource]
+script = ExtResource("1_db")
+trees = [ExtResource("2_ylumr"), ExtResource("3_y7386"), ExtResource("4_lcnnw"), ExtResource("5_ae5cg"), ExtResource("6_57562"), ExtResource("7_lwvwg"), ExtResource("8_cg5wd"), ExtResource("9_u458u"), ExtResource("10_4voe4"), ExtResource("11_1bs4b"), ExtResource("12_f2ywt")]

@@ -137,6 +137,28 @@ func format_weed_data(raw_data: Variant) -> String:
 
 	return text
 
+func format_tree_data(raw_data: Variant) -> String:
+	var text: String = "\n[b][TREE][/b]\n"
+
+	if not (raw_data is Dictionary):
+		text += "Invalid tree data\n\n"
+		return text
+
+	var tree_data: Dictionary = raw_data
+	var tree_id: StringName = StringName(tree_data.get("tree_id", &""))
+	var stage_index: int = int(tree_data.get("stage_index", 0))
+	var growth_day: int = int(tree_data.get("growth_day", 0))
+	var days_in_stage: int = int(tree_data.get("days_in_stage", 0))
+
+	text += "Id: %s\n" % [tree_id]
+	text += "Growth: day %s, stage %s, days in stage %s\n\n" % [
+		growth_day,
+		stage_index,
+		days_in_stage
+	]
+
+	return text
+
 func format_empty_tile_data(coord: Vector2i) -> String:
 	return """[b]Tile[/b]: %s
 [b]Status[/b]: No data
@@ -179,6 +201,11 @@ func format_grid_data(
 		text += "Flags: %s\n" % [tile.flags]
 		text += "Visuals: %s\n\n" % [tile.visual_layers]
 		text += "Custom Data Keys: %s\n" % [tile.custom_data.keys()]
+
+		if tile.custom_data.has("tree"):
+			text += format_tree_data(tile.custom_data["tree"])
+		else:
+			text += "\n[b][TREE][/b]\nNone\n\n"
 
 		if tile.custom_data.has("weed"):
 			text += format_weed_data(tile.custom_data["weed"])

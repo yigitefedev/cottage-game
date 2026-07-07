@@ -1,6 +1,8 @@
 class_name HoeTileAction
 extends ItemAction
 
+const TreeTileResolverScript := preload("res://scripts/grid/TreeTileResolver.gd")
+
 func can_use(context: ItemUseContext) -> bool:
 	if context.target_tile == null:
 		return false
@@ -9,6 +11,9 @@ func can_use(context: ItemUseContext) -> bool:
 		return false
 
 	if not context.target_tile.object_ids.is_empty():
+		return false
+
+	if TreeTileResolverScript.has_tree(context.target_tile):
 		return false
 
 	return true
