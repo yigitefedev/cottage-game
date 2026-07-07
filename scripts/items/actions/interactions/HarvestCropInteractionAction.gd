@@ -106,7 +106,7 @@ func clear_crop(context: InteractionContext, coord: Vector2i, tile: GameTileData
 
 		tile.remove_visual(&"crop")
 
-	context.tile_visual_manager.refresh_tile(coord)
+	context.tile_visual_manager.refresh_tile_layer(coord, &"crop")
 	
 func _init() -> void:
 	crop_database.build_lookup()

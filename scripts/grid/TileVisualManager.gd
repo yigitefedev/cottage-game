@@ -6,6 +6,7 @@ extends Node3D
 
 var visual_lookup: Dictionary = {}
 var active_tile_visuals: Dictionary = {}
+var active_tile_visual_layers: Dictionary = {}
 var grass_mask_manager: GrassMaskManager
 
 func _ready() -> void:
@@ -51,14 +52,32 @@ func refresh_tile(coord: Vector2i) -> void:
 
 	for layer in tile.get_visual_layers().keys():
 		var visual_id: StringName = tile.visual_layers[layer]
-		spawn_tile_visual(coord, visual_id)
-	if grass_mask_manager == null:
-		grass_mask_manager = get_tree().get_first_node_in_group("grass_mask_manager")
+		spawn_tile_visual(coord, visual_id, layer)
 
-	if grass_mask_manager != null:
-		grass_mask_manager.refresh_tile_mask(coord)
+	refresh_grass_mask(coord)
 
-func spawn_tile_visual(coord: Vector2i, visual_id: StringName) -> void:
+func refresh_tile_layer(coord: Vector2i, layer: StringName) -> void:
+	clear_tile_visual_layer(coord, layer)
+
+	if grid_manager == null:
+		return
+
+	var tile := grid_manager.get_tile(coord)
+
+	if tile == null:
+		return
+
+	var visual_id: StringName = tile.visual_layers.get(layer, &"")
+
+	if visual_id != &"":
+		spawn_tile_visual(coord, visual_id, layer)
+
+	rebuild_active_tile_visuals(coord)
+
+	if layer == &"ground":
+		refresh_grass_mask(coord)
+
+func spawn_tile_visual(coord: Vector2i, visual_id: StringName, layer: StringName = &"") -> void:
 	var definition: TileVisualDefinition = get_visual_definition_with_fallback(visual_id)
 
 	if definition == null:
@@ -84,6 +103,13 @@ func spawn_tile_visual(coord: Vector2i, visual_id: StringName) -> void:
 		active_tile_visuals[coord] = []
 
 	active_tile_visuals[coord].append(visual)
+
+	if layer != &"":
+		if not active_tile_visual_layers.has(coord):
+			active_tile_visual_layers[coord] = {}
+
+		active_tile_visual_layers[coord][layer] = visual
+
 func get_visual_definition_with_fallback(visual_id: StringName) -> TileVisualDefinition:
 	if visual_lookup.has(visual_id):
 		var definition: TileVisualDefinition = visual_lookup[visual_id]
@@ -126,14 +152,71 @@ func get_nullcrop_fallback_id(visual_id: StringName) -> StringName:
 	return StringName("nullcrop_stage_%s" % stage_text)
 
 func clear_tile_visuals(coord: Vector2i) -> void:
-	if not active_tile_visuals.has(coord):
-		return
+	if active_tile_visuals.has(coord):
+		for visual in active_tile_visuals[coord]:
+			if is_instance_valid(visual): 	
+				visual.queue_free()
+	elif active_tile_visual_layers.has(coord):
+		for visual in active_tile_visual_layers[coord].values():
+			if is_instance_valid(visual): 	
+				visual.queue_free()
 
-	for visual in active_tile_visuals[coord]:
-		if is_instance_valid(visual): 	
-			visual.queue_free()
 
 	active_tile_visuals.erase(coord)
+	active_tile_visual_layers.erase(coord)
+
+func clear_tile_visual_layer(coord: Vector2i, layer: StringName) -> void:
+	if not active_tile_visual_layers.has(coord):
+		return
+
+	var layer_visuals: Dictionary = active_tile_visual_layers[coord]
+
+	if not layer_visuals.has(layer):
+		return
+
+	var visual: Node = layer_visuals[layer]
+
+	if active_tile_visuals.has(coord):
+		active_tile_visuals[coord].erase(visual)
+
+		if active_tile_visuals[coord].is_empty():
+			active_tile_visuals.erase(coord)
+
+	if is_instance_valid(visual):
+		visual.queue_free()
+
+	layer_visuals.erase(layer)
+
+	if layer_visuals.is_empty():
+		active_tile_visual_layers.erase(coord)
+
+func rebuild_active_tile_visuals(coord: Vector2i) -> void:
+	if not active_tile_visual_layers.has(coord):
+		active_tile_visuals.erase(coord)
+		return
+
+	var layer_visuals: Dictionary = active_tile_visual_layers[coord]
+	var ordered_visuals: Array = []
+	var tile := grid_manager.get_tile(coord) if grid_manager != null else null
+
+	if tile != null:
+		for layer in tile.get_visual_layers().keys():
+			if not layer_visuals.has(layer):
+				continue
+
+			var visual: Node = layer_visuals[layer]
+
+			if is_instance_valid(visual):
+				ordered_visuals.append(visual)
+
+	for visual in layer_visuals.values():
+		if is_instance_valid(visual) and not ordered_visuals.has(visual):
+			ordered_visuals.append(visual)
+
+	if ordered_visuals.is_empty():
+		active_tile_visuals.erase(coord)
+	else:
+		active_tile_visuals[coord] = ordered_visuals
 
 func refresh_tile_and_neighbors(coord: Vector2i) -> void:
 	refresh_tile(coord)
@@ -147,3 +230,11 @@ func clear_all_tile_visuals() -> void:
 		clear_tile_visuals(coord)
 
 	active_tile_visuals.clear()
+	active_tile_visual_layers.clear()
+
+func refresh_grass_mask(coord: Vector2i) -> void:
+	if grass_mask_manager == null:
+		grass_mask_manager = get_tree().get_first_node_in_group("grass_mask_manager")
+
+	if grass_mask_manager != null:
+		grass_mask_manager.refresh_tile_mask(coord)

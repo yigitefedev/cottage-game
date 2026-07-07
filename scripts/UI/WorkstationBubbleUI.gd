@@ -217,8 +217,8 @@ func update_screen_position(coord: Vector2i) -> void:
 
 
 func build_display_slots(
-	coord: Vector2i,
-	definition: WorkstationDefinition,
+	_coord: Vector2i,
+	_definition: WorkstationDefinition,
 	state: Dictionary
 ) -> Array[Dictionary]:
 	var result: Array[Dictionary] = []
@@ -262,8 +262,8 @@ func build_empty_display_slots(definition: WorkstationDefinition) -> Array[Dicti
 
 func build_input_display_slots(
 	state: Dictionary,
-	progress: float,
-	show_progress: bool
+	_progress: float,
+	_show_progress: bool
 ) -> Array[Dictionary]:
 	var result: Array[Dictionary] = []
 

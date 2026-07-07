@@ -89,18 +89,10 @@ func try_magnet_pickup(delta: float) -> void:
 		collect()
 
 func can_fit_in_inventory() -> bool:
-	if item_instance == null or player_inventory == null or player_inventory.inventory == null:
+	if item_instance == null or player_inventory == null:
 		return false
 
-	for slot_item in player_inventory.inventory.slots:
-		if slot_item == null:
-			return true
-
-		if slot_item.is_stackable_with(item_instance):
-			if slot_item.amount < slot_item.definition.max_stack:
-				return true
-
-	return false
+	return player_inventory.can_fit_item(item_instance)
 	
 func collect() -> void:
 	var remaining := player_inventory.add_item(item_instance)

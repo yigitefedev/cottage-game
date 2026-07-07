@@ -29,4 +29,4 @@ func use(context: ItemUseContext) -> void:
 	context.target_tile.set_flag(&"watered", true)
 	context.target_tile.set_flag(&"just_watered", true)
 	context.selected_item.state["water"] -= 1
-	context.tile_visual_manager.refresh_tile(context.target_tile_coord)
+	context.tile_visual_manager.refresh_tile_layer(context.target_tile_coord, &"ground")

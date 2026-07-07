@@ -60,4 +60,4 @@ func use(context: ItemUseContext) -> void:
 	if context.selected_item.amount <= 0:
 		context.player_inventory.inventory.set_slot(context.selected_slot_index, null)
 
-	context.tile_visual_manager.refresh_tile(context.target_tile_coord)
+	context.tile_visual_manager.refresh_tile_layer(context.target_tile_coord, &"crop")

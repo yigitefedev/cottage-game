@@ -46,18 +46,7 @@
 [ext_resource type="Resource" path="res://resources/crops/generated/crop_oak.tres" id="44_77iod"]
 [ext_resource type="Resource" path="res://resources/crops/generated/crop_pine.tres" id="45_tcwj0"]
 
-[sub_resource type="Resource" id="Resource_ibx3j"]
-script = ExtResource("1_tq5r0")
-id = &"carrot"
-display_name = "Carrot"
-stage_visual_ids = Array[StringName]([&"carrot_stage_0", &"carrot_stage_1", &"carrot_stage_2", &"carrot_stage_3"])
-stage_duration_days = Array[int]([1, 1, 1, 0])
-harvest_stage_index = 3
-harvest_item_id = &"carrot"
-regrow_after_harvest = true
-metadata/_custom_type_script = "uid://gdt274ukb23n"
-
 [resource]
 script = ExtResource("2_d2hdd")
-crops = Array[ExtResource("1_tq5r0")]([SubResource("Resource_ibx3j"), ExtResource("3_uac18"), ExtResource("4_64pr2"), ExtResource("5_60kxb"), ExtResource("6_jmivv"), ExtResource("7_1rspf"), ExtResource("8_ync6g"), ExtResource("9_eer2u"), ExtResource("10_b66sb"), ExtResource("11_lttse"), ExtResource("12_6pu5p"), ExtResource("13_as3k0"), ExtResource("14_7fmh2"), ExtResource("15_6prev"), ExtResource("16_i1j5c"), ExtResource("17_s2ryw"), ExtResource("18_xya1x"), ExtResource("19_7hsor"), ExtResource("20_ktbsu"), ExtResource("21_21850"), ExtResource("22_td0ie"), ExtResource("23_8qt6v"), ExtResource("24_a07q7"), ExtResource("25_ma3rs"), ExtResource("26_dbxcw"), ExtResource("27_844xv"), ExtResource("28_p1trf"), ExtResource("29_58fug"), ExtResource("30_d2tvv"), ExtResource("31_ejepv"), ExtResource("32_pb8fi"), ExtResource("33_af8jn"), ExtResource("34_dq0u1"), ExtResource("35_l8s5n"), ExtResource("36_xqilr"), ExtResource("37_qxblo"), ExtResource("38_di76v"), ExtResource("39_a5iui"), ExtResource("40_1j8cb"), ExtResource("41_2kvl3"), ExtResource("42_7xxto"), ExtResource("43_75rw2"), ExtResource("44_77iod"), ExtResource("45_tcwj0")])
+crops = Array[ExtResource("1_tq5r0")]([ExtResource("3_uac18"), ExtResource("4_64pr2"), ExtResource("5_60kxb"), ExtResource("6_jmivv"), ExtResource("7_1rspf"), ExtResource("8_ync6g"), ExtResource("9_eer2u"), ExtResource("10_b66sb"), ExtResource("11_lttse"), ExtResource("12_6pu5p"), ExtResource("13_as3k0"), ExtResource("14_7fmh2"), ExtResource("15_6prev"), ExtResource("16_i1j5c"), ExtResource("17_s2ryw"), ExtResource("18_xya1x"), ExtResource("19_7hsor"), ExtResource("20_ktbsu"), ExtResource("21_21850"), ExtResource("22_td0ie"), ExtResource("23_8qt6v"), ExtResource("24_a07q7"), ExtResource("25_ma3rs"), ExtResource("26_dbxcw"), ExtResource("27_844xv"), ExtResource("28_p1trf"), ExtResource("29_58fug"), ExtResource("30_d2tvv"), ExtResource("31_ejepv"), ExtResource("32_pb8fi"), ExtResource("33_af8jn"), ExtResource("34_dq0u1"), ExtResource("35_l8s5n"), ExtResource("36_xqilr"), ExtResource("37_qxblo"), ExtResource("38_di76v"), ExtResource("39_a5iui"), ExtResource("40_1j8cb"), ExtResource("41_2kvl3"), ExtResource("42_7xxto"), ExtResource("43_75rw2"), ExtResource("44_77iod"), ExtResource("45_tcwj0")])
 metadata/_custom_type_script = "uid://jed87naeoevb"

@@ -69,7 +69,7 @@ func process_crop_growth(coord: Vector2i, tile: GameTileData) -> void:
 
 	tile.crop_harvestable = crop.is_stage_harvestable(tile.crop_stage_index)
 
-	tile_visual_manager.refresh_tile(coord)
+	tile_visual_manager.refresh_tile_layer(coord, &"crop")
 
 func reset_watered_state(coord: Vector2i, tile: GameTileData) -> void:
 	if not tile.has_flag(&"watered"):

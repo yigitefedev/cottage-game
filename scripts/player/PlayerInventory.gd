@@ -49,7 +49,7 @@ func _ready() -> void:
 				if placed:
 					continue
 
-			inventory.add_item(item)
+			add_item_to_allowed_slots(item)
 
 	inventory_changed.emit()
 	selected_slot_changed.emit(selected_index)
@@ -137,6 +137,29 @@ func can_swap_slots(a: int, b: int) -> bool:
 	return can_place_item_in_slot(item_a, b) and can_place_item_in_slot(item_b, a)
 
 
+func can_fit_item(item: ItemInstanceData) -> bool:
+	if inventory == null:
+		return false
+
+	if item == null or item.definition == null:
+		return false
+
+	for i in range(inventory.slots.size()):
+		if not can_place_item_in_slot(item, i):
+			continue
+
+		var slot_item := inventory.get_slot(i)
+
+		if slot_item == null:
+			return true
+
+		if slot_item.is_stackable_with(item):
+			if slot_item.amount < slot_item.definition.max_stack:
+				return true
+
+	return false
+
+
 func swap_slots(a: int, b: int) -> void:
 	if inventory == null:
 		return
@@ -156,11 +179,66 @@ func add_item(item: ItemInstanceData) -> ItemInstanceData:
 	if inventory == null:
 		return item
 
-	var remaining := inventory.add_item(item)
+	var remaining := add_item_to_allowed_slots(item)
 
 	inventory_changed.emit()
 
 	return remaining
+
+
+func add_item_to_allowed_slots(item: ItemInstanceData) -> ItemInstanceData:
+	if inventory == null:
+		return item
+
+	if item == null or item.definition == null:
+		return item
+
+	var remaining := item.amount
+
+	for i in range(inventory.slots.size()):
+		if not can_place_item_in_slot(item, i):
+			continue
+
+		var slot_item := inventory.get_slot(i)
+
+		if slot_item == null:
+			continue
+
+		if not slot_item.is_stackable_with(item):
+			continue
+
+		var space := slot_item.definition.max_stack - slot_item.amount
+
+		if space <= 0:
+			continue
+
+		var added = min(space, remaining)
+		slot_item.amount += added
+		remaining -= added
+
+		if remaining <= 0:
+			return null
+
+	for i in range(inventory.slots.size()):
+		if not can_place_item_in_slot(item, i):
+			continue
+
+		if inventory.get_slot(i) != null:
+			continue
+
+		var new_stack := ItemInstanceData.new()
+		new_stack.definition = item.definition
+		new_stack.amount = min(item.definition.max_stack, remaining)
+		new_stack.state = item.state.duplicate(true)
+
+		inventory.set_slot(i, new_stack)
+		remaining -= new_stack.amount
+
+		if remaining <= 0:
+			return null
+
+	item.amount = remaining
+	return item
 
 
 func drop_selected_item(drop_all: bool = false) -> void:

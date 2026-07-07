@@ -90,7 +90,7 @@ func build_context(item: ItemInstanceData) -> ItemUseContext:
 		object_target_resolver = get_tree().get_first_node_in_group("object_target_resolver")
 
 	context.object_target_resolver = object_target_resolver
-	context.selected_slot_index = player_inventory.selected_index
+	context.selected_slot_index = player_inventory.get_inventory_index_for_hotbar_index(player_inventory.selected_index)
 	context.selected_item = item
 	context.crop_database = crop_database
 
