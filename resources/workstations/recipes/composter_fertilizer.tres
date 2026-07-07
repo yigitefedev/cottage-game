@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="WorkstationRecipe" format=3 uid="uid://bckl1tehbqvte"]
+
+[ext_resource type="Script" uid="uid://bim5jhnj0kkyl" path="res://scripts/workstations/WorkstationItemStack.gd" id="1_o24lc"]
+[ext_resource type="Script" uid="uid://c7jau1m52c4y5" path="res://scripts/workstations/WorkstationRecipe.gd" id="2_vjxi3"]
+
+[sub_resource type="Resource" id="Resource_g684i"]
+script = ExtResource("1_o24lc")
+item_id = &"plant_waste"
+amount = 20
+metadata/_custom_type_script = "uid://bim5jhnj0kkyl"
+
+[sub_resource type="Resource" id="Resource_x8ovu"]
+script = ExtResource("1_o24lc")
+item_id = &"fertilizer"
+amount = 5
+metadata/_custom_type_script = "uid://bim5jhnj0kkyl"
+
+[resource]
+script = ExtResource("2_vjxi3")
+id = &"composter_fertilizer"
+display_name = "Fertilizer"
+workstation_type = &"composter"
+inputs = Array[ExtResource("1_o24lc")]([SubResource("Resource_g684i")])
+outputs = Array[ExtResource("1_o24lc")]([SubResource("Resource_x8ovu")])
+duration_minutes = 1440
+metadata/_custom_type_script = "uid://c7jau1m52c4y5"

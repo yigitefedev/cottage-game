@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="WorkstationDefinition" format=3]
+
+[ext_resource type="Script" uid="uid://bqrh2a7flhtgy" path="res://scripts/workstations/WorkstationDefinition.gd" id="1_ej1fr"]
+
+[resource]
+script = ExtResource("1_ej1fr")
+id = &"composter"
+display_name = "Composter"
+workstation_type = &"composter"
+object_id = &"composter"
+visual_id = &"composter"
+metadata/_custom_type_script = "uid://bqrh2a7flhtgy"

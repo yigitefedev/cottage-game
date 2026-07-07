@@ -4,8 +4,9 @@
 [ext_resource type="Script" uid="uid://dxewd2dyg4j7" path="res://scripts/workstations/WorkstationDefinitionDatabase.gd" id="2_4wcbx"]
 [ext_resource type="Resource" uid="uid://cb4rwyw4l0saq" path="res://resources/workstations/definitions/SeedMakerWorkstationDefinition.tres" id="2_wlkuw"]
 [ext_resource type="Resource" uid="uid://butwt3f1karh6" path="res://resources/workstations/definitions/JarStationWorkstationDefinition.tres" id="3_wlkuw"]
+[ext_resource type="Resource" path="res://resources/workstations/definitions/ComposterWorkstationDefinition.tres" id="4_jx2ls"]
 
 [resource]
 script = ExtResource("2_4wcbx")
-definitions = Array[ExtResource("1_i757m")]([ExtResource("2_wlkuw"), ExtResource("3_wlkuw")])
+definitions = Array[ExtResource("1_i757m")]([ExtResource("2_wlkuw"), ExtResource("3_wlkuw"), ExtResource("4_jx2ls")])
 metadata/_custom_type_script = "uid://dxewd2dyg4j7"

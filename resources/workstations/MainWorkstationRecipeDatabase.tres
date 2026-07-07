@@ -4,8 +4,9 @@
 [ext_resource type="Resource" uid="uid://bmgmvlf51wk02" path="res://resources/workstations/recipes/seed_maker_carrot.tres" id="2_cc4af"]
 [ext_resource type="Script" uid="uid://bnnd534glrqui" path="res://scripts/workstations/WorkstationRecipeDatabase.gd" id="2_qn8an"]
 [ext_resource type="Resource" uid="uid://cxl8xg31wu1b" path="res://resources/workstations/recipes/jar_station_strawberry_jam.tres" id="3_cc4af"]
+[ext_resource type="Resource" path="res://resources/workstations/recipes/composter_fertilizer.tres" id="4_fthlp"]
 
 [resource]
 script = ExtResource("2_qn8an")
-recipes = Array[ExtResource("1_fwhsv")]([ExtResource("2_cc4af"), ExtResource("3_cc4af")])
+recipes = Array[ExtResource("1_fwhsv")]([ExtResource("2_cc4af"), ExtResource("3_cc4af"), ExtResource("4_fthlp")])
 metadata/_custom_type_script = "uid://bnnd534glrqui"

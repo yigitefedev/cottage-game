@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://chrgi4xqi8nsg"]
+
+[ext_resource type="Texture2D" uid="uid://cncf52y2hi7dl" path="res://art/gecici/PlaceableObject.png" id="1_2puuv"]
+[ext_resource type="Script" uid="uid://kia7nkogevgg" path="res://scripts/items/ItemDefinition.gd" id="1_jo6tg"]
+
+[resource]
+script = ExtResource("1_jo6tg")
+id = &"fertilizer"
+display_name = "Fertilizer"
+icon = ExtResource("1_2puuv")
+max_stack = 20
+metadata/_custom_type_script = "uid://kia7nkogevgg"
