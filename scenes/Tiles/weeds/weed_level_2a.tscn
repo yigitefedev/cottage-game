@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://cttayfamwpvfq"]
+
+[sub_resource type="TorusMesh" id="TorusMesh_ftswq"]
+inner_radius = 0.064
+outer_radius = 0.133
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1n7pi"]
+albedo_color = Color(1.6845763e-06, 0.36346772, 0.09726285, 1)
+
+[node name="weed_level2" type="Node3D" unique_id=1248967365]
+
+[node name="MeshInstance3D13" type="MeshInstance3D" parent="." unique_id=137464866]
+transform = Transform3D(-2.2455595e-08, -0.5137241, -0.85795546, 1, -4.371139e-08, 0, -3.7502424e-08, -0.85795546, 0.5137241, -0.26080787, 0, -0.33756223)
+mesh = SubResource("TorusMesh_ftswq")
+surface_material_override/0 = SubResource("StandardMaterial3D_1n7pi")
+
+[node name="MeshInstance3D14" type="MeshInstance3D" parent="." unique_id=1764547093]
+transform = Transform3D(-3.7445115e-08, -0.8566445, 0.51590717, 0.8811163, -0.24397239, -0.40510693, 0.47289973, 0.45457417, 0.7548034, -0.2799381, 0, 0.24120283)
+mesh = SubResource("TorusMesh_ftswq")
+surface_material_override/0 = SubResource("StandardMaterial3D_1n7pi")
+
+[node name="MeshInstance3D15" type="MeshInstance3D" parent="." unique_id=570626363]
+transform = Transform3D(-4.8913588e-08, -1.166922, 0.5113838, 1.1725744, -5.344928e-08, 0, 1.5314074e-08, 0.36534488, 1.6333742, -0.10261962, 0, -0.045303047)
+mesh = SubResource("TorusMesh_ftswq")
+surface_material_override/0 = SubResource("StandardMaterial3D_1n7pi")
+
+[node name="MeshInstance3D16" type="MeshInstance3D" parent="." unique_id=1714057162]
+transform = Transform3D(1.32307605e-08, 0.3026846, 0.95309085, 1, -4.3711385e-08, -1.9090975e-15, 4.166092e-08, 0.95309085, -0.3026846, 0.19353822, 0, -0.1359899)
+mesh = SubResource("TorusMesh_ftswq")
+surface_material_override/0 = SubResource("StandardMaterial3D_1n7pi")
+
+[node name="MeshInstance3D17" type="MeshInstance3D" parent="." unique_id=1371870160]
+transform = Transform3D(0.23393735, -0.17079537, 1.162834, 0.94438577, 0.39943013, -0.16023433, -0.3937266, 0.8565861, 0.3065764, 0.2561898, 0, -0.35285172)
+mesh = SubResource("TorusMesh_ftswq")
+surface_material_override/0 = SubResource("StandardMaterial3D_1n7pi")
+
+[node name="MeshInstance3D18" type="MeshInstance3D" parent="." unique_id=1633019866]
+transform = Transform3D(1.7212043e-08, 0.32451776, 1.1695641, 1.1172377, -0.52347934, 0.19028176, 0.6664455, 0.8775671, -0.31899068, 0.25041136, -0.0027390718, 0.23634031)
+mesh = SubResource("TorusMesh_ftswq")
+surface_material_override/0 = SubResource("StandardMaterial3D_1n7pi")

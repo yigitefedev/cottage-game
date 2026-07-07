@@ -16,6 +16,9 @@
 [ext_resource type="PackedScene" uid="uid://d0as685vm3brl" path="res://scenes/objects/seed_maker.tscn" id="13_eodge"]
 [ext_resource type="PackedScene" uid="uid://bkf67ftko7j0j" path="res://scenes/objects/jar_station.tscn" id="14_ndjhc"]
 [ext_resource type="PackedScene" uid="uid://el72jf1owns4" path="res://scenes/objects/composter.tscn" id="15_lvh87"]
+[ext_resource type="PackedScene" uid="uid://batnnglr251xj" path="res://scenes/Tiles/weeds/weed_level_1a.tscn" id="16_weed1"]
+[ext_resource type="PackedScene" uid="uid://cttayfamwpvfq" path="res://scenes/Tiles/weeds/weed_level_2a.tscn" id="17_weed2"]
+[ext_resource type="PackedScene" uid="uid://qhwyj6fj5vo4" path="res://scenes/Tiles/weeds/weed_level_3a.tscn" id="18_weed3"]
 
 [sub_resource type="Resource" id="Resource_enaxe"]
 script = ExtResource("1_ytpcr")
@@ -113,7 +116,28 @@ scene = ExtResource("15_lvh87")
 y_offset = 0.0
 metadata/_custom_type_script = "uid://id3822kkb4kt"
 
+[sub_resource type="Resource" id="Resource_weed1"]
+script = ExtResource("1_ytpcr")
+id = &"weed_level_1a"
+scene = ExtResource("16_weed1")
+y_offset = 0.0
+metadata/_custom_type_script = "uid://id3822kkb4kt"
+
+[sub_resource type="Resource" id="Resource_weed2"]
+script = ExtResource("1_ytpcr")
+id = &"weed_level_2a"
+scene = ExtResource("17_weed2")
+y_offset = 0.0
+metadata/_custom_type_script = "uid://id3822kkb4kt"
+
+[sub_resource type="Resource" id="Resource_weed3"]
+script = ExtResource("1_ytpcr")
+id = &"weed_level_3a"
+scene = ExtResource("18_weed3")
+y_offset = 0.0
+metadata/_custom_type_script = "uid://id3822kkb4kt"
+
 [resource]
 script = ExtResource("2_gbvab")
-definitions = Array[ExtResource("1_ytpcr")]([SubResource("Resource_enaxe"), SubResource("Resource_xo00v"), SubResource("Resource_nb242"), SubResource("Resource_eodge"), SubResource("Resource_ndjhc"), SubResource("Resource_3c05e"), SubResource("Resource_01v4t"), SubResource("Resource_ixdjf"), SubResource("Resource_gtk47"), SubResource("Resource_p64xw"), SubResource("Resource_86cfi"), SubResource("Resource_sek6m"), SubResource("Resource_xtxwi"), SubResource("Resource_rmj1b")])
+definitions = Array[ExtResource("1_ytpcr")]([SubResource("Resource_enaxe"), SubResource("Resource_xo00v"), SubResource("Resource_nb242"), SubResource("Resource_eodge"), SubResource("Resource_ndjhc"), SubResource("Resource_3c05e"), SubResource("Resource_01v4t"), SubResource("Resource_ixdjf"), SubResource("Resource_gtk47"), SubResource("Resource_p64xw"), SubResource("Resource_86cfi"), SubResource("Resource_sek6m"), SubResource("Resource_xtxwi"), SubResource("Resource_rmj1b"), SubResource("Resource_weed1"), SubResource("Resource_weed2"), SubResource("Resource_weed3")])
 metadata/_custom_type_script = "uid://qkxfl6cnlm5g"

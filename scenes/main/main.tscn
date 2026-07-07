@@ -10,6 +10,7 @@
 [ext_resource type="Resource" uid="uid://b33k8ghvkm2d5" path="res://resources/grid/MainTileVisualDatabase.tres" id="6_ow5a4"]
 [ext_resource type="Script" uid="uid://cnb76lnyqkvh4" path="res://scripts/managers/CropGrowthManager.gd" id="7_b1x3f"]
 [ext_resource type="PackedScene" uid="uid://boqd5w3qpvhqv" path="res://scenes/UI/InventoryUI.tscn" id="7_hujxm"]
+[ext_resource type="Script" uid="uid://ww1g023y6hka" path="res://scripts/managers/WeedManager.gd" id="7_weeds"]
 [ext_resource type="Script" uid="uid://pmihujj6ji8c" path="res://scripts/items/WorldItemSpawner.gd" id="8_a8run"]
 [ext_resource type="Script" uid="uid://cywh0so5mkog1" path="res://scripts/grid/EdgeVisualManager.gd" id="8_raeie"]
 [ext_resource type="Script" uid="uid://0wsht7q1r577" path="res://scripts/UI/ClockLabel.gd" id="8_yyfjg"]
@@ -134,6 +135,9 @@ visual_database = ExtResource("6_ow5a4")
 
 [node name="CropGrowthManager" type="Node3D" parent="Managers" unique_id=967012601]
 script = ExtResource("7_b1x3f")
+
+[node name="WeedManager" type="Node" parent="Managers" unique_id=253167674]
+script = ExtResource("7_weeds")
 
 [node name="WorldItemSpawner" type="Node3D" parent="Managers" unique_id=1252260209]
 script = ExtResource("8_a8run")

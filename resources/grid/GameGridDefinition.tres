@@ -1,6 +1,6 @@
-[gd_resource type="Resource" script_class="GameGridDefinition" format=3]
+[gd_resource type="Resource" script_class="GameGridDefinition" format=3 uid="uid://bhu1ohaerp04n"]
 
-[ext_resource type="Script" path="res://scripts/grid/GameGridDefinition.gd" id="1_o6v66"]
+[ext_resource type="Script" uid="uid://bqwxcfxkiyvlb" path="res://scripts/grid/GameGridDefinition.gd" id="1_o6v66"]
 
 [resource]
 script = ExtResource("1_o6v66")
@@ -1210,6 +1210,14 @@ tile_entries = Array[Dictionary]([{
 "usable": true
 }, {
 "coord": Vector2i(-11, -13),
+"ground_id": &"grass",
+"usable": true
+}, {
+"coord": Vector2i(-2, -4),
+"ground_id": &"grass",
+"usable": true
+}, {
+"coord": Vector2i(-10, -12),
 "ground_id": &"grass",
 "usable": true
 }])

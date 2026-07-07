@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://batnnglr251xj"]
+
+[sub_resource type="TorusMesh" id="TorusMesh_ftswq"]
+inner_radius = 0.064
+outer_radius = 0.133
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1n7pi"]
+albedo_color = Color(1.6845763e-06, 0.36346772, 0.09726285, 1)
+
+[node name="weed_level1" type="Node3D" unique_id=1248967365]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1989348124]
+transform = Transform3D(-3.848689e-08, -0.88047737, -0.4740882, 1, -4.371139e-08, 0, -2.0723053e-08, -0.4740882, 0.88047737, -0.26080787, 0, 0)
+mesh = SubResource("TorusMesh_ftswq")
+surface_material_override/0 = SubResource("StandardMaterial3D_1n7pi")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1837259281]
+transform = Transform3D(-4.17147e-08, -0.95432115, 0.2987829, 1, -4.371139e-08, 0, 1.3060215e-08, 0.2987829, 0.95432115, 0.19353822, 0, 0.24120283)
+mesh = SubResource("TorusMesh_ftswq")
+surface_material_override/0 = SubResource("StandardMaterial3D_1n7pi")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="." unique_id=1069291073]
+transform = Transform3D(1.32307605e-08, 0.3026846, 0.95309085, 1, -4.3711385e-08, -1.9090975e-15, 4.166092e-08, 0.95309085, -0.3026846, 0.19353822, 0, -0.31745237)
+mesh = SubResource("TorusMesh_ftswq")
+surface_material_override/0 = SubResource("StandardMaterial3D_1n7pi")

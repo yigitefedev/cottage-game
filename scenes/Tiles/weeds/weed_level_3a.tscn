@@ -1,0 +1,70 @@
+[gd_scene format=3 uid="uid://qhwyj6fj5vo4"]
+
+[sub_resource type="TorusMesh" id="TorusMesh_0ngwa"]
+inner_radius = 0.064
+outer_radius = 0.133
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b3j0h"]
+albedo_color = Color(1.6845763e-06, 0.36346772, 0.09726285, 1)
+
+[node name="weed_level2" type="Node3D" unique_id=1248967365]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1024989554]
+transform = Transform3D(-2.2455595e-08, -0.5137241, -0.85795546, 1, -4.371139e-08, 0, -3.7502424e-08, -0.85795546, 0.5137241, -0.26080787, 0, -0.33756223)
+mesh = SubResource("TorusMesh_0ngwa")
+surface_material_override/0 = SubResource("StandardMaterial3D_b3j0h")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1659796972]
+transform = Transform3D(-3.7445115e-08, -0.8566445, 0.51590717, 0.8811163, -0.24397239, -0.40510693, 0.47289973, 0.45457417, 0.7548034, -0.2799381, 0, 0.24120283)
+mesh = SubResource("TorusMesh_0ngwa")
+surface_material_override/0 = SubResource("StandardMaterial3D_b3j0h")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="." unique_id=1406223967]
+transform = Transform3D(-4.8913588e-08, -1.166922, 0.5113838, 1.1725744, -5.344928e-08, 0, 1.5314074e-08, 0.36534488, 1.6333742, -0.10261962, 0, -0.045303047)
+mesh = SubResource("TorusMesh_0ngwa")
+surface_material_override/0 = SubResource("StandardMaterial3D_b3j0h")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="." unique_id=888136750]
+transform = Transform3D(1.32307605e-08, 0.3026846, 0.95309085, 1, -4.3711385e-08, -1.9090975e-15, 4.166092e-08, 0.95309085, -0.3026846, 0.19353822, 0, -0.1359899)
+mesh = SubResource("TorusMesh_0ngwa")
+surface_material_override/0 = SubResource("StandardMaterial3D_b3j0h")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="." unique_id=931522866]
+transform = Transform3D(-0.4016766, 0.5827341, -0.8452537, 0.94438577, 0.39943013, -0.16023433, 0.22000748, -0.6506396, -0.8554055, 0.2561898, 0, -0.35285172)
+mesh = SubResource("TorusMesh_0ngwa")
+surface_material_override/0 = SubResource("StandardMaterial3D_b3j0h")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="." unique_id=397543526]
+transform = Transform3D(1.7212043e-08, 0.32451776, 1.1695641, 1.1172377, -0.52347934, 0.19028176, 0.6664455, 0.8775671, -0.31899068, 0.25041136, -0.0027390718, 0.23634031)
+mesh = SubResource("TorusMesh_0ngwa")
+surface_material_override/0 = SubResource("StandardMaterial3D_b3j0h")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="." unique_id=665351445]
+transform = Transform3D(4.0482384e-08, 0.9261289, 0.37720716, 1, -4.371139e-08, 0, 1.6488242e-08, 0.37720716, -0.9261289, 0.38885438, 0, 0.045512967)
+mesh = SubResource("TorusMesh_0ngwa")
+surface_material_override/0 = SubResource("StandardMaterial3D_b3j0h")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="." unique_id=73815612]
+transform = Transform3D(-0.28411666, 0.41169623, -0.8659007, 0.8811164, -0.24397238, -0.40510696, -0.37803686, -0.8780569, -0.2934357, 0.05642677, 0, -0.3328451)
+mesh = SubResource("TorusMesh_0ngwa")
+surface_material_override/0 = SubResource("StandardMaterial3D_b3j0h")
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="." unique_id=126242227]
+transform = Transform3D(2.9900953e-08, 0.71334124, -1.3901273, 1.1725744, -5.344928e-08, 2.9367263e-15, -4.162923e-08, -0.99314046, -0.99848425, 0.08680996, 0, -0.09308051)
+mesh = SubResource("TorusMesh_0ngwa")
+surface_material_override/0 = SubResource("StandardMaterial3D_b3j0h")
+
+[node name="MeshInstance3D10" type="MeshInstance3D" parent="." unique_id=1031040524]
+transform = Transform3D(-3.5606448e-08, -0.8145806, -0.5800504, 1, -4.371138e-08, -5.5175303e-15, -2.5354797e-08, -0.5800504, 0.8145806, -0.0954547, 0, 0.15734543)
+mesh = SubResource("TorusMesh_0ngwa")
+surface_material_override/0 = SubResource("StandardMaterial3D_b3j0h")
+
+[node name="MeshInstance3D11" type="MeshInstance3D" parent="." unique_id=747132536]
+transform = Transform3D(0.45797813, -0.82480794, 0.32577354, 0.9443859, 0.39943016, -0.16023435, 0.0018364824, 0.28740692, 1.1576027, -0.01524855, 0, 0.33242014)
+mesh = SubResource("TorusMesh_0ngwa")
+surface_material_override/0 = SubResource("StandardMaterial3D_b3j0h")
+
+[node name="MeshInstance3D12" type="MeshInstance3D" parent="." unique_id=1406171001]
+transform = Transform3D(-0.66409034, -0.84720707, 0.4161041, 1.1172377, -0.52347934, 0.19028181, 0.055980086, 0.39708462, 1.1386364, -0.36461407, -0.0027390718, -0.10612675)
+mesh = SubResource("TorusMesh_0ngwa")
+surface_material_override/0 = SubResource("StandardMaterial3D_b3j0h")

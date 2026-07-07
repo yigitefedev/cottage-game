@@ -123,6 +123,20 @@ func format_workstation_slots(raw_slots: Variant, show_required: bool) -> String
 
 	return text
 
+func format_weed_data(raw_data: Variant) -> String:
+	var text: String = "\n[b][WEED][/b]\n"
+
+	if not (raw_data is Dictionary):
+		text += "Invalid weed data\n\n"
+		return text
+
+	var weed_data: Dictionary = raw_data
+	var level: int = clampi(int(weed_data.get("level", 1)), 1, 3)
+
+	text += "Level: %s\n\n" % [level]
+
+	return text
+
 func format_empty_tile_data(coord: Vector2i) -> String:
 	return """[b]Tile[/b]: %s
 [b]Status[/b]: No data
@@ -165,6 +179,11 @@ func format_grid_data(
 		text += "Flags: %s\n" % [tile.flags]
 		text += "Visuals: %s\n\n" % [tile.visual_layers]
 		text += "Custom Data Keys: %s\n" % [tile.custom_data.keys()]
+
+		if tile.custom_data.has("weed"):
+			text += format_weed_data(tile.custom_data["weed"])
+		else:
+			text += "\n[b][WEED][/b]\nNone\n\n"
 
 		if tile.custom_data.has("workstation"):
 			text += format_workstation_data(tile.custom_data["workstation"])
