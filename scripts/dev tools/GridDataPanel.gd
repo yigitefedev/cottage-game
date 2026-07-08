@@ -1,6 +1,9 @@
 class_name GridDataPanel
 extends PanelContainer
 
+const TREE_TAPPER_OBJECT_ID := &"tree_tapper"
+const tree_database: TreeDatabase = preload("res://resources/trees/MainTreeDatabase.tres")
+
 @export var show_data := false
 
 @onready var grid_data_text: RichTextLabel = $MarginContainer/VBoxContainer/GridDataText
@@ -13,6 +16,7 @@ func _ready() -> void:
 	visible = false
 	dev_grid_debugger = get_tree().get_first_node_in_group("dev_grid_debugger")
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
+	tree_database.build_lookup()
 
 func _process(_delta: float) -> void:
 	if not show_data:
@@ -137,7 +141,7 @@ func format_weed_data(raw_data: Variant) -> String:
 
 	return text
 
-func format_tree_data(raw_data: Variant) -> String:
+func format_tree_data(raw_data: Variant, tile: GameTileData) -> String:
 	var text: String = "\n[b][TREE][/b]\n"
 
 	if not (raw_data is Dictionary):
@@ -149,8 +153,19 @@ func format_tree_data(raw_data: Variant) -> String:
 	var stage_index: int = int(tree_data.get("stage_index", 0))
 	var growth_day: int = int(tree_data.get("growth_day", 0))
 	var days_in_stage: int = int(tree_data.get("days_in_stage", 0))
+	var tree_definition: TreeDefinition = tree_database.get_tree(tree_id) as TreeDefinition
+	var tree_type: StringName = &""
+	var is_tapped: bool = false
+
+	if tree_definition != null:
+		tree_type = tree_definition.tree_type
+
+	if tile != null:
+		is_tapped = tile.has_object(TREE_TAPPER_OBJECT_ID)
 
 	text += "Id: %s\n" % [tree_id]
+	text += "Type: %s\n" % [tree_type]
+	text += "Tapped: %s\n" % [is_tapped]
 	text += "Growth: day %s, stage %s, days in stage %s\n\n" % [
 		growth_day,
 		stage_index,
@@ -203,7 +218,7 @@ func format_grid_data(
 		text += "Custom Data Keys: %s\n" % [tile.custom_data.keys()]
 
 		if tile.custom_data.has("tree"):
-			text += format_tree_data(tile.custom_data["tree"])
+			text += format_tree_data(tile.custom_data["tree"], tile)
 		else:
 			text += "\n[b][TREE][/b]\nNone\n\n"
 

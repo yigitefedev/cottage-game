@@ -140,11 +140,11 @@ func import_tree(
 	var sapling_item_id := StringName("sapling_%s" % base_id)
 	var sapling_display_name := "%s Sapling" % display_name
 
-	var tree_definition := get_or_create_tree_definition(tree_id)
-	var harvest_item := get_or_create_item_definition(harvest_item_id, get_harvest_item_path(harvest_item_id))
-	var sapling_item := get_or_create_item_definition(sapling_item_id, get_sapling_item_path(sapling_item_id))
+	var tree_definition: TreeDefinition = get_or_create_tree_definition(tree_id)
+	var harvest_item: ItemDefinition = get_or_create_item_definition(harvest_item_id, get_harvest_item_path(harvest_item_id))
+	var sapling_item: ItemDefinition = get_or_create_item_definition(sapling_item_id, get_sapling_item_path(sapling_item_id))
 
-	update_tree_definition(tree_definition, row, tree_id, display_name)
+	update_tree_definition(tree_definition, row, tree_id, display_name, harvest_item_id)
 	update_harvest_item_definition(harvest_item, row, harvest_item_id, display_name)
 	update_sapling_item_definition(sapling_item, row, sapling_item_id, sapling_display_name, tree_id, plant_sapling_action)
 
@@ -193,17 +193,27 @@ func update_crop_definition(
 
 
 func update_tree_definition(
-	tree_definition: Resource,
+	tree_definition: TreeDefinition,
 	row: Dictionary,
 	tree_id: StringName,
-	display_name: String
+	display_name: String,
+	harvest_item_id: StringName
 ) -> void:
-	var stage_count := get_tree_stage_count(row)
+	var growth_days: int = int(row.get("growth_days", 4))
+	var stage_durations: Array[int] = parse_stage_durations(row.get("stage_durations", null), growth_days)
 
-	tree_definition.set("id", tree_id)
-	tree_definition.set("display_name", display_name)
-	tree_definition.set("stage_duration_days", make_one_day_stage_durations(stage_count))
-	tree_definition.set("stage_visual_ids", make_tree_stage_visual_ids(stage_count))
+	tree_definition.id = tree_id
+	tree_definition.display_name = display_name
+	tree_definition.stage_duration_days = stage_durations
+	tree_definition.stage_visual_ids = make_tree_stage_visual_ids(stage_durations.size())
+	tree_definition.harvest_stage_index = stage_durations.size() - 1
+	tree_definition.harvest_item_id = harvest_item_id
+	tree_definition.harvest_amount_min = int(row.get("yield_min", 1))
+	tree_definition.harvest_amount_max = int(row.get("yield_max", 1))
+	tree_definition.regrow_after_harvest = bool(row.get("regrow_after_harvest", true))
+	tree_definition.regrow_stage_index = int(row.get("regrow_stage_index", maxi(stage_durations.size() - 2, 0)))
+	tree_definition.grow_seasons = parse_seasons(String(row.get("season", "")))
+	tree_definition.tree_type = get_tree_definition_type(String(row.get("type", "tree_fruit")))
 
 
 func update_harvest_item_definition(
@@ -392,6 +402,14 @@ func is_tree_type(crop_type: String) -> bool:
 	return crop_type == "tree_fruit" or crop_type == "tree_tapping"
 
 
+func get_tree_definition_type(crop_type: String) -> StringName:
+	match crop_type:
+		"tree_tapping":
+			return &"tapping"
+		_:
+			return &"fruit"
+
+
 func get_or_create_crop_definition(crop_id: StringName) -> CropDefinition:
 	var path := get_crop_definition_path(crop_id)
 
@@ -407,17 +425,17 @@ func get_or_create_crop_definition(crop_id: StringName) -> CropDefinition:
 	return crop
 
 
-func get_or_create_tree_definition(tree_id: StringName) -> Resource:
-	var path := get_tree_definition_path(tree_id)
+func get_or_create_tree_definition(tree_id: StringName) -> TreeDefinition:
+	var path: String = get_tree_definition_path(tree_id)
 
 	if ResourceLoader.exists(path):
-		var loaded_tree: Resource = load(path)
+		var loaded_tree: TreeDefinition = load(path)
 
 		if loaded_tree != null:
 			loaded_tree.resource_path = path
 			return loaded_tree
 
-	var tree_definition: Resource = TreeDefinitionScript.new()
+	var tree_definition: TreeDefinition = TreeDefinitionScript.new()
 	tree_definition.resource_path = path
 	return tree_definition
 

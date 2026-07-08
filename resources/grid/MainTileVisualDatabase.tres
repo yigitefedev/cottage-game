@@ -20,7 +20,8 @@
 [ext_resource type="PackedScene" uid="uid://cttayfamwpvfq" path="res://scenes/Tiles/weeds/weed_level_2a.tscn" id="17_weed2"]
 [ext_resource type="PackedScene" uid="uid://qhwyj6fj5vo4" path="res://scenes/Tiles/weeds/weed_level_3a.tscn" id="18_weed3"]
 [ext_resource type="PackedScene" uid="uid://bhctxrpo4c1jq" path="res://scenes/objects/GardenBedA.tscn" id="19_gbeda"]
-[ext_resource type="PackedScene" path="res://external/Scenes/tree.tscn" id="20_tree"]
+[ext_resource type="PackedScene" uid="uid://brwqcegkyryas" path="res://external/Scenes/tree.tscn" id="20_tree"]
+[ext_resource type="PackedScene" uid="uid://bjueuab66l77l" path="res://scenes/objects/tapper.tscn" id="21_tapper"]
 
 [sub_resource type="Resource" id="Resource_enaxe"]
 script = ExtResource("1_ytpcr")
@@ -230,7 +231,16 @@ scene = ExtResource("20_tree")
 y_offset = 0.0
 metadata/_custom_type_script = "uid://id3822kkb4kt"
 
+[sub_resource type="Resource" id="Resource_tapper"]
+script = ExtResource("1_ytpcr")
+id = &"tree_tapper"
+scene = ExtResource("21_tapper")
+y_offset = 0.0
+attach_to_layer = &"tree"
+attach_marker_name = &"Tapper_Pivot"
+metadata/_custom_type_script = "uid://id3822kkb4kt"
+
 [resource]
 script = ExtResource("2_gbvab")
-definitions = Array[ExtResource("1_ytpcr")]([SubResource("Resource_enaxe"), SubResource("Resource_xo00v"), SubResource("Resource_nb242"), SubResource("Resource_eodge"), SubResource("Resource_ndjhc"), SubResource("Resource_3c05e"), SubResource("Resource_01v4t"), SubResource("Resource_ixdjf"), SubResource("Resource_gtk47"), SubResource("Resource_p64xw"), SubResource("Resource_86cfi"), SubResource("Resource_sek6m"), SubResource("Resource_xtxwi"), SubResource("Resource_rmj1b"), SubResource("Resource_weed1"), SubResource("Resource_weed2"), SubResource("Resource_weed3"), SubResource("Resource_gbeda"), SubResource("Resource_tree_stage0"), SubResource("Resource_tree_stage1"), SubResource("Resource_tree_stage2"), SubResource("Resource_tree_stage3"), SubResource("Resource_oaktree0"), SubResource("Resource_oaktree1"), SubResource("Resource_oaktree2"), SubResource("Resource_oaktree3"), SubResource("Resource_appletree0"), SubResource("Resource_appletree1"), SubResource("Resource_appletree2"), SubResource("Resource_appletree3")])
+definitions = Array[ExtResource("1_ytpcr")]([SubResource("Resource_enaxe"), SubResource("Resource_xo00v"), SubResource("Resource_nb242"), SubResource("Resource_eodge"), SubResource("Resource_ndjhc"), SubResource("Resource_3c05e"), SubResource("Resource_01v4t"), SubResource("Resource_ixdjf"), SubResource("Resource_gtk47"), SubResource("Resource_p64xw"), SubResource("Resource_86cfi"), SubResource("Resource_sek6m"), SubResource("Resource_xtxwi"), SubResource("Resource_rmj1b"), SubResource("Resource_weed1"), SubResource("Resource_weed2"), SubResource("Resource_weed3"), SubResource("Resource_gbeda"), SubResource("Resource_tree_stage0"), SubResource("Resource_tree_stage1"), SubResource("Resource_tree_stage2"), SubResource("Resource_tree_stage3"), SubResource("Resource_oaktree0"), SubResource("Resource_oaktree1"), SubResource("Resource_oaktree2"), SubResource("Resource_oaktree3"), SubResource("Resource_appletree0"), SubResource("Resource_appletree1"), SubResource("Resource_appletree2"), SubResource("Resource_appletree3"), SubResource("Resource_tapper")])
 metadata/_custom_type_script = "uid://qkxfl6cnlm5g"

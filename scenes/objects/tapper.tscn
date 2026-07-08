@@ -1,0 +1,72 @@
+[gd_scene format=3 uid="uid://bjueuab66l77l"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_12j5o"]
+top_radius = 0.01
+bottom_radius = 0.015
+height = 0.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pohj0"]
+albedo_color = Color(1, 0.95, 0.7, 1)
+metallic = 0.86
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_lnsbr"]
+top_radius = 0.005
+bottom_radius = 0.007
+height = 0.05
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_qfuhl"]
+top_radius = 0.006
+bottom_radius = 0.006
+height = 0.02
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_sov22"]
+top_radius = 0.004
+bottom_radius = 0.004
+height = 0.05
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lnsbr"]
+albedo_color = Color(0.58, 0.58, 0.58, 1)
+metallic = 0.66
+roughness = 0.56
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_61ot5"]
+lightmap_size_hint = Vector2i(8, 8)
+material = SubResource("StandardMaterial3D_lnsbr")
+top_radius = 0.2
+bottom_radius = 0.2
+height = 0.4
+
+[node name="Tapper" type="Node3D" unique_id=606162677]
+
+[node name="Pivot" type="Marker3D" parent="." unique_id=1689324952]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.20140797)
+
+[node name="Tapper" type="Node3D" parent="Pivot" unique_id=1902504025]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0.20140797)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pivot/Tapper" unique_id=1544707430]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+mesh = SubResource("CylinderMesh_12j5o")
+surface_material_override/0 = SubResource("StandardMaterial3D_pohj0")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Pivot/Tapper" unique_id=1971269155]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.020903476, 0.015514046)
+mesh = SubResource("CylinderMesh_lnsbr")
+surface_material_override/0 = SubResource("StandardMaterial3D_pohj0")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Pivot/Tapper" unique_id=1907767323]
+transform = Transform3D(-4.371139e-08, 1, -4.371139e-08, 0, -4.371139e-08, -1, -1, -4.371139e-08, 1.9106855e-15, 0, 0.042696685, 0.015514046)
+mesh = SubResource("CylinderMesh_qfuhl")
+surface_material_override/0 = SubResource("StandardMaterial3D_pohj0")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Pivot/Tapper" unique_id=877041288]
+transform = Transform3D(-4.371139e-08, 1, -4.371139e-08, 0, -4.371139e-08, -1, -1, -4.371139e-08, 1.9106855e-15, 0, 0.042696685, 0.015514046)
+mesh = SubResource("CylinderMesh_sov22")
+surface_material_override/0 = SubResource("StandardMaterial3D_pohj0")
+
+[node name="Bucket" type="Node3D" parent="Pivot" unique_id=1803368855]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.20140797)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pivot/Bucket" unique_id=346077547]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.7024028, 0.5581503)
+mesh = SubResource("CylinderMesh_61ot5")

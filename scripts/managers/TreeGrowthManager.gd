@@ -2,7 +2,8 @@ class_name TreeGrowthManager
 extends Node
 
 const TREE_LAYER := &"tree"
-const tree_database = preload("res://resources/trees/MainTreeDatabase.tres")
+const TREE_TAPPER_OBJECT_ID := &"tree_tapper"
+const tree_database: TreeDatabase = preload("res://resources/trees/MainTreeDatabase.tres")
 const TreeTileResolverScript := preload("res://scripts/grid/TreeTileResolver.gd")
 
 var grid_manager: GridManager
@@ -42,20 +43,20 @@ func process_tree_growth(coord: Vector2i, tile: GameTileData, refresh_visuals: b
 	if not TreeTileResolverScript.has_tree(tile):
 		return
 
-	var tree_id := TreeTileResolverScript.get_tree_id(tile)
-	var tree_definition: Variant = tree_database.get_tree(tree_id)
+	var tree_id: StringName = TreeTileResolverScript.get_tree_id(tile)
+	var tree_definition: TreeDefinition = tree_database.get_tree(tree_id) as TreeDefinition
 
 	if tree_definition == null:
 		return
 
-	var stage_count: int = int(tree_definition.get_stage_count())
+	var stage_count: int = tree_definition.get_stage_count()
 
 	if stage_count <= 0:
 		return
 
-	var current_stage := clampi(TreeTileResolverScript.get_stage_index(tile), 0, stage_count - 1)
+	var current_stage: int = clampi(TreeTileResolverScript.get_stage_index(tile), 0, stage_count - 1)
 
-	if current_stage >= stage_count - 1:
+	if tree_definition.is_stage_harvestable(current_stage):
 		TreeTileResolverScript.set_growth_state(
 			tile,
 			current_stage,
@@ -64,10 +65,19 @@ func process_tree_growth(coord: Vector2i, tile: GameTileData, refresh_visuals: b
 		)
 		return
 
-	var growth_day := TreeTileResolverScript.get_growth_day(tile) + 1
-	var days_in_stage := TreeTileResolverScript.get_days_in_stage(tile) + 1
-	var stage_duration: int = int(tree_definition.get_stage_duration(current_stage))
-	var next_stage := current_stage
+	if tree_definition.is_tapping_tree() and current_stage == 2 and not tile.has_object(TREE_TAPPER_OBJECT_ID):
+		TreeTileResolverScript.set_growth_state(
+			tile,
+			current_stage,
+			TreeTileResolverScript.get_growth_day(tile),
+			0
+		)
+		return
+
+	var growth_day: int = TreeTileResolverScript.get_growth_day(tile) + 1
+	var days_in_stage: int = TreeTileResolverScript.get_days_in_stage(tile) + 1
+	var stage_duration: int = tree_definition.get_stage_duration(current_stage)
+	var next_stage: int = current_stage
 
 	if days_in_stage >= stage_duration:
 		next_stage = mini(current_stage + 1, stage_count - 1)
@@ -78,7 +88,7 @@ func process_tree_growth(coord: Vector2i, tile: GameTileData, refresh_visuals: b
 	if next_stage == current_stage:
 		return
 
-	var new_visual := StringName(tree_definition.get_stage_visual(next_stage))
+	var new_visual: StringName = StringName(tree_definition.get_stage_visual(next_stage))
 
 	if new_visual != &"":
 		tile.set_visual(TREE_LAYER, new_visual)

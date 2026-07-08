@@ -1,6 +1,7 @@
 class_name GridObjectManager
 extends Node
 
+const tree_database: TreeDatabase = preload("res://resources/trees/MainTreeDatabase.tres")
 const TreeTileResolverScript := preload("res://scripts/grid/TreeTileResolver.gd")
 
 @export var item_database: ItemDatabase
@@ -21,6 +22,7 @@ func _ready() -> void:
 	corner_visual_manager = get_tree().get_first_node_in_group("corner_visual_manager")
 	edge_visual_manager = get_tree().get_first_node_in_group("edge_visual_manager")
 	world_item_spawner = get_tree().get_first_node_in_group("world_item_spawner")
+	tree_database.build_lookup()
 
 
 func break_corner_object(coord: Vector2i, drop_position: Vector3 = Vector3.ZERO) -> bool:
@@ -133,7 +135,15 @@ func place_tile_object(
 	if tile.has_crop():
 		return false
 
-	if TreeTileResolverScript.has_tree(tile):
+	var requires_tree: bool = bool(object_properties.get("requires_tree", false))
+
+	if requires_tree and not TreeTileResolverScript.has_tree(tile):
+		return false
+
+	if not requires_tree and TreeTileResolverScript.has_tree(tile):
+		return false
+
+	if requires_tree and not can_place_on_tree(tile, object_properties):
 		return false
 
 	if tile.has_flag(&"tilled"):
@@ -150,6 +160,34 @@ func place_tile_object(
 		tile_visual_manager.refresh_tile(coord)
 
 	return true
+
+
+func can_place_on_tree(tile: GameTileData, object_properties: Dictionary) -> bool:
+	if tile == null:
+		return false
+
+	var tree_stage_index: int = TreeTileResolverScript.get_stage_index(tile)
+	var min_tree_stage: int = int(object_properties.get("min_tree_stage", 0))
+	var max_tree_stage: int = int(object_properties.get("max_tree_stage", 999999))
+
+	if tree_stage_index < min_tree_stage:
+		return false
+
+	if tree_stage_index > max_tree_stage:
+		return false
+
+	var required_tree_type: StringName = StringName(object_properties.get("required_tree_type", &""))
+
+	if required_tree_type == &"":
+		return true
+
+	var tree_id: StringName = TreeTileResolverScript.get_tree_id(tile)
+	var tree_definition: TreeDefinition = tree_database.get_tree(tree_id) as TreeDefinition
+
+	if tree_definition == null:
+		return false
+
+	return tree_definition.tree_type == required_tree_type
 
 
 func setup_planting_surface(

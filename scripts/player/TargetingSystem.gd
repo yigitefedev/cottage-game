@@ -92,6 +92,11 @@ func update_visual_mode() -> void:
 		target_shape = TargetShape.TILE
 		return
 
+	if selected_item.has_tag(&"sapling"):
+		visual_mode = TargetVisualMode.GHOST
+		target_shape = TargetShape.TILE
+		return
+
 	if selected_item.has_tag(&"target_object"):
 		visual_mode = TargetVisualMode.OBJECT
 		target_shape = TargetShape.TILE

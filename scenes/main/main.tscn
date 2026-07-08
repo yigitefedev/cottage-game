@@ -29,7 +29,7 @@
 [ext_resource type="Script" uid="uid://ci21tn5q1ub2o" path="res://scripts/UI/StaminaUI.gd" id="18_ou6is"]
 [ext_resource type="Script" uid="uid://cb1box8yclrsp" path="res://scripts/managers/GrassMaskManager.gd" id="19_s17dp"]
 [ext_resource type="Script" uid="uid://bphui2daywmdy" path="res://scripts/managers/WindManager.gd" id="20_37hlw"]
-[ext_resource type="PackedScene" path="res://external/Scenes/tree.tscn" id="20_r4lks"]
+[ext_resource type="PackedScene" uid="uid://brwqcegkyryas" path="res://external/Scenes/tree.tscn" id="20_r4lks"]
 [ext_resource type="Texture2D" uid="uid://b0e76x6crc4mo" path="res://external/Assets/Textures/noise.tres" id="21_6llfj"]
 [ext_resource type="Script" uid="uid://bamo0qlboufs2" path="res://scripts/dev tools/DebugMenu.gd" id="26_62atk"]
 [ext_resource type="Script" uid="uid://coxvqk4pi8ggm" path="res://scripts/dev tools/GridDataPanel.gd" id="26_ii537"]
@@ -198,7 +198,7 @@ shape = SubResource("BoxShape3D_iuonh")
 [node name="Assets" type="Node3D" parent="World/LevelRoot" unique_id=1212883394]
 
 [node name="tree" parent="World/LevelRoot/Assets" unique_id=372346887 instance=ExtResource("20_r4lks")]
-transform = Transform3D(-0.27068532, 0, -0.42039204, 0, 0.5, 0, 0.42039204, 0, -0.27068532, -5.5, 0.215, -2.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 0.215, -2.5)
 
 [node name="MultiMeshGrass" type="MultiMeshInstance3D" parent="World/LevelRoot" unique_id=884847476]
 transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)

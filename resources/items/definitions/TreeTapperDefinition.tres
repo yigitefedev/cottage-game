@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3]
+
+[ext_resource type="Texture2D" path="res://art/gecici/PlaceableObject.png" id="1_tapper_icon"]
+[ext_resource type="Script" uid="uid://kia7nkogevgg" path="res://scripts/items/ItemDefinition.gd" id="2_tapper_item"]
+[ext_resource type="Resource" uid="uid://br51u8ksnijsw" path="res://resources/actions/PlaceTileObjectAction.tres" id="3_tapper_action"]
+
+[resource]
+script = ExtResource("2_tapper_item")
+id = &"tree_tapper"
+display_name = "Tree Tapper"
+icon = ExtResource("1_tapper_icon")
+max_stack = 20
+tags = Array[StringName]([&"placeable_object"])
+primary_action = ExtResource("3_tapper_action")
+properties = {
+"object_id": "tree_tapper",
+"max_tree_stage": 3,
+"min_tree_stage": 2,
+"required_tree_type": &"tapping",
+"requires_tree": true,
+"visual_id": "tree_tapper",
+"visual_layer": "object"
+}
+metadata/_custom_type_script = "uid://kia7nkogevgg"

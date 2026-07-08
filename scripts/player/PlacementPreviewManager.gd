@@ -1,6 +1,8 @@
 class_name PlacementPreviewManager
 extends Node3D
 
+const tree_database: TreeDatabase = preload("res://resources/trees/MainTreeDatabase.tres")
+
 var targeting_system: TargetingSystem
 var grid_manager: GridManager
 var tile_visual_manager: TileVisualManager
@@ -18,6 +20,10 @@ func _ready() -> void:
 	tile_visual_manager = get_tree().get_first_node_in_group("tile_visual_manager")
 	if tool_controller == null:
 		tool_controller = get_tree().get_first_node_in_group("tool_controller")
+
+	tree_database.build_lookup()
+
+
 func _process(_delta: float) -> void:
 	if targeting_system == null:
 		targeting_system = get_tree().get_first_node_in_group("targeting_system")
@@ -42,12 +48,12 @@ func update_preview() -> void:
 		hide_preview()
 		return
 
-	var item := targeting_system.selected_item
+	var item: ItemInstanceData = targeting_system.selected_item
 	if item == null:
 		hide_preview()
 		return
 
-	var visual_id: StringName = item.get_property(&"visual_id", &"")
+	var visual_id: StringName = get_preview_visual_id(item)
 
 	if visual_id == &"":
 		hide_preview()
@@ -77,6 +83,54 @@ func get_preview_valid(item: ItemInstanceData) -> bool:
 	var result := action.can_use(context)
 
 	return result
+
+
+func get_preview_visual_id(item: ItemInstanceData) -> StringName:
+	if item == null:
+		return &""
+
+	if item.has_tag(&"sapling"):
+		return get_sapling_preview_visual_id(item)
+
+	return StringName(item.get_property(&"visual_id", &""))
+
+
+func get_sapling_preview_visual_id(item: ItemInstanceData) -> StringName:
+	var tree_id: StringName = get_sapling_tree_id(item)
+
+	if tree_id == &"":
+		return &""
+
+	var tree_definition: Resource = tree_database.get_tree(tree_id)
+
+	if tree_definition == null:
+		return &""
+
+	return StringName(tree_definition.get_stage_visual(0))
+
+
+func get_sapling_tree_id(item: ItemInstanceData) -> StringName:
+	if item == null:
+		return &""
+
+	var raw_tree_id: Variant = item.get_property(&"tree_id", &"")
+
+	if raw_tree_id != null and StringName(raw_tree_id) != &"":
+		return StringName(raw_tree_id)
+
+	var raw_crop_id: Variant = item.get_property(&"crop_id", &"")
+	var crop_id: String = String(raw_crop_id)
+
+	if crop_id.begins_with("crop_"):
+		return StringName("tree_%s" % crop_id.trim_prefix("crop_"))
+
+	if item.definition != null:
+		var item_id: String = String(item.definition.id)
+
+		if item_id.begins_with("sapling_"):
+			return StringName("tree_%s" % item_id.trim_prefix("sapling_"))
+
+	return &""
 	
 func ensure_preview(visual_id: StringName) -> void:
 	if current_preview != null and current_visual_id == visual_id:
@@ -107,6 +161,18 @@ func ensure_preview(visual_id: StringName) -> void:
 func update_preview_transform() -> void:
 	if current_preview == null:
 		return
+
+	var definition: TileVisualDefinition = tile_visual_manager.get_visual_definition_with_fallback(current_visual_id)
+
+	if definition != null:
+		var attachment_transform: Variant = tile_visual_manager.get_visual_attachment_transform(
+			targeting_system.target_tile_coord,
+			definition
+		)
+
+		if attachment_transform is Transform3D:
+			current_preview.global_transform = attachment_transform
+			return
 
 	match targeting_system.target_shape:
 		TargetingSystem.TargetShape.CORNER:

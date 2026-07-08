@@ -81,6 +81,8 @@ func refresh_tile_layer(coord: Vector2i, layer: StringName) -> void:
 
 	rebuild_active_tile_visuals(coord)
 
+	refresh_attached_visual_layers(coord, layer)
+
 	if layer == &"ground":
 		refresh_grass_mask(coord)
 
@@ -101,7 +103,7 @@ func spawn_tile_visual(coord: Vector2i, visual_id: StringName, layer: StringName
 
 	add_child(visual)
 
-	visual.global_position = get_visual_spawn_position(coord, definition, layer)
+	visual.global_transform = get_visual_spawn_transform(coord, definition, layer)
 
 	if visual.has_method("setup"):
 		visual.setup(coord, grid_manager)
@@ -120,7 +122,7 @@ func spawn_tile_visual(coord: Vector2i, visual_id: StringName, layer: StringName
 
 func get_ordered_visual_layers(tile: GameTileData) -> Array[StringName]:
 	var result: Array[StringName] = []
-	var preferred_layers: Array[StringName] = [&"ground", &"object", &"tree", &"crop", &"weed"]
+	var preferred_layers: Array[StringName] = [&"ground", &"tree", &"object", &"crop", &"weed"]
 
 	for layer in preferred_layers:
 		if tile.visual_layers.has(layer):
@@ -140,14 +142,94 @@ func get_visual_spawn_position(
 	definition: TileVisualDefinition,
 	layer: StringName
 ) -> Vector3:
+	return get_visual_spawn_transform(coord, definition, layer).origin
+
+
+func get_visual_spawn_transform(
+	coord: Vector2i,
+	definition: TileVisualDefinition,
+	layer: StringName
+) -> Transform3D:
+	var attachment_transform: Variant = get_visual_attachment_transform(coord, definition)
+
+	if attachment_transform is Transform3D:
+		var typed_attachment_transform: Transform3D = attachment_transform
+		typed_attachment_transform.origin += Vector3.UP * definition.y_offset
+		return typed_attachment_transform
+
 	if layer == &"crop":
 		var surface_position: Variant = get_planting_surface_position(coord)
 
 		if surface_position is Vector3:
 			var typed_surface_position: Vector3 = surface_position
-			return typed_surface_position + Vector3.UP * definition.y_offset
+			return Transform3D(Basis(), typed_surface_position + Vector3.UP * definition.y_offset)
 
-	return grid_manager.tile_to_world(coord) + Vector3.UP * definition.y_offset
+	return Transform3D(Basis(), grid_manager.tile_to_world(coord) + Vector3.UP * definition.y_offset)
+
+
+func get_visual_attachment_transform(coord: Vector2i, definition: TileVisualDefinition) -> Variant:
+	if definition == null:
+		return null
+
+	if definition.attach_to_layer == &"" or definition.attach_marker_name == &"":
+		return null
+
+	if not active_tile_visual_layers.has(coord):
+		return null
+
+	var layer_visuals: Dictionary = active_tile_visual_layers[coord]
+
+	if not layer_visuals.has(definition.attach_to_layer):
+		return null
+
+	var parent_visual: Node = layer_visuals[definition.attach_to_layer]
+
+	if not is_instance_valid(parent_visual):
+		return null
+
+	var marker: Node3D = find_attachment_marker(parent_visual, definition.attach_marker_name)
+
+	if marker == null:
+		return null
+
+	return marker.global_transform
+
+
+func find_attachment_marker(parent_visual: Node, marker_name: StringName) -> Node3D:
+	var marker: Node3D = parent_visual.find_child(String(marker_name), true, false) as Node3D
+
+	if marker != null:
+		return marker
+
+	var alternate_name: String = String(marker_name).replace("_", " ")
+	return parent_visual.find_child(alternate_name, true, false) as Node3D
+
+
+func refresh_attached_visual_layers(coord: Vector2i, refreshed_layer: StringName) -> void:
+	if grid_manager == null:
+		return
+
+	var tile: GameTileData = grid_manager.get_tile(coord)
+
+	if tile == null:
+		return
+
+	for layer in tile.get_visual_layers().keys():
+		var layer_name: StringName = StringName(layer)
+
+		if layer_name == refreshed_layer:
+			continue
+
+		var visual_id: StringName = tile.visual_layers[layer_name]
+		var definition: TileVisualDefinition = get_visual_definition_with_fallback(visual_id)
+
+		if definition == null:
+			continue
+
+		if definition.attach_to_layer != refreshed_layer:
+			continue
+
+		refresh_tile_layer(coord, layer_name)
 
 
 func get_planting_surface_position(coord: Vector2i) -> Variant:
