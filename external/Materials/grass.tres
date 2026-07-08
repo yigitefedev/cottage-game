@@ -1,16 +1,20 @@
-[gd_resource type="ShaderMaterial" format=3]
+[gd_resource type="ShaderMaterial" format=3 uid="uid://bqodhofb4jdi2"]
 
-[ext_resource type="Shader" path="res://external/Shaders/grass_billboard.gdshader" id="1_528a5"]
-[ext_resource type="Texture2D" path="res://external/Assets/Textures/grass_round.png" id="2_4d6mx"]
+[ext_resource type="Shader" uid="uid://de4s8l7jecutp" path="res://external/Shaders/grass_billboard.gdshader" id="1_528a5"]
+[ext_resource type="Texture2D" uid="uid://32bpa4nk3av1" path="res://external/Assets/Textures/grass_round.png" id="2_4d6mx"]
 
 [resource]
 render_priority = 0
 shader = ExtResource("1_528a5")
+shader_parameter/stepped_color_variation = true
+shader_parameter/alpha_cutout_enabled = true
+shader_parameter/alpha_cutout_threshold = 0.4499999899416
+shader_parameter/pixel_shadow_mode = true
 shader_parameter/grass_color = Color(0.30980393, 0.65882355, 0.23921569, 1)
 shader_parameter/grass_alpha = ExtResource("2_4d6mx")
 shader_parameter/grass_bend_amount = 1.0
 shader_parameter/sway_back = 1.0
 shader_parameter/light_steps = 3.0
-shader_parameter/color_noise_scale = 0.0069999999832400005
+shader_parameter/color_noise_scale = 0.00699999998324
 shader_parameter/color_variation_strength = 0.3499999921768
 shader_parameter/color_steps = 4.0

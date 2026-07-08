@@ -1,0 +1,15 @@
+[gd_resource type="Environment" format=3 uid="uid://brgk123xi0je0"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_m4h2d"]
+sky_top_color = Color(0.5635199, 0.39360002, 0.96, 1)
+sky_horizon_color = Color(0.53690004, 0.6799216, 0.91, 1)
+
+[sub_resource type="Sky" id="Sky_dhgqn"]
+sky_material = SubResource("ProceduralSkyMaterial_m4h2d")
+
+[resource]
+background_mode = 2
+sky = SubResource("Sky_dhgqn")
+tonemap_mode = 2
+tonemap_exposure = 1.2
+ssil_radius = 8.61

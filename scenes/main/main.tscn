@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://8bs2vul1ik81" path="res://scenes/player/player.tscn" id="1_hyk8p"]
 [ext_resource type="Shader" uid="uid://bifltg3r6fjhh" path="res://external/Shaders/ground_shader.gdshader" id="1_p8abn"]
 [ext_resource type="Script" uid="uid://c5q0wi8lyo8tv" path="res://scripts/managers/GridManager.gd" id="2_iuonh"]
-[ext_resource type="Material" path="res://external/Materials/grass.tres" id="2_m4h2d"]
+[ext_resource type="Material" uid="uid://bqodhofb4jdi2" path="res://external/Materials/grass.tres" id="2_m4h2d"]
 [ext_resource type="Resource" uid="uid://bhu1ohaerp04n" path="res://resources/grid/GameGridDefinition.tres" id="3_l3cfh"]
 [ext_resource type="ArrayMesh" uid="uid://cbk61hqmfyprt" path="res://external/Assets/Meshes/grass_plane_mesh2.res" id="4_p8abn"]
 [ext_resource type="Script" uid="uid://duya06q6bg4x5" path="res://scripts/grid/TileVisualManager.gd" id="5_6q06x"]
@@ -31,6 +31,9 @@
 [ext_resource type="Script" uid="uid://bphui2daywmdy" path="res://scripts/managers/WindManager.gd" id="20_37hlw"]
 [ext_resource type="PackedScene" uid="uid://brwqcegkyryas" path="res://external/Scenes/tree.tscn" id="20_r4lks"]
 [ext_resource type="Texture2D" uid="uid://b0e76x6crc4mo" path="res://external/Assets/Textures/noise.tres" id="21_6llfj"]
+[ext_resource type="Script" uid="uid://bgrmddgerak2n" path="res://scripts/managers/SkyManager.gd" id="22_atmosphere"]
+[ext_resource type="Environment" uid="uid://b6jqykw1re7rl" path="res://art/Environments/test_environment.tres" id="23_g2upo"]
+[ext_resource type="Shader" uid="uid://bxhh7ojllifv5" path="res://art/Environments/CloudShadowPlane.gdshader" id="24_cloud_shadow"]
 [ext_resource type="Script" uid="uid://bamo0qlboufs2" path="res://scripts/dev tools/DebugMenu.gd" id="26_62atk"]
 [ext_resource type="Script" uid="uid://coxvqk4pi8ggm" path="res://scripts/dev tools/GridDataPanel.gd" id="26_ii537"]
 [ext_resource type="Script" uid="uid://dghbnixyc318d" path="res://scripts/dev tools/DevUI.gd" id="26_rofvo"]
@@ -41,20 +44,6 @@
 [ext_resource type="Script" uid="uid://c2f8ox50p76p0" path="res://scripts/dev tools/DevTimeTools.gd" id="30_gkmcc"]
 [ext_resource type="Script" uid="uid://bcfl1jikg318d" path="res://scripts/dev tools/DevWorldTools.gd" id="31_7nlll"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_m4h2d"]
-sky_top_color = Color(0.5635199, 0.39360002, 0.96, 1)
-sky_horizon_color = Color(0.53690004, 0.6799216, 0.91, 1)
-
-[sub_resource type="Sky" id="Sky_dhgqn"]
-sky_material = SubResource("ProceduralSkyMaterial_m4h2d")
-
-[sub_resource type="Environment" id="Environment_p8abn"]
-background_mode = 2
-sky = SubResource("Sky_dhgqn")
-tonemap_mode = 2
-tonemap_exposure = 1.2
-ssil_radius = 8.61
-
 [sub_resource type="CompositorEffect" id="CompositorEffect_k8itn"]
 resource_local_to_scene = false
 resource_name = ""
@@ -64,10 +53,27 @@ access_resolved_color = false
 access_resolved_depth = false
 needs_motion_vectors = false
 needs_normal_roughness = true
-metadata/_custom_type_script = "uid://brcimd12tx3dm"
 
 [sub_resource type="Compositor" id="Compositor_s17dp"]
 compositor_effects = Array[CompositorEffect]([SubResource("CompositorEffect_k8itn")])
+
+[sub_resource type="QuadMesh" id="QuadMesh_38d3o"]
+lightmap_size_hint = Vector2i(1002, 1002)
+size = Vector2(200, 200)
+orientation = 1
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cloud_shadow"]
+render_priority = -10
+shader = ExtResource("24_cloud_shadow")
+shader_parameter/noise_texture = ExtResource("21_6llfj")
+shader_parameter/shadow_enabled = true
+shader_parameter/cloud_speed = 0.10000000475
+shader_parameter/noise_scale = 0.010000000475
+shader_parameter/noise_threshold = 0.5210000247475
+shader_parameter/edge_softness = 0.1270000060325
+shader_parameter/alpha_scissor = 0.5
+shader_parameter/uv_offset = Vector2(0, 0)
+shader_parameter/debug_solid_shadow = false
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_hyk8p"]
 size = Vector2(50, 50)
@@ -158,6 +164,11 @@ script = ExtResource("19_s17dp")
 script = ExtResource("20_37hlw")
 wind_noise = ExtResource("21_6llfj")
 
+[node name="SkyManager" type="Node3D" parent="Managers" unique_id=526882225]
+script = ExtResource("22_atmosphere")
+full_day_x_rotation_degrees = 280.0
+active_weather = 2
+
 [node name="WorkstationManager" type="Node3D" parent="Managers" unique_id=120029662 node_paths=PackedStringArray("grid_manager")]
 script = ExtResource("16_os81g")
 definition_database = ExtResource("17_1k3ck")
@@ -173,17 +184,36 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5506983, 0)
 
 [node name="LevelRoot" type="Node3D" parent="World" unique_id=905614223]
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="World/LevelRoot" unique_id=265328766]
-transform = Transform3D(0.98618174, -0.093293354, 0.13690129, 7.566612e-08, 0.8263637, 0.5631369, -0.16566719, -0.55535525, 0.81494474, 0, 4.540125, -5.9411197)
-light_color = Color(1, 0.685, 0.37, 1)
+[node name="Orbit" type="Node3D" parent="World/LevelRoot" unique_id=260151585]
+transform = Transform3D(0.9396439, -0.010179768, 0.34200245, 0.010301515, 0.99994564, 0.0014609694, -0.34199882, 0.002150327, 0.939698, 0, 0, 0)
+
+[node name="Sun" type="DirectionalLight3D" parent="World/LevelRoot/Orbit" unique_id=265328766]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 20, 0)
+light_color = Color(0.9909237, 0.829368, 0.45479745, 1)
 light_energy = 1.644
 shadow_enabled = true
+shadow_opacity = 0.25
+directional_shadow_mode = 1
+directional_shadow_pancake_size = 400.0
+
+[node name="Moon" type="DirectionalLight3D" parent="World/LevelRoot/Orbit" unique_id=967486953]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, -20, 0)
+light_color = Color(0.8269652, 0.96215004, 0.99351484, 1)
+light_energy = 0.03
+shadow_enabled = true
+shadow_opacity = 0.25
 directional_shadow_mode = 1
 directional_shadow_pancake_size = 400.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="World/LevelRoot" unique_id=893147600]
-environment = SubResource("Environment_p8abn")
+environment = ExtResource("23_g2upo")
 compositor = SubResource("Compositor_s17dp")
+
+[node name="CloudShadowPlane" type="MeshInstance3D" parent="World/LevelRoot" unique_id=1960853680]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 40, 0)
+cast_shadow = 3
+mesh = SubResource("QuadMesh_38d3o")
+surface_material_override/0 = SubResource("ShaderMaterial_cloud_shadow")
 
 [node name="Ground" type="StaticBody3D" parent="World/LevelRoot" unique_id=2146532682]
 

@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="SkyWeatherProfile" format=3 uid="uid://8cig6uxyaj36"]
+
+[ext_resource type="Script" uid="uid://c2ncanslhbx7w" path="res://scripts/managers/SkyWeatherProfile.gd" id="1_profile"]
+
+[resource]
+script = ExtResource("1_profile")
+display_name = "Cloudy"
+weather_darkness = 0.18
+weather_desaturation = 0.25
+weather_tint = Color(0.9, 0.95, 1, 1)
+star_visibility_multiplier = 0.45
+horizon_haze = 0.25
+sun_energy_multiplier = 0.65
+moon_energy_multiplier = 0.8
+shadow_opacity_multiplier = 0.75
+tonemap_exposure_multiplier = 0.9
+volumetric_fog_density_multiplier = 1.4
+wind_speed_multiplier = 0.9
+has_clouds = true
+cloud_noise_threshold = 0.55

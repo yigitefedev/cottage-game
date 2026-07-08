@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="SkyWeatherProfile" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/managers/SkyWeatherProfile.gd" id="1_profile"]
+
+[resource]
+script = ExtResource("1_profile")
+display_name = "Foggy"
+weather_darkness = 0.12
+weather_desaturation = 0.35
+weather_tint = Color(0.85, 0.9, 0.88, 1)
+star_visibility_multiplier = 0.1
+horizon_haze = 0.75
+sun_energy_multiplier = 0.55
+moon_energy_multiplier = 0.55
+shadow_opacity_multiplier = 0.25
+tonemap_exposure_multiplier = 0.88
+volumetric_fog_density_multiplier = 3.0
+wind_strength_multiplier = 0.35
+wind_speed_multiplier = 0.4
+has_clouds = true
+cloud_noise_threshold = 0.5
+fog_strength = 0.8

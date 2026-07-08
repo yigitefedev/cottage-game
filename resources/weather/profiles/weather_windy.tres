@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="SkyWeatherProfile" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/managers/SkyWeatherProfile.gd" id="1_profile"]
+
+[resource]
+script = ExtResource("1_profile")
+display_name = "Windy"
+weather_darkness = 0.05
+weather_desaturation = 0.05
+star_visibility_multiplier = 0.85
+horizon_haze = 0.1
+sun_energy_multiplier = 0.95
+volumetric_fog_density_multiplier = 0.9
+wind_strength_multiplier = 1.8
+wind_speed_multiplier = 1.8
+cloud_noise_threshold = 0.65

@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="AxeAction" format=3]
+
+[ext_resource type="Script" path="res://scripts/items/actions/item_actions/AxeAction.gd" id="1_axe"]
+
+[resource]
+script = ExtResource("1_axe")
+action_id = &"axe"
+stamina_cost = 5

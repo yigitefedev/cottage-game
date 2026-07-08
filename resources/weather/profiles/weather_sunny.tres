@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="SkyWeatherProfile" format=3 uid="uid://dc540rsfmgf1q"]
+
+[ext_resource type="Script" uid="uid://c2ncanslhbx7w" path="res://scripts/managers/SkyWeatherProfile.gd" id="1_profile"]
+
+[resource]
+script = ExtResource("1_profile")
+horizon_haze = 0.05
+cloud_noise_threshold = 0.65

@@ -1,0 +1,65 @@
+[gd_resource type="Environment" format=3 uid="uid://b6jqykw1re7rl"]
+
+[ext_resource type="Shader" uid="uid://b00hexk0tgpjp" path="res://art/Environments/Optimized-VolumetricSky.gdshader" id="1_ktwp8"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_caytg"]
+shader = ExtResource("1_ktwp8")
+shader_parameter/sky_top_color = Color(0, 0.1, 0.4, 1)
+shader_parameter/sky_bottom_color = Color(0.3, 0.67, 0.8, 1)
+shader_parameter/night_top_color = Color(0, 0.005, 0.03, 1)
+shader_parameter/night_bottom_color = Color(0.01, 0.01, 0.05, 1)
+shader_parameter/sunset_top_color = Color(0.15, 0.05, 0.1, 1)
+shader_parameter/sunset_bottom_color = Color(0.8, 0.3, 0.1, 1)
+shader_parameter/sunset_cloud_tint = Color(1.5, 0.6, 0.25, 1)
+shader_parameter/sunset_gradient_sharpness = 0.5
+shader_parameter/night_cloud_color = Color(0.12, 0.12, 0.21, 1)
+shader_parameter/star_density = 0.66000003135
+shader_parameter/star_brightness = 1.0000000475
+shader_parameter/star_scale = 86.62800363983
+shader_parameter/weather_darkness = 0.0
+shader_parameter/weather_desaturation = 0.0
+shader_parameter/weather_tint = Color(1, 1, 1, 1)
+shader_parameter/star_visibility = 1.0
+shader_parameter/horizon_haze = 0.0
+shader_parameter/clouds_enabled = false
+shader_parameter/coverage = 0.43600002071
+shader_parameter/coverage_fade = 0.035
+shader_parameter/thickness = 100.0
+shader_parameter/absorption = 0.9200000437
+shader_parameter/steps = 32
+shader_parameter/time_scale = 0.2050000097375
+shader_parameter/cloud_wind = Color(0.3, 0.24, 0.3, 1)
+shader_parameter/cloud_evolution_speed = 0.12
+shader_parameter/noise_frequency = 0.001
+shader_parameter/main_cloud_scale = 2.032
+shader_parameter/cloud_lacunarity = 2.6434
+shader_parameter/cloud_init_gain = 0.5
+shader_parameter/cloud_gain = 0.5
+shader_parameter/detail_scale1 = 0.2
+shader_parameter/detail_lacunarity1 = 2.0
+shader_parameter/detail_init_gain1 = 0.5
+shader_parameter/detail_gain1 = 0.52
+shader_parameter/detail_scale2 = 0.2
+shader_parameter/detail_lacunarity2 = 2.0
+shader_parameter/detail_init_gain2 = 0.52
+shader_parameter/detail_gain2 = 0.5
+shader_parameter/illum_base = 2.1
+shader_parameter/illum_pulse_amp = 0.2
+shader_parameter/illum_pulse_speed = 2.3
+shader_parameter/cloud_bob_speed = 0.2
+shader_parameter/cloud_bob_amount = 0.1
+shader_parameter/cloud_plane_distance = 120.0
+shader_parameter/horizon_fade_start = 0.05
+
+[sub_resource type="Sky" id="Sky_dhgqn"]
+sky_material = SubResource("ShaderMaterial_caytg")
+
+[resource]
+background_mode = 2
+sky = SubResource("Sky_dhgqn")
+tonemap_mode = 2
+tonemap_exposure = 1.2
+ssil_radius = 8.61
+glow_enabled = true
+glow_bloom = 0.12
+volumetric_fog_density = 0.005
