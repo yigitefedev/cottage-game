@@ -1,23 +1,22 @@
-[gd_resource type="Resource" script_class="SkyWeatherProfile" format=3 uid="uid://c583i1gdvao1r"]
+[gd_resource type="Resource" script_class="SkyWeatherProfile" format=3 uid="uid://dtd3w7llnejjr"]
 
 [ext_resource type="Script" uid="uid://c2ncanslhbx7w" path="res://scripts/managers/SkyWeatherProfile.gd" id="1_profile"]
 
 [resource]
 script = ExtResource("1_profile")
 display_name = "Rain"
-weather_darkness = 0.28
 weather_desaturation = 0.45
-weather_tint = Color(0.75, 0.85, 1, 1)
-star_visibility_multiplier = 0.2
-horizon_haze = 0.35
-sun_energy_multiplier = 0.45
+weather_tint = Color(0.58891296, 0.69384277, 0.97265625, 1)
+sun_energy_multiplier = 0.39
 moon_energy_multiplier = 0.65
-shadow_opacity_multiplier = 0.45
+shadow_opacity_multiplier = 1.67
 tonemap_exposure_multiplier = 0.78
-volumetric_fog_density_multiplier = 1.8
-wind_strength_multiplier = 1.2
+fog_density_multiplier = 1.8
+fog_height_density = 0.0
+wind_strength_multiplier = 1.84
 wind_speed_multiplier = 1.1
 has_clouds = true
 cloud_noise_threshold = 0.45
-rain_strength = 0.65
-fog_strength = 0.25
+rain_strength = 2.18
+rain_wind_velocity_multiplier = 0.54
+lightning_frequency = 0.4

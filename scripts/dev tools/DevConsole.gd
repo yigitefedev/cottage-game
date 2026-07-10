@@ -11,6 +11,7 @@ var player_inventory: PlayerInventory
 var time_manager: Node
 var wind_manager: Node
 var sleep_manager: Node
+var performance_panel: Node
 
 var autocomplete_matches: Array[String] = []
 var autocomplete_index: int = 0
@@ -126,6 +127,9 @@ func ensure_refs() -> void:
 
 	if sleep_manager == null:
 		sleep_manager = get_tree().get_first_node_in_group("sleep_manager")
+
+	if performance_panel == null:
+		performance_panel = get_tree().get_first_node_in_group("performance_panel")
 
 	if item_database == null and ResourceLoader.exists(MAIN_ITEM_DATABASE_PATH):
 		item_database = load(MAIN_ITEM_DATABASE_PATH) as ItemDatabase
@@ -273,6 +277,7 @@ func get_command_matches(prefix: String) -> Array[String]:
 		"set_timescale",
 		"pause_time",
 		"sleep",
+		"show_performance",
 		"set_wind_strength",
 		"set_wind_speed",
 		"set_wind_scale",
@@ -452,6 +457,9 @@ func execute_command(command: String) -> void:
 		"sleep":
 			command_sleep()
 
+		"show_performance":
+			command_show_performance()
+
 		"set_wind_strength":
 			command_wind_float("wind_strength", parts)
 
@@ -475,6 +483,7 @@ func command_help() -> void:
 	log_info("set_time <hour> <minute> OR set_time <day> <hour> <minute>")
 	log_info("set_timescale <value>")
 	log_info("pause_time")
+	log_info("show_performance")
 	log_info("set_wind_strength <value>")
 	log_info("set_wind_speed <value>")
 	log_info("set_wind_scale <value>")
@@ -664,6 +673,22 @@ func command_sleep() -> void:
 
 	sleep_manager.call("try_sleep")
 	log_success("Sleep triggered.")
+
+
+func command_show_performance() -> void:
+	if performance_panel == null:
+		performance_panel = get_tree().get_first_node_in_group("performance_panel")
+
+	if performance_panel == null:
+		log_error("PerformancePanel not found.")
+		return
+
+	if not performance_panel.has_method("toggle_visible"):
+		log_error("PerformancePanel has no toggle_visible() method.")
+		return
+
+	var panel_enabled: bool = bool(performance_panel.call("toggle_visible"))
+	log_success("Performance panel: %s" % ["ON" if panel_enabled else "OFF"])
 
 
 func command_wind_float(property_name: String, parts: PackedStringArray) -> void:

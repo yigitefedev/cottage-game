@@ -1,7 +1,33 @@
 class_name DebugMenu
 extends Control
 
+const WEATHER_NAMES: PackedStringArray = ["Sunny", "Cloudy", "Rain", "Foggy", "Storm", "Windy"]
+const WEATHER_SLIDER_PROPERTIES: Array[Array] = [
+	[&"weather_desaturation", "Desaturation", 0.0, 1.0, 0.01],
+	[&"sun_energy_multiplier", "Sun Energy", 0.0, 3.0, 0.01],
+	[&"moon_energy_multiplier", "Moon Energy", 0.0, 3.0, 0.01],
+	[&"ambient_energy_multiplier", "Ambient Energy", 0.0, 3.0, 0.01],
+	[&"shadow_opacity_multiplier", "Shadow Opacity", 0.0, 3.0, 0.01],
+	[&"tonemap_exposure_multiplier", "Exposure", 0.0, 3.0, 0.01],
+	[&"fog_density_multiplier", "Fog Density", 0.0, 5.0, 0.01],
+	[&"fog_height", "Fog Height", 0.0, 3.0, 0.01],
+	[&"fog_height_density", "Fog Height Density", 0.0, 3.0, 0.01],
+	[&"wind_strength_multiplier", "Wind Strength", 0.0, 5.0, 0.01],
+	[&"wind_speed_multiplier", "Wind Speed", 0.0, 5.0, 0.01],
+	[&"cloud_noise_threshold", "Cloud Threshold", 0.0, 1.0, 0.01],
+	[&"rain_strength", "Rain Strength", 0.0, 10.0, 0.01],
+	[&"rain_wind_velocity_multiplier", "Rain Wind Velocity", 0.0, 10.0, 0.01],
+	[&"lightning_frequency", "Lightning / Min", 0.0, 10.0, 0.01],
+]
+const WEATHER_BOOL_PROPERTIES: Array[Array] = [
+	[&"has_clouds", "Has Clouds"],
+]
+const WEATHER_COLOR_PROPERTIES: Array[Array] = [
+	[&"weather_tint", "Weather Tint"],
+]
+
 @onready var panel_container: PanelContainer = $PanelContainer
+@onready var tab_container: TabContainer = $PanelContainer/VBoxContainer/TabContainer
 
 #griddebugger
 @onready var grid_debugger_checkbox: CheckBox = $PanelContainer/VBoxContainer/TabContainer/Grid/GridDebuggerCheckBox
@@ -45,6 +71,13 @@ var dev_time_tools: DevTimeTools
 var dev_player_tools: DevPlayerTools
 var dev_grid_debugger: DevGridDebugger
 var grid_data_panel
+var sky_manager: SkyManager
+var weather_option_button: OptionButton
+var weather_save_button: Button
+var weather_status_label: Label
+var weather_controls_container: VBoxContainer
+var weather_controls: Dictionary = {}
+var weather_saved_defaults: Dictionary = {}
 
 func _ready() -> void:
 	dev_grid_debugger = get_tree().get_first_node_in_group("dev_grid_debugger")
@@ -116,7 +149,338 @@ func _ready() -> void:
 	default_wind_scale_button.pressed.connect(_on_default_wind_scale_pressed)
 	default_wind_direction_x_button.pressed.connect(_on_default_wind_direction_x_pressed)
 	default_wind_direction_z_button.pressed.connect(_on_default_wind_direction_z_pressed)
+	_setup_weather_tab()
 	
+
+func _setup_weather_tab() -> void:
+	sky_manager = get_tree().get_first_node_in_group("sky_manager") as SkyManager
+
+	var weather_tab: VBoxContainer = VBoxContainer.new()
+	weather_tab.name = "Weather"
+	weather_tab.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	tab_container.add_child(weather_tab)
+
+	var selector_row: HBoxContainer = HBoxContainer.new()
+	weather_tab.add_child(selector_row)
+
+	var selector_label: Label = Label.new()
+	selector_label.text = "Weather"
+	selector_label.custom_minimum_size = Vector2(72.0, 0.0)
+	selector_row.add_child(selector_label)
+
+	weather_option_button = OptionButton.new()
+	weather_option_button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	for weather_index: int in range(WEATHER_NAMES.size()):
+		weather_option_button.add_item(WEATHER_NAMES[weather_index], weather_index)
+	selector_row.add_child(weather_option_button)
+
+	weather_save_button = Button.new()
+	weather_save_button.text = "Save"
+	selector_row.add_child(weather_save_button)
+
+	var separator: HSeparator = HSeparator.new()
+	weather_tab.add_child(separator)
+
+	var scroll_container: ScrollContainer = ScrollContainer.new()
+	scroll_container.custom_minimum_size = Vector2(0.0, 360.0)
+	scroll_container.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	weather_tab.add_child(scroll_container)
+
+	weather_controls_container = VBoxContainer.new()
+	weather_controls_container.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	scroll_container.add_child(weather_controls_container)
+
+	_build_weather_controls()
+
+	weather_status_label = Label.new()
+	weather_status_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	weather_tab.add_child(weather_status_label)
+
+	weather_option_button.item_selected.connect(_on_weather_selected)
+	weather_save_button.pressed.connect(_on_weather_save_pressed)
+	_cache_weather_defaults()
+	_refresh_weather_selection()
+
+
+func _build_weather_controls() -> void:
+	for property_data: Array in WEATHER_COLOR_PROPERTIES:
+		var property_name: StringName = property_data[0]
+		var label_text: String = property_data[1]
+		_add_weather_color_row(property_name, label_text)
+
+	for property_data: Array in WEATHER_BOOL_PROPERTIES:
+		var property_name: StringName = property_data[0]
+		var label_text: String = property_data[1]
+		_add_weather_bool_row(property_name, label_text)
+
+	for property_data: Array in WEATHER_SLIDER_PROPERTIES:
+		var property_name: StringName = property_data[0]
+		var label_text: String = property_data[1]
+		var min_value: float = float(property_data[2])
+		var max_value: float = float(property_data[3])
+		var step: float = float(property_data[4])
+		_add_weather_slider_row(property_name, label_text, min_value, max_value, step)
+
+
+func _add_weather_slider_row(property_name: StringName, label_text: String, min_value: float, max_value: float, step: float) -> void:
+	var row: HBoxContainer = HBoxContainer.new()
+	weather_controls_container.add_child(row)
+
+	var default_button: Button = _create_weather_default_button()
+	default_button.pressed.connect(_on_weather_default_pressed.bind(property_name))
+	row.add_child(default_button)
+
+	var property_label: Label = _create_weather_property_label(label_text)
+	row.add_child(property_label)
+
+	var slider: HSlider = HSlider.new()
+	slider.min_value = min_value
+	slider.max_value = max_value
+	slider.step = step
+	slider.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	slider.value_changed.connect(_on_weather_float_changed.bind(property_name))
+	row.add_child(slider)
+
+	var value_label: Label = Label.new()
+	value_label.custom_minimum_size = Vector2(48.0, 0.0)
+	row.add_child(value_label)
+
+	weather_controls[property_name] = {
+		"type": "float",
+		"control": slider,
+		"value_label": value_label,
+	}
+
+
+func _add_weather_bool_row(property_name: StringName, label_text: String) -> void:
+	var row: HBoxContainer = HBoxContainer.new()
+	weather_controls_container.add_child(row)
+
+	var default_button: Button = _create_weather_default_button()
+	default_button.pressed.connect(_on_weather_default_pressed.bind(property_name))
+	row.add_child(default_button)
+
+	var property_label: Label = _create_weather_property_label(label_text)
+	row.add_child(property_label)
+
+	var check_box: CheckBox = CheckBox.new()
+	check_box.text = "Enabled"
+	check_box.toggled.connect(_on_weather_bool_changed.bind(property_name))
+	row.add_child(check_box)
+
+	weather_controls[property_name] = {
+		"type": "bool",
+		"control": check_box,
+	}
+
+
+func _add_weather_color_row(property_name: StringName, label_text: String) -> void:
+	var row: HBoxContainer = HBoxContainer.new()
+	weather_controls_container.add_child(row)
+
+	var default_button: Button = _create_weather_default_button()
+	default_button.pressed.connect(_on_weather_default_pressed.bind(property_name))
+	row.add_child(default_button)
+
+	var property_label: Label = _create_weather_property_label(label_text)
+	row.add_child(property_label)
+
+	var color_picker: ColorPickerButton = ColorPickerButton.new()
+	color_picker.custom_minimum_size = Vector2(110.0, 0.0)
+	color_picker.color_changed.connect(_on_weather_color_changed.bind(property_name))
+	row.add_child(color_picker)
+
+	weather_controls[property_name] = {
+		"type": "color",
+		"control": color_picker,
+	}
+
+
+func _create_weather_default_button() -> Button:
+	var default_button: Button = Button.new()
+	default_button.text = "Def"
+	default_button.custom_minimum_size = Vector2(40.0, 0.0)
+	return default_button
+
+
+func _create_weather_property_label(label_text: String) -> Label:
+	var property_label: Label = Label.new()
+	property_label.text = label_text
+	property_label.custom_minimum_size = Vector2(128.0, 0.0)
+	property_label.clip_text = true
+	return property_label
+
+
+func _cache_weather_defaults() -> void:
+	weather_saved_defaults.clear()
+
+	if sky_manager == null:
+		return
+
+	for weather_index: int in range(WEATHER_NAMES.size()):
+		var profile: Resource = sky_manager.get_weather_profile(weather_index)
+		weather_saved_defaults[weather_index] = _get_weather_profile_values(profile)
+
+
+func _refresh_weather_selection() -> void:
+	if sky_manager == null:
+		_set_weather_status("SkyManager not found.")
+		weather_save_button.disabled = true
+		weather_option_button.disabled = true
+		return
+
+	weather_save_button.disabled = false
+	weather_option_button.disabled = false
+	weather_option_button.select(int(sky_manager.active_weather))
+	_refresh_weather_controls()
+
+
+func _refresh_weather_controls() -> void:
+	var profile: Resource = _get_selected_weather_profile()
+	if profile == null:
+		_set_weather_status("Weather profile not found.")
+		return
+
+	for property_name: StringName in weather_controls.keys():
+		_set_weather_control_value(property_name, profile.get(property_name))
+
+	_set_weather_status("")
+
+
+func _set_weather_control_value(property_name: StringName, value: Variant) -> void:
+	var control_data: Dictionary = weather_controls[property_name]
+	var control_type: String = control_data["type"]
+
+	match control_type:
+		"float":
+			var slider: HSlider = control_data["control"] as HSlider
+			var value_label: Label = control_data["value_label"] as Label
+			var float_value: float = 0.0
+			if typeof(value) == TYPE_FLOAT or typeof(value) == TYPE_INT:
+				float_value = float(value)
+			slider.set_value_no_signal(float_value)
+			value_label.text = "%.2f" % float_value
+
+		"bool":
+			var check_box: CheckBox = control_data["control"] as CheckBox
+			if typeof(value) == TYPE_BOOL:
+				check_box.set_pressed_no_signal(bool(value))
+
+		"color":
+			var color_picker: ColorPickerButton = control_data["control"] as ColorPickerButton
+			if typeof(value) == TYPE_COLOR:
+				var color_value: Color = value
+				color_picker.color = color_value
+
+
+func _get_selected_weather_profile() -> Resource:
+	if sky_manager == null or weather_option_button == null:
+		return null
+
+	return sky_manager.get_weather_profile(weather_option_button.get_selected_id())
+
+
+func _get_weather_profile_values(profile: Resource) -> Dictionary:
+	var values: Dictionary = {}
+	if profile == null:
+		return values
+
+	for property_data: Array in WEATHER_COLOR_PROPERTIES:
+		var property_name: StringName = property_data[0]
+		values[property_name] = profile.get(property_name)
+
+	for property_data: Array in WEATHER_BOOL_PROPERTIES:
+		var property_name: StringName = property_data[0]
+		values[property_name] = profile.get(property_name)
+
+	for property_data: Array in WEATHER_SLIDER_PROPERTIES:
+		var property_name: StringName = property_data[0]
+		values[property_name] = profile.get(property_name)
+
+	return values
+
+
+func _get_saved_weather_profile_values(weather_index: int, profile: Resource) -> Dictionary:
+	if profile != null and profile.resource_path != "" and ResourceLoader.exists(profile.resource_path):
+		var disk_profile: Resource = ResourceLoader.load(profile.resource_path, "", ResourceLoader.CACHE_MODE_IGNORE) as Resource
+		if disk_profile != null:
+			return _get_weather_profile_values(disk_profile)
+
+	if weather_saved_defaults.has(weather_index):
+		return weather_saved_defaults[weather_index]
+
+	return {}
+
+
+func _set_selected_weather_property(property_name: StringName, value: Variant) -> void:
+	var profile: Resource = _get_selected_weather_profile()
+	if profile == null:
+		return
+
+	profile.set(property_name, value)
+	if sky_manager != null:
+		sky_manager.apply_weather_now()
+
+
+func _on_weather_selected(index: int) -> void:
+	if sky_manager != null:
+		sky_manager.set_active_weather(index)
+	_refresh_weather_controls()
+
+
+func _on_weather_float_changed(value: float, property_name: StringName) -> void:
+	_set_selected_weather_property(property_name, value)
+	_set_weather_control_value(property_name, value)
+
+
+func _on_weather_bool_changed(enabled: bool, property_name: StringName) -> void:
+	_set_selected_weather_property(property_name, enabled)
+
+
+func _on_weather_color_changed(color: Color, property_name: StringName) -> void:
+	_set_selected_weather_property(property_name, color)
+
+
+func _on_weather_default_pressed(property_name: StringName) -> void:
+	var weather_index: int = weather_option_button.get_selected_id()
+	var profile: Resource = _get_selected_weather_profile()
+	var saved_values: Dictionary = _get_saved_weather_profile_values(weather_index, profile)
+	if not saved_values.has(property_name):
+		return
+
+	var saved_value: Variant = saved_values[property_name]
+	_set_selected_weather_property(property_name, saved_value)
+	_set_weather_control_value(property_name, saved_value)
+	_set_weather_status("Default restored for %s." % String(property_name))
+
+
+func _on_weather_save_pressed() -> void:
+	var weather_index: int = weather_option_button.get_selected_id()
+	var profile: Resource = _get_selected_weather_profile()
+	if profile == null:
+		_set_weather_status("Weather profile not found.")
+		return
+
+	if profile.resource_path == "":
+		_set_weather_status("Profile has no resource path.")
+		return
+
+	var error: Error = ResourceSaver.save(profile, profile.resource_path)
+	if error != OK:
+		_set_weather_status("Save failed: %s" % error_string(error))
+		return
+
+	weather_saved_defaults[weather_index] = _get_weather_profile_values(profile)
+	_set_weather_status("Saved %s." % profile.resource_path)
+
+
+func _set_weather_status(message: String) -> void:
+	if weather_status_label == null:
+		return
+
+	weather_status_label.text = message
+
+
 func _on_show_grid_data_toggled(enabled: bool) -> void:
 	if grid_data_panel == null:
 		grid_data_panel = get_tree().get_first_node_in_group("grid_data_panel")

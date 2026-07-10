@@ -18,3 +18,16 @@
 [08.07.26 - 17.31] -added CloudShadowPlane to cast fake cloud shadows
 [08.07.26 - 18.15] -updates on SkyManager to use CloudShadowPlane
 [08.07.26 - 22.04] -added editable weather profiles to SkyManager
+[08.07.26 - 22.38] -added weather tuning tab to DebugMenu
+-commited "0.111"
+[10.07.26 - 15.10] -updates on SkyManager with separate sun moon orbits and curve based day night lighting
+[10.07.26 - 16.04] -updates on weather fog controls and removed star visibility tuning
+[10.07.26 - 17.16] -updates on weather rain particle control and fog height density
+[10.07.26 - 18.56] -fixed rain follow target and updated rain wind and fog tuning ranges
+[10.07.26 - 19.11] -updates on weather debug controls for fog height and rain wind velocity
+[10.07.26 - 20.04] -fixed rain follow target refresh and added puddle plane shader
+[10.07.26 - 20.14] -fixed puddle shader world position varying
+[10.07.26 - 20.47] -added random lightning flash system and removed puddle leftovers
+[10.07.26 - 21.10] -fixed lightning frequency rescheduling when weather changes
+[10.07.26 - 21.23] -updates on lightning with randomized flash timing and energy
+[10.07.26 - 21.43] -added compact performance panel to debug UI

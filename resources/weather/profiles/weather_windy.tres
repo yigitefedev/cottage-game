@@ -1,16 +1,18 @@
-[gd_resource type="Resource" script_class="SkyWeatherProfile" load_steps=2 format=3]
+[gd_resource type="Resource" script_class="SkyWeatherProfile" format=3 uid="uid://cl0xy4ahbks1n"]
 
-[ext_resource type="Script" path="res://scripts/managers/SkyWeatherProfile.gd" id="1_profile"]
+[ext_resource type="Script" uid="uid://c2ncanslhbx7w" path="res://scripts/managers/SkyWeatherProfile.gd" id="1_profile"]
 
 [resource]
 script = ExtResource("1_profile")
 display_name = "Windy"
-weather_darkness = 0.05
 weather_desaturation = 0.05
-star_visibility_multiplier = 0.85
-horizon_haze = 0.1
-sun_energy_multiplier = 0.95
-volumetric_fog_density_multiplier = 0.9
+sun_energy_multiplier = 0.78
+ambient_energy_multiplier = 0.82
+shadow_opacity_multiplier = 1.83
+fog_density_multiplier = 0.9
+fog_height_density = 0.0
 wind_strength_multiplier = 1.8
 wind_speed_multiplier = 1.8
-cloud_noise_threshold = 0.65
+has_clouds = true
+cloud_noise_threshold = 0.66
+rain_wind_velocity_multiplier = 2.5

@@ -41,11 +41,8 @@ uniform float star_brightness : hint_range(0.0, 3.0) = 1.0;
 uniform float star_scale : hint_range(10.0, 200.0) = 80.0;
 
 // Weather
-uniform float weather_darkness : hint_range(0.0, 1.0) = 0.0;
 uniform float weather_desaturation : hint_range(0.0, 1.0) = 0.0;
 uniform vec3 weather_tint : source_color = vec3(1.0, 1.0, 1.0);
-uniform float star_visibility : hint_range(0.0, 2.0) = 1.0;
-uniform float horizon_haze : hint_range(0.0, 1.0) = 0.0;
 
 // Cloud shape & coverage
 uniform bool clouds_enabled = false;
@@ -205,8 +202,6 @@ vec3 compute_sky(vec3 eye_dir, vec3 sun_dir, float day_factor, float sunset_fact
 	float luminance = dot(sky, vec3(0.2126, 0.7152, 0.0722));
 	sky = mix(sky, vec3(luminance), weather_desaturation);
 	sky *= weather_tint;
-	sky *= 1.0 - weather_darkness;
-	sky = mix(sky, weather_tint, horizon_haze * horizon_glow * 0.35);
 
 	return sky;
 }
@@ -316,7 +311,7 @@ void sky() {
 			vec3 star_pos = normalize(eye_dir) * star_scale;
 			float n = snoise(star_pos);
 			float stars = max(n - star_density, 0.0) / (1.0 - star_density);
-			stars = stars * stars * star_brightness * star_visibility;
+			stars = stars * stars * star_brightness;
 			sky += stars * night_factor;
 		}
 
@@ -362,7 +357,7 @@ void sky() {
 			vec3 star_pos = normalize(eye_dir) * star_scale;
 			float n = snoise(star_pos);
 			float stars = max(n - star_density, 0.0) / (1.0 - star_density);
-			stars = stars * stars * star_brightness * star_visibility;
+			stars = stars * stars * star_brightness;
 
 			float color_seed = snoise(star_pos * 0.5 + 500.0);
 			vec3 star_col;

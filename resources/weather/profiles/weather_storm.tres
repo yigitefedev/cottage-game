@@ -1,23 +1,23 @@
-[gd_resource type="Resource" script_class="SkyWeatherProfile" load_steps=2 format=3]
+[gd_resource type="Resource" script_class="SkyWeatherProfile" format=3 uid="uid://dxbwf0lo53m8f"]
 
-[ext_resource type="Script" path="res://scripts/managers/SkyWeatherProfile.gd" id="1_profile"]
+[ext_resource type="Script" uid="uid://c2ncanslhbx7w" path="res://scripts/managers/SkyWeatherProfile.gd" id="1_profile"]
 
 [resource]
 script = ExtResource("1_profile")
 display_name = "Storm"
-weather_darkness = 0.45
 weather_desaturation = 0.55
-weather_tint = Color(0.55, 0.65, 0.8, 1)
-star_visibility_multiplier = 0.0
-horizon_haze = 0.45
-sun_energy_multiplier = 0.25
-moon_energy_multiplier = 0.35
-shadow_opacity_multiplier = 0.25
-tonemap_exposure_multiplier = 0.65
-volumetric_fog_density_multiplier = 2.0
-wind_strength_multiplier = 2.2
-wind_speed_multiplier = 2.0
+weather_tint = Color(0.43190002, 0.55001974, 0.72265625, 1)
+sun_energy_multiplier = 0.07
+moon_energy_multiplier = 0.36
+ambient_energy_multiplier = 1.63
+shadow_opacity_multiplier = 1.98
+tonemap_exposure_multiplier = 0.66
+fog_density_multiplier = 2.0
+fog_height_density = 0.0
+wind_strength_multiplier = 3.36
+wind_speed_multiplier = 2.12
 has_clouds = true
 cloud_noise_threshold = 0.35
-rain_strength = 1.0
-fog_strength = 0.35
+rain_strength = 8.91
+rain_wind_velocity_multiplier = 1.2
+lightning_frequency = 5.76
